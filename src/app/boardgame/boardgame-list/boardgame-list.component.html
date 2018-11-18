@@ -1,0 +1,33 @@
+<p>
+  boardgame-list works!
+</p>
+
+<div class="boardgames">
+  <ng-container *ngFor="let boardgame of boardgames;">
+    <div class="boardgame" (click)="view(boardgame._id)">
+
+      <div class="row">
+        <div class="col-12 col-md-9 offset-md-2">
+          <div class="title">
+            {{ boardgame.name }}
+            <span *ngIf="boardgame.year_published">({{ boardgame.year_published }})</span>
+          </div>
+        </div>
+        <!-- <div class="col-4 col-md-2">
+          <img alt="{{ boardgame.xmlapi_id }}" src="{{ boardgame.thumbnail }}">
+        </div> -->
+        <div class="col-4 col-md-2">
+          <span>{{ boardgame.min_players }} à {{ boardgame.max_players }} joueurs, 
+            pour {{ boardgame.playing_time | playTime }}</span>
+        </div>
+        <div class="col-4 offset-md-6  col-md-2">
+          <div class="boardgame-count">
+            {{ boardgame.plays_count }} partie(s)
+            <span>{{ boardgame.play_time | playTime }}</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </ng-container>
+</div>
