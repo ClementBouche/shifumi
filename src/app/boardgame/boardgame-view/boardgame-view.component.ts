@@ -3,6 +3,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 import { BoardgameService } from '../shared/services/boardgame.service';
+import { Observable } from 'rxjs';
+import { Boardgame } from '../shared/model/boardgame.model';
 
 @Component({
   selector: 'app-boardgame-view',
@@ -11,7 +13,7 @@ import { BoardgameService } from '../shared/services/boardgame.service';
 })
 export class BoardgameViewComponent implements OnInit {
 
-  boardgame$;
+  boardgame$: Observable<Boardgame>;
 
   constructor(
     private route: ActivatedRoute,

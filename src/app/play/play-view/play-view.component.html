@@ -1,0 +1,11 @@
+<p>
+    boardgame-view works!
+</p>
+<div *ngIf="play$ | async as play">
+  <h4>{{ play.boardgame_name }}</h4>
+  <ul>
+    <li *ngFor="let score of play.scores">
+      {{ score.player_name }} ({{ score.score }})
+    </li>
+  </ul>
+</div>

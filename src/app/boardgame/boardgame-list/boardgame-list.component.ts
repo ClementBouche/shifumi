@@ -21,9 +21,9 @@ export class BoardgameListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.boardgameService.getBoardgames().then((result) => {
+    this.boardgameService.getBoardgames(10, 1).then((result) => {
       // get 10 first
-      this.boardgames = result.splice(0, 10);
+      this.boardgames = result;
       this.cd.markForCheck();
     });
   }

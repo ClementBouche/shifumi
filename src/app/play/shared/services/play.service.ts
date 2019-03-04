@@ -2,37 +2,37 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 
-import { Boardgame } from '../model/boardgame.model';
+import { Play } from '../model/play.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class BoardgameService {
+export class PlayService {
 
-  private boardgameUrl = `${environment.apiUrl}/boardgame/`; // url to web api
+  private playUrl = `${environment.apiUrl}/play/`; // url to web api
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
-  getBoardgames(size?: number, page?: number): Promise<Boardgame[]> {
+  getPlays(size?: number, page?: number): Promise<Play[]> {
     let params = new HttpParams();
     if (size) { params = params.append('size', size.toString()); }
     if (page) { params = params.append('page', page.toString()); }
 
-    return this.httpClient.get(this.boardgameUrl, {
+    return this.httpClient.get(this.playUrl, {
         params: params
       })
       .toPromise()
-      .then(response => response as Boardgame[]);
+      .then(response => response as Play[]);
   }
 
-  getBoardgame(id: string): Promise<Boardgame> {
-    const url = `${this.boardgameUrl}${id}`;
+  getPlay(id: string): Promise<Play> {
+    const url = `${this.playUrl}${id}`;
     return this.httpClient.get(url)
       .toPromise()
-      .then(response => response as Boardgame);
+      .then(response => response as Play);
   }
 
 }

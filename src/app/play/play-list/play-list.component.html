@@ -1,0 +1,16 @@
+<p>
+  play-list works!
+</p>
+
+<div class="plays">
+  <ng-container *ngFor="let play of plays;">
+    <div class="play" (click)="view(play._id)">
+      <h4>{{ play.boardgame_name }}</h4>
+      <ul>
+        <li *ngFor="let score of play.scores">
+          {{ score.player_name }} ({{ score.score }})
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</div>

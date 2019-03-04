@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './boardgame/boardgame.module#BoardgameModule'
   },
   {
+    path: 'play',
+    loadChildren: './play/play.module#PlayModule'
+  },
+  {
     path: '**',
     redirectTo: '/'
   }
