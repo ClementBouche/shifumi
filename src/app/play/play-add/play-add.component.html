@@ -1,3 +1,30 @@
 <p>
   play-add works!
 </p>
+
+<form #playForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <input type="string" class="form-control"
+    id="boardgame_name" name="boardgame_name" required
+    [(ngModel)]="play.boardgame_name" >
+
+  <input type="string" class="form-control"
+    id="place" name="place" required
+    [(ngModel)]="play.place" >
+
+  <input type="string" class="form-control"
+    id="date" name="date" required
+    [(ngModel)]="play.date" >
+
+  <input type="submit" class="btn" value="Submit">
+  <input type="button" class="btn" value="Reset" (click)="resetPlay()">
+</form>
+
+<p>
+    Résumé :
+</p>
+<ul *ngIf="play">
+  <li>{{ play.boardgame_name }}</li>
+  <li>{{ play.place }}</li>
+  <li>{{ play.date }}</li>
+</ul>

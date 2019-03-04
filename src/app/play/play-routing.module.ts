@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PlayComponent } from './play.component';
 import { PlayListComponent } from './play-list/play-list.component';
 import { PlayViewComponent } from './play-view/play-view.component';
+import { PlayAddComponent } from './play-add/play-add.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,14 @@ const routes: Routes = [
       {
         path: 'view/:id',
         component: PlayViewComponent
+      },
+      {
+        path: 'add',
+        component: PlayAddComponent
+      },
+      {
+        path: 'add/:id',
+        component: PlayAddComponent
       },
       {
         path: '',

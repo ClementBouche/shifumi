@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 import { PlayService } from '../shared/services/play.service';
@@ -16,6 +16,7 @@ export class PlayViewComponent implements OnInit {
   play$: Observable<Play>;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private playService: PlayService
   ) { }
@@ -25,6 +26,12 @@ export class PlayViewComponent implements OnInit {
       .pipe(switchMap((params: ParamMap) => {
           return this.playService.getPlay(params.get('id'));
       }));
+  }
+
+  update() {
+    this.play$.forEach((play) => {
+      this.router.navigate(['play', 'add', play._id]);
+    });
   }
 
 }

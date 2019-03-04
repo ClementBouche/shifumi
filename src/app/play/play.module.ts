@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { PlayRoutingModule } from './play-routing.module';
@@ -17,6 +18,7 @@ import { PlayAddComponent } from './play-add/play-add.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     PlayRoutingModule
   ]
 })
