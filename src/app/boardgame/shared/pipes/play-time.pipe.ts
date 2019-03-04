@@ -11,7 +11,7 @@ export class PlayTimePipe implements PipeTransform {
     let minutes = moment.duration(value, 'minutes').minutes();
     let date = hours === 0 ? '' : hours+'h';
     date += minutes === 0 ? '' : minutes+'min';
-    return date;
+    return date || '0min';
   }
 
 }

@@ -20,6 +20,9 @@ import { PlayAddComponent } from './play-add/play-add.component';
     CommonModule,
     FormsModule,
     PlayRoutingModule
+  ],
+  exports: [
+    PlayListComponent
   ]
 })
 export class PlayModule { }

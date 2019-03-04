@@ -1,11 +1,12 @@
-<p>
-  play-list works!
-</p>
-
 <div class="plays">
-  <ng-container *ngFor="let play of plays;">
+  <ng-container *ngFor="let play of plays; let i = index">
     <div class="play" (click)="view(play._id)">
-      <h4>{{ play.boardgame_name }}</h4>
+      <ng-container *ngIf="!boardgame">
+        <h4>{{ play.boardgame_name }}</h4>
+      </ng-container>
+      <ng-container *ngIf="boardgame">
+        <h4>Partie {{ i }}</h4>
+      </ng-container>
       <ul>
         <li *ngFor="let score of play.scores">
           {{ score.player_name }} ({{ score.score }})
@@ -14,3 +15,6 @@
     </div>
   </ng-container>
 </div>
+<ng-container *ngIf="!plays || plays.length === 0">
+  <p>No games played yet</p>
+</ng-container>

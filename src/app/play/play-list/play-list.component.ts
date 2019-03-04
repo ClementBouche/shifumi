@@ -1,8 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { PlayService } from '../shared/services/play.service';
 import { Play } from '../shared/model/play.model';
+import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 
 @Component({
   selector: 'app-play-list',
@@ -10,6 +11,8 @@ import { Play } from '../shared/model/play.model';
   styleUrls: ['./play-list.component.css']
 })
 export class PlayListComponent implements OnInit {
+
+  @Input() boardgame: Boardgame;
 
   plays: Play[];
 
@@ -21,11 +24,22 @@ export class PlayListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.playService.getPlays(10, 1).then((result) => {
-      // get 10 first
-      this.plays = result;
-      this.cd.markForCheck();
-    });
+    console.log(this.boardgame);
+    // if input
+    if (this.boardgame) {
+      this.playService.getBoardgamePlays(this.boardgame).then((result) => {
+        // get 10 first
+        this.plays = result;
+        this.cd.markForCheck();
+      });
+    } else {
+      this.playService.getPlays(10, 1).then((result) => {
+        // get 10 first
+        this.plays = result;
+        this.cd.markForCheck();
+      });
+      console.log('coucouc');
+    }
   }
 
   view(playid: string) {

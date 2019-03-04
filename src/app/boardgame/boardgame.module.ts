@@ -7,6 +7,7 @@ import { BoardgameComponent } from './boardgame.component';
 import { BoardgameListComponent } from './boardgame-list/boardgame-list.component';
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
 import { PlayTimePipe } from './shared/pipes/play-time.pipe';
+import { PlayModule } from '../play/play.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PlayTimePipe } from './shared/pipes/play-time.pipe';
   ],
   imports: [
     CommonModule,
-    BoardgameRoutingModule
+    BoardgameRoutingModule,
+    PlayModule
   ]
 })
 export class BoardgameModule { }

@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 
 import { Play } from '../model/play.model';
+import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 
 
 @Injectable({
@@ -26,6 +27,17 @@ export class PlayService {
       })
       .toPromise()
       .then(response => response as Play[]);
+  }
+
+  getBoardgamePlays(boardgame: Boardgame) {
+    let params = new HttpParams().append('boardgame', boardgame.xmlapi_id.toString());
+
+    return this.httpClient.get(this.playUrl, {
+        params: params
+      })
+      .toPromise()
+      .then(response => response as Play[]);
+
   }
 
   getPlay(id: string): Promise<Play> {
