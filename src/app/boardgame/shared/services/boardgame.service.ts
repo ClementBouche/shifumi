@@ -25,14 +25,14 @@ export class BoardgameService {
         params: params
       })
       .toPromise()
-      .then(response => response as Boardgame[]);
+      .then((response: any) => response.map((input) => new Boardgame().deserialize(input)));
   }
 
   getBoardgame(id: string): Promise<Boardgame> {
     const url = `${this.boardgameUrl}${id}`;
     return this.httpClient.get(url)
       .toPromise()
-      .then(response => response as Boardgame);
+      .then(response => new Boardgame().deserialize(response));
   }
 
 }

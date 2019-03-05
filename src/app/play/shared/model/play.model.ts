@@ -1,20 +1,28 @@
-export class Play {
-  _id: number;
-  // xml api info
-  xmlapi_id: number;
+import { Deserializable } from "src/app/core/model/deserializable.interface";
+import { Score } from "./score.model";
+
+export class Play implements Deserializable {
+  id: string;
   // metadata
   date: string;
   place: string;
-  boardgame_xmlapi_id: string;
-  boardgame_name: string;
-  playing_time: string;
-  incomplete: string;
+  boardgameName: string;
+  playingTime: string;
+  incomplete: boolean;
   // scores
-  scores: [{
-    new: boolean;
-    win: boolean;
-    score: number;
-    player_name: string;
-    _id: string;
-  }];
+  scores: [Score];
+
+  deserialize(input: any) {
+    const scores = input.scores ? input.scores.map((score) => new Score().deserialize(score)) : [];
+    Object.assign(this, {
+      id: input._id,
+      date: input.date,
+      place: input.place,
+      boardgameName: input.boardgame_name,
+      playingTime: input.playing_time,
+      incomplete: input.incomplete,
+      scores: scores
+    })
+    return this;
+  }
 }

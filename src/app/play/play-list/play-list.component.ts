@@ -24,7 +24,6 @@ export class PlayListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.boardgame);
     // if input
     if (this.boardgame) {
       this.playService.getBoardgamePlays(this.boardgame).then((result) => {
@@ -38,7 +37,6 @@ export class PlayListComponent implements OnInit {
         this.plays = result;
         this.cd.markForCheck();
       });
-      console.log('coucouc');
     }
   }
 

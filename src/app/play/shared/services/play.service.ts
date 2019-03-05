@@ -5,7 +5,6 @@ import { environment } from '../../../../environments/environment';
 import { Play } from '../model/play.model';
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -30,14 +29,12 @@ export class PlayService {
   }
 
   getBoardgamePlays(boardgame: Boardgame) {
-    let params = new HttpParams().append('boardgame', boardgame.xmlapi_id.toString());
-
-    return this.httpClient.get(this.playUrl, {
-        params: params
+    let url = `${environment.apiUrl}/play/search`
+    return this.httpClient.post(url, {
+        boardgame: boardgame.name
       })
       .toPromise()
       .then(response => response as Play[]);
-
   }
 
   getPlay(id: string): Promise<Play> {

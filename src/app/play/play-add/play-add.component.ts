@@ -30,7 +30,6 @@ export class PlayAddComponent implements OnInit {
         return this.playService.getPlay(params.id).then((play) => {
           this.play = play;
           this.cd.markForCheck();
-          console.log(play);
         });
       }
     });
@@ -41,7 +40,6 @@ export class PlayAddComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log({play: this.play});
     // TODO update
     this.router.navigate(['play', 'view', this.play._id]);
   }
