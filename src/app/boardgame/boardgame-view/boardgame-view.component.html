@@ -1,13 +1,10 @@
-<p>
-  boardgame-view works!
-</p>
 <div *ngIf="boardgame$ | async as boardgame">
   <h4>{{ boardgame.name }}</h4>
   <ul>
-    <li>{{ boardgame.min_players }} à {{ boardgame.max_players }} joueurs</li>
-    <li>{{ boardgame.playing_time | playTime }}</li>
-    <li>{{ boardgame.plays_count }} partie(s)</li>
-    <li>{{ boardgame.play_time | playTime }}</li>
+    <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
+    <li>{{ boardgame.time.average | playTime }}</li>
+    <li>{{ boardgame.statitics.playCount }} partie(s)</li>
+    <li>{{ boardgame.statitics.playTime | playTime }}</li>
   </ul>
   <app-play-list [boardgame]="boardgame"></app-play-list>
 </div>
