@@ -1,3 +1,5 @@
+<button (click)="gotoList()">Retour</button>
+
 <div *ngIf="boardgame$ | async as boardgame">
   <h4>{{ boardgame.name }}</h4>
   <ul>

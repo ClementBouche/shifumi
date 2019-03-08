@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 import { BoardgameService } from '../shared/services/boardgame.service';
@@ -17,6 +18,7 @@ export class BoardgameViewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private location: Location,
     private boardgameService: BoardgameService
   ) { }
 
@@ -25,6 +27,10 @@ export class BoardgameViewComponent implements OnInit {
       .pipe(switchMap((params: ParamMap) => {
           return this.boardgameService.getBoardgame(params.get('id'));
       }));
+  }
+
+  gotoList() {
+    this.location.back();
   }
 
 }

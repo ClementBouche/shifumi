@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BoardgameRoutingModule } from './boardgame-routing.module';
 
@@ -8,17 +9,21 @@ import { BoardgameListComponent } from './boardgame-list/boardgame-list.componen
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
 import { PlayTimePipe } from './shared/pipes/play-time.pipe';
 import { PlayModule } from '../play/play.module';
+import { BoardgameSearchComponent } from './boardgame-search/boardgame-search.component';
 
 @NgModule({
   declarations: [
     BoardgameComponent,
     BoardgameListComponent,
     BoardgameViewComponent,
-    PlayTimePipe
+    PlayTimePipe,
+    BoardgameSearchComponent
   ],
   imports: [
     CommonModule,
     BoardgameRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     PlayModule
   ]
 })

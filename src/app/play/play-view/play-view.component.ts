@@ -30,7 +30,7 @@ export class PlayViewComponent implements OnInit {
 
   update() {
     this.play$.forEach((play) => {
-      this.router.navigate(['play', 'add', play._id]);
+      this.router.navigate(['play', 'add', play.id]);
     });
   }
 

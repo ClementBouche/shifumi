@@ -4,4 +4,18 @@
 </ul>
 
 <p>Bellow BoardgameModule router-outlet</p>
-<router-outlet></router-outlet>
+<app-boardgame-search (boardgameChange)="displayResult($event)"></app-boardgame-search>
+
+
+<!-- if boardgames -->
+<ng-container *ngIf="boardgames else rankList">
+  <app-boardgame-list [boardgames]="boardgames"></app-boardgame-list>
+</ng-container>
+
+<ng-template #rankList>
+  <app-boardgame-list></app-boardgame-list>
+</ng-template>
+
+<!-- boardgame detail -->
+<!-- <ng-container *ngIf="boardgame">
+</ng-container> -->

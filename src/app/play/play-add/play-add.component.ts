@@ -1,7 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Play } from '../shared/model/play.model';
 import { PlayService } from '../shared/services/play.service';
@@ -41,7 +39,7 @@ export class PlayAddComponent implements OnInit {
 
   onSubmit() {
     // TODO update
-    this.router.navigate(['play', 'view', this.play._id]);
+    this.router.navigate(['play', 'view', this.play.id]);
   }
 
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 
 import { Boardgame } from '../model/boardgame.model';
+import { BoardgameSearch } from '../model/boardgame-search.model';
 
 
 @Injectable({
@@ -24,6 +25,13 @@ export class BoardgameService {
     return this.httpClient.get(this.boardgameUrl, {
         params: params
       })
+      .toPromise()
+      .then((response: any) => response.map((input) => new Boardgame().deserialize(input)));
+  }
+
+  search(search: BoardgameSearch): Promise<Boardgame[]> {
+    const url = `${environment.apiUrl}/boardgame/search`;
+    return this.httpClient.post(url, search.serialize())
       .toPromise()
       .then((response: any) => response.map((input) => new Boardgame().deserialize(input)));
   }

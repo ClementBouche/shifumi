@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <!-- name input -->
+  <input type="string" name="name"
+      formControlName="name" (keyup)="searchByName($event.target.value)" />
+  <!-- search button -->
+  <button type="submit" [disabled]="!form.valid">Rechercher</button>
+  <button type="button" (click)="reset()">Reset</button>
+</form>
+
+<div *ngIf="size">
+  <p>{{ size }} resultats</p>
+</div>
+
+<!-- 
+<div formGroupName="form">
+  <input type="string" name="name" (keyup)="searchByName($event.target.value)" formControlName="name" />
+  <input type="button" value="Rechercher" (click)="search()"/>
+</div> -->
+
