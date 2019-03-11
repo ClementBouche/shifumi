@@ -14,7 +14,9 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   @Output() searchCompleted: EventEmitter<BoardgameSearch> = new EventEmitter<BoardgameSearch>();
 
   form: FormGroup = this.formBuilder.group({
-    name: ['']
+    name: [''],
+    min: [0],
+    max: [0]
   });
 
   private boardgameSearch: BoardgameSearch = new BoardgameSearch();
@@ -26,6 +28,12 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.form.patchValue({
+      name: this.boardgameSearch.name,
+      min: this.boardgameSearch.time.min,
+      max: this.boardgameSearch.time.max
+    });
+    // subscribe keyup change
     this.nameSubject.pipe(
         debounceTime(500)
       ).subscribe(() => {
@@ -43,8 +51,11 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   }
 
   reset() {
-    this.form.reset({
-      name: ''
+    this.boardgameSearch = new BoardgameSearch();
+    this.form.patchValue({
+      name: this.boardgameSearch.name,
+      min: this.boardgameSearch.time.min,
+      max: this.boardgameSearch.time.max
     });
     this.search();
   }
@@ -52,6 +63,8 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   isFormValid(): boolean {
     // update boardgameSearch with form values
     this.boardgameSearch.name = this.form.value.name;
+    this.boardgameSearch.time.min = this.form.value.min;
+    this.boardgameSearch.time.max = this.form.value.max;
     return true;
   }
 

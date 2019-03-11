@@ -23,6 +23,7 @@ export class BoardgameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.doSearch(new BoardgameSearch());
   }
 
   doSearch(searchOptions: BoardgameSearch) {

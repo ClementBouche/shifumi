@@ -1,8 +1,21 @@
 <div class="boardgame-search">
   <form [formGroup]="form" (ngSubmit)="search()">
+
     <!-- name input -->
+    <label>Name...</label>
     <input type="string" name="name"
         formControlName="name" (keyup)="searchByName()" />
+
+    <!-- time.min input -->
+    <label>Min time</label>
+    <input type="number" name="min"
+        formControlName="min" />
+
+    <!-- time.max input -->
+    <label>Max time</label>
+    <input type="number" name="max"
+        formControlName="max" />
+
     <!-- search button -->
     <button type="submit" [disabled]="!form.valid">Rechercher</button>
     <button type="button" (click)="reset()">Reset</button>
