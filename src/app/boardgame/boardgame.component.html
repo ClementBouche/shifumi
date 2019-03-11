@@ -1,21 +1,18 @@
 <h2>Boardgame Component header</h2>
-<ul>
-    <li><a routerLink="list" routerLinkActive="active">list</a></li>
-</ul>
 
 <p>Bellow BoardgameModule router-outlet</p>
-<app-boardgame-search (boardgameChange)="displayResult($event)"></app-boardgame-search>
-
+<app-boardgame-search (searchCompleted)="doSearch($event)"></app-boardgame-search>
 
 <!-- if boardgames -->
-<ng-container *ngIf="boardgames else rankList">
-  <app-boardgame-list [boardgames]="boardgames"></app-boardgame-list>
+<ng-container *ngIf="!detail else detailTemplate">
+
+  <ng-container *ngIf="searchedBgs">
+    <app-boardgame-list [boardgames]="searchedBgs" (selectBoardgame)="viewDetail($event)"></app-boardgame-list>
+  </ng-container>
+
 </ng-container>
 
-<ng-template #rankList>
-  <app-boardgame-list></app-boardgame-list>
+<!-- detail view, user switch to detail and list -->
+<ng-template #detailTemplate>
+  <app-boardgame-view [boardgame]="selectedBg" (backClicked)="goToList()"></app-boardgame-view>
 </ng-template>
-
-<!-- boardgame detail -->
-<!-- <ng-container *ngIf="boardgame">
-</ng-container> -->

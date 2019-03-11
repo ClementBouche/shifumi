@@ -1,7 +1,7 @@
 <p>boardgame list component</p>
 <div class="boardgames">
   <ng-container *ngFor="let boardgame of boardgames;">
-    <div class="boardgame" (click)="view(boardgame.id)">
+    <div class="boardgame" (click)="select(boardgame)">
       <h4>{{ boardgame.name }}</h4>
       <ul>
         <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>

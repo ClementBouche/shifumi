@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+
 import { Boardgame } from './shared/model/boardgame.model';
-import { Router } from '@angular/router';
+import { BoardgameService } from './shared/services/boardgame.service';
+import { BoardgameSearch } from './shared/model/boardgame-search.model';
 
 @Component({
   selector: 'app-boardgame',
@@ -9,23 +11,36 @@ import { Router } from '@angular/router';
 })
 export class BoardgameComponent implements OnInit {
 
-  boardgames: Boardgame[];
+  detail: boolean = false;
+  
+  searchedBgs: Boardgame[];
+
+  selectedBg: Boardgame;
 
   constructor(
-    private router: Router,
+    private boardgameService: BoardgameService,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    if (!this.boardgames) {
-    }
   }
 
-  displayResult($event) {
-    console.log({$event});
-    // this.router.navigate(['boardgame', 'list']);
-    this.boardgames = $event;
-    this.cd.markForCheck();
+  doSearch(searchOptions: BoardgameSearch) {
+    this.boardgameService.search(searchOptions)
+        .then((results) => {
+          this.searchedBgs = results;
+          console.log({nb: results.length, searchOptions, results});
+          this.cd.markForCheck();
+        });
+  }
+
+  viewDetail(boardgame: Boardgame) {
+    this.detail = true;
+    this.selectedBg = boardgame;
+  }
+
+  goToList() {
+    this.detail = false;
   }
 
 }

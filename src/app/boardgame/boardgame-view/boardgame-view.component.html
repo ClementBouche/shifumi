@@ -1,6 +1,6 @@
 <button (click)="gotoList()">Retour</button>
 
-<div *ngIf="boardgame$ | async as boardgame">
+<div *ngIf="boardgame">
   <h4>{{ boardgame.name }}</h4>
   <ul>
     <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>

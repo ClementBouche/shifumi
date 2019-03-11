@@ -9,20 +9,20 @@ const routes: Routes = [
   {
     path: '',
     component: BoardgameComponent,
-    children: [
-      {
-        path: 'list',
-        component: BoardgameListComponent
-      },
-      {
-        path: 'view/:id',
-        component: BoardgameViewComponent
-      },
-      {
-        path: '',
-        redirectTo: 'list'
-      }
-    ]
+    // children: [
+    //   {
+    //     path: 'list',
+    //     component: BoardgameListComponent
+    //   },
+    //   {
+    //     path: 'view/:id',
+    //     component: BoardgameViewComponent
+    //   },
+    //   {
+    //     path: '',
+    //     redirectTo: 'list'
+    //   }
+    // ]
   }
 ];
 

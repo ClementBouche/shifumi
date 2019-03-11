@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* palette */
+html {
+  --first-color: #FF9800;
+  --first-color-lighter: #FFE0B2;
+  --first-color-darker: #F57C00;
+  --second-color: #009688;
+  --text-icon-color: #212121;
+  --first-text-color: #212121;
+  --second-text-color: #757575;
+  --divider-color: #BDBDBD;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  color: var(--first-text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--second-text-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+.loading-screen {
+  background-color: var(--first-color);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.loading-screen h1 {
+  color: var(--first-text-color);
+}

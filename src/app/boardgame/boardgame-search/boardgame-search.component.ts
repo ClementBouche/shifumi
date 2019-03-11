@@ -1,10 +1,8 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { BoardgameSearch } from '../shared/model/boardgame-search.model';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { BoardgameService } from '../shared/services/boardgame.service';
-import { Boardgame } from '../shared/model/boardgame.model';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-boardgame-search',
@@ -13,30 +11,26 @@ import { FormBuilder } from '@angular/forms';
 })
 export class BoardgameSearchComponent implements OnInit, OnDestroy {
 
-  @Output() boardgameChange: EventEmitter<Boardgame[]> = new EventEmitter<Boardgame[]>();
+  @Output() searchCompleted: EventEmitter<BoardgameSearch> = new EventEmitter<BoardgameSearch>();
 
-  form = this.formBuilder.group({
+  form: FormGroup = this.formBuilder.group({
     name: ['']
   });
-
-  size: Number;
 
   private boardgameSearch: BoardgameSearch = new BoardgameSearch();
 
   private nameSubject: Subject<string> = new Subject();
 
   constructor(
-    private formBuilder: FormBuilder,
-    private boardgameService: BoardgameService,
-    private cd: ChangeDetectorRef
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
     this.nameSubject.pipe(
         debounceTime(500)
-      ).subscribe((value) => {
-        this.boardgameSearch.name = value;
-        this.doSearch();
+      ).subscribe(() => {
+        // run a new search with actual input name
+        this.search();
       });
   }
 
@@ -44,32 +38,27 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     this.nameSubject.unsubscribe();
   }
 
-  searchByName(name: string) {
-    this.nameSubject.next(name);
-  }
-
-  search() {
-    this.doSearch();
+  searchByName() {
+    this.nameSubject.next();
   }
 
   reset() {
-    this.boardgameSearch = new BoardgameSearch();
-    this.form.reset({name: ''});
-    this.doSearch();
-  }
-
-  onSubmit() {
-    console.log(this.form.value);
-  }
-
-  private doSearch() {
-    this.boardgameService.search(this.boardgameSearch).then((boardgames) => {
-      // component update
-      this.size = boardgames.length;
-      this.cd.markForCheck();
-      // send data to parent
-      this.boardgameChange.next(boardgames);
+    this.form.reset({
+      name: ''
     });
+    this.search();
+  }
+
+  isFormValid(): boolean {
+    // update boardgameSearch with form values
+    this.boardgameSearch.name = this.form.value.name;
+    return true;
+  }
+
+  search() {
+    if (this.isFormValid()) {
+      this.searchCompleted.emit(this.boardgameSearch);
+    }
   }
 
 }

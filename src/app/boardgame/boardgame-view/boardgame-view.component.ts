@@ -1,10 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { BoardgameService } from '../shared/services/boardgame.service';
-import { Observable } from 'rxjs';
 import { Boardgame } from '../shared/model/boardgame.model';
 
 @Component({
@@ -14,23 +9,18 @@ import { Boardgame } from '../shared/model/boardgame.model';
 })
 export class BoardgameViewComponent implements OnInit {
 
-  boardgame$: Observable<Boardgame>;
+  @Input() boardgame: Boardgame;
+
+  @Output() backClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
-    private route: ActivatedRoute,
-    private location: Location,
-    private boardgameService: BoardgameService
   ) { }
 
   ngOnInit() {
-    this.boardgame$ = this.route.paramMap
-      .pipe(switchMap((params: ParamMap) => {
-          return this.boardgameService.getBoardgame(params.get('id'));
-      }));
   }
 
   gotoList() {
-    this.location.back();
+    this.backClicked.emit(true);
   }
 
 }
