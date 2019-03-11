@@ -1,0 +1,18 @@
+.boardgame {
+  position: relative;
+  padding: 5px 10px;
+}
+.boardgame:hover {
+  background-color: var(--first-color-lighter);
+}
+.select-arrow {
+  position: absolute;
+  font-size: 8.0em;
+  opacity: 0;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+.boardgame:hover .select-arrow {
+  opacity: 1;
+}
