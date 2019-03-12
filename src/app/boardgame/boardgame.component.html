@@ -2,14 +2,5 @@
 
 <app-boardgame-search (searchCompleted)="doSearch($event)"></app-boardgame-search>
 
-<!-- <ng-container *ngIf="searchedBgs">
-  <app-boardgame-list [boardgames]="searchedBgs" (selectBoardgame)="viewDetail($event)"></app-boardgame-list>
-</ng-container> -->
-
-<!-- detail view, user switch to detail and list -->
-<!-- <ng-template #detailTemplate>
-  <app-boardgame-view [boardgame]="selectedBg" (backClicked)="goToList()"></app-boardgame-view>
-</ng-template> -->
-
-<!-- boardgame/:id -->
+<!-- boardgame-list / boardgame-view -->
 <router-outlet></router-outlet>

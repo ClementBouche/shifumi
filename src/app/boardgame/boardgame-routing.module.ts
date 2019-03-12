@@ -18,16 +18,14 @@ const routes: Routes = [
         resolve: {
           boardgames: BoardgameSearchResolverService
         },
-        runGuardsAndResolvers: 'always',
-        children: [
-          {
-            path: ':id',
-            component: BoardgameViewComponent,
-            resolve: {
-              boardgame: BoardgameViewResolverService
-            }
-          }
-        ]
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
+      },
+      {
+        path: ':id',
+        component: BoardgameViewComponent,
+        resolve: {
+          boardgame: BoardgameViewResolverService
+        }
       }
     ]
   }

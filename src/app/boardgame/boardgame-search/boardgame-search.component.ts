@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { BoardgameSearch } from '../shared/model/boardgame-search.model';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -24,6 +24,8 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
 
   private nameSubject: Subject<string> = new Subject();
 
+  private routeSubscription: Subscription;
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -31,7 +33,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
+    this.routeSubscription = this.route.queryParams.subscribe((params) => {
       this.boardgameSearch = new BoardgameSearch().deserialize(params);
       this.searchToForm();
       this.cd.detectChanges();
@@ -46,6 +48,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.routeSubscription.unsubscribe();
     this.nameSubject.unsubscribe();
   }
 
