@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { Boardgame } from '../shared/model/boardgame.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-boardgame-view',
@@ -9,18 +11,21 @@ import { Boardgame } from '../shared/model/boardgame.model';
 })
 export class BoardgameViewComponent implements OnInit {
 
-  @Input() boardgame: Boardgame;
-
-  @Output() backClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  boardgame: Boardgame;
 
   constructor(
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
+    this.route.data.subscribe((data: {boardgame: Boardgame}) => {
+      this.boardgame = data.boardgame;
+    });
   }
 
   gotoList() {
-    this.backClicked.emit(true);
+    this.location.back();
   }
 
 }

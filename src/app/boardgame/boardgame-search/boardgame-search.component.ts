@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { BoardgameSearch } from '../shared/model/boardgame-search.model';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-boardgame-search',
@@ -24,14 +25,16 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   private nameSubject: Subject<string> = new Subject();
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.form.patchValue({
-      name: this.boardgameSearch.name,
-      min: this.boardgameSearch.time.min,
-      max: this.boardgameSearch.time.max
+    this.route.queryParams.subscribe((params) => {
+      this.boardgameSearch = new BoardgameSearch().deserialize(params);
+      this.searchToForm();
+      this.cd.detectChanges();
     });
     // subscribe keyup change
     this.nameSubject.pipe(
@@ -52,26 +55,30 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
 
   reset() {
     this.boardgameSearch = new BoardgameSearch();
-    this.form.patchValue({
-      name: this.boardgameSearch.name,
-      min: this.boardgameSearch.time.min,
-      max: this.boardgameSearch.time.max
-    });
-    this.search();
-  }
-
-  isFormValid(): boolean {
-    // update boardgameSearch with form values
-    this.boardgameSearch.name = this.form.value.name;
-    this.boardgameSearch.time.min = this.form.value.min;
-    this.boardgameSearch.time.max = this.form.value.max;
-    return true;
+    this.searchToForm();
+    this.searchCompleted.emit(this.boardgameSearch);
   }
 
   search() {
     if (this.isFormValid()) {
       this.searchCompleted.emit(this.boardgameSearch);
     }
+  }
+
+  private searchToForm() {
+    this.form.patchValue({
+      name: this.boardgameSearch.name,
+      min: this.boardgameSearch.time.min,
+      max: this.boardgameSearch.time.max
+    });
+  }
+
+  private isFormValid(): boolean {
+    // update boardgameSearch with form values
+    this.boardgameSearch.name = this.form.value.name;
+    this.boardgameSearch.time.min = this.form.value.min;
+    this.boardgameSearch.time.max = this.form.value.max;
+    return true;
   }
 
 }

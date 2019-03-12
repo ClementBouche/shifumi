@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 import { Boardgame } from '../shared/model/boardgame.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-boardgame-list',
@@ -9,17 +10,23 @@ import { Boardgame } from '../shared/model/boardgame.model';
 })
 export class BoardgameListComponent implements OnInit {
 
-  @Input() boardgames: Boardgame[];
+  boardgames: Boardgame[];
 
-  @Output() selectBoardgame: EventEmitter<Boardgame> = new EventEmitter<Boardgame>();
-
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private cd: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
+    this.route.data.subscribe((data: {boardgames: Boardgame[]}) => {
+      this.boardgames = data.boardgames;
+      this.cd.detectChanges();
+    });
   }
 
   select(boardgame: Boardgame) {
-    this.selectBoardgame.emit(boardgame);
+    this.router.navigate(['boardgame', boardgame.id]);
   }
 
 }

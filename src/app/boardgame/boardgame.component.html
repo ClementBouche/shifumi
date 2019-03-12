@@ -1,18 +1,15 @@
 <h2>Boardgame Component header</h2>
 
-<p>Bellow BoardgameModule router-outlet</p>
 <app-boardgame-search (searchCompleted)="doSearch($event)"></app-boardgame-search>
 
-<!-- if boardgames -->
-<ng-container *ngIf="!detail else detailTemplate">
-
-  <ng-container *ngIf="searchedBgs">
-    <app-boardgame-list [boardgames]="searchedBgs" (selectBoardgame)="viewDetail($event)"></app-boardgame-list>
-  </ng-container>
-
-</ng-container>
+<!-- <ng-container *ngIf="searchedBgs">
+  <app-boardgame-list [boardgames]="searchedBgs" (selectBoardgame)="viewDetail($event)"></app-boardgame-list>
+</ng-container> -->
 
 <!-- detail view, user switch to detail and list -->
-<ng-template #detailTemplate>
+<!-- <ng-template #detailTemplate>
   <app-boardgame-view [boardgame]="selectedBg" (backClicked)="goToList()"></app-boardgame-view>
-</ng-template>
+</ng-template> -->
+
+<!-- boardgame/:id -->
+<router-outlet></router-outlet>

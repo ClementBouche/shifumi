@@ -1,6 +1,7 @@
 import { Serializable } from "src/app/core/model/serializable.interface";
+import { Deserializable } from "src/app/core/model/deserializable.interface";
 
-export class BoardgameSearch implements Serializable {
+export class BoardgameSearch implements Serializable, Deserializable {
 
   name: string;
   
@@ -27,6 +28,20 @@ export class BoardgameSearch implements Serializable {
       thematics: this.thematics,
       mechanics: this.mechanics
     }
+  }
+
+  deserialize(input: any) {
+    Object.assign(this, {
+      name: input.name,
+      players: input.players,
+      time: {
+        min: input.min_time,
+        max: input.max_time,
+      },
+      thematics: input.thematics,
+      mechanics: input.mechanics
+    });
+    return this;
   }
 
 }

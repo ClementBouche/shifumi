@@ -4,25 +4,32 @@ import { Routes, RouterModule } from '@angular/router';
 import { BoardgameComponent } from './boardgame.component';
 import { BoardgameListComponent } from './boardgame-list/boardgame-list.component';
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
+import { BoardgameViewResolverService } from './shared/services/boardgame-view-resolver.service';
+import { BoardgameSearchResolverService } from './shared/services/boardgame-search-resolver.service';
 
 const routes: Routes = [
   {
     path: '',
     component: BoardgameComponent,
-    // children: [
-    //   {
-    //     path: 'list',
-    //     component: BoardgameListComponent
-    //   },
-    //   {
-    //     path: 'view/:id',
-    //     component: BoardgameViewComponent
-    //   },
-    //   {
-    //     path: '',
-    //     redirectTo: 'list'
-    //   }
-    // ]
+    children: [
+      {
+        path: '',
+        component: BoardgameListComponent,
+        resolve: {
+          boardgames: BoardgameSearchResolverService
+        },
+        runGuardsAndResolvers: 'always',
+        children: [
+          {
+            path: ':id',
+            component: BoardgameViewComponent,
+            resolve: {
+              boardgame: BoardgameViewResolverService
+            }
+          }
+        ]
+      }
+    ]
   }
 ];
 
