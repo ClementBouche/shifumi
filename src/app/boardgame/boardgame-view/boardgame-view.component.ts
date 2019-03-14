@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Boardgame } from '../shared/model/boardgame.model';
@@ -17,18 +16,13 @@ export class BoardgameViewComponent implements OnInit {
   constructor(
     private boardgameService: BoardgameService,
     private router: Router,
-    private route: ActivatedRoute,
-    private location: Location
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.route.data.subscribe((data: {boardgame: Boardgame}) => {
       this.boardgame = data.boardgame;
     });
-  }
-
-  gotoList() {
-    this.location.back();
   }
 
   import() {

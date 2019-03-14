@@ -19,3 +19,7 @@ input.as-text {
   padding-right: 60px;
 }
 
+.readonly {
+  color: #aaa;
+}
+

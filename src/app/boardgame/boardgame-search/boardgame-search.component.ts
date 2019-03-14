@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import { BoardgameSearch } from '../shared/model/boardgame-search.model';
-import { Subject, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Subject, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
+import { BoardgameSearch } from '../shared/model/boardgame-search.model';
 
 @Component({
   selector: 'app-boardgame-search',
@@ -18,7 +19,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     name: [''],
     min: [0],
     max: [0],
-    extended: [false]
+    recent: [true]
   });
 
   private boardgameSearch: BoardgameSearch = new BoardgameSearch();
@@ -29,15 +30,17 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private cd: ChangeDetectorRef
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.routeSubscription = this.route.queryParams.subscribe((params) => {
-      this.boardgameSearch = new BoardgameSearch().deserialize(params);
-      this.searchToForm();
-      this.cd.detectChanges();
+      if (Object.entries(params).length === 0 && params.constructor === Object) {
+        // ne rien faire
+      } else {
+        this.boardgameSearch = new BoardgameSearch().deserialize(params);
+        this.searchToForm();
+      }
     });
     // subscribe keyup change
     this.nameSubject.pipe(
@@ -74,7 +77,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
       name: this.boardgameSearch.name,
       min: this.boardgameSearch.time.min,
       max: this.boardgameSearch.time.max,
-      extended: this.boardgameSearch.extended
+      recent: !this.boardgameSearch.extended
     });
   }
 
@@ -83,7 +86,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     this.boardgameSearch.name = this.form.value.name;
     this.boardgameSearch.time.min = this.form.value.min;
     this.boardgameSearch.time.max = this.form.value.max;
-    this.boardgameSearch.extended = this.form.value.extended;
+    this.boardgameSearch.extended = !this.form.value.recent;
     return true;
   }
 

@@ -1,6 +1,5 @@
 <ng-container *ngIf="boardgame">
   <div class="boardgame">
-    <div class="goback-arrow" (click)="gotoList()"><</div>
     <app-boardgame-info [boardgame]="boardgame"></app-boardgame-info>
     <button *ngIf="boardgame.preview" (click)="import()">Import</button>
   </div>
