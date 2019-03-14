@@ -1,6 +1,3 @@
-<p>
-    boardgame-view works!
-</p>
 <div *ngIf="play$ | async as play">
   <h4>{{ play.boardgame_name }}</h4>
   <ul>
@@ -10,4 +7,3 @@
   </ul>
   <button (click)="update()">Modifier</button>
 </div>
-

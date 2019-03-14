@@ -18,7 +18,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   form: FormGroup = this.formBuilder.group({
     name: [''],
     min: [0],
-    max: [0],
+    max: [100],
     recent: [true]
   });
 
