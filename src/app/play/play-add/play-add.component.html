@@ -1,8 +1,8 @@
 <form #playForm="ngForm" (ngSubmit)="onSubmit()">
 
   <input type="string" class="form-control"
-    id="boardgame_name" name="boardgame_name" required
-    [(ngModel)]="play.boardgame_name" >
+    id="boardgameName" name="boardgameName" required
+    [(ngModel)]="play.boardgameName" >
 
   <input type="string" class="form-control"
     id="place" name="place" required
@@ -20,7 +20,7 @@
     Résumé :
 </p>
 <ul *ngIf="play">
-  <li>{{ play.boardgame_name }}</li>
+  <li>{{ play.boardgameName }}</li>
   <li>{{ play.place }}</li>
   <li>{{ play.date }}</li>
 </ul>
