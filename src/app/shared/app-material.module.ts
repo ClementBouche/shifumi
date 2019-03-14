@@ -11,6 +11,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
@@ -25,6 +28,9 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatListModule,
     MatDialogModule,
+    MatAutocompleteModule,  
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   exports: [
     MatButtonModule,
@@ -38,6 +44,9 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatListModule,
     MatDialogModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
   ]
 })
 export class AppMaterialModule { }

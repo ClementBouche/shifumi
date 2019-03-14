@@ -19,6 +19,10 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   mechanics: [string];
 
+  page: number;
+
+  size: number;
+
   /**
    * extended search are performed with xmlApi
    * @type {boolean}

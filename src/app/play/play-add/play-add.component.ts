@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -13,36 +14,37 @@ import { BoardgamePickDialogComponent } from 'src/app/shared/boardgame-pick-dial
 })
 export class PlayAddComponent implements OnInit {
 
-  play: Play;
+  form: FormGroup = this.formBuilder.group({
+    boardgameName: [''],
+    date: [''],
+    place: [''],
+    playingTime: [0],
+    incomplete: [true],
+    scores: ['']
+  });
+
+  private play: Play = new Play();
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private playService: PlayService,
     private dialog: MatDialog,
+    private formBuilder: FormBuilder,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.play = new Play();
     // TODO if route alors update
     this.route.params.subscribe((params) => {
       if (params.id) {
         return this.playService.getPlay(params.id).then((play) => {
           this.play = play;
+          this.playToFrom();
           this.cd.markForCheck();
         });
       }
     });
-  }
-
-  resetPlay() {
-    this.play = new Play();
-  }
-
-  onSubmit() {
-    // TODO update
-    this.router.navigate(['play', 'view', this.play.id]);
   }
 
   openDialog() {
@@ -52,8 +54,41 @@ export class PlayAddComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      this.form.patchValue({ boardgameName: result });
     });
+  }
+  
+  resetPlay() {
+    this.play = new Play();
+    this.playToFrom();
+  }
+
+  submit() {
+    if (this.isFormValid()) {
+      console.log('submit', this.play);
+    }
+  }
+
+  private playToFrom() {
+    this.form.patchValue({
+      boardgameName: this.play.boardgameName,
+      date: this.play.date,
+      place: this.play.place,
+      playingTime: this.play.playingTime,
+      incomplete: this.play.incomplete,
+      scores: this.play.scores
+    });
+  }
+
+  private isFormValid(): boolean {
+    // update boardgameSearch with form values
+    this.play.boardgameName = this.form.value.boardgameName;
+    this.play.date = this.form.value.date;
+    this.play.place = this.form.value.place;
+    this.play.playingTime = this.form.value.playingTime;
+    this.play.incomplete = this.form.value.incomplete;
+    this.play.scores = this.form.value.scores;
+    return true;
   }
 
 }

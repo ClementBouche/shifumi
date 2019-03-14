@@ -1,0 +1,17 @@
+input.as-text {
+    -moz-appearance: textfield;
+    text-align: right;
+}
+
+.fields > * {
+    padding-right: 20px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.actions > * {
+    padding-right: 60px;
+}

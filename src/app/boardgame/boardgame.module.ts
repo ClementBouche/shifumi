@@ -25,10 +25,10 @@ import { AppMaterialModule } from '../shared/app-material.module';
   ],
   imports: [
     CommonModule,
-    BoardgameRoutingModule,
-    BoardgameSharedModule,
     FormsModule,
     ReactiveFormsModule,
+    BoardgameRoutingModule,
+    BoardgameSharedModule,
     PlaySharedModule,
     AppMaterialModule
   ],

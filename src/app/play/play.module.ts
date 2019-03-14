@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { PlayRoutingModule } from './play-routing.module';
@@ -8,6 +8,7 @@ import { PlayComponent } from './play.component';
 import { PlayViewComponent } from './play-view/play-view.component';
 import { PlayAddComponent } from './play-add/play-add.component';
 import { PlaySharedModule } from './shared/play-shared.module';
+import { AppMaterialModule } from '../shared/app-material.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,10 @@ import { PlaySharedModule } from './shared/play-shared.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     PlayRoutingModule,
     PlaySharedModule,
+    AppMaterialModule
   ],
   exports: [
   ]

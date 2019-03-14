@@ -1,32 +1,40 @@
-<button mat-raised-button (click)="openDialog()">Choose a Game</button>
+<mat-card>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="fields">
+      <!-- boardgame name -->
+      <mat-form-field>
+        <input matInput placeholder="Rechercher..." type="string" name="boardgameName" formControlName="boardgameName" readonly />
+        <button mat-button matSuffix mat-icon-button (click)="openDialog()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
 
+      <!-- lieux -->
+      <mat-form-field>
+        <input matInput placeholder="Lieux" type="string" name="place" formControlName="place" >
+      </mat-form-field>
 
-<form #playForm="ngForm" (ngSubmit)="onSubmit()">
+      <!-- date picker -->
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
+      <!-- time.max input -->
+      <mat-form-field>
+        <input matInput type="number" name="playingTime" formControlName="playingTime" class="as-text" />
+        <mat-hint>Temps de jeux</mat-hint>
+        <span matSuffix>min</span>
+      </mat-form-field>
 
-  <!--
-  <input type="string" class="form-control"
-    id="boardgameName" name="boardgameName" required
-    [(ngModel)]="play.boardgameName" >
-  -->
-
-  <input type="string" class="form-control"
-    id="place" name="place" required
-    [(ngModel)]="play.place" >
-
-  <input type="string" class="form-control"
-    id="date" name="date" required
-    [(ngModel)]="play.date" >
-
-  <input type="submit" class="btn" value="Submit">
-  <input type="button" class="btn" value="Reset" (click)="resetPlay()">
-</form>
-
-<p>
-    Résumé :
-</p>
-<ul *ngIf="play">
-  <li>{{ play.boardgameName }}</li>
-  <li>{{ play.place }}</li>
-  <li>{{ play.date }}</li>
-</ul>
+      <!-- extended seach input -->
+      <mat-checkbox name="incomplete" formControlName="incomplete">Partie Incomplète</mat-checkbox>
+    </div>
+    <div class="actions">
+        <button mat-button (click)="resetPlay()"><mat-icon>refresh</mat-icon></button>
+        <!-- search button -->
+        <button mat-raised-button type="submit" color="primary">Ok !</button>
+    </div>
+  </form>
+</mat-card>

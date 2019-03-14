@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DATE_LOCALE } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './shared/app-material.module';
@@ -17,11 +19,14 @@ import { BoardgamePickDialogComponent } from './shared/boardgame-pick-dialog/boa
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppMaterialModule,
   ],
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
   ],
   entryComponents: [
     BoardgamePickDialogComponent
