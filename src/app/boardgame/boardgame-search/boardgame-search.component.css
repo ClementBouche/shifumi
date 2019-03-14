@@ -1,0 +1,21 @@
+input.as-text {
+  -moz-appearance: textfield;
+  text-align: right;
+}
+
+.long {
+  width: 100%;
+}
+
+.values > * {
+  padding-right: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+}
+.actions > * {
+  padding-right: 60px;
+}
+

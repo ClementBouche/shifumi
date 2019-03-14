@@ -1,28 +1,39 @@
-<div class="boardgame-search">
-  <form [formGroup]="form" (ngSubmit)="search()">
+<mat-card>
+  <div class="boardgame-search">
+    <form [formGroup]="form" (ngSubmit)="search()">
 
-    <!-- name input -->
-    <label>Name...</label>
-    <input type="string" name="name"
-        formControlName="name" (keyup)="searchByName()" />
+      <div class="values">
+        <!-- name input -->
+        <mat-form-field class="long">
+          <input matInput placeholder="Rechercher..." type="string" name="name" formControlName="name"
+              (keyup)="searchByName()" />
+        </mat-form-field>
 
-    <!-- time.min input -->
-    <label>Min time</label>
-    <input type="number" name="min"
-        formControlName="min" />
+        <!-- time.min input -->
+        <mat-form-field>
+          <input matInput type="number" name="min" formControlName="min" class="as-text" />
+          <mat-hint>autour de...</mat-hint>
+          <!-- <span matPrefix>></span> -->
+          <span matSuffix>min</span>
+        </mat-form-field>
 
-    <!-- time.max input -->
-    <label>Max time</label>
-    <input type="number" name="max"
-        formControlName="max" />
+        <!-- time.max input -->
+        <mat-form-field>
+          <input matInput type="number" name="max" formControlName="max" class="as-text" />
+          <mat-hint>Pas plus de...</mat-hint>
+          <!-- <span matPrefix><</span> -->
+          <span matSuffix>min</span>
+        </mat-form-field>
 
-    <!-- extended seach input -->
-    <label>Extended</label>
-    <input type="checkbox" name="extended"
-        formControlName="extended" />
+        <!-- extended seach input -->
+        <mat-checkbox name="extended" formControlName="extended">Extended</mat-checkbox>
+      </div>
 
-    <!-- search button -->
-    <button type="submit" [disabled]="!form.valid">Rechercher</button>
-    <button type="button" (click)="reset()">Reset</button>
-  </form>
-</div>
+      <div class="actions">
+        <button mat-button (click)="reset()"><mat-icon>refresh</mat-icon></button>
+        <!-- search button -->
+        <button mat-raised-button type="submit" color="primary" [disabled]="!form.valid">Go !</button>
+      </div>
+    </form>
+  </div>
+</mat-card>

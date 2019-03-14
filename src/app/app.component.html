@@ -1,12 +1,24 @@
-<h1>Shifumi app header</h1>
-<ul>
-    <li><a routerLink="boardgame" routerLinkActive="active">boardgame</a></li>
-    <li><a routerLink="play" routerLinkActive="active">play</a></li>
-    <li><a routerLink="" routerLinkActive="active">menu</a></li>
-</ul>
+<mat-toolbar class="app-toolbar">
+  <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+  <a mat-button routerLink="" routerLinkActive="active"><h1>Shi.Fu.Mi</h1></a>
+  <a mat-button routerLink="boardgame" routerLinkActive="active">Jeux</a>
+  <a mat-button routerLink="play" routerLinkActive="active">Parties</a>
+</mat-toolbar>
 
-<p>Bellow AppModule animated router-outlet</p>
-
-<div [@routeAnimations]="prepareRoute(outlet)">
-  <router-outlet #outlet="outlet"></router-outlet>
-</div>
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #sidenav mode="side">
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+          <a mat-button routerLink="boardgame" routerLinkActive="active">Jeux</a>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+          <a mat-button routerLink="play" routerLinkActive="active">Parties</a>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

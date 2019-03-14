@@ -11,6 +11,7 @@ import { PlayTimePipe } from './shared/pipes/play-time.pipe';
 import { PlayModule } from '../play/play.module';
 import { BoardgameSearchComponent } from './boardgame-search/boardgame-search.component';
 import { BoardgameInfoComponent } from './boardgame-info/boardgame-info.component';
+import { AppMaterialModule } from '../app-material.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BoardgameInfoComponent } from './boardgame-info/boardgame-info.componen
     BoardgameRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    PlayModule
+    PlayModule,
+    AppMaterialModule
   ]
 })
 export class BoardgameModule { }

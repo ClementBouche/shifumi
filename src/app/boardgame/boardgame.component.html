@@ -1,10 +1,12 @@
 <div class="boardgame-home">
-  <h2>Boardgame Component header</h2>
 
-  <app-boardgame-search (searchCompleted)="doSearch($event)"></app-boardgame-search>
+  <div class="search">
+    <app-boardgame-search (searchCompleted)="doSearch($event)"></app-boardgame-search>
+  </div>
 
   <!-- boardgame-list / boardgame-view -->
   <div [@boardgameRouteAnimations]="prepareRoute(bgOutlet)">
     <router-outlet #bgOutlet="outlet"></router-outlet>
   </div>
+
 </div>
