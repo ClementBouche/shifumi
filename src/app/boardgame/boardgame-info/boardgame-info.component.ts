@@ -13,7 +13,6 @@ export class BoardgameInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log({boardgame: this.boardgame});
   }
 
 }
