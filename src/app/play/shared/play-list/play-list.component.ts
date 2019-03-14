@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { PlayService } from '../shared/services/play.service';
-import { Play } from '../shared/model/play.model';
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
+
+import { Play } from '../model/play.model';
+import { PlayService } from '../services/play.service';
 
 @Component({
   selector: 'app-play-list',
@@ -27,13 +28,12 @@ export class PlayListComponent implements OnInit {
     // if input
     if (this.boardgame) {
       this.playService.getBoardgamePlays(this.boardgame).then((result) => {
-        // get 10 first
         this.plays = result;
         this.cd.markForCheck();
       });
     } else {
+      // get 10 first
       this.playService.getPlays(10, 1).then((result) => {
-        // get 10 first
         this.plays = result;
         this.cd.markForCheck();
       });

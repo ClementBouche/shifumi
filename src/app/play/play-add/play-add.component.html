@@ -1,8 +1,14 @@
+<button mat-raised-button (click)="openDialog()">Choose a Game</button>
+
+
 <form #playForm="ngForm" (ngSubmit)="onSubmit()">
 
+
+  <!--
   <input type="string" class="form-control"
     id="boardgameName" name="boardgameName" required
     [(ngModel)]="play.boardgameName" >
+  -->
 
   <input type="string" class="form-control"
     id="place" name="place" required

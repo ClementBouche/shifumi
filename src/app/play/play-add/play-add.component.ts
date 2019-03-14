@@ -1,8 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Play } from '../shared/model/play.model';
 import { PlayService } from '../shared/services/play.service';
+import { BoardgamePickDialogComponent } from 'src/app/shared/boardgame-pick-dialog/boardgame-pick-dialog.component';
 
 @Component({
   selector: 'app-play-add',
@@ -17,8 +19,9 @@ export class PlayAddComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private playService: PlayService,
+    private dialog: MatDialog,
     private cd: ChangeDetectorRef
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.play = new Play();
@@ -40,6 +43,17 @@ export class PlayAddComponent implements OnInit {
   onSubmit() {
     // TODO update
     this.router.navigate(['play', 'view', this.play.id]);
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(BoardgamePickDialogComponent, {
+      width: '500px',
+      data: {name: ''}
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

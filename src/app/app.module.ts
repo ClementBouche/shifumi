@@ -4,13 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppMaterialModule } from './app-material.module';
+import { AppMaterialModule } from './shared/app-material.module';
 
 import { AppComponent } from './app.component';
+import { BoardgamePickDialogComponent } from './shared/boardgame-pick-dialog/boardgame-pick-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BoardgamePickDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +21,11 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+  ],
+  entryComponents: [
+    BoardgamePickDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

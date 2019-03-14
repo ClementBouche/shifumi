@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PlayComponent } from './play.component';
-import { PlayListComponent } from './play-list/play-list.component';
 import { PlayViewComponent } from './play-view/play-view.component';
 import { PlayAddComponent } from './play-add/play-add.component';
+import { PlayListComponent } from './shared/play-list/play-list.component';
 
 const routes: Routes = [
   {

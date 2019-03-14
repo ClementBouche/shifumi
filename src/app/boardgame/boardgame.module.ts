@@ -8,10 +8,11 @@ import { BoardgameComponent } from './boardgame.component';
 import { BoardgameListComponent } from './boardgame-list/boardgame-list.component';
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
 import { PlayTimePipe } from './shared/pipes/play-time.pipe';
-import { PlayModule } from '../play/play.module';
 import { BoardgameSearchComponent } from './boardgame-search/boardgame-search.component';
 import { BoardgameInfoComponent } from './boardgame-info/boardgame-info.component';
-import { AppMaterialModule } from '../app-material.module';
+import { BoardgameSharedModule } from './shared/boardgame-shared.module';
+import { PlaySharedModule } from '../play/shared/play-shared.module';
+import { AppMaterialModule } from '../shared/app-material.module';
 
 @NgModule({
   declarations: [
@@ -20,15 +21,18 @@ import { AppMaterialModule } from '../app-material.module';
     BoardgameViewComponent,
     PlayTimePipe,
     BoardgameSearchComponent,
-    BoardgameInfoComponent
+    BoardgameInfoComponent,
   ],
   imports: [
     CommonModule,
     BoardgameRoutingModule,
+    BoardgameSharedModule,
     FormsModule,
     ReactiveFormsModule,
-    PlayModule,
+    PlaySharedModule,
     AppMaterialModule
+  ],
+  exports: [
   ]
 })
 export class BoardgameModule { }
