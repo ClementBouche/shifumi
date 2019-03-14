@@ -2,13 +2,8 @@
 <ng-container *ngIf="boardgame">
   <div class="boardgame">
     <div class="goback-arrow" (click)="gotoList()"><</div>
-    <h4>{{ boardgame.name }}</h4>
-    <ul>
-      <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
-      <li>{{ boardgame.time.average | playTime }}</li>
-      <li>{{ boardgame.statitics.playCount }} partie(s)</li>
-      <li>{{ boardgame.statitics.playTime | playTime }}</li>
-    </ul>
+    <app-boardgame-info [boardgame]="boardgame"></app-boardgame-info>
+    <button *ngIf="boardgame.preview" (click)="import()">Import</button>
   </div>
   <app-play-list [boardgame]="boardgame"></app-play-list>
 </ng-container>

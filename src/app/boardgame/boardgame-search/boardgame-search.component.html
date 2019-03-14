@@ -16,6 +16,11 @@
     <input type="number" name="max"
         formControlName="max" />
 
+    <!-- extended seach input -->
+    <label>Extended</label>
+    <input type="checkbox" name="extended"
+        formControlName="extended" />
+
     <!-- search button -->
     <button type="submit" [disabled]="!form.valid">Rechercher</button>
     <button type="button" (click)="reset()">Reset</button>

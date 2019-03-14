@@ -26,7 +26,11 @@ export class BoardgameListComponent implements OnInit {
   }
 
   select(boardgame: Boardgame) {
-    this.router.navigate(['boardgame', boardgame.id]);
+    if (boardgame.id) {
+      this.router.navigate(['boardgame', boardgame.id]);
+    } else {
+      this.router.navigate(['boardgame', 'preview', boardgame.xmlId])
+    }
   }
 
 }

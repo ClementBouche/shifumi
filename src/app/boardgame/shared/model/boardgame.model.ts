@@ -5,6 +5,7 @@ import { Poll } from "./poll.model";
 
 export class Boardgame implements Deserializable {
     id: string;
+    xmlId: string;
     // metadata
     name: string;
     description: string;
@@ -41,12 +42,23 @@ export class Boardgame implements Deserializable {
       playTime: number;
     };
 
+    // app specific properties
+    preview: boolean = false;
+
     deserialize(input: any) {
       const arstist = input.arstist ? input.artists.map((artist) => new Artist().deserialize(artist)) : [];
       const designers = input.designers ? input.designers.map((designer) => new Designer().deserialize(designer)) : [];
       const poll = input.suggested_players ? new Poll().deserialize(input.suggested_players) : null;
+      const statistic = input.plays_count ? {
+        playCount: input.plays_count,
+        incompletePlayCount: input.plays_incomplete_count,
+        placeCount: input.places_count,
+        playerCount: input.players_count,
+        playTime: input.play_time
+      } : null;
       Object.assign(this, {
         id: input._id,
+        xmlId: input.xmlapi_id,
         name: input.name,
         description: input.description,
         year: input.year_published,
@@ -68,13 +80,7 @@ export class Boardgame implements Deserializable {
         mechanics: input.mechanics,
         artists: arstist,
         designers: designers,
-        statitics: {
-          playCount: input.plays_count,
-          incompletePlayCount: input.plays_incomplete_count,
-          placeCount: input.places_count,
-          playerCount: input.players_count,
-          playTime: input.play_time
-        }
+        statitics: statistic
       });
       return this;
     }

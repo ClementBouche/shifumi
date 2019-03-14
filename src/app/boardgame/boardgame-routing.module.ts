@@ -6,21 +6,36 @@ import { BoardgameListComponent } from './boardgame-list/boardgame-list.componen
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
 import { BoardgameViewResolverService } from './shared/services/boardgame-view-resolver.service';
 import { BoardgameSearchResolverService } from './shared/services/boardgame-search-resolver.service';
+import { BoardgameAddComponent } from './boardgame-add/boardgame-add.component';
+import { BoardgamePreviewResolverService } from './shared/services/boardgame-preview-resolver.service';
 
 const routes: Routes = [
   {
+    path: 'add',
+    component: BoardgameAddComponent,
+    data: { animation: 'boardgameAddPage' }
+  },
+  {
     path: '',
     component: BoardgameComponent,
-    data: {animation: 'boardgamePage'},
+    data: { animation: 'boardgamePage' },
     children: [
       {
         path: '',
         component: BoardgameListComponent,
-        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+        runGuardsAndResolvers: 'always',
         resolve: {
           boardgames: BoardgameSearchResolverService
         },
-        data: {animation: 'boardgameListPage'},
+        data: { animation: 'boardgameListPage' },
+      },
+      {
+        path: 'preview/:xmlId',
+        component: BoardgameViewComponent,
+        resolve: {
+          boardgame: BoardgamePreviewResolverService
+        },
+        data: { animation: 'boardgamePreviewPage' }
       },
       {
         path: ':id',
@@ -28,7 +43,7 @@ const routes: Routes = [
         resolve: {
           boardgame: BoardgameViewResolverService
         },
-        data: {animation: 'boardgameViewPage'}
+        data: { animation: 'boardgameViewPage' }
       }
     ]
   }

@@ -1,0 +1,13 @@
+<ng-container *ngIf="boardgame">
+  <div class="boardgame">
+    <h4>{{ boardgame.name }} <span *ngIf="boardgame.year">({{ boardgame.year }})</span></h4>
+    <ul>
+      <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
+      <li>{{ boardgame.time.average | playTime }}</li>
+    </ul>
+    <ul *ngIf="boardgame.statitics">
+      <li>{{ boardgame.statitics.playCount }} partie(s)</li>
+      <li>{{ boardgame.statitics.playTime | playTime }}</li>
+    </ul>
+  </div>
+</ng-container>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 import { Boardgame } from '../shared/model/boardgame.model';
-import { ActivatedRoute } from '@angular/router';
+import { BoardgameService } from '../shared/services/boardgame.service';
 
 @Component({
   selector: 'app-boardgame-view',
@@ -14,8 +15,10 @@ export class BoardgameViewComponent implements OnInit {
   boardgame: Boardgame;
 
   constructor(
+    private boardgameService: BoardgameService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -26,6 +29,14 @@ export class BoardgameViewComponent implements OnInit {
 
   gotoList() {
     this.location.back();
+  }
+
+  import() {
+    this.boardgameService.getPreview(this.boardgame.xmlId, false).then((bg) => {
+      this.boardgame.preview = false;
+      this.cd.markForCheck();
+      console.log({bg});
+    });
   }
 
 }

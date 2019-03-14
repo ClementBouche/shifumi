@@ -17,7 +17,8 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   form: FormGroup = this.formBuilder.group({
     name: [''],
     min: [0],
-    max: [0]
+    max: [0],
+    extended: [false]
   });
 
   private boardgameSearch: BoardgameSearch = new BoardgameSearch();
@@ -72,7 +73,8 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     this.form.patchValue({
       name: this.boardgameSearch.name,
       min: this.boardgameSearch.time.min,
-      max: this.boardgameSearch.time.max
+      max: this.boardgameSearch.time.max,
+      extended: this.boardgameSearch.extended
     });
   }
 
@@ -81,6 +83,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     this.boardgameSearch.name = this.form.value.name;
     this.boardgameSearch.time.min = this.form.value.min;
     this.boardgameSearch.time.max = this.form.value.max;
+    this.boardgameSearch.extended = this.form.value.extended;
     return true;
   }
 

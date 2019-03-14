@@ -10,6 +10,7 @@ import { BoardgameViewComponent } from './boardgame-view/boardgame-view.componen
 import { PlayTimePipe } from './shared/pipes/play-time.pipe';
 import { PlayModule } from '../play/play.module';
 import { BoardgameSearchComponent } from './boardgame-search/boardgame-search.component';
+import { BoardgameInfoComponent } from './boardgame-info/boardgame-info.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BoardgameSearchComponent } from './boardgame-search/boardgame-search.co
     BoardgameListComponent,
     BoardgameViewComponent,
     PlayTimePipe,
-    BoardgameSearchComponent
+    BoardgameSearchComponent,
+    BoardgameInfoComponent
   ],
   imports: [
     CommonModule,
