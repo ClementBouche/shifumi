@@ -6,15 +6,9 @@ import { BoardgameListComponent } from './boardgame-list/boardgame-list.componen
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
 import { BoardgameViewResolverService } from './shared/services/boardgame-view-resolver.service';
 import { BoardgameSearchResolverService } from './shared/services/boardgame-search-resolver.service';
-import { BoardgameAddComponent } from './boardgame-add/boardgame-add.component';
 import { BoardgamePreviewResolverService } from './shared/services/boardgame-preview-resolver.service';
 
 const routes: Routes = [
-  {
-    path: 'add',
-    component: BoardgameAddComponent,
-    data: { animation: 'boardgameAddPage' }
-  },
   {
     path: '',
     component: BoardgameComponent,

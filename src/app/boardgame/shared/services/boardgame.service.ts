@@ -39,7 +39,6 @@ export class BoardgameService {
   }
 
   search(search: BoardgameSearch): Promise<Boardgame[]> {
-    console.log({search});
     if (search.extended) {
       return this.extendedSearch(search.name);
     }

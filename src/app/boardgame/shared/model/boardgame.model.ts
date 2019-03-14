@@ -45,6 +45,10 @@ export class Boardgame implements Deserializable {
     // app specific properties
     preview: boolean = false;
 
+    hasInfo() {
+      return this.time || this.players;
+    }
+
     deserialize(input: any) {
       const arstist = input.arstist ? input.artists.map((artist) => new Artist().deserialize(artist)) : [];
       const designers = input.designers ? input.designers.map((designer) => new Designer().deserialize(designer)) : [];

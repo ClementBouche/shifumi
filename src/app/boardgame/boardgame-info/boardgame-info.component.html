@@ -1,7 +1,7 @@
 <ng-container *ngIf="boardgame">
   <div class="boardgame">
     <h4>{{ boardgame.name }} <span *ngIf="boardgame.year">({{ boardgame.year }})</span></h4>
-    <ul>
+    <ul *ngIf="boardgame.hasInfo()">
       <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
       <li>{{ boardgame.time.average | playTime }}</li>
     </ul>
