@@ -5,5 +5,8 @@
     <li><a routerLink="" routerLinkActive="active">menu</a></li>
 </ul>
 
-<p>Bellow AppModule router-outlet</p>
-<router-outlet></router-outlet>
+<p>Bellow AppModule animated router-outlet</p>
+
+<div [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

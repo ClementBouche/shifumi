@@ -10,6 +10,7 @@ const routes: Routes = [
   {
     path: '',
     component: PlayComponent,
+    data: {animation: 'playPage'},
     children: [
       {
         path: 'list',

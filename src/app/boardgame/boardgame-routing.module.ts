@@ -11,21 +11,24 @@ const routes: Routes = [
   {
     path: '',
     component: BoardgameComponent,
+    data: {animation: 'boardgamePage'},
     children: [
       {
         path: '',
         component: BoardgameListComponent,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
         resolve: {
           boardgames: BoardgameSearchResolverService
         },
-        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
+        data: {animation: 'boardgameListPage'},
       },
       {
         path: ':id',
         component: BoardgameViewComponent,
         resolve: {
           boardgame: BoardgameViewResolverService
-        }
+        },
+        data: {animation: 'boardgameViewPage'}
       }
     ]
   }
