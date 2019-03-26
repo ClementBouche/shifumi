@@ -1,11 +1,27 @@
-<div class="boardgames">
-  <ng-container *ngFor="let boardgame of boardgames;">
+<div class="boardgames" *ngIf="boardgames.length != 0 else noResult">
+  <ng-container *ngFor="let boardgame of boardgames">
     <div class="boardgame" (click)="select(boardgame)">
-      <app-boardgame-info [boardgame]="boardgame" listitem=true></app-boardgame-info>
+      <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info>
       <div class="select-arrow">></div>
     </div>
   </ng-container>
 </div>
+
+<ng-template #noResult>
+    <mat-grid-list cols="1" rowHeight="4:1">
+      <mat-grid-tile>
+        <p>Aucun jeux ne correspond à votre recherche.</p>
+      </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
+
+<ng-template #progress>
+    <mat-grid-list cols="1" rowHeight="4:1">
+      <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+      </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
 
 <!-- boardgame-view -->
 <router-outlet></router-outlet>

@@ -1,0 +1,14 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.boardgame h4 {
+  width: 100%;
+}
+
+.boardgame img {
+  width: 80px;
+  max-height: 80px;
+}

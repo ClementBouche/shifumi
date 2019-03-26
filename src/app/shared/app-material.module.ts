@@ -14,6 +14,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -28,9 +32,13 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatSidenavModule,
     MatListModule,
     MatDialogModule,
-    MatAutocompleteModule,  
+    MatAutocompleteModule,
     MatDatepickerModule,
     MatMomentDateModule,
+    MatGridListModule,
+    MatExpansionModule,
+    MatTabsModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatButtonModule,
@@ -47,6 +55,10 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatAutocompleteModule,
     MatDatepickerModule,
     MatMomentDateModule,
+    MatGridListModule,
+    MatExpansionModule,
+    MatTabsModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class AppMaterialModule { }

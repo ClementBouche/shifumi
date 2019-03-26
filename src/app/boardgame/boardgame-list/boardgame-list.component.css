@@ -1,7 +1,12 @@
-.boardgame {
-  position: relative;
+/* .boardgames {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   padding: 5px 10px;
-}
+  overflow-y: auto;
+} */
 .boardgame:hover {
   background-color: var(--first-color-lighter);
 }

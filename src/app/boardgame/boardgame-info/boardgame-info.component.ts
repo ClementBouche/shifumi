@@ -10,9 +10,12 @@ export class BoardgameInfoComponent implements OnInit {
 
   @Input() boardgame: Boardgame;
 
+  @Input() listItem: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+    console.log({boardgame: this.boardgame});
   }
 
 }

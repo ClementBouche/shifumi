@@ -1,13 +1,71 @@
 <ng-container *ngIf="boardgame">
   <div class="boardgame">
-    <h4>{{ boardgame.name }} <span *ngIf="boardgame.year">({{ boardgame.year }})</span></h4>
-    <ul *ngIf="boardgame.hasInfo()">
-      <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
-      <li>{{ boardgame.time.average | playTime }}</li>
-    </ul>
-    <ul *ngIf="boardgame.statitics">
-      <li>{{ boardgame.statitics.playCount }} partie(s)</li>
-      <li>{{ boardgame.statitics.playTime | playTime }}</li>
-    </ul>
+    <mat-grid-list cols="4" rowHeight="4:1">
+      <mat-grid-tile>
+          <div class="img">
+            <img [src]="boardgame.thumbnail" alt="image"/>
+          </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <h4>{{ boardgame.name }} <span *ngIf="boardgame.year">({{ boardgame.year }})</span></h4>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <ul *ngIf="boardgame.hasInfo()">
+          <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
+          <li>{{ boardgame.time.average | playTime }}</li>
+        </ul>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <ul *ngIf="boardgame.statitics else noStat">
+          <li>{{ boardgame.statitics.playCount }} partie(s)</li>
+          <li>{{ boardgame.statitics.playTime | playTime }}</li>
+        </ul>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <ng-container *ngIf="!listItem; then detail"></ng-container>
   </div>
 </ng-container>
+
+<ng-template #detail>
+    <mat-tab-group>
+      <mat-tab label="Description">
+          <p [innerHTML]="boardgame.description"></p>
+      </mat-tab>
+      <mat-tab label="Type de Jeux">
+        <mat-grid-list cols="2" rowHeight="4:1">
+          <mat-grid-tile>
+            <ul *ngIf="boardgame.thematics.length != 0">
+              <li><b>Thématiques</b></li>
+              <li *ngFor="let thematic of boardgame.thematics">{{ thematic }}</li>
+            </ul>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <ul *ngIf="boardgame.mechanics.length != 0">
+              <li><b>Mécaniques</b></li>
+              <li *ngFor="let mechanic of boardgame.mechanics">{{ mechanic }}</li>
+            </ul>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-tab>
+      <mat-tab label="Auteurs">
+          <mat-grid-list cols="2" rowHeight="4:1">
+            <mat-grid-tile>
+              <ul *ngIf="boardgame.designers.length != 0">
+                <li><b>Concepteurs</b></li>
+                <li *ngFor="let designer of boardgame.designers">{{ designer.name }}</li>
+              </ul>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <ul *ngIf="boardgame.artists.length != 0">
+                <li><b>Artistes</b></li>
+                <li *ngFor="let artist of boardgame.artists">{{ artist.name }}</li>
+              </ul>
+            </mat-grid-tile>
+          </mat-grid-list>
+      </mat-tab>
+    </mat-tab-group>
+</ng-template>
+
+<ng-template #noStat>
+  <!-- <p>Aucune partie</p> -->
+</ng-template>

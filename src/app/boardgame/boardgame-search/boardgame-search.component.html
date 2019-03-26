@@ -1,39 +1,50 @@
+<mat-accordion class="accordion-search">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Rechercher
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon>search</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header >
+      <div class="boardgame-search">
+        <form [formGroup]="form" (ngSubmit)="search()">
+          <div class="values">
+            <!-- name input -->
+            <mat-form-field class="long">
+              <input matInput placeholder="Rechercher..." type="string" name="name" formControlName="name"
+                    (keyup)="searchByName()" />
+            </mat-form-field>
+    
+            <!-- time.min input -->
+            <mat-form-field [class.readonly]="!form.value.recent">
+              <input matInput type="number" name="min" formControlName="min" class="as-text" 
+                    [readonly]="!form.value.recent"/>
+              <mat-hint>autour de...</mat-hint>
+              <span matSuffix>min</span>
+            </mat-form-field>
+    
+            <!-- time.max input -->
+            <mat-form-field [class.readonly]="!form.value.recent">
+              <input matInput type="number" name="max" formControlName="max" class="as-text"
+                    [readonly]="!form.value.recent" />
+              <mat-hint>Pas plus de...</mat-hint>
+              <span matSuffix>min</span>
+            </mat-form-field>
+    
+            <!-- extended seach input -->
+            <mat-checkbox name="recent" formControlName="recent">Voir les jeux récent</mat-checkbox>
+          </div>
+          <div class="actions">
+            <button mat-button (click)="reset()"><mat-icon>refresh</mat-icon></button>
+            <!-- search button -->
+            <button mat-raised-button type="submit" color="primary" [disabled]="!form.valid">Go !</button>
+          </div>
+        </form>
+      </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<!-- 
 <mat-card>
-  <div class="boardgame-search">
-    <form [formGroup]="form" (ngSubmit)="search()">
-
-      <div class="values">
-        <!-- name input -->
-        <mat-form-field class="long">
-          <input matInput placeholder="Rechercher..." type="string" name="name" formControlName="name"
-                (keyup)="searchByName()" />
-        </mat-form-field>
-
-        <!-- time.min input -->
-        <mat-form-field [class.readonly]="!form.value.recent">
-          <input matInput type="number" name="min" formControlName="min" class="as-text" 
-                [readonly]="!form.value.recent"/>
-          <mat-hint>autour de...</mat-hint>
-          <span matSuffix>min</span>
-        </mat-form-field>
-
-        <!-- time.max input -->
-        <mat-form-field [class.readonly]="!form.value.recent">
-          <input matInput type="number" name="max" formControlName="max" class="as-text"
-                [readonly]="!form.value.recent" />
-          <mat-hint>Pas plus de...</mat-hint>
-          <span matSuffix>min</span>
-        </mat-form-field>
-
-        <!-- extended seach input -->
-        <mat-checkbox name="recent" formControlName="recent">Voir les jeux récent</mat-checkbox>
-      </div>
-
-      <div class="actions">
-        <button mat-button (click)="reset()"><mat-icon>refresh</mat-icon></button>
-        <!-- search button -->
-        <button mat-raised-button type="submit" color="primary" [disabled]="!form.valid">Go !</button>
-      </div>
-    </form>
-  </div>
-</mat-card>
+</mat-card> -->

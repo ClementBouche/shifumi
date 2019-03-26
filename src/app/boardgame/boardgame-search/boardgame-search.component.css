@@ -23,3 +23,6 @@ input.as-text {
   color: #aaa;
 }
 
+.accordion-search .mat-expansion-panel-header-description {
+  justify-content: right;
+}
