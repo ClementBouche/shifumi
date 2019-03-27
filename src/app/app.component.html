@@ -1,13 +1,13 @@
-<mat-toolbar class="app-toolbar">
+<mat-toolbar class="app-toolbar" color="primary">
   <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-  <a mat-button routerLink="" routerLinkActive="active"><h1>Shi.Fu.Mi</h1></a>
+  <a mat-button color="accent" routerLink="" routerLinkActive="active"><h1>Shi.Fu.Mi</h1></a>
   <a mat-button routerLink="boardgame" routerLinkActive="active">Jeux</a>
   <a mat-button routerLink="play" routerLinkActive="active">Parties</a>
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">
   <!-- TODO mode over -->
-  <mat-sidenav #sidenav mode="side">
+  <mat-sidenav #sidenav mode="over">
     <mat-list role="list">
       <mat-list-item role="listitem">
           <a mat-button routerLink="boardgame" routerLinkActive="active">Jeux</a>
@@ -18,8 +18,15 @@
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div [@routeAnimations]="prepareRoute(outlet)">
-      <router-outlet #outlet="outlet"></router-outlet>
+    <div class="flex-content" [@routeAnimations]="prepareRoute(outlet)">
+      <div class="grow">
+          <router-outlet #outlet="outlet"></router-outlet>
+      </div>
+      <mat-toolbar class="footer" color="primary">
+        <span>Shi.Fu.Mi</span>
+        <span class="small">current version: 0.0.2</span>
+        <span class="small">Réalisé par cbouche&co, retrouvez-nous sur <a mat-button href="https://github.com/ClementBouche/shifumi" target="_blank">GitHub.</a></span>
+      </mat-toolbar>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

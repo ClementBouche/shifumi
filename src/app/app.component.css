@@ -13,3 +13,25 @@
   left: 0;
   right: 0;
 }
+
+.flex-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.grow {
+  flex-grow: 1;
+}
+
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  min-height: 64px;
+}
+.footer span {
+  display: block;
+}
+.footer span.small {
+  font-size: small;
+}

@@ -9,12 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './shared/app-material.module';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home/home.component';
 import { BoardgamePickDialogComponent } from './shared/boardgame-pick-dialog/boardgame-pick-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BoardgamePickDialogComponent
+    HomeComponent,
+    // entry components
+    BoardgamePickDialogComponent,
   ],
   imports: [
     BrowserModule,

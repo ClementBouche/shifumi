@@ -13,7 +13,8 @@
 }
 
 .boardgame:hover {
-  background-color: var(--first-color-lighter);
+  background-color: #eee;
+  cursor: pointer;
 }
 
 .select-arrow {

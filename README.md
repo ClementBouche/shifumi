@@ -6,6 +6,9 @@
 
 Boardgames
 - [X] search boardgame
+- [ ] paginated view
+- [ ] infinite scroll view
+- [ ] table view ?
 - [ ] import boardgame
 
 Play
