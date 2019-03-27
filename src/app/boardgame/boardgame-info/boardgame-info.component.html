@@ -1,29 +1,32 @@
 <ng-container *ngIf="boardgame">
-  <div class="boardgame">
-    <mat-grid-list cols="4" rowHeight="4:1">
-      <mat-grid-tile>
-          <div class="img">
-            <img [src]="boardgame.thumbnail" alt="image"/>
-          </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <h4>{{ boardgame.name }} <span *ngIf="boardgame.year">({{ boardgame.year }})</span></h4>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <ul *ngIf="boardgame.hasInfo()">
-          <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
-          <li>{{ boardgame.time.average | playTime }}</li>
-        </ul>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <ul *ngIf="boardgame.statitics else noStat">
-          <li>{{ boardgame.statitics.playCount }} partie(s)</li>
-          <li>{{ boardgame.statitics.playTime | playTime }}</li>
-        </ul>
-      </mat-grid-tile>
-    </mat-grid-list>
-    <ng-container *ngIf="!listItem; then detail"></ng-container>
-  </div>
+  <!-- <mat-card class="card" [class.margin]="listItem"> -->
+    <div class="boardgame">
+      <!-- <div *ngIf="!listItem" class="background" [appCardBackground]="boardgame.image"></div> -->
+      <mat-grid-list cols="4" rowHeight="4:1">
+        <mat-grid-tile>
+            <div class="img">
+              <img [src]="boardgame.thumbnail" alt="image"/>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <h4>{{ boardgame.name }} <span *ngIf="boardgame.year">({{ boardgame.year }})</span></h4>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <ul *ngIf="boardgame.hasInfo()">
+            <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
+            <li>{{ boardgame.time.average | playTime }}</li>
+          </ul>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <ul *ngIf="boardgame.statitics else noStat">
+            <li>{{ boardgame.statitics.playCount }} partie(s)</li>
+            <li>{{ boardgame.statitics.playTime | playTime }}</li>
+          </ul>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <ng-container *ngIf="!listItem; then detail"></ng-container>
+    </div>
+  <!-- </mat-card> -->
 </ng-container>
 
 <ng-template #detail>

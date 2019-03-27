@@ -25,4 +25,5 @@ input.as-text {
 
 .accordion-search .mat-expansion-panel-header-description {
   justify-content: right;
+  flex-direction: row-reverse;
 }
