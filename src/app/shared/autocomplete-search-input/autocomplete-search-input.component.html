@@ -1,0 +1,12 @@
+<form class="pick-form">
+    <mat-form-field class="pick-full-width">
+        <input matInput  [matAutocomplete]="auto" [formControl]="boardgameForm" spellcheck="false" >
+        <mat-icon>search</mat-icon>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event.option.value)">
+            <mat-option *ngFor="let boargame of boargames" [value]="boargame">
+                <img class="pick-option-img" [src]="boargame.thumbnail">
+                <span class="pick-option-text">{{ boargame.name }} ({{ boargame.year }})</span>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
