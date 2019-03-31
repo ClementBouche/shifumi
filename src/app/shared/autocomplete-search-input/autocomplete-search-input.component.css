@@ -4,14 +4,24 @@
   background: red;
 }
 
-.pick-option-img {
-  height: 30px;
-  vertical-align: middle;
-  margin-right: 8px;
+.option {
+  display: flex;
+}
+
+.img-container {
+  width: 60px;
+  height: 40px;
+  overflow: hidden;
+  margin: 5px 10px 5px 0px;
+}
+
+.img-container img {
+  width: 60px;
 }
 
 .pick-option-text {
-  padding-left: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 input {

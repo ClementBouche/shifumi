@@ -38,7 +38,12 @@ ul {
   width: 100%;
 }
 
-.boardgame img {
-  width: 80px;
-  max-height: 80px;
+.boardgame .img  {
+  max-width: 130px;
+  overflow: hidden;
+  height: 80%;
+}
+
+.boardgame .img img {
+  width: 100%;
 }

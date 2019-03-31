@@ -17,6 +17,7 @@ export class BoardgameSearchResolverService implements Resolve<Boardgame[]> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Boardgame[]> {
     const searchOptions = new BoardgameSearch().deserialize(route.queryParams);
+    console.log({searchOptions});
     return this.boardgameService.search(searchOptions)
         .then((boardgames) => boardgames)
         .catch((error) => {

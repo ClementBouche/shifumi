@@ -25,7 +25,8 @@
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div class="flex-content" [@routeAnimations]="prepareRoute(outlet)">
+    <!-- <div class="flex-content" [@routeAnimations]="prepareRoute(outlet)"> -->
+    <div class="flex-content">
       <div class="grow">
           <router-outlet #outlet="outlet"></router-outlet>
       </div>

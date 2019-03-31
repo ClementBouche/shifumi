@@ -3,8 +3,12 @@
     <mat-autocomplete #auto="matAutocomplete" class="custom-autocomplete" (optionSelected)="select($event.option.value)"
         autoActiveFirstOption="true">
         <mat-option *ngFor="let boargame of boardgames" [value]="boargame.name">
-            <img class="pick-option-img" [src]="boargame.thumbnail">
-            <span class="pick-option-text">{{ boargame.name }} ({{ boargame.year }})</span>
+            <div class="option">
+                <div class="img-container">
+                    <img [src]="boargame.thumbnail" alt="img"/>
+                </div>
+                <span class="pick-option-text">{{ boargame.name }} ({{ boargame.year }})</span>
+            </div>
         </mat-option>
     </mat-autocomplete>
 </form>

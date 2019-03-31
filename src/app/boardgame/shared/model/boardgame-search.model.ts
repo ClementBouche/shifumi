@@ -19,9 +19,9 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   mechanics: [string];
 
-  page: number;
+  page: number = 1;
 
-  size: number;
+  size: number = 20;
 
   /**
    * extended search are performed with xmlApi
@@ -38,6 +38,8 @@ export class BoardgameSearch implements Serializable, Deserializable {
       max_time: this.time.max,
       thematics: this.thematics,
       mechanics: this.mechanics,
+      page: this.page,
+      size: this.size,
       extended: this.extended
     }
   }
@@ -47,11 +49,13 @@ export class BoardgameSearch implements Serializable, Deserializable {
       name: input.name,
       players: input.players,
       time: {
-        min: input.min_time,
-        max: input.max_time,
+        min: input.min_time || 0,
+        max: input.max_time || 9999,
       },
       thematics: input.thematics,
       mechanics: input.mechanics,
+      page: input.page || 1,
+      size: input.size || 20,
       extended: input.extended == "true" ? true : false
     });
     return this;

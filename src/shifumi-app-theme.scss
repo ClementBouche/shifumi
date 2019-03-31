@@ -9,7 +9,7 @@ $light-app-primary: mat-palette($mat-orange, 400);
 $light-app-accent:  mat-palette($mat-teal);
 
 // The warn palette is optional (defaults to red).
-$light-app-warn:    mat-palette($mat-deep-orange);
+$light-app-warn:    mat-palette($mat-red, 400);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $light-app-theme: mat-light-theme($light-app-primary, $light-app-accent, $light-app-warn);
