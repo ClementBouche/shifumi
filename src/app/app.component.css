@@ -6,6 +6,20 @@
   height: 64px;
 }
 
+.title {
+  font-size: 2.0em;
+  font-weight: bold;
+}
+
+.separator {
+  display: block;
+  padding: 0px 10px;
+}
+
+.app-toolbar .bigger {
+  flex-grow: 1;
+}
+
 .app-container {
   position: absolute;
   top: 64px;

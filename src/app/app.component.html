@@ -1,7 +1,9 @@
 <mat-toolbar class="app-toolbar" color="primary">
   <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-  <a mat-button color="accent" routerLink="" routerLinkActive="active"><h1>Shi.Fu.Mi</h1></a>
-  <app-autocomplete-search-input></app-autocomplete-search-input>
+  <a mat-button color="accent" routerLink="" routerLinkActive="active"><h1 class="title">Shi.Fu.Mi</h1></a>
+  <span class="separator"></span>
+  <app-autocomplete-search-input class="bigger"></app-autocomplete-search-input>
+  <button mat-button><mat-icon>link</mat-icon></button>
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">
