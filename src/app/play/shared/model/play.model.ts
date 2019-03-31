@@ -17,7 +17,7 @@ export class Play implements Deserializable {
     Object.assign(this, {
       id: input._id,
       date: input.date,
-      place: input.place,
+      place: input.place_name,
       boardgameName: input.boardgame_name,
       playingTime: input.playing_time,
       incomplete: input.incomplete,

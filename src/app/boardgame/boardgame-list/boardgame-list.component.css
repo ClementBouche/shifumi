@@ -16,16 +16,3 @@
   background-color: #eee;
   cursor: pointer;
 }
-
-.select-arrow {
-  position: absolute;
-  font-size: 8.0em;
-  opacity: 0;
-  top: 50%;
-  right: 0;
-  transform: translate(0, -50%);
-}
-
-.boardgame:hover .select-arrow {
-  opacity: 1;
-}

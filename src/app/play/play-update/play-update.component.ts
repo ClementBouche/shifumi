@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Play } from '../shared/model/play.model';
@@ -13,21 +13,31 @@ export class PlayUpdateComponent implements OnInit {
 
   play: Play;
 
+  searching: boolean = true;
+
   constructor(
+    private playService: PlayService,
     private router: Router,
     private route: ActivatedRoute,
-    private playService: PlayService
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    // TODO if route alors update
     this.route.params.subscribe((params) => {
-      if (params.id) {
-        return this.playService.getPlay(params.id).then((play) => {
+      if (params.playId) {
+        return this.playService.getPlay(params.playId).then((play) => {
           this.play = play;
+          this.searchEnded();
         });
+      } else {
+        this.searchEnded();
       }
     });
+  }
+  
+  private searchEnded() {
+    this.searching = false;
+    this.cd.detectChanges();
   }
 
 }

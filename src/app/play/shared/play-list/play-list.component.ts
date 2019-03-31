@@ -41,7 +41,6 @@ export class PlayListComponent implements OnInit {
   }
 
   view(playid: string) {
-    // this.router.navigate(['play', 'view', playid], { relativeTo: this.route });
     this.router.navigate(['play', 'view', playid]);
   }
 

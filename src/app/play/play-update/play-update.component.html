@@ -1,2 +1,4 @@
 <!-- new play form -->
-<app-play-form [play]="play" newPlay=false></app-play-form>
+<ng-container *ngIf="!searching">
+    <app-play-form [play]="play" newPlay=false></app-play-form>
+</ng-container>

@@ -25,7 +25,7 @@ export class PlayService {
         params: params
       })
       .toPromise()
-      .then(response => response as Play[]);
+      .then((response: any) => response.map((input) => new Play().deserialize(input)));
   }
 
   getBoardgamePlays(boardgame: Boardgame) {
@@ -34,14 +34,14 @@ export class PlayService {
         boardgame: boardgame.name
       })
       .toPromise()
-      .then(response => response as Play[]);
+      .then((response: any) => response.map((input) => new Play().deserialize(input)));
   }
 
   getPlay(id: string): Promise<Play> {
     const url = `${this.playUrl}${id}`;
     return this.httpClient.get(url)
       .toPromise()
-      .then(response => response as Play);
+      .then(response => new Play().deserialize(response));
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Boardgame } from '../shared/model/boardgame.model';
@@ -16,12 +16,14 @@ export class BoardgameViewComponent implements OnInit {
   constructor(
     private boardgameService: BoardgameService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
     this.route.data.subscribe((data: {boardgame: Boardgame}) => {
       this.boardgame = data.boardgame;
+      this.cd.markForCheck();
     });
   }
 

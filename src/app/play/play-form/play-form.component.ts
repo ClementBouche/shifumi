@@ -43,6 +43,9 @@ export class PlayFormComponent implements OnInit {
   ngOnInit() {
     if (!this.play) {
       this.play = new Play();
+    } else {
+      console.log('patch', this.play);
+      this.playToForm();
     }
     if (this.boardgame) {
       this.form.patchValue({
@@ -66,7 +69,7 @@ export class PlayFormComponent implements OnInit {
 
   resetPlay() {
     this.play = new Play();
-    this.playToFrom();
+    this.playToForm();
   }
 
   submit() {
@@ -75,7 +78,7 @@ export class PlayFormComponent implements OnInit {
     }
   }
 
-  private playToFrom() {
+  private playToForm() {
     this.form.patchValue({
       boardgameName: this.play.boardgameName,
       date: this.play.date,

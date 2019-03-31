@@ -1,0 +1,8 @@
+.play {
+    position: relative;
+}
+
+.play:hover {
+    background-color: #eee;
+    cursor: pointer;
+}

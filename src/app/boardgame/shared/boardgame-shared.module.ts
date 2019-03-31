@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardBackgroundDirective } from './directives/card-background.directive';
+import { PlayTimePipe } from './pipes/play-time.pipe';
 
 @NgModule({
   declarations: [
-    CardBackgroundDirective
+    CardBackgroundDirective,
+    PlayTimePipe
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    CardBackgroundDirective
+    CardBackgroundDirective,
+    PlayTimePipe
   ]
 })
 export class BoardgameSharedModule { }

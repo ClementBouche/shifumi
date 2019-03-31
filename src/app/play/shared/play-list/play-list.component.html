@@ -1,22 +1,30 @@
-<div class="plays">
+<div class="plays" *ngIf="plays && plays.length != 0; else noResult">
   <ng-container *ngFor="let play of plays; let i = index">
-    <div class="play" (click)="view(play._id)">
-      <ng-container *ngIf="!boardgame">
-        <h4>{{ play.boardgame_name }}</h4>
+    <div class="play" (click)="view(play.id)">
+      <ng-container *ngIf="boardgame else noBoardgame">
+          <app-play-info [play]="play" listItem=true displayName=false [index]="i"></app-play-info>
       </ng-container>
-      <ng-container *ngIf="boardgame">
-        <h4>Partie {{ i }}</h4>
-      </ng-container>
-      <ul>
-        <li *ngFor="let score of play.scores">
-          {{ score.player_name }} ({{ score.score }})
-        </li>
-      </ul>
+      <ng-template #noBoardgame>
+          <app-play-info [play]="play" listItem=true></app-play-info>
+      </ng-template>
     </div>
   </ng-container>
 </div>
-<ng-container *ngIf="!plays || plays.length === 0">
-  <p>No games played yet</p>
-</ng-container>
+
+<ng-template #noResult>
+    <mat-grid-list cols="1" rowHeight="4:1">
+      <mat-grid-tile>
+        <p>Aucune partie pour l'instant. Vous pouvez ajouter une partie.</p>
+      </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
+
+<ng-template #progress>
+    <mat-grid-list cols="1" rowHeight="4:1">
+      <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+      </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
 
 <app-play-add-button></app-play-add-button>

@@ -17,9 +17,9 @@ import { PlayUpdateComponent } from './play-update/play-update.component';
     PlayComponent,
     PlayViewComponent,
     PlayAddComponent,
-    PlayFormComponent,
-    PlayUpdateComponent
-],
+    PlayFormComponent,
+    PlayUpdateComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
