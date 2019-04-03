@@ -11,6 +11,7 @@ export class Boardgame implements Deserializable {
     description: string;
     year: string;
     age: number;
+    rank: number;
     // images
     thumbnail: string;
     image: string;
@@ -67,6 +68,7 @@ export class Boardgame implements Deserializable {
         description: input.description,
         year: input.year_published,
         age: input.age,
+        rank: input.rank,
         thumbnail: input.thumbnail,
         image: input.image,
         players: { 

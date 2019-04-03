@@ -12,6 +12,7 @@ import { BoardgameInfoComponent } from './boardgame-info/boardgame-info.componen
 import { BoardgameSharedModule } from './shared/boardgame-shared.module';
 import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { AppMaterialModule } from '../shared/app-material.module';
+import { BoardgameTableComponent } from './boardgame-table/boardgame-table.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AppMaterialModule } from '../shared/app-material.module';
     BoardgameViewComponent,
     BoardgameSearchComponent,
     BoardgameInfoComponent,
+    BoardgameTableComponent,
   ],
   imports: [
     CommonModule,

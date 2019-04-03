@@ -1,4 +1,4 @@
-<div class="boardgames" *ngIf="boardgames.length != 0 else noResult">
+<div class="boardgames" *ngIf="boardgames && boardgames.length != 0 else noResult">
   <ng-container *ngFor="let boardgame of boardgames">
     <div class="boardgame" (click)="select(boardgame)">
       <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info>

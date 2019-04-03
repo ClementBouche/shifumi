@@ -18,6 +18,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -39,6 +43,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatExpansionModule,
     MatTabsModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatChipsModule,
   ],
   exports: [
     MatButtonModule,
@@ -59,6 +67,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatExpansionModule,
     MatTabsModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatChipsModule,
   ]
 })
 export class AppMaterialModule { }

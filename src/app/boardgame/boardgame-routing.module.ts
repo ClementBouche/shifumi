@@ -7,6 +7,7 @@ import { BoardgameViewComponent } from './boardgame-view/boardgame-view.componen
 import { BoardgameViewResolverService } from './shared/services/boardgame-view-resolver.service';
 import { BoardgameSearchResolverService } from './shared/services/boardgame-search-resolver.service';
 import { BoardgamePreviewResolverService } from './shared/services/boardgame-preview-resolver.service';
+import { BoardgameTableComponent } from './boardgame-table/boardgame-table.component';
 
 const routes: Routes = [
   {
@@ -16,11 +17,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: BoardgameListComponent,
-        runGuardsAndResolvers: 'always',
-        resolve: {
-          boardgames: BoardgameSearchResolverService
-        },
+        // component: BoardgameListComponent,
+        component: BoardgameTableComponent,
+        // runGuardsAndResolvers: 'always',
+        // resolve: {
+        //   boardgames: BoardgameSearchResolverService
+        // },
         data: { animation: 'boardgameListPage' },
       },
       {
