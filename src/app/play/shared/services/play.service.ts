@@ -4,6 +4,7 @@ import { environment } from '../../../../environments/environment';
 
 import { Play } from '../model/play.model';
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
+import { PlaySearch } from '../model/play-search.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,10 @@ export class PlayService {
       .toPromise()
       .then(response => new Play().deserialize(response));
   }
+
+  search(search: PlaySearch): Promise<Play[]> {
+    // TODO create search method in API with game && player filters
+    return this.getPlays(search.size, search.page);
+  };
 
 }

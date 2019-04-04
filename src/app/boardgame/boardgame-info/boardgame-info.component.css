@@ -34,6 +34,11 @@ ul {
   margin: 0;
 }
 
+.mat-grid-tile ul {
+  overflow: auto;
+  max-height: 100%;
+}
+
 .boardgame h4 {
   width: 100%;
 }

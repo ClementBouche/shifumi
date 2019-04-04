@@ -11,6 +11,7 @@ import { PlayViewComponent } from './play-view/play-view.component';
 import { PlayAddComponent } from './play-add/play-add.component';
 import { PlayFormComponent } from './play-form/play-form.component';
 import { PlayUpdateComponent } from './play-update/play-update.component';
+import { PlayPaginatedComponent } from './play-paginated/play-paginated.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PlayUpdateComponent } from './play-update/play-update.component';
     PlayAddComponent,
     PlayFormComponent,
     PlayUpdateComponent,
+    PlayPaginatedComponent,
   ],
   imports: [
     CommonModule,

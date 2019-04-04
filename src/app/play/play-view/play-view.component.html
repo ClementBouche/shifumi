@@ -1,9 +1,4 @@
-<div *ngIf="play$ | async as play">
-  <h4>{{ play.boardgameName }}</h4>
-  <ul>
-    <li *ngFor="let score of play.scores">
-      {{ score.playerName }} ({{ score.score }})
-    </li>
-  </ul>
-  <button (click)="update()">Modifier</button>
-</div>
+<ng-container *ngIf="play$ | async as play">
+  <app-play-info [play]="play"></app-play-info>
+  <button mat-raised-button color="accent" (click)="update()">Modifier</button>
+</ng-container>

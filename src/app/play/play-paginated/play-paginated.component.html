@@ -1,0 +1,18 @@
+<mat-paginator [length]="900"
+              [pageSize]="playSearch.size"
+              [pageIndex]="playSearch.page"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              (page)="changePage($event)">
+</mat-paginator>
+
+<ng-container *ngIf="plays else loading">
+  <app-play-list [plays]="plays"></app-play-list>
+</ng-container>
+
+<ng-template #loading>
+  <mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>

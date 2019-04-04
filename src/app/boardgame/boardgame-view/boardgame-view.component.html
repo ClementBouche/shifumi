@@ -3,6 +3,7 @@
     <app-boardgame-info [boardgame]="boardgame"></app-boardgame-info>
     <button *ngIf="boardgame.preview" (click)="import()">Import</button>
   </div>
+  <span class="border-separator"></span>
   <app-play-list [boardgame]="boardgame"></app-play-list>
 </ng-container>
 

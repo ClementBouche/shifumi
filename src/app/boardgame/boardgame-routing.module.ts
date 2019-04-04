@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { BoardgameComponent } from './boardgame.component';
 import { BoardgameListComponent } from './boardgame-list/boardgame-list.component';
-import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
-import { BoardgameViewResolverService } from './shared/services/boardgame-view-resolver.service';
-import { BoardgameSearchResolverService } from './shared/services/boardgame-search-resolver.service';
-import { BoardgamePreviewResolverService } from './shared/services/boardgame-preview-resolver.service';
 import { BoardgameTableComponent } from './boardgame-table/boardgame-table.component';
+import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
+import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
+
+import { BoardgameSearchResolverService } from './shared/resolvers/boardgame-search-resolver.service';
+import { BoardgamePreviewResolverService } from './shared/resolvers/boardgame-preview-resolver.service';
+import { BoardgameViewResolverService } from './shared/resolvers/boardgame-view-resolver.service';
 
 const routes: Routes = [
   {
@@ -18,11 +20,11 @@ const routes: Routes = [
       {
         path: '',
         // component: BoardgameListComponent,
-        component: BoardgameTableComponent,
-        // runGuardsAndResolvers: 'always',
-        // resolve: {
-        //   boardgames: BoardgameSearchResolverService
-        // },
+        component: BoardgamePaginatedComponent,
+        runGuardsAndResolvers: 'always',
+        resolve: {
+          result: BoardgameSearchResolverService
+        },
         data: { animation: 'boardgameListPage' },
       },
       {

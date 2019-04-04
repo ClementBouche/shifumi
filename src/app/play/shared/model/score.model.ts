@@ -2,7 +2,7 @@ import { Deserializable } from "src/app/core/model/deserializable.interface";
 
 export class Score implements Deserializable {
   new: boolean;
-  win: boolean;
+  winner: boolean;
   value: number;
   playerName: string;
 

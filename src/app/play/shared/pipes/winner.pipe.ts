@@ -9,7 +9,7 @@ export class WinnerPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (value instanceof Array) {
-      const score = value.find(sc => sc.winner);
+      const score = value.find((sc: Score) => sc.winner);
       if (score) {
         return score.playerName;
       } else {

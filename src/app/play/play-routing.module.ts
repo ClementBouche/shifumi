@@ -5,7 +5,9 @@ import { PlayComponent } from './play.component';
 import { PlayViewComponent } from './play-view/play-view.component';
 import { PlayAddComponent } from './play-add/play-add.component';
 import { PlayUpdateComponent } from './play-update/play-update.component';
-import { PlayListComponent } from './shared/play-list/play-list.component';
+import { PlayListComponent } from './shared/components/play-list/play-list.component';
+import { PlayPaginatedComponent } from './play-paginated/play-paginated.component';
+import { PlaySearchResolverService } from './shared/resolvers/play-search-resolver.service';
 
 const routes: Routes = [
   {
@@ -14,8 +16,13 @@ const routes: Routes = [
     data: {animation: 'playPage'},
     children: [
       {
-        path: 'list',
-        component: PlayListComponent
+        path: '',
+        // component: PlayListComponent,
+        component: PlayPaginatedComponent,
+        runGuardsAndResolvers: 'always',
+        resolve: {
+          result: PlaySearchResolverService
+        },
       },
       {
         path: 'view/:id',
@@ -32,10 +39,6 @@ const routes: Routes = [
       {
         path: 'update/:playId',
         component: PlayUpdateComponent
-      },
-      {
-        path: '',
-        redirectTo: 'list'
       }
     ]
   }

@@ -13,7 +13,6 @@ html {
   font-family: 'Montserrat', sans-serif;
 }
 
-
 input:focus,
 select:focus,
 textarea:focus,
@@ -22,6 +21,12 @@ button:focus {
     outline-width: 0;
 }
 
+span.border-separator {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #ccc;
+}
 
 /*
 body {
@@ -42,16 +47,26 @@ a {
 /* loading screen */
 
 .loading-screen {
-  background-color: var(--first-color);
+  background-color: white;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
+  min-width: 900px;
 }
+
+.loading-screen .centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .loading-screen h1 {
-  color: var(--first-text-color);
+  color: #009688;
+  font-size: bold;
 }
 
 /* global input style */

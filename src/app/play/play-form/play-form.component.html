@@ -33,8 +33,12 @@
     </div>
     <div class="actions">
         <button mat-button (click)="resetPlay()"><mat-icon>refresh</mat-icon></button>
-        <!-- search button -->
-        <button mat-raised-button type="submit" color="primary">Ajouter</button>
+        <ng-container *ngIf="newPlay == true else btnModifier">
+            <button mat-raised-button type="submit" color="accent">Ajouter</button>
+        </ng-container>
+        <ng-template #btnModifier>
+            <button mat-raised-button type="submit" color="accent">Modifier</button>
+        </ng-template>
     </div>
   </form>
 </mat-card>

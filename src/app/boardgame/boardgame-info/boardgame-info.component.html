@@ -3,15 +3,17 @@
     <div class="boardgame">
       <!-- <div *ngIf="!listItem" class="background" [appCardBackground]="boardgame.image"></div> -->
       <mat-grid-list cols="6" rowHeight="3:1">
+      <!-- rowHeight ratio must be change on small screen -->
+      <!-- <mat-grid-list cols="6" rowHeight="2:1"> -->
         <mat-grid-tile colspan="1">
-          <div class="space-around">
-            <mat-chip-list>
+          <!-- <div class="space-around"> -->
+            <!-- <mat-chip-list>
                 <mat-chip>{{ boardgame.rank }}</mat-chip>
-            </mat-chip-list>
+            </mat-chip-list> -->
             <div class="img">
               <img [src]="boardgame.thumbnail" alt="image"/>
             </div>
-          </div>
+          <!-- </div> -->
         </mat-grid-tile>
         <mat-grid-tile colspan="3">
           <h4>{{ boardgame.name }} <span *ngIf="boardgame.year">({{ boardgame.year }})</span></h4>

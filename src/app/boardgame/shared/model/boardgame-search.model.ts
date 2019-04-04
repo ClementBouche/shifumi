@@ -21,7 +21,7 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   page: number = 1;
 
-  size: number = 20;
+  size: number = 10;
 
   /**
    * extended search are performed with xmlApi
@@ -55,7 +55,7 @@ export class BoardgameSearch implements Serializable, Deserializable {
       thematics: input.thematics,
       mechanics: input.mechanics,
       page: input.page || 1,
-      size: input.size || 20,
+      size: input.size || 10,
       extended: input.extended == "true" ? true : false
     });
     return this;

@@ -1,0 +1,18 @@
+<mat-paginator [length]="712"
+              [pageSize]="boardgameSearch.size"
+              [pageIndex]="boardgameSearch.page"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              (page)="changePage($event)">
+</mat-paginator>
+
+<ng-container *ngIf="boardgames else loading">
+  <app-boardgame-list [boardgames]="boardgames"></app-boardgame-list>
+</ng-container>
+
+<ng-template #loading>
+  <mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>

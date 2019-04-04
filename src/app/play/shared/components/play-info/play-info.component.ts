@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Play } from '../model/play.model';
+import { Play } from '../../model/play.model';
 
 @Component({
   selector: 'app-play-info',

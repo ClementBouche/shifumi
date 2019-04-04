@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { BoardgameService } from './boardgame.service';
+import { BoardgameService } from '../services/boardgame.service';
 import { Boardgame } from '../model/boardgame.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BoardgamePreviewResolverService implements Resolve<Boardgame> {
+export class BoardgameViewResolverService implements Resolve<Boardgame> {
 
   constructor(
     private boardgameService: BoardgameService,
@@ -15,9 +15,9 @@ export class BoardgamePreviewResolverService implements Resolve<Boardgame> {
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Boardgame> {
-    const xmlId = route.paramMap.get('xmlId');
-    return this.boardgameService.getPreview(xmlId)
-        .then((boardgame) => Object.assign(boardgame, { preview: true }))
+    const id = route.paramMap.get('id');
+    return this.boardgameService.getBoardgame(id)
+        .then((boardgame) => boardgame)
         .catch(() => {
           this.router.navigate(['boardgame']);
           return null;
