@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://cbouche.me/api'
+  apiUrl: 'https://cbouche.me/api'
 };
 
 /*
