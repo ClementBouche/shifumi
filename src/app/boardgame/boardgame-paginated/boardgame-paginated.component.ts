@@ -2,10 +2,9 @@ import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material';
 
 import { Boardgame } from '../shared/model/boardgame.model';
-import { BoardgameService } from '../shared/services/boardgame.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { BoardgameSearch } from '../shared/model/boardgame-search.model';
+import { BoardgamesPage } from '../shared/model/boardgames-page.model';
 
 @Component({
   selector: 'app-boardgame-paginated',
@@ -16,20 +15,31 @@ export class BoardgamePaginatedComponent implements OnInit, OnDestroy {
 
   boardgames: Boardgame[];
 
-  boardgameSearch: BoardgameSearch;
+  count: number;
+
+  index: number;
+
+  size: number;
 
   private routeSubscription: Subscription;
 
   constructor(
-    private boardgameService: BoardgameService,
     private route: ActivatedRoute,
+    private router: Router,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.routeSubscription = this.route.data.subscribe((data: {result: {search:  BoardgameSearch, boardgames: Boardgame[]}}) => {
-      this.boardgameSearch = data.result.search;
-      this.boardgames = data.result.boardgames;
+    this.routeSubscription = this.route.data.subscribe((data: {boardgamesPage: BoardgamesPage}) => {
+      console.log(data);
+      // mise a jour recherche
+      this.count = data.boardgamesPage.count;
+      this.index = data.boardgamesPage.page - 1;
+      this.size = data.boardgamesPage.size;
+
+      // mise a jour resultat
+      this.boardgames = data.boardgamesPage.result;
+
       this.cd.markForCheck();
     });
   }
@@ -39,13 +49,15 @@ export class BoardgamePaginatedComponent implements OnInit, OnDestroy {
   }
 
   changePage(pageEvent: PageEvent) {
-    this.boardgameSearch.page = pageEvent.pageIndex;
-    this.boardgameSearch.size = pageEvent.pageSize;
-    this.boardgameService.search(this.boardgameSearch)
-        .then(result => {
-          this.boardgames = result;
-          this.cd.detectChanges();
-        });
+    // router update
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { 
+        page: pageEvent.pageIndex + 1,
+        size: pageEvent.pageSize
+      },
+      queryParamsHandling: 'merge'
+    });
   }
 
 }

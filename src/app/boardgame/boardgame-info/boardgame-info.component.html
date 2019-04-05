@@ -10,7 +10,7 @@
             <!-- <mat-chip-list>
                 <mat-chip>{{ boardgame.rank }}</mat-chip>
             </mat-chip-list> -->
-            <div class="img">
+            <div *ngIf="boardgame.thumbnail" class="img">
               <img [src]="boardgame.thumbnail" alt="image"/>
             </div>
           <!-- </div> -->
@@ -19,9 +19,9 @@
           <h4>{{ boardgame.name }} <span *ngIf="boardgame.year">({{ boardgame.year }})</span></h4>
         </mat-grid-tile>
         <mat-grid-tile colspan="1">
-          <ul *ngIf="boardgame.hasInfo()">
-            <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
-            <li>{{ boardgame.time.average | playTime }}</li>
+          <ul>
+            <li *ngIf="boardgame.players.min && boardgame.players.max">{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
+            <li *ngIf="boardgame.time.average">{{ boardgame.time.average | playTime }}</li>
           </ul>
         </mat-grid-tile>
         <mat-grid-tile colspan="1">

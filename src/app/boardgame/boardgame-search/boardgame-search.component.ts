@@ -87,6 +87,8 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     this.boardgameSearch.time.min = this.form.value.min;
     this.boardgameSearch.time.max = this.form.value.max;
     this.boardgameSearch.extended = !this.form.value.recent;
+    // force la nouvelle pagination
+    this.boardgameSearch.page = 1;
     return true;
   }
 

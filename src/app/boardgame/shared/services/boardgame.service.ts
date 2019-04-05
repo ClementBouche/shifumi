@@ -4,7 +4,7 @@ import { environment } from '../../../../environments/environment';
 
 import { Boardgame } from '../model/boardgame.model';
 import { BoardgameSearch } from '../model/boardgame-search.model';
-
+import { BoardgamesPage } from '../model/boardgames-page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,26 +38,26 @@ export class BoardgameService {
       .then(response => new Boardgame().deserialize(response));
   }
 
-  search(search: BoardgameSearch): Promise<Boardgame[]> {
+  search(search: BoardgameSearch): Promise<BoardgamesPage> {
     if (search.extended) {
-      return this.extendedSearch(search.name);
+      return this.extendedSearch(search.name, search.size);
     }
     const url = `${environment.apiUrl}/boardgame/search`;
     return this.httpClient.post(url, search.serialize())
       .toPromise()
-      .then((response: any) => response.map((input) => new Boardgame().deserialize(input)));
+      .then(response => new BoardgamesPage().deserialize(response));
   }
 
-  extendedSearch(name: string): Promise<Boardgame[]> {
+  extendedSearch(name: string, size: number): Promise<BoardgamesPage> {
     const url = `${environment.apiUrl}/database/boardgame`;
     let params = new HttpParams()
         .append('name', name)
-        .append('size', '100');
+        .append('size', size.toString());
     return this.httpClient.get(url, {
         params: params
       })
       .toPromise()
-      .then((response: any) => response.map((input) => new Boardgame().deserialize(input)));
+      .then(response => new BoardgamesPage().deserialize(response));
   }
 
   getPreview(xmlId: string, preview: boolean = true): Promise<Boardgame> {

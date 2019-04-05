@@ -23,7 +23,7 @@ const routes: Routes = [
         component: BoardgamePaginatedComponent,
         runGuardsAndResolvers: 'always',
         resolve: {
-          result: BoardgameSearchResolverService
+          boardgamesPage: BoardgameSearchResolverService
         },
         data: { animation: 'boardgameListPage' },
       },
