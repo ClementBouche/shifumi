@@ -1,0 +1,13 @@
+.card {
+  margin: 10px 5px;
+  width: 360px;
+}
+
+.avatar {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.spacing {
+  padding-top: 10px;
+}

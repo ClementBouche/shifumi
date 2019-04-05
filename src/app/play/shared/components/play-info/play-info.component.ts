@@ -17,9 +17,14 @@ export class PlayInfoComponent implements OnInit {
 
   @Input() index: number;
 
+  udpateRoute: string;
+
   constructor() { }
 
   ngOnInit() {
+    if (!this.listItem && this.play) {
+      this.udpateRoute = '/play/update' + '/' + this.play.id;
+    }
   }
 
 }

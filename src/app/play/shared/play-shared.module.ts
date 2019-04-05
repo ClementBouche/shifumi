@@ -8,12 +8,14 @@ import { PlayListComponent } from './components/play-list/play-list.component';
 import { PlayAddButtonComponent } from './components/play-add-button/play-add-button.component';
 import { PlayInfoComponent } from './components/play-info/play-info.component';
 import { WinnerPipe } from './pipes/winner.pipe';
+import { PlayScoreComponent } from './components/play-score/play-score.component';
 
 @NgModule({
   declarations: [
     PlayListComponent,
     PlayAddButtonComponent,
     PlayInfoComponent,
+    PlayScoreComponent,
     WinnerPipe
   ],
   imports: [
