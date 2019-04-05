@@ -31,7 +31,6 @@ export class BoardgamePaginatedComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeSubscription = this.route.data.subscribe((data: {boardgamesPage: BoardgamesPage}) => {
-      console.log(data);
       // mise a jour recherche
       this.count = data.boardgamesPage.count;
       this.index = data.boardgamesPage.page - 1;

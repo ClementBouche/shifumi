@@ -41,19 +41,22 @@ export class PlayFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (!this.play) {
-      this.play = new Play();
-    } else {
-      console.log('patch', this.play);
-      this.playToForm();
+    if (this.play) {
+      return this.playToForm();
     }
+    this.play = new Play();
     if (this.boardgame) {
       this.form.patchValue({
         boardgameName: this.boardgame.name,
-        playingTime: this.boardgame.time.average
+        playingTime: this.boardgame.time.average,
       });
-      this.cd.markForCheck();
     }
+    if (this.newPlay) {
+      this.form.patchValue({
+        date: moment()
+      });
+    }
+    this.cd.markForCheck();
   }
 
   openDialog() {
@@ -87,6 +90,7 @@ export class PlayFormComponent implements OnInit {
       incomplete: this.play.incomplete,
       scores: this.play.scores
     });
+    this.cd.markForCheck();
   }
 
   private isFormValid(): boolean {

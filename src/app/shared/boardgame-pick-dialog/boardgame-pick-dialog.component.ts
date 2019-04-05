@@ -30,9 +30,9 @@ export class BoardgamePickDialogComponent implements OnInit {
     this.boardgameForm.valueChanges
         .pipe(debounceTime(500))
         .subscribe((namePart) => {
-          const search = new BoardgameSearch().deserialize({name: namePart});
-          this.boardgameService.search(search).then(result => {
-            this.boargames = result.slice(0, 10);
+          const search = new BoardgameSearch().deserialize({name: namePart, size: 10});
+          this.boardgameService.search(search).then(boardgamePage => {
+            this.boargames = boardgamePage.result;
             this.cd.markForCheck();
           });
         });
