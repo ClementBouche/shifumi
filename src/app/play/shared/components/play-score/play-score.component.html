@@ -4,10 +4,16 @@
     <mat-card-title><mat-icon *ngIf="score.winner">star</mat-icon>{{ score.playerName }}</mat-card-title>
     <mat-card-subtitle *ngIf="score.value != 0">{{ score.value }}</mat-card-subtitle>
   </mat-card-header>
+  <mat-divider></mat-divider>
   <mat-card-content>
-    <mat-divider></mat-divider>
-    <p class="spacing" *ngIf="score.new">Première partie !</p>
-    <p class="spacing" *ngIf="!score.new">A déjà joué X fois</p>
+    <p>
+      <ng-container *ngIf="score.new">
+        Première partie !
+      </ng-container>
+      <ng-container *ngIf="!score.new">
+        A déjà joué X fois
+      </ng-container>
+    </p>
   </mat-card-content>
   <!-- <mat-card-actions>
     <button mat-button color="accent">Modifier</button>

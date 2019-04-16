@@ -15,3 +15,8 @@ input.as-text {
 .actions > * {
     padding-right: 60px;
 }
+
+.scores {
+  display: flex;
+  flex-wrap: wrap;
+}

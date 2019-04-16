@@ -28,6 +28,17 @@ span.border-separator {
   border-bottom: 1px solid #ccc;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  text-align: right;
+}
+
 /*
 body {
   color: var(--first-text-color);

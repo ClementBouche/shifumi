@@ -44,7 +44,6 @@ export class AutocompleteSearchInputComponent implements OnInit {
 
 
   goTo(boardgame: Boardgame) {
-    console.log({boardgame});
     this.router.navigate(['/', 'boardgame', boardgame.id]);
   }
 

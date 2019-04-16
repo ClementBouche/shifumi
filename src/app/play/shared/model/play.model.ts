@@ -10,7 +10,7 @@ export class Play implements Deserializable {
   playingTime: string;
   incomplete: boolean;
   // scores
-  scores: [Score];
+  scores: Array<Score> = new Array<Score>();
 
   deserialize(input: any) {
     const scores = input.scores ? input.scores.map((score) => new Score().deserialize(score)) : [];

@@ -14,7 +14,6 @@ export class CardBackgroundDirective implements OnInit {
 
   ngOnInit() {
     const strUrl = 'url(' + this.background + ')';
-    console.log(strUrl);
     this.renderer.setElementStyle(this.el.nativeElement, 'backgroundImage', strUrl);
   }
 

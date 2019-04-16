@@ -7,6 +7,7 @@ import { Play } from '../shared/model/play.model';
 import { PlayService } from '../shared/services/play.service';
 import { BoardgamePickDialogComponent } from 'src/app/shared/boardgame-pick-dialog/boardgame-pick-dialog.component';
 import { Boardgame } from '../../boardgame/shared/model/boardgame.model';
+import { Score } from '../shared/model/score.model';
 
 @Component({
   selector: 'app-play-form',
@@ -28,7 +29,8 @@ export class PlayFormComponent implements OnInit {
     place: [''],
     playingTime: [0],
     incomplete: [false],
-    scores: ['']
+    nbPlayer: [0],
+    scores: [new Array<Score>()]
   });
 
   private dateFormat: string = "YYYY-MM-DD";
@@ -71,14 +73,19 @@ export class PlayFormComponent implements OnInit {
   }
 
   resetPlay() {
-    this.play = new Play();
     this.playToForm();
+    return false;
   }
 
   submit() {
     if (this.isFormValid()) {
-      console.log('submit', this.play);
+      console.log('valid', this.play);
     }
+  }
+
+  changeScore(updatedScore: Score, index: number) {
+    // copy without change
+    this.form.value.scores[index] = Object.assign(this.form.value.scores[index], updatedScore);
   }
 
   private playToForm() {
@@ -88,7 +95,8 @@ export class PlayFormComponent implements OnInit {
       place: this.play.place,
       playingTime: this.play.playingTime,
       incomplete: this.play.incomplete,
-      scores: this.play.scores
+      nbPlayer: this.play.scores.length,
+      scores: this.play.scores.map(sc => Object.assign({}, sc))
     });
     this.cd.markForCheck();
   }
@@ -100,7 +108,8 @@ export class PlayFormComponent implements OnInit {
     this.play.place = this.form.value.place;
     this.play.playingTime = this.form.value.playingTime;
     this.play.incomplete = this.form.value.incomplete;
-    this.play.scores = this.form.value.scores;
+    this.play.scores = this.form.value.scores.map(sc => Object.assign({}, sc));
+    // TODO les score sont gerer independament
     return true;
   }
 

@@ -42,3 +42,9 @@
     </div>
   </form>
 </mat-card>
+
+<div class="scores">
+  <ng-container *ngFor="let score of form.value.scores; let i = index;">
+    <app-score-form [score]="score" (scoreChanged)="changeScore($event, i)"></app-score-form>
+  </ng-container>
+</div>

@@ -28,7 +28,6 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeSubscription = this.route.data.subscribe((data: {result: {search:  PlaySearch, plays: Play[]}}) => {
-      console.log(data.result.search);
       this.playSearch = data.result.search;
       this.plays = data.result.plays;
       this.cd.markForCheck();
