@@ -39,6 +39,13 @@ input[type="number"] {
   text-align: right;
 }
 
+.noselect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /*
 body {
   color: var(--first-text-color);

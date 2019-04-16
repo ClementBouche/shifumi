@@ -32,6 +32,13 @@
       <mat-checkbox name="incomplete" formControlName="incomplete">Partie Incomplète</mat-checkbox>
     </div>
     <div class="actions">
+        <div *ngIf="form.value.scores">
+          <button mat-raised-button type="button" color="primary" (click)="addPlayer()">
+            <mat-icon color="accent">add</mat-icon>
+          </button>
+          {{ form.value.scores.length }} Joueurs
+        </div>
+        <div class="filler"></div>
         <button mat-button (click)="resetPlay()"><mat-icon>refresh</mat-icon></button>
         <ng-container *ngIf="newPlay == true else btnModifier">
             <button mat-raised-button type="submit" color="accent">Ajouter</button>
@@ -45,6 +52,9 @@
 
 <div class="scores">
   <ng-container *ngFor="let score of form.value.scores; let i = index;">
-    <app-score-form [score]="score" (scoreChanged)="changeScore($event, i)"></app-score-form>
+    <app-score-form [score]="score"
+        (scoreChanged)="changeScore($event, i)"
+        (scoreDeleted)="deleteScore(i)">
+    </app-score-form>
   </ng-container>
 </div>

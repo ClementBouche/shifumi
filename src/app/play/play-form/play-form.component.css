@@ -12,6 +12,10 @@ input.as-text {
     justify-content: flex-end;
 }
 
+.actions .filler {
+  flex-grow: 1;
+}
+
 .actions > * {
     padding-right: 60px;
 }

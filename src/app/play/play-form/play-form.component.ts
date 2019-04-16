@@ -88,6 +88,14 @@ export class PlayFormComponent implements OnInit {
     this.form.value.scores[index] = Object.assign(this.form.value.scores[index], updatedScore);
   }
 
+  deleteScore(index: number) {
+    this.form.value.scores.splice(index, 1);
+  }
+
+  addPlayer() {
+    this.form.value.scores.push(new Score());
+  }
+
   private playToForm() {
     this.form.patchValue({
       boardgameName: this.play.boardgameName,

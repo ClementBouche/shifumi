@@ -16,6 +16,8 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
 
   @Output() scoreChanged: EventEmitter<Score> = new EventEmitter<Score>();
 
+  @Output() scoreDeleted: EventEmitter<Boolean> = new EventEmitter<Boolean>();
+
   form: FormGroup;
 
   private changeSubscription: Subscription;
@@ -59,6 +61,10 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
 
   openDialog() {
     console.log('open select player dialog');
+  }
+
+  delete() {
+    this.scoreDeleted.emit(true);
   }
 
   private updateForm() {
