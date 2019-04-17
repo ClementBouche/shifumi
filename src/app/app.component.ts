@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { appRouteAnimations } from './core/animation/app-route.animation';
+import { Boardgame } from './boardgame/shared/model/boardgame.model';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +12,19 @@ import { appRouteAnimations } from './core/animation/app-route.animation';
 })
 export class AppComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit() {
   }
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
+
+  select(boardgame: Boardgame) {
+    this.router.navigate(['/', 'boardgame', boardgame.id])
   }
 
 }

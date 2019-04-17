@@ -1,14 +1,13 @@
-<form>
-    <input [matAutocomplete]="auto" [formControl]="boardgameForm" spellcheck="false" placeholder="Rechercher...">
-    <mat-autocomplete #auto="matAutocomplete" class="custom-autocomplete" (optionSelected)="select($event.option.value)"
-        autoActiveFirstOption="true">
-        <mat-option *ngFor="let boargame of boardgames" [value]="boargame.name">
-            <div class="option">
-                <div class="img-container">
-                    <img [src]="boargame.thumbnail" alt="img"/>
-                </div>
-                <span class="pick-option-text">{{ boargame.name }} ({{ boargame.year }})</span>
-            </div>
-        </mat-option>
-    </mat-autocomplete>
+<form class="app-autocomplete-search-input pick-form">
+  <input matInput spellcheck="false" class="pick-full-width" [placeholder]="placeholder"
+      [matAutocomplete]="auto"
+      [formControl]="inputControl">
+  <mat-autocomplete #auto="matAutocomplete" class="custom-autocomplete"
+      (optionSelected)="select($event.option.value)"
+      [displayWith]="displayFunction">
+      <mat-option *ngFor="let boardgame of boardgames" [value]="boardgame">
+        <img class="pick-option-img" [src]="boardgame.thumbnail">
+        <span class="pick-option-text">{{ boardgame.name }} ({{ boardgame.year }})</span>
+      </mat-option>
+  </mat-autocomplete>
 </form>

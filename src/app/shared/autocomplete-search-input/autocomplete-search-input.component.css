@@ -1,33 +1,33 @@
-.custom-autocomplete {
-  min-width: 300px;
-  width: 100%;
-  background: red;
+.app-autocomplete-search-input input {
+  background: white;
+  border: solid 1px rgba(0, 0, 0, 0.30);
+  border-radius: 5px;
+  padding: 5px 5px;
+  margin: 1px;
 }
 
 .option {
   display: flex;
 }
 
-.img-container {
-  width: 60px;
-  height: 40px;
-  overflow: hidden;
-  margin: 5px 10px 5px 0px;
+.pick-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
 }
 
-.img-container img {
-  width: 60px;
+.pick-full-width {
+  width: 100%;
+}
+
+.pick-option-img {
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 .pick-option-text {
+  padding-left: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-input {
-  background: white;
-  min-width: 500px;
-  border: solid 1px rgba(0, 0, 0, 0.30);
-  border-radius: 5px;
-  padding: 5px 5px;
 }

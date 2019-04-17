@@ -26,19 +26,20 @@
   padding: 0px 10px;
 }
 
-.app-toolbar .bigger {
-  flex-grow: 1;
-}
-
 .flex-content {
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow-y: scroll
 }
+
 .grow {
   flex-grow: 1;
   margin: 0px 20px;
+}
+
+.text-size {
+  font-size: 0.8em;
 }
 
 .footer {
@@ -47,9 +48,11 @@
   justify-content: space-around;
   min-height: 64px;
 }
+
 .footer span {
   display: block;
 }
+
 .footer span.small {
   font-size: small;
 }

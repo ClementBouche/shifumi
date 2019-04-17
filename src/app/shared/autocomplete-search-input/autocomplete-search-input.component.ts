@@ -1,32 +1,41 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Output, OnDestroy, EventEmitter, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 import { debounceTime } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+
+import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 import { BoardgameSearch } from 'src/app/boardgame/shared/model/boardgame-search.model';
 import { BoardgameService } from 'src/app/boardgame/shared/services/boardgame.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-autocomplete-search-input',
   templateUrl: './autocomplete-search-input.component.html',
   styleUrls: ['./autocomplete-search-input.component.css']
 })
-export class AutocompleteSearchInputComponent implements OnInit {
+export class AutocompleteSearchInputComponent implements OnInit, OnDestroy {
 
-  boardgameForm: FormControl = new FormControl();
+  inputControl: FormControl = new FormControl();
 
   boardgames: Array<Boardgame>;
 
+  @Input() placeholder: string = 'Rechercher...';
+
+  @Output() boardgameSelected: EventEmitter<Boardgame> = new EventEmitter<Boardgame>();
+
+  private formSubscription: Subscription;
+
   constructor(
     private boardgameService: BoardgameService,
-    private router: Router,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.boardgameForm.valueChanges
+    this.formSubscription = this.inputControl.valueChanges
         .pipe(debounceTime(500))
         .subscribe((namePart) => {
+          if (typeof namePart != 'string') {
+            return;
+          }
           const search = new BoardgameSearch().deserialize({name: namePart, size: 10});
           this.boardgameService.search(search).then(boardgamePage => {
             this.boardgames = boardgamePage.result;
@@ -35,16 +44,22 @@ export class AutocompleteSearchInputComponent implements OnInit {
         });
   }
 
-  select(boardgameName: String) {
-    const result = this.boardgames.find(bg => bg.name === boardgameName);
-    if (result) {
-      this.goTo(result);
+  ngOnDestroy() {
+    if (this.formSubscription) {
+      this.formSubscription.unsubscribe();
     }
   }
 
+  displayFunction(bg: Boardgame) {
+    if (bg) {
+      console.log({bg});
+      return bg.name;
+    }
+    return '';
+  }
 
-  goTo(boardgame: Boardgame) {
-    this.router.navigate(['/', 'boardgame', boardgame.id]);
+  select(bg: Boardgame) {
+    this.boardgameSelected.emit(bg);
   }
 
 }
