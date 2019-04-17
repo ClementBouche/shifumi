@@ -51,7 +51,7 @@ export class PlayerService {
     return this.getPlayers(search.size, search.page).then((players) => {
       const playerPage = new PlayersPage();
       return Object.assign(playerPage, {
-        count: 1000,
+        count: 200,
         size: search.size || 10,
         page: search.page || 1,
         result: players.length > 0 ? players : []

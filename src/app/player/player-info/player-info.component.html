@@ -5,13 +5,13 @@
           <h4>{{ player.name }}</h4>
       </mat-grid-tile>
       <mat-grid-tile>
-        <p>info1</p>
+        <p>{{ player.victoryRatio }} %</p>
       </mat-grid-tile>
       <mat-grid-tile>
-        <p>info2</p>
+        <p>{{ player.time | playTime }}</p>
       </mat-grid-tile>
       <mat-grid-tile>
-        <p>info3</p>
+        <p>{{ player.counts.plays }} partie(s)</p>
       </mat-grid-tile>
     </mat-grid-list>
     <ng-container *ngIf="!listItem; then detail"></ng-container>

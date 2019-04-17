@@ -11,6 +11,7 @@ import { PlayerComponent } from './player.component';
 import { PlayerPaginatedComponent } from './player-paginated/player-paginated.component';
 import { PlayerListComponent } from './player-list/player-list.component';
 import { PlayerInfoComponent } from './player-info/player-info.component';
+import { BoardgameSharedModule } from '../boardgame/shared/boardgame-shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PlayerInfoComponent } from './player-info/player-info.component';
     ReactiveFormsModule,
     AppMaterialModule,
     PlayerRoutingModule,
-    PlayerSharedModule
+    PlayerSharedModule,
+    BoardgameSharedModule
   ],
   exports: [
   ]
