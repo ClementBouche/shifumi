@@ -1,13 +1,6 @@
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 .play h4 {
     width: 100%;
 }
-
 
 .button-edit {
   position: fixed;

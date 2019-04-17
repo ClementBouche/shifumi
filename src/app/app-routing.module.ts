@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: './play/play.module#PlayModule'
   },
   {
+    path: 'player',
+    loadChildren: './player/player.module#PlayerModule'
+  },
+  {
     path: '**',
     redirectTo: '/'
   }

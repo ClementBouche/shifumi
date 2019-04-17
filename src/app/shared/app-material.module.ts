@@ -22,7 +22,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatDividerModule } from '@angular/material/divider'; 
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSortModule,
     MatChipsModule,
     MatDividerModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatButtonModule,
@@ -74,6 +76,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSortModule,
     MatChipsModule,
     MatDividerModule,
+    MatSnackBarModule,
   ]
 })
 export class AppMaterialModule { }

@@ -1,0 +1,23 @@
+<div class="players" *ngIf="players && players.length != 0; else noResult">
+  <ng-container *ngFor="let player of players">
+    <div class="player" (click)="view(player.id)">
+        <app-player-info [player]="player" listItem=true></app-player-info>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #noResult>
+    <mat-grid-list cols="1" rowHeight="4:1">
+      <mat-grid-tile>
+        <p>Aucun joueurs.</p>
+      </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
+
+<ng-template #progress>
+    <mat-grid-list cols="1" rowHeight="4:1">
+      <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+      </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
