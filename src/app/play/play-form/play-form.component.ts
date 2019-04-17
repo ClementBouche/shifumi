@@ -47,12 +47,7 @@ export class PlayFormComponent implements OnInit {
     }
     this.play = new Play();
     if (this.boardgame) {
-      const nbPlayers = Math.round((this.boardgame.players.min + this.boardgame.players.max) / 2);
-      this.form.patchValue({
-        boardgameName: this.boardgame.name,
-        playingTime: this.boardgame.time.average,
-        scores: Array.from(new Array(nbPlayers), (val, index) => new Score())
-      });
+      this.patchForm(this.boardgame);
     }
     if (this.newPlay) {
       this.form.patchValue({
@@ -69,7 +64,9 @@ export class PlayFormComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.form.patchValue({ boardgameName: result });
+      if (result) {
+        this.patchForm(result);
+      }
     });
   }
 
@@ -119,6 +116,15 @@ export class PlayFormComponent implements OnInit {
     this.play.scores = this.form.value.scores.map(sc => Object.assign({}, sc));
     // TODO les score sont gerer independament
     return true;
+  }
+
+  private patchForm(bg: Boardgame) {
+    const nbPlayers = Math.round((bg.players.min + bg.players.max) / 2);
+    this.form.patchValue({
+      boardgameName: bg.name,
+      playingTime: bg.time.average,
+      scores: Array.from(new Array(nbPlayers), (val, index) => new Score())
+    });
   }
 
 }

@@ -32,6 +32,9 @@ export class BoardgamePickDialogComponent implements OnInit, OnDestroy {
     this.formSubscription = this.boardgameForm.valueChanges
         .pipe(debounceTime(500))
         .subscribe((namePart) => {
+          if (typeof namePart != 'string') {
+            return;
+          }
           const search = new BoardgameSearch().deserialize({name: namePart, size: 10});
           this.boardgameService.search(search).then(boardgamePage => {
             this.boargames = boardgamePage.result;
@@ -50,8 +53,16 @@ export class BoardgamePickDialogComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  select(boardgameName: string) {
-    this.data.name = boardgameName;
+  displayFunction(bg: Boardgame) {
+    if (bg) {
+      console.log({bg});
+      return bg.name;
+    }
+    return '';
+  }
+
+  select(bg: Boardgame) {
+    this.data = bg;
   }
 
 }

@@ -1,10 +1,10 @@
 import { Deserializable } from "src/app/core/model/deserializable.interface";
 
 export class Score implements Deserializable {
-  new: boolean;
-  winner: boolean;
-  value: number;
-  playerName: string;
+  new: boolean = false;
+  winner: boolean = false;
+  value: number = 0;
+  playerName: string = '';
 
   deserialize(input: any) {
     Object.assign(this, {
@@ -15,4 +15,5 @@ export class Score implements Deserializable {
     });
     return this;
   }
+
 }
