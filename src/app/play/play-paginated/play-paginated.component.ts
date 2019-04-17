@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { PlaySearch } from '../shared/model/play-search.model';
 import { Play } from '../shared/model/play.model';
 import { PlayService } from '../shared/services/play.service';
 import { PageEvent } from '@angular/material';
+import { PlaysPage } from '../shared/model/plays-page.model';
 
 @Component({
   selector: 'app-play-paginated',
@@ -16,20 +17,28 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy {
 
   plays: Play[];
 
-  playSearch: PlaySearch;
+  count: number;
+
+  index: number;
+
+  size: number;
 
   private routeSubscription: Subscription;
 
   constructor(
-    private playService: PlayService,
     private route: ActivatedRoute,
+    private router: Router,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.routeSubscription = this.route.data.subscribe((data: {result: {search:  PlaySearch, plays: Play[]}}) => {
-      this.playSearch = data.result.search;
-      this.plays = data.result.plays;
+    this.routeSubscription = this.route.data.subscribe((data: {playsPage: PlaysPage}) => {
+      // mise a jour recherche
+      this.count = data.playsPage.count;
+      this.index = data.playsPage.page - 1;
+      this.size = data.playsPage.size;
+
+      this.plays = data.playsPage.result;
       this.cd.markForCheck();
     });
   }
@@ -39,13 +48,15 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy {
   }
 
   changePage(pageEvent: PageEvent) {
-    this.playSearch.page = pageEvent.pageIndex;
-    this.playSearch.size = pageEvent.pageSize;
-    this.playService.search(this.playSearch)
-        .then(result => {
-          this.plays = result;
-          this.cd.detectChanges();
-        });
+    // router update
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { 
+        page: pageEvent.pageIndex + 1,
+        size: pageEvent.pageSize
+      },
+      queryParamsHandling: 'merge'
+    });
   }
 
 }

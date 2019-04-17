@@ -5,6 +5,7 @@ import { environment } from '../../../../environments/environment';
 import { Play } from '../model/play.model';
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 import { PlaySearch } from '../model/play-search.model';
+import { PlaysPage } from '../model/plays-page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -45,9 +46,17 @@ export class PlayService {
       .then(response => new Play().deserialize(response));
   }
 
-  search(search: PlaySearch): Promise<Play[]> {
+  search(search: PlaySearch): Promise<PlaysPage> {
     // TODO create search method in API with game && player filters
-    return this.getPlays(search.size, search.page);
+    return this.getPlays(search.size, search.page).then((plays) => {
+      const playsPage = new PlaysPage();
+      return Object.assign(playsPage, {
+        count: 900,
+        size: search.size || 10,
+        page: search.page || 1,
+        result: plays.length > 0 ? plays : []
+      });
+    });
   };
 
 }

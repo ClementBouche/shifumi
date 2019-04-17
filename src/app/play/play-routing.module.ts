@@ -21,7 +21,7 @@ const routes: Routes = [
         component: PlayPaginatedComponent,
         runGuardsAndResolvers: 'always',
         resolve: {
-          result: PlaySearchResolverService
+          playsPage: PlaySearchResolverService
         },
       },
       {
