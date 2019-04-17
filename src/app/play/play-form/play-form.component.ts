@@ -29,7 +29,6 @@ export class PlayFormComponent implements OnInit {
     place: [''],
     playingTime: [0],
     incomplete: [false],
-    nbPlayer: [0],
     scores: [new Array<Score>()]
   });
 
@@ -48,9 +47,11 @@ export class PlayFormComponent implements OnInit {
     }
     this.play = new Play();
     if (this.boardgame) {
+      const nbPlayers = Math.round((this.boardgame.players.min + this.boardgame.players.max) / 2);
       this.form.patchValue({
         boardgameName: this.boardgame.name,
         playingTime: this.boardgame.time.average,
+        scores: Array.from(new Array(nbPlayers), (val, index) => new Score())
       });
     }
     if (this.newPlay) {
@@ -103,7 +104,6 @@ export class PlayFormComponent implements OnInit {
       place: this.play.place,
       playingTime: this.play.playingTime,
       incomplete: this.play.incomplete,
-      nbPlayer: this.play.scores.length,
       scores: this.play.scores.map(sc => Object.assign({}, sc))
     });
     this.cd.markForCheck();
