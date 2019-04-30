@@ -1,9 +1,13 @@
 import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { Score } from '../shared/model/score.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+
 import { NumericValidator } from 'src/app/core/validators/numeric.validator';
+import { Score } from '../shared/model/score.model';
+import { Player } from 'src/app/player/shared/model/player.model';
+import { PlayerPickDialogComponent } from 'src/app/dialogs/player-pick-dialog/player-pick-dialog.component';
 
 @Component({
   selector: 'app-score-form',
@@ -23,6 +27,7 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
   private changeSubscription: Subscription;
 
   constructor(
+    private dialog: MatDialog,
     private formBuilder: FormBuilder,
     private cd: ChangeDetectorRef
   ) { }
@@ -60,7 +65,23 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
   }
 
   openDialog() {
-    console.log('open select player dialog');
+    const dialogRef = this.dialog.open(PlayerPickDialogComponent, {
+      width: '500px',
+      data: {name: ''}
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.setPlayerName(result);
+      }
+    });
+  }
+
+  setPlayerName(player: Player) {
+    this.form.patchValue({
+      playerName: player.name
+    });
+    this.cd.markForCheck();
   }
 
   delete() {

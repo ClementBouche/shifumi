@@ -52,7 +52,6 @@ export class AutocompleteSearchInputComponent implements OnInit, OnDestroy {
 
   displayFunction(bg: Boardgame) {
     if (bg) {
-      console.log({bg});
       return bg.name;
     }
     return '';

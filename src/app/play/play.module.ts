@@ -13,6 +13,7 @@ import { PlayFormComponent } from './play-form/play-form.component';
 import { PlayUpdateComponent } from './play-update/play-update.component';
 import { PlayPaginatedComponent } from './play-paginated/play-paginated.component';
 import { ScoreFormComponent } from './score-form/score-form.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,10 @@ import { ScoreFormComponent } from './score-form/score-form.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    AppMaterialModule,
+    SharedModule,
     PlayRoutingModule,
     PlaySharedModule,
-    AppMaterialModule
   ],
   exports: [
   ]

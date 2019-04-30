@@ -3,11 +3,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppMaterialModule } from './app-material.module';
 
-import { AutocompleteSearchInputComponent } from './autocomplete-search-input/autocomplete-search-input.component';
+import { AutocompleteSearchInputComponent } from './components/autocomplete-search-input/autocomplete-search-input.component';
+import { PlayerSearchInputComponent } from './components/player-search-input/player-search-input.component';
 
 @NgModule({
   declarations: [
-    AutocompleteSearchInputComponent
+    AutocompleteSearchInputComponent,
+    PlayerSearchInputComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { AutocompleteSearchInputComponent } from './autocomplete-search-input/au
     AppMaterialModule
   ],
   exports: [
-    AutocompleteSearchInputComponent
+    AutocompleteSearchInputComponent,
+    PlayerSearchInputComponent
   ]
 })
 export class SharedModule { }

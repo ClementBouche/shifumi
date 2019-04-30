@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { Boardgame } from './../../boardgame/shared/model/boardgame.model';
+import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 
 @Component({
   selector: 'app-boardgame-pick-dialog',
@@ -22,8 +22,8 @@ export class BoardgamePickDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  select(bg: Boardgame) {
-    this.data = bg;
+  select(event: Boardgame) {
+    this.data = event;
   }
 
 }

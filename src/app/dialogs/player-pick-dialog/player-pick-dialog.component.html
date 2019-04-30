@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Pick a Player</h1>
+<div mat-dialog-content>
+  <app-player-search-input placeholder="Joueur" (playerSelected)="select($event)"></app-player-search-input>
+</div>
+<div mat-dialog-actions>
+  <span class="grow-flex"></span>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button color="accent" [mat-dialog-close]="data">Ok</button>
+</div>

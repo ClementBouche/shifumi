@@ -1,0 +1,17 @@
+<form>
+  <mat-form-field>
+    <input matInput [placeholder]="placeholder"
+        [matAutocomplete]="auto"
+        [formControl]="inputControl">
+    <button mat-button matSuffix mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+    <mat-autocomplete #auto="matAutocomplete"
+        (optionSelected)="select($event.option.value)"
+        [displayWith]="displayFunction">
+      <mat-option *ngFor="let player of players" [value]="player">
+        <span>{{ player.name }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

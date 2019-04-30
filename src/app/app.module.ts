@@ -11,7 +11,8 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
-import { BoardgamePickDialogComponent } from './shared/boardgame-pick-dialog/boardgame-pick-dialog.component';
+import { BoardgamePickDialogComponent } from './dialogs/boardgame-pick-dialog/boardgame-pick-dialog.component';
+import { PlayerPickDialogComponent } from './dialogs/player-pick-dialog/player-pick-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BoardgamePickDialogComponent } from './shared/boardgame-pick-dialog/boa
     HomeComponent,
     // entry components
     BoardgamePickDialogComponent,
+    PlayerPickDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { BoardgamePickDialogComponent } from './shared/boardgame-pick-dialog/boa
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
   ],
   entryComponents: [
-    BoardgamePickDialogComponent
+    BoardgamePickDialogComponent,
+    PlayerPickDialogComponent,
   ],
   bootstrap: [AppComponent]
 })

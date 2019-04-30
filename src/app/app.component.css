@@ -3,13 +3,18 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: 70px;
   min-width: 900px;
+  z-index: 2;
+}
+
+.app-toolbar app-autocomplete-search-input {
+  transform: translate(0, 5px);
 }
 
 .app-container {
   position: absolute;
-  top: 64px;
+  top: 70px;
   bottom: 0;
   left: 0;
   right: 0;

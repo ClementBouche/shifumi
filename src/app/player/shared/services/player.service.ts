@@ -12,7 +12,7 @@ import { PlayersPage } from '../model/players-page.model';
 })
 export class PlayerService {
 
-  private playerUrl = `${environment.apiUrl}/player/`; // url to web api
+  private playerUrl = `${environment.apiUrl}/player`; // url to web api
 
   constructor(
     private httpClient: HttpClient
@@ -40,23 +40,29 @@ export class PlayerService {
   }
 
   getPlayer(id: string): Promise<Player> {
-    const url = `${this.playerUrl}${id}`;
+    const url = `${this.playerUrl}/${id}`;
     return this.httpClient.get(url)
       .toPromise()
       .then(response => new Player().deserialize(response));
   }
 
   search(search: PlayerSearch): Promise<PlayersPage> {
-    // TODO create search method in API with game && playerer filters
-    return this.getPlayers(search.size, search.page).then((players) => {
-      const playerPage = new PlayersPage();
-      return Object.assign(playerPage, {
-        count: 200,
-        size: search.size || 10,
-        page: search.page || 1,
-        result: players.length > 0 ? players : []
-      });
-    });
+    const url = `${this.playerUrl}/search`;
+
+    return this.httpClient.post(url, search.serialize())
+      .toPromise()
+      .then(response => new PlayersPage().deserialize(response));
+
+      // TODO create search method in API with game && playerer filters
+    // return this.getPlayers(search.size, search.page).then((players) => {
+    //   const playerPage = new PlayersPage();
+    //   return Object.assign(playerPage, {
+    //     count: 200,
+    //     size: search.size || 10,
+    //     page: search.page || 1,
+    //     result: players.length > 0 ? players : []
+    //   });
+    // });
   };
 
 }
