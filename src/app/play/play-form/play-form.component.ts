@@ -1,11 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 
 import { BoardgamePickDialogComponent } from 'src/app/dialogs/boardgame-pick-dialog/boardgame-pick-dialog.component';
 import { Play } from '../shared/model/play.model';
-import { PlayService } from '../shared/services/play.service';
 import { Boardgame } from '../../boardgame/shared/model/boardgame.model';
 import { Score } from '../shared/model/score.model';
 
@@ -23,6 +22,8 @@ export class PlayFormComponent implements OnInit {
   // create or update ?
   @Input() newPlay: boolean = true;
 
+  @Output() playSubmited: EventEmitter<Play> = new EventEmitter<Play>();
+
   form: FormGroup = this.formBuilder.group({
     boardgameName: [''],
     date: [''],
@@ -35,7 +36,6 @@ export class PlayFormComponent implements OnInit {
   private dateFormat: string = "YYYY-MM-DD";
 
   constructor(
-    private playService: PlayService,
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
     private cd: ChangeDetectorRef
@@ -77,7 +77,7 @@ export class PlayFormComponent implements OnInit {
 
   submit() {
     if (this.isFormValid()) {
-      console.log('valid', this.play);
+      this.playSubmited.emit(this.play);
     }
   }
 
@@ -101,7 +101,8 @@ export class PlayFormComponent implements OnInit {
       place: this.play.place,
       playingTime: this.play.playingTime,
       incomplete: this.play.incomplete,
-      scores: this.play.scores.map(sc => Object.assign({}, sc))
+      //scores: this.play.scores.map(sc => Object.assign({}, sc))
+      scores: this.play.scores
     });
     this.cd.markForCheck();
   }
@@ -113,7 +114,7 @@ export class PlayFormComponent implements OnInit {
     this.play.place = this.form.value.place;
     this.play.playingTime = this.form.value.playingTime;
     this.play.incomplete = this.form.value.incomplete;
-    this.play.scores = this.form.value.scores.map(sc => Object.assign({}, sc));
+    this.play.scores = this.form.value.scores;
     // TODO les score sont gerer independament
     return true;
   }

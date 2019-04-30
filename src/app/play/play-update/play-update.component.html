@@ -1,4 +1,4 @@
 <!-- new play form -->
 <ng-container *ngIf="!searching">
-    <app-play-form [play]="play" newPlay=false></app-play-form>
+  <app-play-form [play]="play" (playSubmited)="savePlay($event)" newPlay=false></app-play-form>
 </ng-container>

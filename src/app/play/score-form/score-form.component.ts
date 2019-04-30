@@ -48,6 +48,7 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
     if (this.score) {
       return this.updateForm();
     }
+    this.score = new Score();
   }
 
   ngOnDestroy() {
@@ -84,7 +85,7 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
     this.cd.markForCheck();
   }
 
-  delete() {
+  deleteAction() {
     this.scoreDeleted.emit(true);
   }
 
@@ -102,7 +103,10 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
     if (this.form.invalid) {
       return false;
     }
-    this.score = this.form.value as Score;
+    this.score.new = this.form.value.new;
+    this.score.playerName = this.form.value.playerName;
+    this.score.value = this.form.value.value;
+    this.score.winner = this.form.value.winner;
     return true;
   }
 

@@ -46,6 +46,20 @@ export class PlayService {
       .then(response => new Play().deserialize(response));
   }
 
+  create(play: Play) {
+    const url = `${environment.apiUrl}/play`;
+    return this.httpClient.post(url, play.serialize())
+      .toPromise()
+      .then(response => new Play().deserialize(response));
+  }
+
+  update(play: Play) {
+    const url = `${environment.apiUrl}/play/${play.id}`;
+    return this.httpClient.put(url, play.serialize())
+      .toPromise()
+      .then(response => new Play().deserialize(response));
+  }
+
   search(search: PlaySearch): Promise<PlaysPage> {
     // TODO create search method in API with game && player filters
     return this.getPlays(search.size, search.page).then((plays) => {

@@ -34,7 +34,14 @@ export class PlayUpdateComponent implements OnInit {
       }
     });
   }
-  
+
+  savePlay(event: Play) {
+    this.playService.update(event).then((play) => {
+      // TODO
+      console.log('play saved !!!!', play);
+    });
+  }
+
   private searchEnded() {
     this.searching = false;
     this.cd.detectChanges();
