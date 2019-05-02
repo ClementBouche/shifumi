@@ -1,0 +1,10 @@
+<div class="menu-bar">
+  <ng-container *ngFor="let button of listButton">
+    <a class="menu-item" mat-fab (click)="action(button)">
+      <mat-icon>{{ button }}</mat-icon>
+    </a>
+  </ng-container>
+  <a class="menu" mat-fab>
+    <mat-icon>menu</mat-icon>
+  </a>
+</div>

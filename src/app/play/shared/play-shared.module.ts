@@ -9,6 +9,7 @@ import { PlayAddButtonComponent } from './components/play-add-button/play-add-bu
 import { PlayInfoComponent } from './components/play-info/play-info.component';
 import { WinnerPipe } from './pipes/winner.pipe';
 import { PlayScoreComponent } from './components/play-score/play-score.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PlayScoreComponent } from './components/play-score/play-score.component
     CommonModule,
     RouterModule,
     AppMaterialModule,
+    SharedModule,
   ],
   exports: [
     PlayListComponent,

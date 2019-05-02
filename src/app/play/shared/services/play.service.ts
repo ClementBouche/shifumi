@@ -62,6 +62,14 @@ export class PlayService {
       .then(response => new Play().deserialize(response));
   }
 
+  delete(play: Play) {
+    console.log('delete', play);
+    const url = `${environment.apiUrl}/play/${play.id}`;
+    return this.httpClient.delete(url)
+      .toPromise()
+      .then(response => response);
+  }
+
   search(search: PlaySearch): Promise<PlaysPage> {
     // TODO create search method in API with game && player filters
     return this.getPlays(search.size, search.page).then((plays) => {

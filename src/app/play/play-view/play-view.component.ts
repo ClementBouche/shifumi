@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
@@ -13,25 +13,39 @@ import { Play } from '../shared/model/play.model';
 })
 export class PlayViewComponent implements OnInit {
 
-  play$: Observable<Play>;
+  play: Play;
+
+  actions = ['format_paint', 'star', 'edit', 'delete'];
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
-    private playService: PlayService
+    private router: Router,
+    private playService: PlayService,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.play$ = this.route.paramMap
-      .pipe(switchMap((params: ParamMap) => {
-          return this.playService.getPlay(params.get('id'));
-      }));
+    this.route.data.subscribe((data: {play: Play}) => {
+      this.play = data.play;
+      this.cd.markForCheck();
+    });
   }
 
-  update() {
-    this.play$.forEach((play) => {
-      this.router.navigate(['/', 'play', 'update', play.id]);
-    });
+  doAction(actionName: string) {
+    if (actionName == 'format_paint') {
+      this.router.navigate(['/', 'play', 'add']);
+    }
+    if (actionName == 'star') {
+      console.log('star');
+    }
+    if (actionName == 'edit') {
+      this.router.navigate(['/', 'play', 'update', this.play.id]);
+    }
+    if (actionName == 'delete') {
+      this.playService.delete(this.play).then(() => {
+        this.router.navigate(['/', 'play'])
+      });
+    }
   }
 
 }

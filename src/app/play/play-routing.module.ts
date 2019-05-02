@@ -8,6 +8,7 @@ import { PlayUpdateComponent } from './play-update/play-update.component';
 import { PlayListComponent } from './shared/components/play-list/play-list.component';
 import { PlayPaginatedComponent } from './play-paginated/play-paginated.component';
 import { PlaySearchResolverService } from './shared/resolvers/play-search-resolver.service';
+import { PlayViewResolverService } from './shared/resolvers/play-view-resolver.service';
 
 const routes: Routes = [
   {
@@ -26,7 +27,10 @@ const routes: Routes = [
       },
       {
         path: 'view/:id',
-        component: PlayViewComponent
+        component: PlayViewComponent,
+        resolve: {
+          play: PlayViewResolverService
+        },
       },
       {
         path: 'add',

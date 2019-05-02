@@ -1,0 +1,26 @@
+.menu-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item, .menu {
+  margin: 5px;
+}
+
+.menu-bar .menu-item {
+  opacity: 0;
+  transition: 0.5s ease-in;
+}
+
+.menu-bar:hover .menu-item {
+  opacity: 1;
+}
+
+.menu-bar:hover .menu .mat-icon {
+  transform: rotate(0deg);
+  transition: 0.5s ease-in;
+}
+
+.menu-bar:hover .menu .mat-icon {
+  transform: rotate(90deg);
+}

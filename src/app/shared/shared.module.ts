@@ -5,11 +5,13 @@ import { AppMaterialModule } from './app-material.module';
 
 import { AutocompleteSearchInputComponent } from './components/autocomplete-search-input/autocomplete-search-input.component';
 import { PlayerSearchInputComponent } from './components/player-search-input/player-search-input.component';
+import { MenuButtonComponent } from './components/menu-button/menu-button.component';
 
 @NgModule({
   declarations: [
     AutocompleteSearchInputComponent,
     PlayerSearchInputComponent,
+    MenuButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { PlayerSearchInputComponent } from './components/player-search-input/pla
   ],
   exports: [
     AutocompleteSearchInputComponent,
-    PlayerSearchInputComponent
+    PlayerSearchInputComponent,
+    MenuButtonComponent,
   ]
 })
 export class SharedModule { }
