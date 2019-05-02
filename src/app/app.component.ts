@@ -1,7 +1,14 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+import { Subscription } from 'rxjs';
+
 import { appRouteAnimations } from './core/animation/app-route.animation';
+
+import { UserService } from './login/shared/services/user.service';
+
 import { Boardgame } from './boardgame/shared/model/boardgame.model';
+import { User } from './login/model/user.model';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +17,44 @@ import { Boardgame } from './boardgame/shared/model/boardgame.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [appRouteAnimations]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+
+  registered: User;
+
+  logSubscription: Subscription;
 
   constructor(
-    private router: Router
+    private userService: UserService,
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
+    this.logSubscription = this.userService.logginEvent.subscribe((user) => {
+      this.registered = user;
+      if (this.registered) {
+        this.welcomeMessage();
+      } else {
+        this.goodByMessage();
+      }
+      this.cd.detectChanges();
+    });
+
+    // TODO clean that up !
+    setTimeout(() => {
+      this.userService.registerFromLocalStorage();
+    }, 500);
+  }
+
+  ngOnDestroy() {
+    if (this.logSubscription) {
+      this.logSubscription.unsubscribe();
+    }
+  }
+
+  loggout() {
+    this.userService.logout();
   }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -25,6 +63,18 @@ export class AppComponent implements OnInit {
 
   select(boardgame: Boardgame) {
     this.router.navigate(['/', 'boardgame', boardgame.id])
+  }
+
+  private welcomeMessage() {
+    this.snackBar.open(`Bienvenue ${this.registered.username}`, 'Ok', {
+      duration: 5000,
+    });
+  }
+
+  private goodByMessage() {
+    this.snackBar.open('Vous êtes déconnecté', 'Ok', {
+      duration: 2000,
+    });
   }
 
 }

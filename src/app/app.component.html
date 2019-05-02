@@ -3,7 +3,20 @@
   <a mat-button color="accent" routerLink="" routerLinkActive="active"><h1 class="title">Shi.Fu.Mi</h1></a>
   <span class="separator"></span>
   <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
-  <button mat-button><mat-icon>link</mat-icon></button>
+  <ng-container *ngIf="registered && registered.username != '' else login">
+    <a mat-button routerLink="profil" routerLinkActive="active">
+      {{ registered.username }}
+      <mat-icon>person</mat-icon>
+    </a>
+    <a mat-button (click)="loggout()">
+      <mat-icon>exit_to_app</mat-icon>
+    </a>
+  </ng-container>
+  <ng-template #login>
+    <a mat-button routerLink="login" routerLinkActive="active">
+      <mat-icon>person_outline</mat-icon>
+    </a>
+  </ng-template>
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">

@@ -9,6 +9,10 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'login',
+    loadChildren: './login/login.module#LoginModule'
+  },
+  {
     path: 'boardgame',
     loadChildren: './boardgame/boardgame.module#BoardgameModule'
   },

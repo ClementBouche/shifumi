@@ -27,6 +27,8 @@ export class PlayUpdateComponent implements OnInit {
       if (params.playId) {
         return this.playService.getPlay(params.playId).then((play) => {
           this.play = play;
+          console.log('paramsId', params.playId);
+          console.log('playid', this.play.id);
           this.searchEnded();
         });
       } else {
@@ -37,8 +39,7 @@ export class PlayUpdateComponent implements OnInit {
 
   savePlay(event: Play) {
     this.playService.update(event).then((play) => {
-      // TODO
-      console.log('play saved !!!!', play);
+      this.router.navigate(['/play']);
     });
   }
 

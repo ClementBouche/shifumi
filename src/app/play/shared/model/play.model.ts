@@ -18,7 +18,6 @@ export class Play implements Deserializable, Serializable {
       return sc.serialize();
     });
     return {
-      _id: this.id,
       date: this.date,
       place_name: this.place,
       boardgame_name: this.boardgameName,

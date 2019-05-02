@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://cbouche.me/api'
+  apiUrl: 'https://cbouche.me/api',
+  routes: {
+    authenticate: '/user/authenticate'
+  }
 };
 
 /*

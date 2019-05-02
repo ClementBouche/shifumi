@@ -1,8 +1,10 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Boardgame } from '../../boardgame/shared/model/boardgame.model';
 import { BoardgameService } from '../../boardgame/shared/services/boardgame.service';
+import { PlayService } from '../shared/services/play.service';
+import { Play } from '../shared/model/play.model';
 
 @Component({
   selector: 'app-play-add',
@@ -17,6 +19,7 @@ export class PlayAddComponent implements OnInit {
 
   constructor(
     private boardgameService: BoardgameService,
+    private playService: PlayService,
     private router: Router,
     private route: ActivatedRoute,
     private cd: ChangeDetectorRef
@@ -32,6 +35,12 @@ export class PlayAddComponent implements OnInit {
       } else {
         this.searchEnded();
       }
+    });
+  }
+
+  savePlay(event: Play) {
+    this.playService.create(event).then((play) => {
+      this.router.navigate(['/play']);
     });
   }
 
