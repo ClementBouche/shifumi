@@ -13,6 +13,10 @@ html {
   font-family: 'Montserrat', sans-serif;
 }
 
+body {
+  overflow: hidden;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -72,7 +76,7 @@ a {
   left: 0;
   right: 0;
   text-align: center;
-  min-width: 900px;
+  min-width: 300px;
 }
 
 .loading-screen .centered {

@@ -1,11 +1,20 @@
+.page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
 .app-toolbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 70px;
-  min-width: 900px;
   z-index: 2;
+  min-width: 600px;
 }
 
 .app-toolbar app-autocomplete-search-input {
@@ -18,7 +27,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  min-width: 900px;
+  min-width: 600px;
+  min-height: 500px;
 }
 
 .title {
@@ -28,19 +38,18 @@
 
 .separator {
   display: block;
-  padding: 0px 10px;
+  padding: 0px 5px;
 }
 
 .flex-content {
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow-y: scroll
 }
 
 .grow {
   flex-grow: 1;
-  margin: 0px 20px;
+  margin: 0px 5px;
 }
 
 .text-size {
@@ -60,4 +69,20 @@
 
 .footer span.small {
   font-size: small;
+}
+
+@media (max-width: 600px) {
+  .app-toolbar {
+    min-width: 300px;
+    padding: 0;
+  }
+  .home-button, .separator, .profil-button {
+    display: none;
+  }
+  .app-container {
+    min-width: 500px;
+  }
+  .grow {
+    margin: 0px;
+  }
 }

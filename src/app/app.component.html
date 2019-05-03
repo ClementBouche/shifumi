@@ -1,59 +1,61 @@
-<mat-toolbar class="app-toolbar mat-elevation-z6" color="primary">
-  <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-  <a mat-button color="accent" routerLink="" routerLinkActive="active"><h1 class="title">Shi.Fu.Mi</h1></a>
-  <span class="separator"></span>
-  <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
-  <ng-container *ngIf="registered && registered.username != '' else login">
-    <a mat-button routerLink="profil" routerLinkActive="active">
-      {{ registered.username }}
-      <mat-icon>person</mat-icon>
-    </a>
-    <a mat-button (click)="loggout()">
-      <mat-icon>exit_to_app</mat-icon>
-    </a>
-  </ng-container>
-  <ng-template #login>
-    <a mat-button routerLink="login" routerLinkActive="active">
-      <mat-icon>person_outline</mat-icon>
-    </a>
-  </ng-template>
-</mat-toolbar>
+<div class="page">
+  <mat-toolbar class="app-toolbar mat-elevation-z6" color="primary">
+    <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <a mat-button class="home-button" color="accent" routerLink="" routerLinkActive="active"><h1 class="title">Shi.Fu.Mi</h1></a>
+    <span class="separator"></span>
+    <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
+    <ng-container *ngIf="registered && registered.username != '' else login">
+      <a mat-button class="profil-button" routerLink="profil" routerLinkActive="active">
+        {{ registered.username }}
+        <mat-icon>person</mat-icon>
+      </a>
+      <a mat-button (click)="loggout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </a>
+    </ng-container>
+    <ng-template #login>
+      <a mat-button routerLink="login" routerLinkActive="active">
+        <mat-icon>person_outline</mat-icon>
+      </a>
+    </ng-template>
+  </mat-toolbar>
 
-<mat-sidenav-container class="app-container">
-  <!-- TODO mode over -->
-  <mat-sidenav #sidenav mode="side" opened="true" class="mat-elevation-z6">
-    <mat-list role="list">
-      <mat-list-item role="listitem">
-          <a mat-button routerLink="boardgame" routerLinkActive="active">
-            <mat-icon>link</mat-icon>
-            Jeux
-          </a>
-      </mat-list-item>
-      <mat-list-item role="listitem">
-          <a mat-button routerLink="play" routerLinkActive="active">
-            <mat-icon>link</mat-icon>
-            Parties
-          </a>
-      </mat-list-item>
-      <mat-list-item role="listitem">
-          <a mat-button routerLink="player" routerLinkActive="active">
-            <mat-icon>link</mat-icon>
-            Joueurs
-          </a>
-      </mat-list-item>
-    </mat-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <!-- <div class="flex-content" [@routeAnimations]="prepareRoute(outlet)"> -->
-    <div class="flex-content">
-      <div class="grow">
-          <router-outlet #outlet="outlet"></router-outlet>
+  <mat-sidenav-container class="app-container">
+    <!-- TODO mode over -->
+    <mat-sidenav #sidenav mode="over" opened="false" class="mat-elevation-z6">
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+            <a mat-button routerLink="boardgame" routerLinkActive="active">
+              <mat-icon>link</mat-icon>
+              Jeux
+            </a>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+            <a mat-button routerLink="play" routerLinkActive="active">
+              <mat-icon>link</mat-icon>
+              Parties
+            </a>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+            <a mat-button routerLink="player" routerLinkActive="active">
+              <mat-icon>link</mat-icon>
+              Joueurs
+            </a>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!-- <div class="flex-content" [@routeAnimations]="prepareRoute(outlet)"> -->
+      <div class="flex-content">
+        <div class="grow">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+        <mat-toolbar class="footer" color="primary">
+          <span>Shi.Fu.Mi</span>
+          <span class="small">current version: 0.0.2</span>
+          <span class="small">Retrouvez-nous sur <a mat-button href="https://github.com/ClementBouche/shifumi" target="_blank">GitHub.</a></span>
+        </mat-toolbar>
       </div>
-      <mat-toolbar class="footer" color="primary">
-        <span>Shi.Fu.Mi</span>
-        <span class="small">current version: 0.0.2</span>
-        <span class="small">Réalisé par cbouche&co, retrouvez-nous sur <a mat-button href="https://github.com/ClementBouche/shifumi" target="_blank">GitHub.</a></span>
-      </mat-toolbar>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
