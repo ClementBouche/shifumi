@@ -9,6 +9,7 @@ import { UserService } from './login/shared/services/user.service';
 
 import { Boardgame } from './boardgame/shared/model/boardgame.model';
 import { User } from './login/model/user.model';
+import { MetadataTagsService } from './core/services/metadata-tags.service';
 
 @Component({
   selector: 'app-root',
@@ -25,12 +26,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private userService: UserService,
+    private metadataTagsService: MetadataTagsService,
     private router: Router,
     private snackBar: MatSnackBar,
     private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
+    this.metadataTagsService.updateTitle('Shifumi - Accueil');
+
     this.logSubscription = this.userService.logginEvent.subscribe((user) => {
       this.registered = user;
       if (this.registered) {

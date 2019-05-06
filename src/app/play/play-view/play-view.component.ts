@@ -1,10 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { PlayService } from '../shared/services/play.service';
-import { Observable } from 'rxjs';
 import { Play } from '../shared/model/play.model';
+import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
 
 @Component({
   selector: 'app-play-view',
@@ -21,7 +20,8 @@ export class PlayViewComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private playService: PlayService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private metadataTags: MetadataTagsService
   ) { }
 
   ngOnInit() {
@@ -29,6 +29,10 @@ export class PlayViewComponent implements OnInit {
       this.play = data.play;
       this.cd.markForCheck();
     });
+    if (this.play) {
+      this.metadataTags.updateTitle(this.play.boardgameName + ' le ' + this.play.date);
+      this.metadataTags.updateDescription(this.play.boardgameName + ' joué à / au ' + this.play.place + ' le ' + this.play.date);
+    }
   }
 
   doAction(actionName: string) {
