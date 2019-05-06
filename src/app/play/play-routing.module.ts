@@ -26,15 +26,15 @@ const routes: Routes = [
         },
       },
       {
-        path: 'view/:id',
+        path: 'add',
+        component: PlayAddComponent
+      },
+      {
+        path: ':id',
         component: PlayViewComponent,
         resolve: {
           play: PlayViewResolverService
         },
-      },
-      {
-        path: 'add',
-        component: PlayAddComponent
       },
       {
         path: 'add/:boardgameId',

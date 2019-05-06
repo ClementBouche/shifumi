@@ -14,6 +14,7 @@ import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { AppMaterialModule } from '../shared/app-material.module';
 import { BoardgameTableComponent } from './boardgame-table/boardgame-table.component';
 import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +30,11 @@ import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-pag
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    AppMaterialModule,
+    SharedModule,
     BoardgameRoutingModule,
     BoardgameSharedModule,
     PlaySharedModule,
-    AppMaterialModule
   ],
   exports: [
   ]

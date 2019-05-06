@@ -5,6 +5,8 @@ import { PlayerComponent } from './player.component';
 import { PlayerPaginatedComponent } from './player-paginated/player-paginated.component';
 
 import { PlayerSearchResolverService } from './shared/resolvers/player-search-resolver.service';
+import { PlayerViewComponent } from './player-view/player-view.component';
+import { PlayerViewResolverService } from './shared/resolvers/player-view-resolver.service';
 
 const routes: Routes = [
   {
@@ -20,7 +22,14 @@ const routes: Routes = [
           playersPage: PlayerSearchResolverService
         },
         data: { animation: 'playerListPage' },
-      }
+      },
+      {
+        path: ':id',
+        component: PlayerViewComponent,
+        resolve: {
+          play: PlayerViewResolverService
+        },
+      },
     ]
   }
 ];

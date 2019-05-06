@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 
@@ -19,7 +19,6 @@ export class PlayListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private playService: PlayService,
     private cd: ChangeDetectorRef
   ) { }
@@ -37,7 +36,7 @@ export class PlayListComponent implements OnInit {
   }
 
   view(playid: string) {
-    this.router.navigate(['play', 'view', playid]);
+    this.router.navigate(['play', playid]);
   }
 
 }

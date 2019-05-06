@@ -7,4 +7,4 @@
   <app-play-list [boardgame]="boardgame"></app-play-list>
 </ng-container>
 
-<app-play-add-button [boardgameId]="boardgame.id"></app-play-add-button>
+<app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>

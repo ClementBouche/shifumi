@@ -7,7 +7,7 @@ import { PlayService } from '../services/play.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PlayViewResolverService  implements Resolve<Play> {
+export class PlayViewResolverService implements Resolve<Play> {
 
   constructor(
     private service: PlayService,

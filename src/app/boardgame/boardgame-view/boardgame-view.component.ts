@@ -15,6 +15,8 @@ export class BoardgameViewComponent implements OnInit, Tagable {
 
   boardgame: Boardgame;
 
+  actions: string[] = ['add'];
+
   constructor(
     private boardgameService: BoardgameService,
     private metadataTags: MetadataTagsService,
@@ -43,6 +45,12 @@ export class BoardgameViewComponent implements OnInit, Tagable {
       this.metadataTags.updateTitle('Shifumi - ' + this.boardgame.name);
       this.metadataTags.updateDescription(this.boardgame.name);
       this.metadataTags.updateImage(this.boardgame.image, 200);
+    }
+  }
+
+  doAction(actionName: string) {
+    if (actionName == 'add') {
+      this.router.navigate(['/', 'play', 'add', this.boardgame.id]);
     }
   }
 

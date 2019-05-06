@@ -23,6 +23,8 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy, Tagable {
 
   size: number;
 
+  actions: string[] = ['add'];
+
   private routeSubscription: Subscription;
 
   constructor(
@@ -64,6 +66,12 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy, Tagable {
 
   updateTags() {
     this.metadataTags.updateTitle('Shifumi - Liste des parties');
+  }
+
+  doAction(actionName: string) {
+    if (actionName == 'add') {
+      this.router.navigate(['/', 'play', 'add']);
+    }
   }
 
 }

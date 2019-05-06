@@ -12,19 +12,25 @@ import { PlayerPaginatedComponent } from './player-paginated/player-paginated.co
 import { PlayerListComponent } from './player-list/player-list.component';
 import { PlayerInfoComponent } from './player-info/player-info.component';
 import { BoardgameSharedModule } from '../boardgame/shared/boardgame-shared.module';
+import { PlayerCardComponent } from './player-card/player-card.component';
+import { PlayerViewComponent } from './player-view/player-view.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     PlayerComponent,
     PlayerPaginatedComponent,
     PlayerListComponent,
-    PlayerInfoComponent
+    PlayerInfoComponent,
+    PlayerCardComponent,
+    PlayerViewComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AppMaterialModule,
+    SharedModule,
     PlayerRoutingModule,
     PlayerSharedModule,
     BoardgameSharedModule

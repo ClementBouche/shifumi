@@ -1,5 +1,5 @@
 <ng-container *ngIf="play">
   <app-play-info [play]="play"></app-play-info>
   <!-- menu copy / like / edit -->
-  <app-menu-button class="buttons" [listButton]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
+  <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
 </ng-container>

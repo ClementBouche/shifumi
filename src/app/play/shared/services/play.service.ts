@@ -47,7 +47,6 @@ export class PlayService {
   }
 
   create(play: Play) {
-    console.log('create', play);
     const url = `${environment.apiUrl}/play`;
     return this.httpClient.post(url, play.serialize())
       .toPromise()
@@ -55,7 +54,6 @@ export class PlayService {
   }
 
   update(play: Play) {
-    console.log('update', play);
     const url = `${environment.apiUrl}/play/${play.id}`;
     return this.httpClient.put(url, play.serialize())
       .toPromise()
@@ -63,7 +61,6 @@ export class PlayService {
   }
 
   delete(play: Play) {
-    console.log('delete', play);
     const url = `${environment.apiUrl}/play/${play.id}`;
     return this.httpClient.delete(url)
       .toPromise()

@@ -7,19 +7,16 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class MenuButtonComponent implements OnInit {
 
-  @Input() listButton: String[];
+  @Input() actions: String[];
 
   @Output() actionTriggered: EventEmitter<String> = new EventEmitter<String>();
 
   constructor() { }
 
   ngOnInit() {
-    if (this.listButton) {
-      console.log(this.listButton);
-    }
   }
 
-  action(action: string) {
+  trigger(action: string) {
     this.actionTriggered.emit(action);
   }
 

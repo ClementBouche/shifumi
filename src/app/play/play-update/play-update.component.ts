@@ -27,8 +27,6 @@ export class PlayUpdateComponent implements OnInit {
       if (params.playId) {
         return this.playService.getPlay(params.playId).then((play) => {
           this.play = play;
-          console.log('paramsId', params.playId);
-          console.log('playid', this.play.id);
           this.searchEnded();
         });
       } else {
