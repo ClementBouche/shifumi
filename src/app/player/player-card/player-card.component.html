@@ -6,11 +6,16 @@
       {{ player.name }}
     </mat-card-title>
     <mat-card-subtitle>
-      {{ player.counts.plays }}
+      {{ player.time | playTime }}
     </mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
-    bio....
+    <ul>
+      <li>{{ player.counts.boardgames }} parties</li>
+      <li>{{ player.counts.wins }} gagné</li>
+      <li>Dans {{ player.counts.places }} lieux</li>
+      <li>Avec {{ player.counts.players }} joueurs</li>
+    </ul>
   </mat-card-content>
 </mat-card>

@@ -5,7 +5,7 @@
               (page)="changePage($event)">
 </mat-paginator>
 
-<div *ngIf="players else loading" class="cards">
+<div *ngIf="players && players.length > 0 else noMore" class="cards">
   <!-- <app-player-list [players]="players"></app-player-list> -->
   <ng-container *ngFor="let player of players">
     <app-player-card [player]="player" (click)="view(player.id)"></app-player-card>
@@ -13,10 +13,10 @@
   <div class="end-line"></div>
 </div>
 
-<ng-template #loading>
+<ng-template #noMore>
   <mat-grid-list cols="1" rowHeight="4:1">
     <mat-grid-tile>
-      <mat-spinner></mat-spinner>
+      Retour à la <a mat-button [routerLink]="['/', 'player']">Page 1</a>
     </mat-grid-tile>
   </mat-grid-list>
 </ng-template>

@@ -33,14 +33,16 @@ export class PlayerPaginatedComponent implements OnInit, Tagable {
   ) { }
 
   ngOnInit() {
-    this.routeSubscription = this.route.data.subscribe((data: {playersPage: PlayersPage}) => {
-      // mise a jour recherche
-      this.count = data.playersPage.count;
-      this.index = data.playersPage.page - 1;
-      this.size = data.playersPage.size;
+    this.route.queryParams.subscribe((data) => {
+      this.index = data.page ? data.page - 1 : 0;
+      this.size = data.size || 10;
+      this.cd.markForCheck();
+    });
 
+    this.routeSubscription = this.route.data.subscribe((data: {players: Player[]}) => {
       // mise a jour resultat
-      this.players = data.playersPage.result;
+      this.players = data.players;
+      this.count = this.autoSizingPaginator(this.players, this.index, this.size, this.count);
 
       this.cd.markForCheck();
     });
@@ -62,6 +64,16 @@ export class PlayerPaginatedComponent implements OnInit, Tagable {
       },
       queryParamsHandling: 'merge'
     });
+  }
+
+  autoSizingPaginator(data: any[], page: number, size: number, oldCount: number) {
+    const noMoreDataCount = (page + 1) * size;
+    const moreDataCount = (page + 2) * size;
+    if (oldCount === null || oldCount === 0 || data.length === 0) {
+      return noMoreDataCount;
+    }
+    // keep old count or upgrade him
+    return oldCount > moreDataCount ? oldCount : moreDataCount;
   }
 
   view(id: string) {

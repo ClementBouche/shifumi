@@ -4,9 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { PlayerComponent } from './player.component';
 import { PlayerPaginatedComponent } from './player-paginated/player-paginated.component';
 
-import { PlayerSearchResolverService } from './shared/resolvers/player-search-resolver.service';
 import { PlayerViewComponent } from './player-view/player-view.component';
 import { PlayerViewResolverService } from './shared/resolvers/player-view-resolver.service';
+import { PlayerListResolverService } from './shared/resolvers/player-list-resolver.service';
 
 const routes: Routes = [
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
         component: PlayerPaginatedComponent,
         runGuardsAndResolvers: 'always',
         resolve: {
-          playersPage: PlayerSearchResolverService
+          players: PlayerListResolverService
         },
         data: { animation: 'playerListPage' },
       },
