@@ -1,17 +1,19 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PageEvent } from '@angular/material';
+import { Subscription } from 'rxjs';
 
 import { Boardgame } from '../shared/model/boardgame.model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { BoardgamesPage } from '../shared/model/boardgames-page.model';
+import { Tagable } from 'src/app/core/model/tagable.interface';
+import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
 
 @Component({
   selector: 'app-boardgame-paginated',
   templateUrl: './boardgame-paginated.component.html',
   styleUrls: ['./boardgame-paginated.component.css']
 })
-export class BoardgamePaginatedComponent implements OnInit, OnDestroy {
+export class BoardgamePaginatedComponent implements OnInit, OnDestroy, Tagable {
 
   boardgames: Boardgame[];
 
@@ -25,6 +27,7 @@ export class BoardgamePaginatedComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private metadataTags: MetadataTagsService,
     private router: Router,
     private cd: ChangeDetectorRef
   ) { }
@@ -41,6 +44,8 @@ export class BoardgamePaginatedComponent implements OnInit, OnDestroy {
 
       this.cd.markForCheck();
     });
+
+    this.updateTags();
   }
 
   ngOnDestroy() {
@@ -57,6 +62,10 @@ export class BoardgamePaginatedComponent implements OnInit, OnDestroy {
       },
       queryParamsHandling: 'merge'
     });
+  }
+
+  updateTags() {
+    this.metadataTags.updateTitle('Shifumi - Liste des jeux');
   }
 
 }

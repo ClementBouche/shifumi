@@ -5,13 +5,15 @@ import { Subscription } from 'rxjs';
 
 import { Player } from '../shared/model/player.model';
 import { PlayersPage } from '../shared/model/players-page.model';
+import { Tagable } from 'src/app/core/model/tagable.interface';
+import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
 
 @Component({
   selector: 'app-player-paginated',
   templateUrl: './player-paginated.component.html',
   styleUrls: ['./player-paginated.component.css']
 })
-export class PlayerPaginatedComponent implements OnInit {
+export class PlayerPaginatedComponent implements OnInit, Tagable {
 
   players: Player[];
 
@@ -25,6 +27,7 @@ export class PlayerPaginatedComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private metadataTags: MetadataTagsService,
     private router: Router,
     private cd: ChangeDetectorRef
   ) { }
@@ -41,6 +44,8 @@ export class PlayerPaginatedComponent implements OnInit {
 
       this.cd.markForCheck();
     });
+
+    this.updateTags();
   }
 
   ngOnDestroy() {
@@ -57,6 +62,10 @@ export class PlayerPaginatedComponent implements OnInit {
       },
       queryParamsHandling: 'merge'
     });
+  }
+
+  updateTags() {
+    this.metadataTags.updateTitle('Shifumi - Liste des joueurs');
   }
 
 }

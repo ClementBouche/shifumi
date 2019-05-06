@@ -4,13 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PlayService } from '../shared/services/play.service';
 import { Play } from '../shared/model/play.model';
 import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
+import { Tagable } from 'src/app/core/model/tagable.interface';
 
 @Component({
   selector: 'app-play-view',
   templateUrl: './play-view.component.html',
   styleUrls: ['./play-view.component.css']
 })
-export class PlayViewComponent implements OnInit {
+export class PlayViewComponent implements OnInit, Tagable {
 
   play: Play;
 
@@ -29,10 +30,8 @@ export class PlayViewComponent implements OnInit {
       this.play = data.play;
       this.cd.markForCheck();
     });
-    if (this.play) {
-      this.metadataTags.updateTitle(this.play.boardgameName + ' le ' + this.play.date);
-      this.metadataTags.updateDescription(this.play.boardgameName + ' joué à / au ' + this.play.place + ' le ' + this.play.date);
-    }
+
+    this.updateTags();
   }
 
   doAction(actionName: string) {
@@ -49,6 +48,13 @@ export class PlayViewComponent implements OnInit {
       this.playService.delete(this.play).then(() => {
         this.router.navigate(['/', 'play'])
       });
+    }
+  }
+
+  updateTags() {
+    if (this.play) {
+      this.metadataTags.updateTitle(this.play.boardgameName + ' le ' + this.play.date);
+      this.metadataTags.updateDescription(this.play.boardgameName + ' joué à / au ' + this.play.place + ' le ' + this.play.date);
     }
   }
 

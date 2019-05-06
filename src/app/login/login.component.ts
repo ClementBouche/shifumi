@@ -4,13 +4,15 @@ import { Location } from '@angular/common';
 
 import { LoginService } from './shared/services/login.service';
 import { UserService } from './shared/services/user.service';
+import { Tagable } from '../core/model/tagable.interface';
+import { MetadataTagsService } from '../core/services/metadata-tags.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, Tagable {
 
   form: FormGroup = this.formBuilder.group({
     login: ['', Validators.required],
@@ -20,14 +22,16 @@ export class LoginComponent implements OnInit {
   message: string;
 
   constructor(
+    private userService: UserService,
+    private metadataTags: MetadataTagsService,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private userService: UserService,
     private cd: ChangeDetectorRef,
     private location: Location
   ) { }
 
   ngOnInit() {
+    this.updateTags();
   }
 
   loggin() {
@@ -42,6 +46,10 @@ export class LoginComponent implements OnInit {
         this.cd.markForCheck();
       }
     });
+  }
+
+  updateTags() {
+    this.metadataTags.updateTitle('Shifumi - Connexion');
   }
 
 }

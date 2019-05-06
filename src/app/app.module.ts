@@ -10,10 +10,10 @@ import { AppMaterialModule } from './shared/app-material.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home/home.component';
 import { BoardgamePickDialogComponent } from './dialogs/boardgame-pick-dialog/boardgame-pick-dialog.component';
 import { PlayerPickDialogComponent } from './dialogs/player-pick-dialog/player-pick-dialog.component';
 import { AppTokenInterceptor } from './core/interceptors/app-token.interceptor';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { BoardgameComponent } from './boardgame.component';
-import { BoardgameListComponent } from './boardgame-list/boardgame-list.component';
-import { BoardgameTableComponent } from './boardgame-table/boardgame-table.component';
 import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
 

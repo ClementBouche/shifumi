@@ -2,18 +2,18 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { PlaySearch } from '../shared/model/play-search.model';
 import { Play } from '../shared/model/play.model';
-import { PlayService } from '../shared/services/play.service';
 import { PageEvent } from '@angular/material';
 import { PlaysPage } from '../shared/model/plays-page.model';
+import { Tagable } from 'src/app/core/model/tagable.interface';
+import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
 
 @Component({
   selector: 'app-play-paginated',
   templateUrl: './play-paginated.component.html',
   styleUrls: ['./play-paginated.component.css']
 })
-export class PlayPaginatedComponent implements OnInit, OnDestroy {
+export class PlayPaginatedComponent implements OnInit, OnDestroy, Tagable {
 
   plays: Play[];
 
@@ -27,6 +27,7 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private metadataTags: MetadataTagsService,
     private router: Router,
     private cd: ChangeDetectorRef
   ) { }
@@ -41,6 +42,8 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy {
       this.plays = data.playsPage.result;
       this.cd.markForCheck();
     });
+
+    this.updateTags();
   }
 
   ngOnDestroy() {
@@ -57,6 +60,10 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy {
       },
       queryParamsHandling: 'merge'
     });
+  }
+
+  updateTags() {
+    this.metadataTags.updateTitle('Shifumi - Liste des parties');
   }
 
 }
