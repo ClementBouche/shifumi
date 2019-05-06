@@ -1,0 +1,12 @@
+.avatar {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.mat-card-header {
+  margin-bottom: 10px;
+}
+
+.mat-card-content {
+  padding-top: 10px;
+}

@@ -64,6 +64,10 @@ export class PlayerPaginatedComponent implements OnInit, Tagable {
     });
   }
 
+  view(id: string) {
+    this.router.navigate(['/', 'player', id]);
+  }
+
   updateTags() {
     this.metadataTags.updateTitle('Shifumi - Liste des joueurs');
   }

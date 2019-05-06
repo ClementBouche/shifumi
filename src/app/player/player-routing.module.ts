@@ -27,7 +27,7 @@ const routes: Routes = [
         path: ':id',
         component: PlayerViewComponent,
         resolve: {
-          play: PlayerViewResolverService
+          player: PlayerViewResolverService
         },
       },
     ]

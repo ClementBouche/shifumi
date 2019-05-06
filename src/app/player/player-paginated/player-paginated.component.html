@@ -5,9 +5,13 @@
               (page)="changePage($event)">
 </mat-paginator>
 
-<ng-container *ngIf="players else loading">
-  <app-player-list [players]="players"></app-player-list>
-</ng-container>
+<div *ngIf="players else loading" class="cards">
+  <!-- <app-player-list [players]="players"></app-player-list> -->
+  <ng-container *ngFor="let player of players">
+    <app-player-card [player]="player" (click)="view(player.id)"></app-player-card>
+  </ng-container>
+  <div class="end-line"></div>
+</div>
 
 <ng-template #loading>
   <mat-grid-list cols="1" rowHeight="4:1">
