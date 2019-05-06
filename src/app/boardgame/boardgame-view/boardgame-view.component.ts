@@ -42,6 +42,7 @@ export class BoardgameViewComponent implements OnInit, Tagable {
     if (this.boardgame) {
       this.metadataTags.updateTitle('Shifumi - ' + this.boardgame.name);
       this.metadataTags.updateDescription(this.boardgame.name);
+      this.metadataTags.updateImage(this.boardgame.image, 200);
     }
   }
 
