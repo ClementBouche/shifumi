@@ -6,15 +6,16 @@ import * as moment from 'moment';
 })
 export class PlayTimePipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    let days = Math.floor(moment.duration(value, 'minutes').asDays());
+  transform(value: any, mode?: string): String {
+    if (mode == 'humanize') {
+      return moment.duration(value, 'minutes').locale("fr").humanize();
+    }
 
-    let hours = Math.floor(moment.duration(value, 'minutes').asHours());
-    let minutes = moment.duration(value, 'minutes').minutes();
-    let date = days === 0 ? '' : days+' jours ou ';
-    date += hours === 0 ? '' : hours+'h';
-    date += minutes === 0 ? '' : minutes+'min';
-    return date || '0min';
+    const hours = Math.floor(moment.duration(value, 'minutes').asHours());
+    const minutes = moment.duration(value, 'minutes').minutes();
+    let playTime = hours === 0 ? '' : hours+'h';
+    playTime += minutes === 0 ? '' : minutes+'min';
+    return playTime || '0min';
   }
 
 }

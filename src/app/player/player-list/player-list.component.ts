@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Player } from '../shared/model/player.model';
 import { Router } from '@angular/router';

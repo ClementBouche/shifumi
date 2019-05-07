@@ -32,7 +32,7 @@
 <ng-template #detail>
   <div class="scores">
     <ng-container *ngFor="let score of play.scores">
-      <app-play-score [score]="score"></app-play-score>
+      <app-play-score [score]="score" (click)="scoreAction(score)"></app-play-score>
     </ng-container>
   </div>
 </ng-template>

@@ -1,5 +1,7 @@
-<div class="content">
+<div *ngIf="player" class="content">
   <app-player-card [player]="player"></app-player-card>
+
+  <app-play-list [plays]="plays"></app-play-list>
 </div>
 
 <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>

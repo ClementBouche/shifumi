@@ -1,10 +1,11 @@
 import { Deserializable } from "src/app/core/model/deserializable.interface";
+import { Serializable } from "src/app/core/model/serializable.interface";
 
-export class PlaySearch implements Deserializable {
+export class PlaySearch implements Deserializable, Serializable {
 
   boardgameName: String;
 
-  userName: String;
+  playerName: String;
 
   page: number = 1;
 
@@ -18,6 +19,15 @@ export class PlaySearch implements Deserializable {
       size: input.size || 10,
     });
     return this;
+  }
+
+  serialize() {
+    return {
+      boardgame: this.boardgameName,
+      player: this.playerName,
+      page: this.page,
+      size: this.size
+    };
   }
 
 }

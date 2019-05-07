@@ -15,6 +15,7 @@ import { BoardgameSharedModule } from '../boardgame/shared/boardgame-shared.modu
 import { PlayerCardComponent } from './player-card/player-card.component';
 import { PlayerViewComponent } from './player-view/player-view.component';
 import { SharedModule } from '../shared/shared.module';
+import { PlaySharedModule } from '../play/shared/play-shared.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     PlayerRoutingModule,
     PlayerSharedModule,
+    PlaySharedModule,
     BoardgameSharedModule
   ],
   exports: [

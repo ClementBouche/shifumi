@@ -6,14 +6,14 @@
       {{ player.name }}
     </mat-card-title>
     <mat-card-subtitle>
-      {{ player.time | playTime }}
+      {{ player.time | playTime:"humanize" }}, {{ player.victoryRatio }}% Victoires
     </mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
     <ul>
-      <li>{{ player.counts.boardgames }} parties</li>
-      <li>{{ player.counts.wins }} gagné</li>
+      <li>{{ player.counts.boardgames }} jeux</li>
+      <li>{{ player.counts.plays }} parties, {{ player.counts.wins }} victoires</li>
       <li>Dans {{ player.counts.places }} lieux</li>
       <li>Avec {{ player.counts.players }} joueurs</li>
     </ul>

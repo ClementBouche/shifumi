@@ -5,6 +5,7 @@ import { PlayService } from '../shared/services/play.service';
 import { Play } from '../shared/model/play.model';
 import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
 import { Tagable } from 'src/app/core/model/tagable.interface';
+import { Score } from '../shared/model/score.model';
 
 @Component({
   selector: 'app-play-view',
@@ -49,6 +50,10 @@ export class PlayViewComponent implements OnInit, Tagable {
         this.router.navigate(['/', 'play'])
       });
     }
+  }
+
+  actionScore(score: Score) {
+    this.router.navigate(['/', 'player', score.playerName]);
   }
 
   updateTags() {

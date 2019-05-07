@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Play } from '../../model/play.model';
+import { Score } from '../../model/score.model';
 
 @Component({
   selector: 'app-play-info',
@@ -17,9 +18,15 @@ export class PlayInfoComponent implements OnInit {
 
   @Input() index: number;
 
+  @Output() scoreClicked: EventEmitter<Score> = new EventEmitter<Score>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  scoreAction(score: Score) {
+    this.scoreClicked.emit(score);
   }
 
 }

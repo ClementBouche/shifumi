@@ -21,7 +21,8 @@ input.as-text {
 }
 
 .scores {
+  margin: 10px;
   display: flex;
+  justify-content: left;
   flex-wrap: wrap;
-  justify-content: center;
 }

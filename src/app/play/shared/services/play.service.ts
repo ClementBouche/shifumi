@@ -30,15 +30,6 @@ export class PlayService {
       .then((response: any) => response.map((input) => new Play().deserialize(input)));
   }
 
-  getBoardgamePlays(boardgame: Boardgame) {
-    let url = `${environment.apiUrl}/play/search`
-    return this.httpClient.post(url, {
-        boardgame: boardgame.name
-      })
-      .toPromise()
-      .then((response: any) => response.map((input) => new Play().deserialize(input)));
-  }
-
   getPlay(id: string): Promise<Play> {
     const url = `${this.playUrl}${id}`;
     return this.httpClient.get(url)
@@ -68,16 +59,10 @@ export class PlayService {
   }
 
   search(search: PlaySearch): Promise<PlaysPage> {
-    // TODO create search method in API with game && player filters
-    return this.getPlays(search.size, search.page).then((plays) => {
-      const playsPage = new PlaysPage();
-      return Object.assign(playsPage, {
-        count: 900,
-        size: search.size || 10,
-        page: search.page || 1,
-        result: plays.length > 0 ? plays : []
-      });
-    });
+    const url = `${environment.apiUrl}/play/search`;
+    return this.httpClient.post(url, search.serialize())
+      .toPromise()
+      .then(response => new PlaysPage().deserialize(response));
   };
 
 }

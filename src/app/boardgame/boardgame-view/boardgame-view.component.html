@@ -4,7 +4,7 @@
     <button *ngIf="boardgame.preview" (click)="import()">Import</button>
   </div>
   <span class="border-separator"></span>
-  <app-play-list [boardgame]="boardgame"></app-play-list>
+  <app-play-list [plays]="plays"></app-play-list>
 </ng-container>
 
 <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
