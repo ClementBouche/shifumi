@@ -3,7 +3,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MAT_DATE_LOCALE } from '@angular/material';
+import { MAT_DATE_LOCALE, MatPaginatorIntl } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './shared/app-material.module';
@@ -14,6 +14,7 @@ import { BoardgamePickDialogComponent } from './dialogs/boardgame-pick-dialog/bo
 import { PlayerPickDialogComponent } from './dialogs/player-pick-dialog/player-pick-dialog.component';
 import { AppTokenInterceptor } from './core/interceptors/app-token.interceptor';
 import { HomeComponent } from './home/home.component';
+import { MatPaginatorIntlFr } from './core/intl/mat-paginator-intl.fr';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HomeComponent } from './home/home.component';
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
     { provide: HTTP_INTERCEPTORS, useClass: AppTokenInterceptor, multi: true },
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlFr},
   ],
   entryComponents: [
     BoardgamePickDialogComponent,

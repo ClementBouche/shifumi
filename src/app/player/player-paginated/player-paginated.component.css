@@ -1,13 +1,12 @@
 .cards {
-  margin: 10px;
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
 }
 
 .cards app-player-card {
-  width: 400px;
-  margin: 16px;
+  width: 300px;
+  margin: 10px;
 }
 
 .cards app-player-card:hover {
