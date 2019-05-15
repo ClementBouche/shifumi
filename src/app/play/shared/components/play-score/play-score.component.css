@@ -1,3 +1,12 @@
+.mat-card {
+  min-width: 300px;
+}
+
+.mat-card:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 2px #aaa;
+}
+
 .avatar {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;

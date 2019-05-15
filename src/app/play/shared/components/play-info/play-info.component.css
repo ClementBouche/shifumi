@@ -10,11 +10,5 @@
 }
 
 .scores app-play-score {
-  width: 400px;
-  margin: 16px;
-}
-
-app-play-score:hover {
-  cursor: pointer;
-  box-shadow: 2px 2px 2px #aaa;
+  margin: 10px;
 }
