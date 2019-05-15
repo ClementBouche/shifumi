@@ -1,8 +1,14 @@
-.play {
-    position: relative;
+.plays {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
 }
 
-.play:hover {
-    background-color: #eee;
-    cursor: pointer;
+.play {
+  margin: 10px;
+}
+
+.play app-play-card:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 2px #aaa;
 }

@@ -1,9 +1,11 @@
 <div class="boardgames" *ngIf="boardgames && boardgames.length != 0 else noResult">
   <ng-container *ngFor="let boardgame of boardgames">
     <div class="boardgame" (click)="select(boardgame)">
-      <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info>
+      <!-- <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info> -->
+      <app-boardgame-card [boardgame]="boardgame"></app-boardgame-card>
     </div>
   </ng-container>
+  <div class="end-line"></div>
 </div>
 
 <ng-template #noResult>

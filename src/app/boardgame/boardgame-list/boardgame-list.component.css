@@ -1,8 +1,18 @@
-.boardgame {
-  position: relative;
+.boardgames {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
 }
 
-.boardgame:hover {
-  background-color: #eee;
+.boardgame {
+  margin: 10px;
+}
+
+.boardgames app-boardgame-card:hover {
   cursor: pointer;
+  box-shadow: 2px 2px 2px #aaa;
+}
+
+.end-line {
+  flex-grow: 1;
 }

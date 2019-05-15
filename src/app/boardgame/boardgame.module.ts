@@ -15,6 +15,7 @@ import { AppMaterialModule } from '../shared/app-material.module';
 import { BoardgameTableComponent } from './boardgame-table/boardgame-table.component';
 import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
 import { SharedModule } from '../shared/shared.module';
+import { BoardgameCardComponent } from './boardgame-card/boardgame-card.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SharedModule } from '../shared/shared.module';
     BoardgameInfoComponent,
     BoardgameTableComponent,
     BoardgamePaginatedComponent,
+    BoardgameCardComponent,
   ],
   imports: [
     CommonModule,
