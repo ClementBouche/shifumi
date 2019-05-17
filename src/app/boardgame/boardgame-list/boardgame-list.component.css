@@ -16,3 +16,9 @@
 .end-line {
   flex-grow: 1;
 }
+
+@media (max-width: 600px) {
+  .boardgame {
+    margin: 10px auto;
+  }
+}

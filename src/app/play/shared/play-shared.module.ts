@@ -32,6 +32,7 @@ import { PlayCardComponent } from './components/play-card/play-card.component';
     PlayListComponent,
     PlayInfoComponent,
     PlayScoreComponent,
+    PlayCardComponent,
     WinnerPipe
   ]
 })

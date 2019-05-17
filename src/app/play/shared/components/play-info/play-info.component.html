@@ -1,36 +1,13 @@
 <ng-container *ngIf="play">
   <div class="play">
-    <mat-grid-list cols="4" rowHeight="4:1">
-      <mat-grid-tile>
-        <ng-container *ngIf="displayName === true; else numeroPlay">
-            <h4>{{ play.boardgameName }}</h4>
-        </ng-container>
-        <ng-template #numeroPlay>
-            <h4>Partie {{ index }}</h4>
-        </ng-template>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <p>
-          {{ play.scores | winner }}
-        </p>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <p>
-          {{ play.place }} • le {{ play.date }}
-        </p>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <p>
-            {{ play.scores.length }} joueurs
-          </p>
-      </mat-grid-tile>
-    </mat-grid-list>
+    <app-play-card [play]="play"></app-play-card>
     <ng-container *ngIf="!listItem; then detail"></ng-container>
   </div>
 </ng-container>
 
 <ng-template #detail>
-  <div class="scores">
+  <div class="scores" *ngIf="play.scores.length > 0 else noScore">
+    <h4>Scores</h4>
     <ng-container *ngFor="let score of play.scores">
       <app-play-score [score]="score" (click)="scoreAction(score)"></app-play-score>
     </ng-container>

@@ -25,3 +25,9 @@
 .winner {
   color: var(--first-color);
 }
+
+@media (max-width: 600px) {
+  .mat-card {
+    width: 280px;
+  }
+}

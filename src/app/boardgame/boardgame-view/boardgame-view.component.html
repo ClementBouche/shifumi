@@ -1,12 +1,59 @@
 <ng-container *ngIf="boardgame">
+  
+  <!-- boardgame card and boardgame credits -->
   <div class="boardgame">
-    <app-boardgame-info [boardgame]="boardgame"></app-boardgame-info>
+    <app-boardgame-card [boardgame]="boardgame"></app-boardgame-card>
+
     <button *ngIf="boardgame.preview" (click)="import()">Import</button>
+
+    <mat-grid-list cols="2">
+      <mat-grid-tile>
+        <ul *ngIf="boardgame.designers.length != 0">
+          <li><b>Concepteurs</b></li>
+          <li *ngFor="let designer of boardgame.designers">{{ designer.name }}</li>
+        </ul>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <ul *ngIf="boardgame.artists.length != 0">
+          <li><b>Artistes</b></li>
+          <li *ngFor="let artist of boardgame.artists">{{ artist.name }}</li>
+        </ul>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-divider></mat-divider>
+
+    <mat-grid-list cols="2">
+      <mat-grid-tile>
+        <ul *ngIf="boardgame.thematics.length != 0">
+          <li><b>Thématiques</b></li>
+          <li *ngFor="let thematic of boardgame.thematics">{{ thematic }}</li>
+        </ul>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <ul *ngIf="boardgame.mechanics.length != 0">
+          <li><b>Mécaniques</b></li>
+          <li *ngFor="let mechanic of boardgame.mechanics">{{ mechanic }}</li>
+        </ul>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
-  <span class="border-separator"></span>
-  <ng-container *ngIf="playsPage$ | async as playsPage; else loading">
-    <app-play-list [plays]="playsPage.result"></app-play-list>
-  </ng-container>
+
+  <!-- separation -->
+  <mat-divider></mat-divider>
+
+  <!-- onglet : derniere parties, description, thématique, conception -->
+  <mat-tab-group>
+    <mat-tab label="Dernières Parties">
+      <ng-container *ngIf="playsPage$ | async as playsPage; else loading">
+        <app-play-list [plays]="playsPage.result"></app-play-list>
+      </ng-container>
+    </mat-tab>
+    <mat-tab label="Description">
+        <p class="description" [innerHTML]="boardgame.description"></p>
+    </mat-tab>
+  </mat-tab-group>
+
 </ng-container>
 
 <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>

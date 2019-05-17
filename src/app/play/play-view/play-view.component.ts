@@ -16,7 +16,8 @@ export class PlayViewComponent implements OnInit, Tagable {
 
   play: Play;
 
-  actions = ['format_paint', 'star', 'edit', 'delete'];
+  // actions = ['format_paint', 'star', 'edit', 'delete'];
+  actions = ['star', 'edit', 'delete'];
 
   constructor(
     private route: ActivatedRoute,

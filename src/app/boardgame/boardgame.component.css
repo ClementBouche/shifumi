@@ -24,3 +24,9 @@
   right: 0;
   bottom: 0;
 } */
+
+@media (max-width: 600px) {
+  .boardgame-home {
+    padding: 10px 0px;
+  }
+}

@@ -1,5 +1,6 @@
 <ng-container *ngIf="play">
   <app-play-info [play]="play" (scoreClicked)="actionScore($event)"></app-play-info>
+  <!-- <app-play-card [play]="play" (scoreClicked)="actionScore($event)"></app-play-card> -->
   <!-- menu copy / like / edit -->
   <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
 </ng-container>

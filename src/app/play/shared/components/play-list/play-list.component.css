@@ -12,3 +12,9 @@
   cursor: pointer;
   box-shadow: 2px 2px 2px #aaa;
 }
+
+@media (max-width: 600px) {
+  .play {
+    margin: 10px 2px;
+  }
+}

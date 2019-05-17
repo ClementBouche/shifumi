@@ -10,6 +10,7 @@ input.as-text {
 .actions {
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .actions .filler {

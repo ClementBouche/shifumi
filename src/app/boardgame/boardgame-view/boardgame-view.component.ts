@@ -53,17 +53,15 @@ export class BoardgameViewComponent implements OnInit, Tagable {
         //   this.cd.markForCheck();
         // });
 
-    // old ways
+    // old way
     // this.route.data.subscribe((data: {boardgame: Boardgame}) => {
     //   this.boardgame = data.boardgame;
-
     //   const playSearch = new PlaySearch();
     //   playSearch.boardgameName = this.boardgame.name;
     //   this.playService.search(playSearch).then((page: PlaysPage) => {
     //     this.plays = page.result;
     //     this.cd.markForCheck();
     //   });
-
     //   this.cd.markForCheck();
     // });
 
