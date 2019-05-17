@@ -8,8 +8,8 @@
     <mat-card-subtitle>
       <ul>
         <li>{{ boardgame.year }}</li>
-        <li>{{ boardgame.time.average | playTime:"humanize" }}</li>
-        <li>{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
+        <li *ngIf="boardgame.time.average">{{ boardgame.time.average | playTime:"humanize" }}</li>
+        <li *ngIf="boardgame.players.min">{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
       </ul>
     </mat-card-subtitle>
   </mat-card-header>

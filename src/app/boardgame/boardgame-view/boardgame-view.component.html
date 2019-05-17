@@ -4,7 +4,9 @@
   <div class="boardgame">
     <app-boardgame-card [boardgame]="boardgame"></app-boardgame-card>
 
-    <button *ngIf="boardgame.preview" (click)="import()">Import</button>
+    <ng-container *ngIf="boardgame.preview">
+      <button mat-button color="accent" (click)="import()">Ajouter à la bibliothèque</button>
+    </ng-container>
 
     <mat-grid-list cols="2">
       <mat-grid-tile>

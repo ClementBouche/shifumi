@@ -19,7 +19,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     name: [''],
     min: [0],
     max: [100],
-    recent: [true]
+    extended: [false]
   });
 
   private boardgameSearch: BoardgameSearch = new BoardgameSearch();
@@ -77,7 +77,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
       name: this.boardgameSearch.name,
       min: this.boardgameSearch.time.min,
       max: this.boardgameSearch.time.max,
-      recent: !this.boardgameSearch.extended
+      extended: this.boardgameSearch.extended
     });
   }
 
@@ -86,7 +86,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     this.boardgameSearch.name = this.form.value.name;
     this.boardgameSearch.time.min = this.form.value.min;
     this.boardgameSearch.time.max = this.form.value.max;
-    this.boardgameSearch.extended = !this.form.value.recent;
+    this.boardgameSearch.extended = this.form.value.extended;
     // force la nouvelle pagination
     this.boardgameSearch.page = 1;
     return true;

@@ -40,7 +40,7 @@ export class BoardgameService {
 
   search(search: BoardgameSearch): Promise<BoardgamesPage> {
     if (search.extended) {
-      return this.extendedSearch(search.name, search.size);
+      return this.extendedSearch(search.name, 100);
     }
     const url = `${environment.apiUrl}/boardgame/search`;
     return this.httpClient.post(url, search.serialize())
@@ -57,7 +57,15 @@ export class BoardgameService {
         params: params
       })
       .toPromise()
-      .then(response => new BoardgamesPage().deserialize(response));
+      .then((response: any) => {
+        const results = response.map((input) => new Boardgame().deserialize(input));
+        const boardgamePage = new BoardgamesPage();
+        boardgamePage.page = 1;
+        boardgamePage.count = results.length;
+        boardgamePage.size = results.length;
+        boardgamePage.result = results;
+        return boardgamePage;
+      });
   }
 
   getPreview(xmlId: string, preview: boolean = true): Promise<Boardgame> {
