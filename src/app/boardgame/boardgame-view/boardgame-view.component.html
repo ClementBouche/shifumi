@@ -4,7 +4,17 @@
     <button *ngIf="boardgame.preview" (click)="import()">Import</button>
   </div>
   <span class="border-separator"></span>
-  <app-play-list [plays]="plays"></app-play-list>
+  <ng-container *ngIf="playsPage$ | async as playsPage; else loading">
+    <app-play-list [plays]="playsPage.result"></app-play-list>
+  </ng-container>
 </ng-container>
 
 <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
+
+<ng-template #loading>
+  <mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>

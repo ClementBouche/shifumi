@@ -11,6 +11,15 @@ export class PlaySearch implements Deserializable, Serializable {
 
   size: number = 10;
 
+  byBoardgameName(input: String) {
+    Object.assign(this, {
+      boardgameName: input,
+      page: 1,
+      size: 10,
+    });
+    return this;
+  }
+
   deserialize(input: any) {
     Object.assign(this, {
       boardgameName: input.boardgame_name,

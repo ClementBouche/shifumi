@@ -1,7 +1,7 @@
 .fixed-corner {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 2%;
+  right: 2%;
   z-index: 10;
 }
 
@@ -14,20 +14,24 @@
   margin: 5px;
 }
 
-.menu-bar .menu-item {
+.menu-bar .menu-item, .menu-bar.hidden .menu-item {
   opacity: 0;
   transition: 0.5s ease-in;
+  height: 0;
+  transform: translate(0, 100%);
 }
 
-.menu-bar:hover .menu-item {
+.menu-bar .menu-item, .menu-bar.visible .menu-item {
   opacity: 1;
+  height: 100%;
+  transform: translate(0, 0);
 }
 
-.menu-bar:hover .menu .mat-icon {
+.menu-bar .menu .mat-icon, .menu-bar.hidden .menu .mat-icon {
   transform: rotate(0deg);
   transition: 0.5s ease-in;
 }
 
-.menu-bar:hover .menu .mat-icon {
+.menu-bar.visible .menu .mat-icon {
   transform: rotate(90deg);
 }

@@ -1,11 +1,11 @@
-<div class="menu-bar fixed-corner">
+<div class="menu-bar fixed-corner" [class.visible]="visible" [class.hidden]="!visible">
   <ng-container *ngIf="actions && actions.length > 1 else oneAction">
       <ng-container *ngFor="let action of actions">
         <a class="menu-item" mat-fab (click)="trigger(action)">
           <mat-icon>{{ action }}</mat-icon>
         </a>
       </ng-container>
-      <a class="menu" mat-fab>
+      <a class="menu" mat-fab (click)="toggleVisible()">
         <mat-icon>menu</mat-icon>
       </a>
   </ng-container>

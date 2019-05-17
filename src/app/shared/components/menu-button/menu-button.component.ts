@@ -7,6 +7,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class MenuButtonComponent implements OnInit {
 
+  visible: boolean = false;
+
   @Input() actions: String[];
 
   @Output() actionTriggered: EventEmitter<String> = new EventEmitter<String>();
@@ -18,6 +20,10 @@ export class MenuButtonComponent implements OnInit {
 
   trigger(action: string) {
     this.actionTriggered.emit(action);
+  }
+
+  toggleVisible() {
+    this.visible = !this.visible;
   }
 
 }
