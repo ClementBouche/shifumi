@@ -1,16 +1,17 @@
 .plays {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-.play {
+.play, .inline-object {
   margin: 10px;
+  width: 340px;
 }
 
-.play app-play-card:hover {
+.play:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 2px #aaa;
+  /* box-shadow: 2px 2px 2px #aaa; */
 }
 
 @media (max-width: 600px) {

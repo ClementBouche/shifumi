@@ -8,7 +8,7 @@ export class PlayTimePipe implements PipeTransform {
 
   transform(value: any, mode?: string): String {
     if (mode == 'humanize') {
-      return moment.duration(value, 'minutes').locale("fr").humanize();
+      return moment.duration(value, 'minutes').locale('fr').humanize();
     }
 
     const hours = Math.floor(moment.duration(value, 'minutes').asHours());

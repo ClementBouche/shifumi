@@ -7,7 +7,11 @@ export class Play implements Deserializable, Serializable {
   // metadata
   date: string;
   place: string;
+  thumbnail: string;
+  // from boardgame
+  boardgameId: string;
   boardgameName: string;
+  // infos
   playingTime: string;
   incomplete: boolean;
   // scores
@@ -20,6 +24,8 @@ export class Play implements Deserializable, Serializable {
     return {
       date: this.date,
       place_name: this.place,
+      thumbnail: this.thumbnail,
+      boardgame_xmlapi_id: this.boardgameId,
       boardgame_name: this.boardgameName,
       playing_time: this.playingTime,
       incomplete: this.incomplete,
@@ -33,6 +39,8 @@ export class Play implements Deserializable, Serializable {
       id: input._id,
       date: input.date,
       place: input.place_name,
+      thumbnail: input.thumbnail,
+      boardgameId: input.boardgame_xmlapi_id,
       boardgameName: input.boardgame_name,
       playingTime: input.playing_time,
       incomplete: input.incomplete,

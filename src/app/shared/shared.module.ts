@@ -7,6 +7,8 @@ import { AutocompleteSearchInputComponent } from './components/autocomplete-sear
 import { PlayerSearchInputComponent } from './components/player-search-input/player-search-input.component';
 import { MenuButtonComponent } from './components/menu-button/menu-button.component';
 import { PlayTimePipe } from './pipes/play-time.pipe';
+import { BackgroundImageDirective } from './directives/background-image.directive';
+import { DatePipe } from './pipes/date.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { PlayTimePipe } from './pipes/play-time.pipe';
     PlayerSearchInputComponent,
     MenuButtonComponent,
     PlayTimePipe,
+    BackgroundImageDirective,
+    DatePipe,
   ],
   imports: [
     CommonModule,
@@ -26,6 +30,8 @@ import { PlayTimePipe } from './pipes/play-time.pipe';
     PlayerSearchInputComponent,
     MenuButtonComponent,
     PlayTimePipe,
+    BackgroundImageDirective,
+    DatePipe,
   ]
 })
 export class SharedModule { }

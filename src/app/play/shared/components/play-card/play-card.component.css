@@ -1,17 +1,8 @@
-.mat-card {
-  width: 300px;
-}
-
 .avatar {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
-}
-
-.mat-card-title {
-  max-width: 200px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  width: 60px;
+  height: 60px;
 }
 
 .mat-card-header {
@@ -24,10 +15,4 @@
 
 .winner {
   color: var(--first-color);
-}
-
-@media (max-width: 600px) {
-  .mat-card {
-    width: 280px;
-  }
 }

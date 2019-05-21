@@ -1,4 +1,24 @@
+.players {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.player, .inline-object {
+  margin: 10px;
+  width: 340px;
+}
+
 .player:hover {
-  background-color: #eee;
   cursor: pointer;
+}
+
+.players app-boardgame-card:hover {
+  box-shadow: 2px 2px 2px #aaa;
+}
+
+@media (max-width: 600px) {
+  .player {
+    margin: 10px auto;
+  }
 }

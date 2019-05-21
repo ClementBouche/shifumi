@@ -1,11 +1,11 @@
 import { Directive, ElementRef, Renderer, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appCardBackground]'
+  selector: '[appBackgroundImage]'
 })
-export class CardBackgroundDirective implements OnInit {
+export class BackgroundImageDirective implements OnInit {
 
-  @Input('appCardBackground') background: string;
+  @Input('appBackgroundImage') background: string;
 
   constructor(
     private el: ElementRef,
@@ -16,6 +16,7 @@ export class CardBackgroundDirective implements OnInit {
     if (!this.background || this.background == '') {
       return;
     }
+    // TODO : sanitize URL ???
     const strUrl = 'url(' + this.background + ')';
     this.renderer.setElementStyle(this.el.nativeElement, 'backgroundImage', strUrl);
   }

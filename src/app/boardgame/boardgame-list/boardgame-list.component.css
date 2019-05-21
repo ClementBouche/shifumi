@@ -4,17 +4,23 @@
   flex-wrap: wrap;
 }
 
-.boardgame {
+.boardgames {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.boardgame, .inline-object {
   margin: 10px;
+  width: 340px;
+}
+
+.boardgame:hover {
+  cursor: pointer;
 }
 
 .boardgames app-boardgame-card:hover {
-  cursor: pointer;
   box-shadow: 2px 2px 2px #aaa;
-}
-
-.end-line {
-  flex-grow: 1;
 }
 
 @media (max-width: 600px) {

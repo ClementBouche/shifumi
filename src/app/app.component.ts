@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestro
 import { RouterOutlet, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
 
 import { appRouteAnimations } from './core/animation/app-route.animation';
 

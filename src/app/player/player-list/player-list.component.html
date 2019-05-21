@@ -1,7 +1,8 @@
 <div class="players" *ngIf="players && players.length != 0; else noResult">
   <ng-container *ngFor="let player of players">
     <div class="player" (click)="view(player.id)">
-        <app-player-info [player]="player" listItem=true></app-player-info>
+        <app-player-card [player]="player"></app-player-card>
+        <!-- <app-player-info [player]="player" listItem=true></app-player-info> -->
     </div>
   </ng-container>
 </div>

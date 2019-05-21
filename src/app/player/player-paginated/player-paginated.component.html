@@ -6,11 +6,7 @@
 </mat-paginator>
 
 <div *ngIf="players && players.length > 0 else noMore" class="cards">
-  <!-- <app-player-list [players]="players"></app-player-list> -->
-  <ng-container *ngFor="let player of players">
-    <app-player-card [player]="player" (click)="view(player.id)"></app-player-card>
-  </ng-container>
-  <div class="end-line"></div>
+  <app-player-list [players]="players"></app-player-list>
 </div>
 
 <ng-template #noMore>

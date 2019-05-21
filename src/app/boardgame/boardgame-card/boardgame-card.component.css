@@ -1,7 +1,3 @@
-.mat-card {
-  width: 300px;
-}
-
 .avatar {
   background: linear-gradient(217deg,#ccc, #888);;
   background-size: cover;
@@ -23,10 +19,4 @@
 
 .mat-card-content {
   padding-top: 10px;
-}
-
-@media (max-width: 600px) {
-  .mat-card {
-    width: 280px;
-  }
 }

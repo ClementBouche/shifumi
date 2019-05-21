@@ -10,14 +10,14 @@ import { Score } from '../shared/model/score.model';
 @Component({
   selector: 'app-play-view',
   templateUrl: './play-view.component.html',
-  styleUrls: ['./play-view.component.css']
+  styleUrls: ['./play-view.component.css'],
 })
 export class PlayViewComponent implements OnInit, Tagable {
 
   play: Play;
 
   // actions = ['format_paint', 'star', 'edit', 'delete'];
-  actions = ['star', 'edit', 'delete'];
+  actions = ['format_paint', 'star', 'edit', 'delete'];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,7 +38,7 @@ export class PlayViewComponent implements OnInit, Tagable {
 
   doAction(actionName: string) {
     if (actionName == 'format_paint') {
-      this.router.navigate(['/', 'play', 'add']);
+      this.router.navigate(['/', 'play', 'add', this.play.boardgameId]);
     }
     if (actionName == 'star') {
       console.log('star');

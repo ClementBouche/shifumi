@@ -1,9 +1,13 @@
+.login-home {
+  position: relative;
+  min-height: 350px;
+}
+
 .mat-card {
   position: absolute;
-  top: calc(50% - 60px);
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 500px;
 }
 
 .grow {
