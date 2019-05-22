@@ -14,7 +14,6 @@ import { PlayUpdateComponent } from './play-update/play-update.component';
 import { PlayPaginatedComponent } from './play-paginated/play-paginated.component';
 import { ScoreFormComponent } from './score-form/score-form.component';
 import { SharedModule } from '../shared/shared.module';
-import { PlayToolbarComponent } from './play-toolbar/play-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { PlayToolbarComponent } from './play-toolbar/play-toolbar.component';
     PlayUpdateComponent,
     PlayPaginatedComponent,
     ScoreFormComponent,
-    PlayToolbarComponent,
   ],
   imports: [
     CommonModule,

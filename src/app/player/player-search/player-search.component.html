@@ -1,0 +1,22 @@
+<mat-card>
+  <h4>Rechercher un joueur</h4>
+  <form [formGroup]="form" (ngSubmit)="search()">
+    <div class="values">
+      <!-- name input -->
+      <mat-form-field>
+        <input matInput placeholder="Par nom..." type="string" name="name" formControlName="name"/>
+      </mat-form-field>
+
+      <!-- trié par -->
+      <!-- nom -->
+      <!-- partie récente -->
+      <!-- succes -->
+
+    </div>
+    <div class="actions">
+      <button mat-button (click)="reset()"><mat-icon>refresh</mat-icon></button>
+      <!-- search button -->
+      <button mat-raised-button type="submit" color="accent" [disabled]="!form.valid">Rechercher</button>
+    </div>
+  </form>
+</mat-card>

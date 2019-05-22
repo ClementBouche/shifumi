@@ -1,0 +1,13 @@
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.actions > * {
+  padding-right: 60px;
+}
+
+.readonly {
+  color: #aaa;
+}

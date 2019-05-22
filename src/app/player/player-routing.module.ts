@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PlayerComponent } from './player.component';
-import { PlayerPaginatedComponent } from './player-paginated/player-paginated.component';
 
 import { PlayerViewComponent } from './player-view/player-view.component';
 import { PlayerViewResolverService } from './shared/resolvers/player-view-resolver.service';
-import { PlayerListResolverService } from './shared/resolvers/player-list-resolver.service';
+import { PlayerHomeComponent } from './player-home/player-home.component';
+import { PlayerSearchResolverService } from './shared/resolvers/player-search-resolver.service';
 
 const routes: Routes = [
   {
@@ -16,10 +16,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: PlayerPaginatedComponent,
+        component: PlayerHomeComponent,
         runGuardsAndResolvers: 'always',
         resolve: {
-          players: PlayerListResolverService
+          page: PlayerSearchResolverService
         },
         data: { animation: 'playerListPage' },
       },

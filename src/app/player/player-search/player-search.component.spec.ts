@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlayToolbarComponent } from './play-toolbar.component';
+import { PlayerSearchComponent } from './player-search.component';
 
-describe('PlayToolbarComponent', () => {
-  let component: PlayToolbarComponent;
-  let fixture: ComponentFixture<PlayToolbarComponent>;
+describe('PlayerSearchComponent', () => {
+  let component: PlayerSearchComponent;
+  let fixture: ComponentFixture<PlayerSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlayToolbarComponent ]
+      declarations: [ PlayerSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlayToolbarComponent);
+    fixture = TestBed.createComponent(PlayerSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

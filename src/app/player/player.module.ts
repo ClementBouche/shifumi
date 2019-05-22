@@ -16,6 +16,8 @@ import { PlayerCardComponent } from './player-card/player-card.component';
 import { PlayerViewComponent } from './player-view/player-view.component';
 import { SharedModule } from '../shared/shared.module';
 import { PlaySharedModule } from '../play/shared/play-shared.module';
+import { PlayerSearchComponent } from './player-search/player-search.component';
+import { PlayerHomeComponent } from './player-home/player-home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { PlaySharedModule } from '../play/shared/play-shared.module';
     PlayerListComponent,
     PlayerInfoComponent,
     PlayerCardComponent,
-    PlayerViewComponent
+    PlayerViewComponent,
+    PlayerSearchComponent,
+    PlayerHomeComponent
   ],
   imports: [
     CommonModule,
