@@ -1,62 +1,59 @@
-<ng-container *ngIf="boardgame">
-  
-  <!-- boardgame card and boardgame credits -->
-  <div class="boardgame">
+<!-- boardgame card and boardgame credits -->
+<div *ngIf="boardgame" class="boardgame-infos">
+  <div>
     <app-boardgame-card [boardgame]="boardgame"></app-boardgame-card>
-
     <ng-container *ngIf="boardgame.preview">
       <button mat-button color="accent" (click)="import()">Ajouter à la bibliothèque</button>
     </ng-container>
-
-    <mat-grid-list cols="2">
-      <mat-grid-tile>
-        <ul *ngIf="boardgame.designers.length != 0">
-          <li><b>Concepteurs</b></li>
-          <li *ngFor="let designer of boardgame.designers">{{ designer.name }}</li>
-        </ul>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <ul *ngIf="boardgame.artists.length != 0">
-          <li><b>Artistes</b></li>
-          <li *ngFor="let artist of boardgame.artists">{{ artist.name }}</li>
-        </ul>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-    <mat-divider></mat-divider>
-
-    <mat-grid-list cols="2">
-      <mat-grid-tile>
-        <ul *ngIf="boardgame.thematics.length != 0">
-          <li><b>Thématiques</b></li>
-          <li *ngFor="let thematic of boardgame.thematics">{{ thematic }}</li>
-        </ul>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <ul *ngIf="boardgame.mechanics.length != 0">
-          <li><b>Mécaniques</b></li>
-          <li *ngFor="let mechanic of boardgame.mechanics">{{ mechanic }}</li>
-        </ul>
-      </mat-grid-tile>
-    </mat-grid-list>
   </div>
 
-  <!-- separation -->
-  <mat-divider></mat-divider>
+  <mat-card *ngIf="boardgame.designers.length != 0">
+    <h4>Concepteurs</h4>
+    <ul>
+      <li *ngFor="let designer of boardgame.designers">
+        <a mat-button color="accent" (click)="viewPeople(designer.name)">{{ designer.name }}</a>
+      </li>
+    </ul>
+  </mat-card>
 
-  <!-- onglet : derniere parties, description, thématique, conception -->
-  <mat-tab-group>
-    <mat-tab label="Dernières Parties">
-      <ng-container *ngIf="playsPage$ | async as playsPage; else loading">
-        <app-play-list [plays]="playsPage.result"></app-play-list>
-      </ng-container>
-    </mat-tab>
-    <mat-tab label="Description">
-        <p class="description" [innerHTML]="boardgame.description"></p>
-    </mat-tab>
-  </mat-tab-group>
+  <mat-card *ngIf="boardgame.artists.length != 0">
+    <h4>Artistes</h4>
+    <ul>
+      <li *ngFor="let artist of boardgame.artists">
+        <a mat-button color="accent" (click)="viewPeople(artist.name)">{{ artist.name }}</a>
+      </li>
+    </ul>
+  </mat-card>
 
-</ng-container>
+  <mat-card *ngIf="boardgame.thematics.length != 0">
+    <h4>Thématiques</h4>
+    <ul>
+      <li *ngFor="let thematic of boardgame.thematics">{{ thematic }}</li>
+    </ul>
+  </mat-card>
+
+  <mat-card *ngIf="boardgame.mechanics.length != 0">
+    <h4>Mécaniques</h4>
+    <ul>
+      <li *ngFor="let mechanic of boardgame.mechanics">{{ mechanic }}</li>
+    </ul>
+  </mat-card>
+</div>
+
+<!-- separation -->
+<mat-divider></mat-divider>
+
+<!-- onglet : derniere parties, description, thématique, conception -->
+<mat-tab-group>
+  <mat-tab label="Dernières Parties">
+    <ng-container *ngIf="playsPage$ | async as playsPage; else loading">
+      <app-play-list [plays]="playsPage.result"></app-play-list>
+    </ng-container>
+  </mat-tab>
+  <mat-tab label="Description">
+      <p class="description" [innerHTML]="boardgame.description"></p>
+  </mat-tab>
+</mat-tab-group>
 
 <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
 

@@ -9,7 +9,7 @@ export class Boardgame implements Deserializable {
     // metadata
     name: string;
     description: string;
-    year: string;
+    year: number;
     age: number;
     rank: number;
     // images
@@ -51,7 +51,7 @@ export class Boardgame implements Deserializable {
     }
 
     deserialize(input: any) {
-      const arstist = input.arstist ? input.artists.map((artist) => new Artist().deserialize(artist)) : [];
+      const artists = input.artists ? input.artists.map((artist) => new Artist().deserialize(artist)) : [];
       const designers = input.designers ? input.designers.map((designer) => new Designer().deserialize(designer)) : [];
       const poll = input.suggested_players ? new Poll().deserialize(input.suggested_players) : null;
       const statistic = input.plays_count ? {
@@ -84,7 +84,7 @@ export class Boardgame implements Deserializable {
         subdomain: input.subdomain,
         thematics: input.thematics,
         mechanics: input.mechanics,
-        artists: arstist,
+        artists: artists,
         designers: designers,
         statitics: statistic
       });

@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { Boardgame } from '../shared/model/boardgame.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Boardgame } from '../../model/boardgame.model';
 
 @Component({
   selector: 'app-boardgame-list',
@@ -13,16 +13,10 @@ export class BoardgameListComponent implements OnInit {
   @Input() boardgames: Boardgame[];
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private cd: ChangeDetectorRef
+    private router: Router
   ) { }
 
   ngOnInit() {
-    // this.route.data.subscribe((data: {boardgames: Boardgame[]}) => {
-    //   this.boardgames = data.boardgames;
-    //   this.cd.markForCheck();
-    // });
   }
 
   select(boardgame: Boardgame) {

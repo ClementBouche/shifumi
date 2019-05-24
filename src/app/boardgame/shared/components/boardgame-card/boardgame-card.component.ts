@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Boardgame } from '../shared/model/boardgame.model';
+import { Boardgame } from '../../model/boardgame.model';
 
 @Component({
   selector: 'app-boardgame-card',

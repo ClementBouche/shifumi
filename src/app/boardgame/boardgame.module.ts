@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BoardgameRoutingModule } from './boardgame-routing.module';
 
 import { BoardgameComponent } from './boardgame.component';
-import { BoardgameListComponent } from './boardgame-list/boardgame-list.component';
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
 import { BoardgameSearchComponent } from './boardgame-search/boardgame-search.component';
 import { BoardgameInfoComponent } from './boardgame-info/boardgame-info.component';
@@ -15,18 +14,15 @@ import { AppMaterialModule } from '../shared/app-material.module';
 import { BoardgameTableComponent } from './boardgame-table/boardgame-table.component';
 import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
 import { SharedModule } from '../shared/shared.module';
-import { BoardgameCardComponent } from './boardgame-card/boardgame-card.component';
 
 @NgModule({
   declarations: [
     BoardgameComponent,
-    BoardgameListComponent,
     BoardgameViewComponent,
     BoardgameSearchComponent,
     BoardgameInfoComponent,
     BoardgameTableComponent,
     BoardgamePaginatedComponent,
-    BoardgameCardComponent,
   ],
   imports: [
     CommonModule,

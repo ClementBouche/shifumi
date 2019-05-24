@@ -23,6 +23,9 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   size: number = 10;
 
+  // test recherche par auteur
+  peopleName: String;
+
   /**
    * extended search are performed with xmlApi
    * @type {boolean}
@@ -40,7 +43,8 @@ export class BoardgameSearch implements Serializable, Deserializable {
       mechanics: this.mechanics,
       page: this.page,
       size: this.size,
-      extended: this.extended
+      people_name: this.peopleName,
+      extended: this.extended,
     }
   }
 
@@ -56,6 +60,7 @@ export class BoardgameSearch implements Serializable, Deserializable {
       mechanics: input.mechanics,
       page: input.page || 1,
       size: input.size || 10,
+      peopleName: input.people_name,
       extended: input.extended == "true" ? true : false
     });
     return this;

@@ -1,0 +1,30 @@
+<ng-container *ngIf="people">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="avatar"></div>
+      <!-- playername -->
+      <mat-card-title>
+        {{ people }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        <ul>
+          <li *ngIf="page">Depuis {{ activityYear }}</li>
+          <li *ngIf="page">{{ page.count }} jeux</li>
+        </ul>
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+
+  <ng-container *ngIf="hasDesigner.length > 0">
+    <h4>Auteur</h4>
+    <app-boardgame-list [boardgames]="hasDesigner"></app-boardgame-list>
+  </ng-container>
+
+  <mat-divider></mat-divider>
+  
+  <ng-container *ngIf="hasArtist.length > 0">
+    <h4>Artiste</h4>
+    <app-boardgame-list [boardgames]="hasArtist"></app-boardgame-list>
+  </ng-container>
+
+</ng-container>

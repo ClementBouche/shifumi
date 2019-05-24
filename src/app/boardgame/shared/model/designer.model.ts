@@ -2,7 +2,7 @@ import { Deserializable } from "src/app/core/model/deserializable.interface";
 
 export class Designer implements Deserializable {
   id: number;
-  name: string;
+  name: String;
 
   deserialize(input: any) {
     Object.assign(this, {

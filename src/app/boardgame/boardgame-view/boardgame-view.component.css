@@ -1,3 +1,16 @@
+.boardgame-infos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.boardgame-infos > * {
+  margin: 10px;
+  width: 340px;
+  max-height: 200px;
+  overflow: auto;
+}
+
 .mat-divider {
   margin-top: 10px;
   margin-bottom: 5px;

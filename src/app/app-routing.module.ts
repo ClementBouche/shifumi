@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: './player/player.module#PlayerModule'
   },
   {
+    path: 'people',
+    loadChildren: './people/people.module#PeopleModule'
+  },
+  {
     path: '**',
     redirectTo: '/'
   }
