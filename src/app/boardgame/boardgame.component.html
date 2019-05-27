@@ -1,12 +1,10 @@
 <!-- <div [@boardgameRouteAnimations]="prepareRoute(bgOutlet)"> -->
-<div>
-    <div class="boardgame-home">
-        <div class="search">
-          <app-boardgame-search (searchCompleted)="doSearch($event)"></app-boardgame-search>
-        </div>
-        <!-- boardgame-list / boardgame-view -->
-        <div class="data">
-            <router-outlet #bgOutlet="outlet"></router-outlet>
-        </div>
-    </div>
+<div class="boardgame-home">
+  <div class="search">
+    <app-boardgame-search (searchCompleted)="doSearch($event)"></app-boardgame-search>
+  </div>
+  <!-- boardgame-list / boardgame-view -->
+  <div class="data">
+    <router-outlet #bgOutlet="outlet"></router-outlet>
+  </div>
 </div>

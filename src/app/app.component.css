@@ -17,6 +17,14 @@
   /* min-width: 600px; */
 }
 
+.mat-progress-bar {
+  position: fixed;
+  top: 71px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
 .app-toolbar app-autocomplete-search-input {
   transform: translate(0, 5px);
 }

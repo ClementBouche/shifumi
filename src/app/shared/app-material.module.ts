@@ -24,6 +24,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatChipsModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatProgressBarModule,
   ],
   exports: [
     MatButtonModule,
@@ -77,6 +79,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatChipsModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatProgressBarModule,
   ]
 })
 export class AppMaterialModule { }

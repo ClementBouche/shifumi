@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet, Event, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 
 import { BoardgameSearch } from './shared/model/boardgame-search.model';
 import { boardgameRouteAnimations } from '../core/animation/boardgame-route.animation';

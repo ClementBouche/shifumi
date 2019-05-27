@@ -21,7 +21,6 @@ export class PeopleViewResolverService implements Resolve<any> {
     return this.boardgameService.search(search)
         .then((boardgame) => boardgame)
         .catch((error) => {
-          console.log(error);
           this.router.navigate(['/']);
           return null;
         });

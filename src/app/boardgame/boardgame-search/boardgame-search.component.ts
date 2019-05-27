@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
@@ -30,7 +30,8 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -82,11 +83,17 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   }
 
   private isFormValid(): boolean {
+    if (!this.form.valid) {
+      return false;
+    }
     // update boardgameSearch with form values
+    if (this.form.value.extended && this.form.value.name == '') {
+      return false;
+    }
     this.boardgameSearch.name = this.form.value.name;
+    this.boardgameSearch.extended = this.form.value.extended;
     this.boardgameSearch.time.min = this.form.value.min;
     this.boardgameSearch.time.max = this.form.value.max;
-    this.boardgameSearch.extended = this.form.value.extended;
     // force la nouvelle pagination
     this.boardgameSearch.page = 1;
     return true;

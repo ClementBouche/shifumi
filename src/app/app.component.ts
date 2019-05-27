@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { RouterOutlet, Router } from '@angular/router';
+import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
@@ -25,6 +25,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logSubscription: Subscription;
 
+  loading: boolean = false;
+
   constructor(
     private userService: UserService,
     private metadataTagsService: MetadataTagsService,
@@ -34,7 +36,34 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+
     this.metadataTagsService.updateTitle('Shifumi - Accueil');
+
+    this.router.events.subscribe(
+      (event) => {
+        switch (true) {
+          case event instanceof NavigationStart: {
+            this.loading = true;
+            break;
+          }
+
+          case event instanceof NavigationEnd:
+          case event instanceof NavigationCancel:
+          case event instanceof NavigationError: {
+            // at least 500ms waiting
+            setTimeout(() => {
+              this.loading = false;
+              this.cd.markForCheck();
+            }, 500);
+            break;
+          }
+
+          default: {
+            break;
+          }
+
+        }
+      });
 
     this.logSubscription = this.userService.logginEvent.subscribe((user) => {
       this.registered = user;

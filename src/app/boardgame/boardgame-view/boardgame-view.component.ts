@@ -10,7 +10,6 @@ import { Tagable } from 'src/app/core/model/tagable.interface';
 import { PlayService } from 'src/app/play/shared/services/play.service';
 import { PlaySearch } from 'src/app/play/shared/model/play-search.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
-import { Designer } from '../shared/model/designer.model';
 
 @Component({
   selector: 'app-boardgame-view',
@@ -93,7 +92,6 @@ export class BoardgameViewComponent implements OnInit, Tagable {
   }
 
   viewPeople(name: string) {
-    console.log({name});
     this.router.navigate(['/', 'people', name]);
   }
 

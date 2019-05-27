@@ -56,6 +56,7 @@ export class UserService {
   }
 
   authFailedRequest() {
+    this.logout();
     this.router.navigate(['/login']);
   }
 

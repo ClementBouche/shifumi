@@ -35,7 +35,6 @@ export class PeopleViewComponent implements OnInit {
       .pipe(
         map(params => {
           this.people = params.name;
-          console.log(params);
           this.cd.markForCheck();
         })
       )

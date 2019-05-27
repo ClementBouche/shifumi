@@ -18,7 +18,7 @@
             </mat-form-field>
     
             <!-- time.min input -->
-            <mat-form-field [class.readonly]="!form.value.recent">
+            <mat-form-field [class.readonly]="form.value.extended">
               <input matInput type="number" name="min" formControlName="min" class="as-text" 
                     [readonly]="!form.value.recent"/>
               <mat-hint>autour de...</mat-hint>
@@ -26,7 +26,7 @@
             </mat-form-field>
     
             <!-- time.max input -->
-            <mat-form-field [class.readonly]="!form.value.recent">
+            <mat-form-field [class.readonly]="form.value.extended">
               <input matInput type="number" name="max" formControlName="max" class="as-text"
                     [readonly]="!form.value.recent" />
               <mat-hint>Pas plus de...</mat-hint>
