@@ -16,6 +16,7 @@ input.as-text {
   justify-content: flex-end;
   flex-wrap: wrap;
 }
+
 .actions > * {
   padding-right: 60px;
 }
@@ -27,4 +28,8 @@ input.as-text {
 .accordion-search .mat-expansion-panel-header-description {
   justify-content: right;
   flex-direction: row-reverse;
+}
+
+p {
+  padding: 10px;
 }

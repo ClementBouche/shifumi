@@ -22,7 +22,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     extended: [false]
   });
 
-  private boardgameSearch: BoardgameSearch = new BoardgameSearch();
+  boardgameSearch: BoardgameSearch = new BoardgameSearch();
 
   private nameSubject: Subject<string> = new Subject();
 

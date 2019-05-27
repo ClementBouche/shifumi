@@ -28,14 +28,18 @@
   <mat-card *ngIf="boardgame.thematics.length != 0">
     <h4>Thématiques</h4>
     <ul>
-      <li *ngFor="let thematic of boardgame.thematics">{{ thematic }}</li>
+      <li *ngFor="let thematic of boardgame.thematics">
+        <a mat-button color="accent" (click)="searchThematic(thematic)">{{ thematic }}</a>
+      </li>
     </ul>
   </mat-card>
 
   <mat-card *ngIf="boardgame.mechanics.length != 0">
     <h4>Mécaniques</h4>
     <ul>
-      <li *ngFor="let mechanic of boardgame.mechanics">{{ mechanic }}</li>
+      <li *ngFor="let mechanic of boardgame.mechanics">
+        <a mat-button color="accent" (click)="searchMechanic(mechanic)">{{ mechanic }}</a>
+      </li>
     </ul>
   </mat-card>
 </div>

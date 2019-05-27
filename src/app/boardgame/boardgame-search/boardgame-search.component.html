@@ -45,6 +45,10 @@
       </div>
   </mat-expansion-panel>
 </mat-accordion>
-<!-- 
-<mat-card>
-</mat-card> -->
+
+<ng-container *ngIf="boardgameSearch.thematics || boardgameSearch.mechanics">
+  <p>
+    <span *ngIf="boardgameSearch.thematics">Thématiques : {{ boardgameSearch.thematics }}</span>
+    <span *ngIf="boardgameSearch.mechanics">Mécaniques : {{ boardgameSearch.mechanics }}</span>
+  </p>
+</ng-container>
