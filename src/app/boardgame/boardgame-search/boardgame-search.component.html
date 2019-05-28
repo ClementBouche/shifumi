@@ -1,5 +1,5 @@
 <mat-accordion class="accordion-search">
-  <mat-expansion-panel hideToggle>
+  <mat-expansion-panel [expanded]="openSearch">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Rechercher
@@ -7,7 +7,7 @@
       <mat-panel-description>
         <mat-icon>search</mat-icon>
       </mat-panel-description>
-    </mat-expansion-panel-header >
+    </mat-expansion-panel-header>
       <div class="boardgame-search">
         <form [formGroup]="form" (ngSubmit)="search()">
           <div class="values">
@@ -20,7 +20,7 @@
             <!-- time.min input -->
             <mat-form-field [class.readonly]="form.value.extended">
               <input matInput type="number" name="min" formControlName="min" class="as-text" 
-                    [readonly]="!form.value.recent"/>
+                    [readonly]="form.value.extended"/>
               <mat-hint>autour de...</mat-hint>
               <span matSuffix>min</span>
             </mat-form-field>
@@ -28,7 +28,7 @@
             <!-- time.max input -->
             <mat-form-field [class.readonly]="form.value.extended">
               <input matInput type="number" name="max" formControlName="max" class="as-text"
-                    [readonly]="!form.value.recent" />
+                    [readonly]="form.value.extended" />
               <mat-hint>Pas plus de...</mat-hint>
               <span matSuffix>min</span>
             </mat-form-field>

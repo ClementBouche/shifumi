@@ -27,4 +27,11 @@
     <app-boardgame-list [boardgames]="hasArtist"></app-boardgame-list>
   </ng-container>
 
+  <ng-container *ngIf="page.count == 0">
+    <p>
+      Aucun jeux enregistrés.
+      <a mat-button color="accent" (click)="search()">Rechercher des jeux de cet auteur ou artiste puis ajoutez-les à la bibliothèque.</a>
+    </p>
+  </ng-container>
+
 </ng-container>

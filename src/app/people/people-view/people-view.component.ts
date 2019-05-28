@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { BoardgamesPage } from 'src/app/boardgame/shared/model/boardgames-page.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 
@@ -17,6 +17,7 @@ export class PeopleViewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private cd: ChangeDetectorRef
   ) { }
 
@@ -41,11 +42,21 @@ export class PeopleViewComponent implements OnInit {
       .subscribe();
   }
 
+  search() {
+    this.router.navigate(['/', 'boardgame'], {
+      queryParams: {
+        extended: true,
+        openSearch: true
+      }
+    })
+  }
+
   get activityYear() {
     if (this.page) {
-      return this.page.result.sort((a, b) => {
+      const sorted = this.page.result.sort((a, b) => {
         return a.year - b.year > 0 ? 1 : a.year - b.year == 0 ? 0 : -1;
-      })[0].year;
+      })
+      return sorted.length > 0 ? sorted[0].year : 'Inconnue';
     }
   }
 

@@ -24,6 +24,8 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
 
   boardgameSearch: BoardgameSearch = new BoardgameSearch();
 
+  openSearch: boolean = false;
+
   private nameSubject: Subject<string> = new Subject();
 
   private routeSubscription: Subscription;
@@ -39,6 +41,10 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
       if (Object.entries(params).length === 0 && params.constructor === Object) {
         // ne rien faire
       } else {
+        // see if search panel must be open
+        if (params.openSearch) {
+          this.openSearch = params.openSearch;
+        }
         this.boardgameSearch = new BoardgameSearch().deserialize(params);
         this.searchToForm();
       }
@@ -87,7 +93,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
       return false;
     }
     // update boardgameSearch with form values
-    if (this.form.value.extended && this.form.value.name == '') {
+    if (this.form.value.extended && this.form.value.name.length < 3) {
       return false;
     }
     this.boardgameSearch.name = this.form.value.name;

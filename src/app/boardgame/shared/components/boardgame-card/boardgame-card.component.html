@@ -1,15 +1,19 @@
 <mat-card *ngIf="boardgame">
   <mat-card-header>
-    <div mat-card-avatar class="avatar" [appBackgroundImage]="boardgame.thumbnail"></div>
+    <div *ngIf="boardgame.thumbnail" mat-card-avatar class="avatar" [appBackgroundImage]="boardgame.thumbnail"></div>
     <!-- playername -->
-    <mat-card-title>
+    <mat-card-title [class.thumbnail]="boardgame.thumbnail">
       {{ boardgame.name }}
     </mat-card-title>
     <mat-card-subtitle>
       <ul>
         <li>{{ boardgame.year }}</li>
-        <li *ngIf="boardgame.time.average">{{ boardgame.time.average | playTime:"humanize" }}</li>
-        <li *ngIf="boardgame.players.min">{{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs</li>
+        <li *ngIf="boardgame.time.average">
+          {{ boardgame.time.average | playTime:"humanize" }}
+        </li>
+        <li *ngIf="boardgame.players.min || boardgame.players.max">
+          {{ boardgame.players.min }} à {{ boardgame.players.max }} joueurs
+        </li>
       </ul>
     </mat-card-subtitle>
   </mat-card-header>

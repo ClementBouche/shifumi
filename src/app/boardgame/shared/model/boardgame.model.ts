@@ -66,20 +66,20 @@ export class Boardgame implements Deserializable {
         xmlId: input.xmlapi_id,
         name: input.name,
         description: input.description,
-        year: input.year_published,
-        age: input.age,
-        rank: input.rank,
+        year: parseInt(input.year_published),
+        age: parseInt(input.age),
+        rank: parseInt(input.rank),
         thumbnail: input.thumbnail,
         image: input.image,
         players: { 
-          min: input.min_players,
-          max: input.max_players,
+          min: parseInt(input.min_players),
+          max: parseInt(input.max_players),
           poll: poll
         },
         time: {
-          average: input.playing_time,
-          min: input.min_play_time,
-          max: input.max_play_time
+          average: parseInt(input.playing_time),
+          min: parseInt(input.min_play_time),
+          max: parseInt(input.max_play_time),
         },
         subdomain: input.subdomain,
         thematics: input.thematics,
