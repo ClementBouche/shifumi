@@ -55,6 +55,8 @@ export class AppComponent implements OnInit, OnDestroy {
               this.loading = false;
               this.cd.markForCheck();
             }, 500);
+            // scroll to top
+            document.getElementById('main-content').scrollTo(0, 0);
             break;
           }
 

@@ -26,6 +26,12 @@
     <mat-sidenav #sidenav mode="over" opened="false" class="mat-elevation-z6">
       <mat-list role="list">
         <mat-list-item role="listitem">
+            <a mat-button routerLink="/" routerLinkActive="active">
+              <mat-icon>link</mat-icon>
+              Home
+            </a>
+        </mat-list-item>
+        <mat-list-item role="listitem">
             <a mat-button routerLink="boardgame" routerLinkActive="active">
               <mat-icon>link</mat-icon>
               Jeux
@@ -45,7 +51,7 @@
         </mat-list-item>
       </mat-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content id="main-content">
       <!-- <div class="flex-content" [@routeAnimations]="prepareRoute(outlet)"> -->
       <div class="flex-content">
         <div class="grow">

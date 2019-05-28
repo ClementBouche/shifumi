@@ -1,11 +1,5 @@
 .boardgames {
   display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
-}
-
-.boardgames {
-  display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }

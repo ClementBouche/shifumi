@@ -1,0 +1,14 @@
+.pages {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pages > * {
+  margin: 10px;
+  width: 340px;
+}
+
+.pages > *:hover {
+  cursor: pointer;
+}

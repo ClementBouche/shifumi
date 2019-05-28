@@ -1,5 +1,14 @@
-<mat-grid-list cols="1" rowHeight="4:1">
-  <mat-grid-tile>
-    <p>Travaux en cours...</p>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="pages">
+  <mat-card (click)="go('boardgame')">
+    Rechercher un Jeux.
+    <a mat-button color="accent">Go</a>
+  </mat-card>
+  <mat-card (click)="go('play')">
+    Retrouvez vos parties.
+    <a mat-button color="accent">Go</a>
+  </mat-card>
+  <mat-card (click)="go('player')">
+    Retrouvez un joueur ou consulter ses statistiques.
+    <a mat-button color="accent">Go</a>
+  </mat-card>
+</div>
