@@ -3,7 +3,7 @@
     <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
     <a mat-button class="home-button" color="accent" routerLink="" routerLinkActive="active"><h1 class="title">Shi.Fu.Mi</h1></a>
     <span class="separator"></span>
-    <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
+    <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher un jeux..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
     <ng-container *ngIf="registered && registered.username != '' else login">
       <a mat-button class="profil-button" routerLink="profil" routerLinkActive="active">
         {{ registered.username }}

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Tagable } from 'src/app/core/model/tagable.interface';
 
@@ -28,6 +28,7 @@ export class PlayerViewComponent implements OnInit, Tagable {
     private playService: PlayService,
     private metadataTags: MetadataTagsService,
     private route: ActivatedRoute,
+    private router: Router,
     private cd: ChangeDetectorRef
   ) { }
 
@@ -56,6 +57,14 @@ export class PlayerViewComponent implements OnInit, Tagable {
     if (this.player) {
       this.metadataTags.updateDescription('Shifumi - ' + this.player.name);
     }
+  }
+
+  search() {
+    this.router.navigate(['/', 'play'], {
+      queryParams: {
+        player: this.player.name
+      }
+    });
   }
 
 }

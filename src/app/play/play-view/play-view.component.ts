@@ -57,6 +57,12 @@ export class PlayViewComponent implements OnInit, Tagable {
     this.router.navigate(['/', 'player', score.playerName]);
   }
 
+  goBoardgame() {
+    if (this.play.boardgameId) {
+      this.router.navigate(['/', 'boardgame', this.play.boardgameId]);
+    }
+  }
+
   updateTags() {
     if (this.play) {
       this.metadataTags.updateTitle(this.play.boardgameName + ' le ' + this.play.date);

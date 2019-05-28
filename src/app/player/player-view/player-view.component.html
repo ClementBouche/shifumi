@@ -3,6 +3,7 @@
 
   <div class="separator"></div>
   <app-play-list [plays]="plays"></app-play-list>
+  <a mat-button color="accent" (click)="search()">Voir toutes les parties</a>
 </div>
 
 <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>

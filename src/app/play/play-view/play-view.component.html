@@ -1,5 +1,6 @@
 <ng-container *ngIf="play">
   <app-play-info [play]="play" (scoreClicked)="actionScore($event)"></app-play-info>
+  <a mat-button color="accent" (click)="goBoardgame()">Voir le jeux</a>
 
   <!-- <app-play-card [play]="play" (scoreClicked)="actionScore($event)"></app-play-card> -->
   <!-- menu copy / like / edit -->

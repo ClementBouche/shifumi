@@ -91,6 +91,14 @@ export class BoardgameViewComponent implements OnInit, Tagable {
     }
   }
 
+  search() {
+    this.router.navigate(['/', 'play'], {
+      queryParams: {
+        boardgame: this.boardgame.name
+      }
+    });
+  }
+
   viewPeople(name: string) {
     this.router.navigate(['/', 'people', name]);
   }

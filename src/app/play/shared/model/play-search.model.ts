@@ -22,8 +22,8 @@ export class PlaySearch implements Deserializable, Serializable {
 
   deserialize(input: any) {
     Object.assign(this, {
-      boardgameName: input.boardgame_name,
-      userName: input.user_name,
+      boardgameName: input.boardgame,
+      playerName: input.player,
       page: input.page || 1,
       size: input.size || 10,
     });

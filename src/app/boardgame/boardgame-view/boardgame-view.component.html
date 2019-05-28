@@ -52,6 +52,7 @@
   <mat-tab label="Dernières Parties">
     <ng-container *ngIf="playsPage$ | async as playsPage; else loading">
       <app-play-list [plays]="playsPage.result"></app-play-list>
+      <a mat-button color="accent" (click)="search()">Voir toutes les parties</a>
     </ng-container>
   </mat-tab>
   <mat-tab label="Description">
