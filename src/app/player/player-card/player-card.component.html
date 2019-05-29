@@ -1,6 +1,10 @@
 <mat-card *ngIf="player">
+  <app-avatar class="app-card-avatar" size=60 [name]="player.name"
+      [color]="player.avatar.color"
+      [image]="player.avatar.image">
+  </app-avatar>
   <mat-card-header>
-    <div mat-card-avatar class="avatar"></div>
+    <!-- <div mat-card-avatar class="avatar"></div> -->
     <!-- playername -->
     <mat-card-title>
       {{ player.name }}

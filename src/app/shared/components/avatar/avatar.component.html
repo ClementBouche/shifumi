@@ -1,0 +1,14 @@
+<ng-container *ngIf="image else noImage">
+  <div class="avatar" [appBackgroundImage]="image" 
+    [style.width]="size"
+    [style.height]="size">
+  </div>
+</ng-container>
+
+<ng-template #noImage>
+  <div class="avatar" [appColorGradient]="gradient"
+    [style.width]="size"
+    [style.height]="size">
+    <span class="content">{{ shortName }}</span>
+  </div>
+</ng-template>

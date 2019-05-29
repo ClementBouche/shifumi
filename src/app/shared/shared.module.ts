@@ -9,6 +9,8 @@ import { MenuButtonComponent } from './components/menu-button/menu-button.compon
 import { PlayTimePipe } from './pipes/play-time.pipe';
 import { BackgroundImageDirective } from './directives/background-image.directive';
 import { DatePipe } from './pipes/date.pipe';
+import { AvatarComponent } from './components/avatar/avatar.component';
+import { ColorGradientDirective } from './directives/color-gradient.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { DatePipe } from './pipes/date.pipe';
     PlayTimePipe,
     BackgroundImageDirective,
     DatePipe,
+    AvatarComponent,
+    ColorGradientDirective,
   ],
   imports: [
     CommonModule,
@@ -32,6 +36,7 @@ import { DatePipe } from './pipes/date.pipe';
     PlayTimePipe,
     BackgroundImageDirective,
     DatePipe,
+    AvatarComponent,
   ]
 })
 export class SharedModule { }

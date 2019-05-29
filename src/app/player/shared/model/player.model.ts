@@ -6,6 +6,11 @@ export class Player implements Deserializable {
   name: string;
   active: boolean;
 
+  avatar: {
+    image: string;
+    color: string;
+  };
+
   // statitic
   counts: {
     boardgames: number;
@@ -14,7 +19,7 @@ export class Player implements Deserializable {
     wins: number;
     places: number;
     players: number;
-  }
+  };
 
   //
   time: number;
@@ -32,6 +37,10 @@ export class Player implements Deserializable {
         wins: input.plays_win_count,
         places: input.places_count,
         players: input.players_count
+      },
+      avatar: {
+        image: input.avatar_image,
+        color: input.avatar_color
       },
       time: input.play_time,
       victoryRatio: input.win_ratio,

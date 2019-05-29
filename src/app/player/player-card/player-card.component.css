@@ -3,6 +3,14 @@
   background-size: cover;
 }
 
+.app-card-avatar {
+  position: absolute;
+}
+
+.mat-card-header {
+  margin-left: 60px;
+}
+
 .mat-card-title {
   max-width: 200px;
   white-space: nowrap;

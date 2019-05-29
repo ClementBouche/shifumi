@@ -1,0 +1,16 @@
+.avatar {
+  position: relative;
+  background: linear-gradient(217deg,#ccc, #888);;
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.content {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,6 +1,8 @@
 <mat-card class="card">
+  <app-avatar class="app-card-avatar" [name]="score.playerName" size=50>
+  </app-avatar>
   <mat-card-header>
-    <div mat-card-avatar class="avatar"></div>
+    <!-- <div mat-card-avatar class="avatar"></div> -->
     <mat-card-title><mat-icon *ngIf="score.winner">star</mat-icon>{{ score.playerName }}</mat-card-title>
     <mat-card-subtitle *ngIf="score.value != 0">{{ score.value }}</mat-card-subtitle>
   </mat-card-header>
