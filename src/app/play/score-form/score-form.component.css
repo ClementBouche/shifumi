@@ -3,6 +3,14 @@
   margin-right: 15px;
 }
 
+.app-card-avatar {
+  position: absolute;
+}
+
+.mat-card-header {
+  margin-left: 60px;
+}
+
 .avatar {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;

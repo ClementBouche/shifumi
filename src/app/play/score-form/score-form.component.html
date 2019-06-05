@@ -1,17 +1,15 @@
 <mat-card class="card" *ngIf="form">
+  <app-avatar class="app-card-avatar" size=60 [name]="score.playerName"></app-avatar>
   <form [formGroup]="form" (ngSubmit)="submit()">
-
     <mat-card-header>
-      <div mat-card-avatar class="avatar"></div>
+      <!-- <div mat-card-avatar class="avatar"></div> -->
       <!-- playername -->
       <mat-card-title>
         <mat-icon *ngIf="form.winner">star</mat-icon>
-        <mat-form-field>
-          <input matInput placeholder="Joueur" type="string" name="playerName" formControlName="playerName" >
-          <button mat-button matSuffix mat-icon-button (click)="openDialog()">
-            <mat-icon>search</mat-icon>
-          </button>
-        </mat-form-field>
+        <app-player-search-input [namePart]="form.value.playerName"
+            (playerSelected)="doSelection($event)"
+            (valueChanged)="doValueChanged($event)">
+        </app-player-search-input>
       </mat-card-title>
       <!-- player score value -->
       <mat-card-subtitle>

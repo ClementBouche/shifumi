@@ -9,7 +9,9 @@ export class DatePipe implements PipeTransform {
   transform(value: any, mode?: string): String {
     // const date = moment().diff(value, 'days');
     if (mode == 'humanize') {
-      return moment(value, 'YYYY-MM-DD').locale('fr').fromNow();
+      const time = moment.parseZone(value, 'YYYY-MM-DD').add(12, 'h').locale('fr');
+      const now = moment.parseZone(moment.now()).locale('fr');
+      return time.from(now);
     }
     return value;
   }

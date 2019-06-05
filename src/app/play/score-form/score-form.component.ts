@@ -65,22 +65,34 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
     }
   }
 
+  doSelection(player: Player) {
+    this.setPlayerName(player.name);
+  }
+
+  doValueChanged(input: any) {
+    if (input instanceof Player) {
+      this.setPlayerName(input.name);
+    } else {
+      this.setPlayerName(input);
+    }
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(PlayerPickDialogComponent, {
       width: '500px',
       data: {name: ''}
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe((result: Player) => {
       if (result) {
-        this.setPlayerName(result);
+        this.setPlayerName(result.name);
       }
     });
   }
 
-  setPlayerName(player: Player) {
+  setPlayerName(playerName: string) {
     this.form.patchValue({
-      playerName: player.name
+      playerName: playerName
     });
     this.cd.markForCheck();
   }

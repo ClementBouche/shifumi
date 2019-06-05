@@ -2,9 +2,13 @@
   <mat-form-field>
     <input matInput [placeholder]="placeholder"
         [matAutocomplete]="auto"
-        [formControl]="inputControl">
+        [formControl]="inputControl"
+        autocomplete="false">
     <button mat-button matSuffix mat-icon-button>
-      <mat-icon>search</mat-icon>
+      <mat-icon *ngIf="status != 'found' && status != 'unknown'">search</mat-icon>
+      <mat-icon *ngIf="status == 'unknown'" color="primary" (click)="createPlayer()">add</mat-icon>
+      <!-- <mat-icon *ngIf="status == 'found'">check_circle_outline</mat-icon> -->
+      <mat-icon *ngIf="status == 'found'" color="accent">check</mat-icon>
     </button>
     <mat-autocomplete #auto="matAutocomplete"
         (optionSelected)="select($event.option.value)"

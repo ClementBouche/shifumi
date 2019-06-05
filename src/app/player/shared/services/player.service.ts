@@ -30,6 +30,41 @@ export class PlayerService {
       .then((response: any) => response.map((input) => new Player().deserialize(input)));
   }
 
+  getPlayer(id: string): Promise<Player> {
+    const url = `${this.playerUrl}/${id}`;
+    return this.httpClient.get(url)
+      .toPromise()
+      .then(response => new Player().deserialize(response));
+  }
+
+  statitics(id: string): Promise<Player> {
+    const url = `${this.playerUrl}/${id}/statistic`;
+    return this.httpClient.get(url)
+      .toPromise()
+      .then(response => new Player().deserialize(response));
+  }
+
+  create(player: Player) {
+    const url = `${environment.apiUrl}/player`;
+    return this.httpClient.post(url, player.serialize())
+      .toPromise()
+      .then(response => new Player().deserialize(response));
+  }
+
+  update(player: Player) {
+    const url = `${environment.apiUrl}/player/${player.id}`;
+    return this.httpClient.put(url, player.serialize())
+      .toPromise()
+      .then(response => new Player().deserialize(response));
+  }
+
+  delete(player: Player) {
+    const url = `${environment.apiUrl}/player/${player.id}`;
+    return this.httpClient.delete(url)
+      .toPromise()
+      .then(response => response);
+  }
+
   getBoardgamePlayers(boardgame: Boardgame) {
     let url = `${environment.apiUrl}/player/search`
     return this.httpClient.post(url, {
@@ -39,30 +74,12 @@ export class PlayerService {
       .then((response: any) => response.map((input) => new Player().deserialize(input)));
   }
 
-  getPlayer(id: string): Promise<Player> {
-    const url = `${this.playerUrl}/${id}`;
-    return this.httpClient.get(url)
-      .toPromise()
-      .then(response => new Player().deserialize(response));
-  }
-
   search(search: PlayerSearch): Promise<PlayersPage> {
     const url = `${this.playerUrl}/search`;
 
     return this.httpClient.post(url, search.serialize())
       .toPromise()
       .then(response => new PlayersPage().deserialize(response));
-
-      // TODO create search method in API with game && playerer filters
-    // return this.getPlayers(search.size, search.page).then((players) => {
-    //   const playerPage = new PlayersPage();
-    //   return Object.assign(playerPage, {
-    //     count: 200,
-    //     size: search.size || 10,
-    //     page: search.page || 1,
-    //     result: players.length > 0 ? players : []
-    //   });
-    // });
   };
 
 }

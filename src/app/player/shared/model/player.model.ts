@@ -25,6 +25,17 @@ export class Player implements Deserializable {
   time: number;
   victoryRatio: number;
 
+  serialize() {
+    return {
+      name: this.name,
+      have_account: this.active,
+      avatar_image: this.avatar ? this.avatar.image : '',
+      avatar_color: this.avatar ? this.avatar.color : '',
+      play_time: this.time,
+      win_ratio: this.victoryRatio
+    };
+  }
+
   deserialize(input: any) {
     Object.assign(this, {
       id: input._id,

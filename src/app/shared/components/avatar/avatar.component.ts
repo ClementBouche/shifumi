@@ -42,6 +42,8 @@ export class AvatarComponent implements OnInit {
     }
     if (!this.color || this.color === '') {
       this.gradient = this.randomGradient;
+    } else {
+      this.gradient = [this.color, this.color, 'white'];
     }
   }
 

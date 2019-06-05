@@ -10,6 +10,8 @@ import { Player } from '../shared/model/player.model';
 import { Play } from 'src/app/play/shared/model/play.model';
 import { PlaySearch } from 'src/app/play/shared/model/play-search.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
+import { PlayerService } from '../shared/services/player.service';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-player-view',
@@ -25,6 +27,7 @@ export class PlayerViewComponent implements OnInit, Tagable {
   actions: string[] = ['delete', 'edit'];
 
   constructor(
+    private playerService: PlayerService,
     private playService: PlayService,
     private metadataTags: MetadataTagsService,
     private route: ActivatedRoute,
@@ -33,16 +36,17 @@ export class PlayerViewComponent implements OnInit, Tagable {
   ) { }
 
   ngOnInit() {
-    this.route.data.subscribe((data: {player: Player}) => {
-      this.player = data.player;
-
-      const playSearch = new PlaySearch();
-      playSearch.playerName = this.player.name;
-      this.playService.search(playSearch).then((page: PlaysPage) => {
-        this.plays = page.result;
-        this.cd.markForCheck();
-      });
-
+    this.route.data.pipe(
+      map((data: {player: Player}) => {
+        this.player = data.player;
+        // TODO where put this ???
+        this.playerService.statitics(this.player.id);
+        // fin TODO
+        return new PlaySearch().deserialize({ player: this.player.name });
+      }),
+      switchMap((playSearch: PlaySearch) => this.playService.search(playSearch))
+    ).subscribe((page: PlaysPage) => {
+      this.plays = page.result;
       this.cd.markForCheck();
     });
 
@@ -50,7 +54,14 @@ export class PlayerViewComponent implements OnInit, Tagable {
   }
 
   doAction(actionName: string) {
-    console.log({actionName});
+    if (actionName === 'delete') {
+      this.playerService.delete(this.player).then(() => {
+        this.router.navigate(['/', 'player']);
+      });
+    }
+    if (actionName === 'edit') {
+      // TODO
+    }
   }
 
   updateTags() {

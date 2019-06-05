@@ -21,7 +21,7 @@ export class PlayerViewResolverService implements Resolve<Player> {
         .then((play) => play)
         .catch((error) => {
           if (error.status == 404) {
-            const searchPlayer = new PlayerSearch;
+            const searchPlayer = new PlayerSearch();
             searchPlayer.name = id;
             // TODO something better
             return this.service.search(searchPlayer).then((playersPage: PlayersPage) => {
