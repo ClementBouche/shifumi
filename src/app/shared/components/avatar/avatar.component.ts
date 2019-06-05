@@ -30,6 +30,12 @@ export class AvatarComponent implements OnInit {
     ['#00bcd4', '#00bcd4', 'white'],
     ['#2196f3', '#2196f3', 'white'],
     ['#3f51b5', '#3f51b5', 'white'],
+    ['#ab47bc', '#ab47bc', 'white'],
+    ['#66bb6a', '#66bb6a', 'white'],
+    ['#ffee58', '#ffee58', 'black'],
+    ['#ffa726', '#ffa726', 'black'],
+    ['#bdbdbd', '#bdbdbd', 'black'],
+    ['#ef5350', '#ef5350', 'white'],
   ];
 
   constructor() { }

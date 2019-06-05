@@ -25,7 +25,7 @@ export class PlaySearch implements Deserializable, Serializable {
       boardgameName: input.boardgame,
       playerName: input.player,
       page: input.page || 1,
-      size: input.size || 10,
+      size: input.size || 25,
     });
     return this;
   }

@@ -22,6 +22,8 @@ export class PlayerViewComponent implements OnInit, Tagable {
 
   player: Player;
 
+  loading: boolean = true;
+
   plays: Play[];
 
   actions: string[] = ['delete', 'edit'];
@@ -40,13 +42,17 @@ export class PlayerViewComponent implements OnInit, Tagable {
       map((data: {player: Player}) => {
         this.player = data.player;
         // TODO where put this ???
-        this.playerService.statitics(this.player.id);
+        this.playerService.statitics(this.player.id).then((player) => {
+          this.player = player;
+          this.cd.markForCheck();
+        });
         // fin TODO
         return new PlaySearch().deserialize({ player: this.player.name });
       }),
       switchMap((playSearch: PlaySearch) => this.playService.search(playSearch))
     ).subscribe((page: PlaysPage) => {
       this.plays = page.result;
+      this.loading = false;
       this.cd.markForCheck();
     });
 

@@ -6,6 +6,12 @@
   padding-top: 10px;
 }
 
+.center {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: calc(50% - 60px);
+}
+
 @media (max-width: 600px) {
   .content {
     padding: 10px 0px;

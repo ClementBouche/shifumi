@@ -2,8 +2,16 @@
   <app-player-card [player]="player"></app-player-card>
 
   <div class="separator"></div>
-  <app-play-list [plays]="plays"></app-play-list>
+  <ng-container *ngIf="plays else loading">
+    <app-play-list [plays]="plays"></app-play-list>
+  </ng-container>
   <a mat-button color="accent" (click)="search()">Voir toutes les parties</a>
 </div>
 
 <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
+
+<ng-template #loading>
+  <div class="center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

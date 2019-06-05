@@ -5,8 +5,12 @@
 @include mat-core();
 
 // hue. Available color palettes: https://material.io/design/color/
-$light-app-primary: mat-palette($mat-indigo, 500);
-$light-app-accent:  mat-palette($mat-orange, 800);
+// $light-app-primary: mat-palette($mat-indigo, 500);
+// $light-app-accent:  mat-palette($mat-orange, 800);
+// $light-app-primary: mat-palette($mat-blue, 700);
+// $light-app-accent:  mat-palette($mat-yellow, 800);
+$light-app-primary: mat-palette($mat-blue-grey, 700);
+$light-app-accent:  mat-palette($mat-amber, 800);
 
 // The warn palette is optional (defaults to red).
 $light-app-warn:    mat-palette($mat-red, 400);

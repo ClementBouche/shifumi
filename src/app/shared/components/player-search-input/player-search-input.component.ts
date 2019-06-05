@@ -64,7 +64,9 @@ export class PlayerSearchInputComponent implements OnInit {
     if (this.getName().length > 0) {
       const player = new Player();
       player.name = this.getName();
-      this.playerService.create(player);
+      this.playerService.create(player).then((player) => {
+        this.autoSelect([player]);
+      });
     }
   }
 
@@ -90,6 +92,9 @@ export class PlayerSearchInputComponent implements OnInit {
   }
 
   private getName() {
+    if (this.inputControl.value == null) {
+      return '';
+    }
     return typeof this.inputControl.value === 'string' ? this.inputControl.value : this.inputControl.value.name; 
   }
 
