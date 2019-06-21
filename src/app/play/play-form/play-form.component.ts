@@ -42,6 +42,7 @@ export class PlayFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('cocuou');
     if (this.play) {
       return this.playToForm();
     }
@@ -65,7 +66,7 @@ export class PlayFormComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.patchForm(result);
+        this.patchForm(result, false);
       }
     });
   }
@@ -115,17 +116,20 @@ export class PlayFormComponent implements OnInit {
     this.play.playingTime = this.form.value.playingTime;
     this.play.incomplete = this.form.value.incomplete;
     this.play.scores = this.form.value.scores;
-    // TODO les score sont gerer independament
     return true;
   }
 
-  private patchForm(bg: Boardgame) {
-    const nbPlayers = Math.round((bg.players.min + bg.players.max) / 2);
+  private patchForm(bg: Boardgame, resetScore = true) {
     this.form.patchValue({
       boardgameName: bg.name,
       playingTime: bg.time.average,
-      scores: Array.from(new Array(nbPlayers), (val, index) => new Score())
     });
+    if (resetScore) {
+      const nbPlayers = Math.round((bg.players.min + bg.players.max) / 2);
+      this.form.patchValue({
+        scores: Array.from(new Array(nbPlayers), (val, index) => new Score())
+      });
+    }
   }
 
 }

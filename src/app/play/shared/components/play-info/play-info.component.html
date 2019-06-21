@@ -1,6 +1,6 @@
 <ng-container *ngIf="play">
   <div class="play">
-    <app-play-card [play]="play"></app-play-card>
+    <app-play-card [play]="play" fromDate=false></app-play-card>
     <ng-container *ngIf="!listItem; then detail"></ng-container>
   </div>
 </ng-container>

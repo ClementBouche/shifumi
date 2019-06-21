@@ -16,8 +16,8 @@ export class PlayViewComponent implements OnInit, Tagable {
 
   play: Play;
 
+  actions = ['format_paint', 'edit', 'delete'];
   // actions = ['format_paint', 'star', 'edit', 'delete'];
-  actions = ['format_paint', 'star', 'edit', 'delete'];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,7 +38,7 @@ export class PlayViewComponent implements OnInit, Tagable {
 
   doAction(actionName: string) {
     if (actionName == 'format_paint') {
-      this.router.navigate(['/', 'play', 'add', this.play.boardgameId]);
+      this.router.navigate(['/', 'play', 'copy', this.play.id]);
     }
     if (actionName == 'star') {
       console.log('star');

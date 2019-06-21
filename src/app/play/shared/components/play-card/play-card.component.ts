@@ -10,9 +10,14 @@ export class PlayCardComponent implements OnInit {
 
   @Input() play: Play;
 
+  @Input() fromDate: string = 'true';
+
+  dateFormat: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.dateFormat = this.fromDate == 'true' ? 'from' : 'humanize';
   }
 
 }

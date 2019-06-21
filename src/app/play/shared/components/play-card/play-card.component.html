@@ -8,7 +8,7 @@
     <mat-card-subtitle>
       <span *ngIf="play.place">{{ play.place }}</span>
       <span *ngIf="play.place && play.date"> • </span>
-      <span *ngIf="play.date">{{ play.date | appDate:"humanize" }}</span>
+      <span *ngIf="play.date">{{ play.date | appDate:dateFormat }}</span>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>

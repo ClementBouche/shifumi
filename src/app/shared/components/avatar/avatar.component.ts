@@ -41,6 +41,9 @@ export class AvatarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (!this.name || this.name === '') {
+      this.name = '?';
+    }
     if (!this.size) {
       this.size = 36 + 'px';
     } else {

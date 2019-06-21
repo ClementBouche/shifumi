@@ -41,6 +41,10 @@ const routes: Routes = [
         component: PlayAddComponent
       },
       {
+        path: 'copy/:playId',
+        component: PlayAddComponent
+      },
+      {
         path: 'update/:playId',
         component: PlayUpdateComponent
       }
