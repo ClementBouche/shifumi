@@ -10,23 +10,23 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: './login/login.module#LoginModule'
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {
     path: 'boardgame',
-    loadChildren: './boardgame/boardgame.module#BoardgameModule'
+    loadChildren: () => import('./boardgame/boardgame.module').then(m => m.BoardgameModule)
   },
   {
     path: 'play',
-    loadChildren: './play/play.module#PlayModule'
+    loadChildren: () => import('./play/play.module').then(m => m.PlayModule)
   },
   {
     path: 'player',
-    loadChildren: './player/player.module#PlayerModule'
+    loadChildren: () => import('./player/player.module').then(m => m.PlayerModule)
   },
   {
     path: 'people',
-    loadChildren: './people/people.module#PeopleModule'
+    loadChildren: () => import('./people/people.module').then(m => m.PeopleModule)
   },
   {
     path: '**',
