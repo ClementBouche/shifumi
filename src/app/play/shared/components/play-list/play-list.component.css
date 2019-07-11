@@ -4,9 +4,30 @@
   flex-wrap: wrap;
 }
 
-.play, .inline-object {
+.play, .inline-object, .time {
   margin: 10px;
   width: 340px;
+}
+
+.time {
+  position: relative;
+}
+
+.time .icon {
+  position: relative;
+  top: 5px;
+}
+
+.time .mat-card {
+  position: absolute;
+  width: 100%;
+  /* top: 50%; */
+  top: 10px;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  transform: translate(-50%, 0);
+  text-align: center;
+  padding: 20px 0px;
 }
 
 .play:hover {
@@ -15,7 +36,7 @@
 }
 
 @media (max-width: 600px) {
-  .play {
+  .play, .time {
     margin: 10px 2px;
   }
 }

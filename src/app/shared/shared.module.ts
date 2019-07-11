@@ -11,6 +11,7 @@ import { BackgroundImageDirective } from './directives/background-image.directiv
 import { DatePipe } from './pipes/date.pipe';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { ColorGradientDirective } from './directives/color-gradient.directive';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ColorGradientDirective } from './directives/color-gradient.directive';
     DatePipe,
     AvatarComponent,
     ColorGradientDirective,
+    TimelineComponent,
   ],
   imports: [
     CommonModule,
