@@ -6,7 +6,7 @@
 </mat-paginator>
 
 <ng-container *ngIf="plays else loading">
-  <app-play-list [plays]="plays" dateSeparatorMode=false></app-play-list>
+  <app-play-list [plays]="plays"></app-play-list>
 </ng-container>
 
 <ng-template #loading>
