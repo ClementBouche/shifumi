@@ -39,6 +39,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     BackgroundImageDirective,
     DatePipe,
     AvatarComponent,
+    TimelineComponent,
   ]
 })
 export class SharedModule { }

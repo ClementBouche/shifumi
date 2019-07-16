@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 
 import { Play } from '../shared/model/play.model';
 import { PageEvent } from '@angular/material';
@@ -16,6 +17,15 @@ import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service
 export class PlayPaginatedComponent implements OnInit, OnDestroy, Tagable {
 
   plays: Play[];
+
+  dates: String[] = [
+    '2018-01-01',
+    '2018-02-01',
+    '2019-04-01',
+    '2018-03-01',
+    '2018-04-01',
+    '2017-04-01',
+  ];
 
   count: number;
 
@@ -42,6 +52,9 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy, Tagable {
       this.size = data.playsPage.size;
 
       this.plays = data.playsPage.result;
+
+      this.dates = this.parseDates(this.plays);
+
       this.cd.markForCheck();
     });
 
@@ -72,6 +85,30 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy, Tagable {
     if (actionName == 'add') {
       this.router.navigate(['/', 'play', 'add']);
     }
+  }
+
+  dateSelection(date: string) {
+    console.log(date);
+  }
+
+  private parseDates(plays: Play[]) {
+    const dates = plays.reduce((currentValue, play) => {
+      const date = moment(play.date, 'YYYY-MM-DD').format('YYYY-MM');
+
+      if (currentValue.length == 0) {
+        currentValue.push(date);
+        return currentValue;
+      }
+
+      const index = currentValue.findIndex((d) => d === date);
+      if (index === -1) {
+        currentValue.push(date);
+      }
+
+      return currentValue;
+    }, []);
+
+    return dates;
   }
 
 }

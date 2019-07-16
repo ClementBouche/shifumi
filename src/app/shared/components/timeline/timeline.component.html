@@ -1,7 +1,5 @@
-<ul id="dates">
-  <ng-container *ngFor="let date of dates">
-    <li>
-      <!-- <a mat-btn color="primary" (click)="selectDate($event.value)" [value]="date">{{ displayDate(date) }}</a> -->
-    </li>
-  </ng-container>
-</ul>
+<mat-list>
+    <mat-list-item *ngFor="let date of dates">
+      <a mat-button class="item" color="accent" (click)="selectDate(date)">{{ displayDate(date) }}</a>
+    </mat-list-item>
+</mat-list>

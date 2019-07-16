@@ -1,0 +1,19 @@
+.flex {
+  display: flex;
+}
+
+.date-sidenav {
+  /* width: 20%; */
+  /* max-width: 200px; */
+  margin-top: 50px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+@media (max-width: 600px) {
+  .date-sidenav {
+    display: none;
+  }
+}
