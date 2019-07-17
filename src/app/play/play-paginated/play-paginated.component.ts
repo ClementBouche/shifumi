@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 
 import { Play } from '../shared/model/play.model';
-import { PageEvent } from '@angular/material';
+import { PageEvent } from '@angular/material/paginator';
 import { PlaysPage } from '../shared/model/plays-page.model';
 import { Tagable } from 'src/app/core/model/tagable.interface';
 import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';

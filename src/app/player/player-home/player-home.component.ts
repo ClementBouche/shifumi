@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tagable } from 'src/app/core/model/tagable.interface';
-import { PageEvent } from '@angular/material';
+import { PageEvent } from '@angular/material/paginator';
 import { map } from 'rxjs/operators';
 
 import { PlayersPage } from '../shared/model/players-page.model';

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PageEvent } from '@angular/material';
+import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 
 import { Player } from '../shared/model/player.model';

@@ -3,7 +3,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MAT_DATE_LOCALE, MatPaginatorIntl } from '@angular/material';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './shared/app-material.module';

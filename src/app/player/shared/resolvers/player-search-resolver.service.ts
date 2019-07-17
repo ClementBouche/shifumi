@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { PlayerService } from '../services/player.service';
 import { PlayerSearch } from '../model/player-seach.model';
