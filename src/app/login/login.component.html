@@ -1,23 +1,25 @@
-<div class="login-home">
-  <mat-card>
-      <h2>Connexion</h2>
-      <p *ngIf="message">{{ message }}</p>
-      <div class="login-form">
-        <form [formGroup]="form" (ngSubmit)="loggin()">
-          <!-- username -->
-          <mat-form-field>
-            <input matInput placeholder="Nom" type="string" name="login" formControlName="login"/>
-          </mat-form-field>
-      
-          <!-- password -->
-          <mat-form-field>
-            <input matInput placeholder="Mot de passe" type="password" name="password" formControlName="password"/>
-          </mat-form-field>
-      
-          <span class="grow"></span>
-          <!-- submit -->
-          <button mat-raised-button type="submit" color="accent">Se connecter</button>
-        </form>
-      </div>
-  </mat-card>
-</div>
+<app-custom-layout>
+  <div class="login-home">
+    <mat-card>
+        <h2>Connexion</h2>
+        <p *ngIf="message">{{ message }}</p>
+        <div class="login-form">
+          <form [formGroup]="form" (ngSubmit)="loggin()">
+            <!-- username -->
+            <mat-form-field>
+              <input matInput placeholder="Nom" type="string" name="login" formControlName="login"/>
+            </mat-form-field>
+        
+            <!-- password -->
+            <mat-form-field>
+              <input matInput placeholder="Mot de passe" type="password" name="password" formControlName="password"/>
+            </mat-form-field>
+        
+            <span class="grow"></span>
+            <!-- submit -->
+            <button mat-raised-button type="submit" color="accent">Se connecter</button>
+          </form>
+        </div>
+    </mat-card>
+  </div>
+</app-custom-layout>

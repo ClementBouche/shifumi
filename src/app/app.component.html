@@ -54,9 +54,10 @@
     <mat-sidenav-content id="main-content">
       <!-- <div class="flex-content" [@routeAnimations]="prepareRoute(outlet)"> -->
       <div class="flex-content">
-        <div class="grow">
-            <router-outlet #outlet="outlet"></router-outlet>
-        </div>
+        <!-- <div class="grow"> -->
+          <router-outlet #outlet="outlet"></router-outlet>
+        <!-- </div> -->
+        <div class="end-page"></div>
         <mat-toolbar class="footer" color="primary">
           <span>Shi.Fu.Mi</span>
           <span class="small"><a mat-button href="https://github.com/ClementBouche/shifumi" target="_blank">GitHub</a></span>

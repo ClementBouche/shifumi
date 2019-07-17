@@ -12,6 +12,9 @@ import { DatePipe } from './pipes/date.pipe';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { ColorGradientDirective } from './directives/color-gradient.directive';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { LayoutNavComponent } from './components/layout-nav/layout-nav.component';
+import { LayoutSideComponent } from './components/layout-side/layout-side.component';
+import { CustomLayoutComponent } from './components/custom-layout/custom-layout.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     AvatarComponent,
     ColorGradientDirective,
     TimelineComponent,
+    LayoutNavComponent,
+    LayoutSideComponent,
+    CustomLayoutComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +46,9 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     DatePipe,
     AvatarComponent,
     TimelineComponent,
+    LayoutNavComponent,
+    LayoutSideComponent,
+    CustomLayoutComponent,
   ]
 })
 export class SharedModule { }

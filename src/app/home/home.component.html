@@ -1,14 +1,30 @@
-<div class="pages">
-  <mat-card (click)="go('boardgame')">
-    Rechercher un Jeux.
-    <a mat-button color="accent">Go</a>
-  </mat-card>
-  <mat-card (click)="go('play')">
-    Retrouvez vos parties.
-    <a mat-button color="accent">Go</a>
-  </mat-card>
-  <mat-card (click)="go('player')">
-    Retrouvez un joueur ou consulter ses statistiques.
-    <a mat-button color="accent">Go</a>
-  </mat-card>
-</div>
+<app-custom-layout>
+  <app-layout-nav>
+    <div class="pages">
+      <button mat-raised-button color="primary" (click)="go('boardgame')">
+          Jeux
+      </button>
+      <button mat-raised-button color="primary" (click)="go('play')">
+          Parties
+      </button>
+      <button mat-raised-button color="primary" (click)="go('player')">
+          Les joueurs
+      </button>
+    </div>
+  </app-layout-nav>
+  <div class="contenu">
+    <p>
+      Shifumi est un assistant ludique.
+      Il vous permet de trouver des <a mat-button color="accent" routerLink="boardgame">jeux</a>,
+      que ce soit selon le nombre de joueurs ou la durée.
+    </p>
+    <p>
+      <a mat-button color="accent" routerLink="login">Connectez-vous</a>
+      et utilisez l'application pour enregistrer toutes vos parties.
+    </p>
+    <p>
+      Comparez vos résultats avec d'autres 
+      <a mat-button color="accent" routerLink="player">joueurs</a>
+    </p>
+  </div>
+</app-custom-layout>

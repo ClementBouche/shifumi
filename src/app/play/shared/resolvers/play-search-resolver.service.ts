@@ -19,6 +19,11 @@ export class PlaySearchResolverService implements Resolve<PlaysPage> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const searchOptions = new PlaySearch().deserialize(route.queryParams);
+    if (route.queryParams.size) {
+      // all is ok
+    } else {
+      searchOptions.size = 100;
+    }
     return this.playService.search(searchOptions)
         .then((playsPage) => playsPage)
         .catch((error) => {

@@ -64,6 +64,10 @@
   font-size: 0.8em;
 }
 
+.end-page {
+  flex-grow: 1;
+}
+
 .footer {
   margin-top: 20px;
   display: flex;

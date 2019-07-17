@@ -97,3 +97,23 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   display: none;
 }
+
+
+/* colors @see https://clrs.cc/ */
+.navy { background-color: #001f3f }
+.blue { background-color: #0074d9 }
+.aqua { background-color: #7fdbff }
+.teal { background-color: #39cccc }
+.olive { background-color: #3d9970 }
+.green { background-color: #2ecc40 }
+.lime { background-color: #01ff70 }
+.yellow { background-color: #ffdc00 }
+.orange { background-color: #ff851b }
+.orange { background-color: #ff851b }
+.red { background-color: #ff4136 }
+.maroon { background-color: #85144b }
+.fuchsia { background-color: #f012be }
+.purple { background-color: #b10dc9 }
+.black { background-color: #111111 }
+.gray { background-color: #aaaaaa }
+.silver { background-color: #dddddd }

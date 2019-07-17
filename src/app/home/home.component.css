@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 300px;
 }
 
 .pages > * {
@@ -12,3 +13,8 @@
 .pages > *:hover {
   cursor: pointer;
 }
+
+.contenu {
+  margin: 20px;
+}
+

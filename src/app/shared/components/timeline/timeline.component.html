@@ -1,5 +1,8 @@
-<mat-list>
+<div class="list">
+  <mat-list>
     <mat-list-item *ngFor="let date of dates">
-      <a mat-button class="item" color="accent" (click)="selectDate(date)">{{ displayDate(date) }}</a>
+      <div class="filler"></div>
+      <button mat-raised-button class="item" color="primary" (click)="selectDate(date)">{{ displayDate(date) }}</button>
     </mat-list-item>
-</mat-list>
+  </mat-list>
+</div>

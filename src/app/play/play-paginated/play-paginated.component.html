@@ -1,34 +1,24 @@
-<div class="flex">
+<app-custom-layout>
+  <app-layout-nav *ngIf="dates">
+    <div class="date-sidenav">
+      <app-timeline [dates]="dates" format="YYYY-MM"
+            (dateSelected)="dateSelection($event)">
+      </app-timeline>
+    </div>
+  </app-layout-nav>
 
-  <div class="date-sidenav">
-
-    <ng-container *ngIf="dates">
-        <app-timeline [dates]="dates" format="YYYY-MM"
-           (dateSelected)="dateSelection($event)">
-        </app-timeline>
-    </ng-container>
-
-  </div>
-  
-  <div class="content">
-
-    <mat-paginator [length]="count"
+  <mat-paginator [length]="count"
           [pageSize]="size"
           [pageIndex]="index"
           [pageSizeOptions]="[5, 10, 25, 100]"
           (page)="changePage($event)">
-    </mat-paginator>
+  </mat-paginator>
 
-    <ng-container *ngIf="plays else loading">
-      <app-play-list [plays]="plays"></app-play-list>
-    </ng-container>
+  <ng-container *ngIf="plays else loading">
+    <app-play-list [plays]="plays"></app-play-list>
+  </ng-container>
 
-  </div>
-
-</div>
-
-
-
+</app-custom-layout>
 
 <ng-template #loading>
   <mat-grid-list cols="1" rowHeight="4:1">

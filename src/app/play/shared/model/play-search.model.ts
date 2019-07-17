@@ -9,13 +9,13 @@ export class PlaySearch implements Deserializable, Serializable {
 
   page: number = 1;
 
-  size: number = 10;
+  size: number = 20;
 
   byBoardgameName(input: String) {
     Object.assign(this, {
       boardgameName: input,
       page: 1,
-      size: 10,
+      size: 20,
     });
     return this;
   }
@@ -25,7 +25,7 @@ export class PlaySearch implements Deserializable, Serializable {
       boardgameName: input.boardgame,
       playerName: input.player,
       page: input.page || 1,
-      size: input.size || 25,
+      size: input.size || 20,
     });
     return this;
   }

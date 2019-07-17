@@ -21,7 +21,7 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   page: number = 1;
 
-  size: number = 10;
+  size: number = 20;
 
   // test recherche par auteur
   peopleName: String;
@@ -59,7 +59,7 @@ export class BoardgameSearch implements Serializable, Deserializable {
       thematics: input.thematics,
       mechanics: input.mechanics,
       page: input.page || 1,
-      size: input.size || 10,
+      size: input.size || 20,
       peopleName: input.people_name,
       extended: input.extended == "true" ? true : false
     });

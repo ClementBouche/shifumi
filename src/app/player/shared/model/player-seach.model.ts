@@ -4,7 +4,7 @@ import { Serializable } from "src/app/core/model/serializable.interface";
 export class PlayerSearch implements Deserializable, Serializable {
   // pagination
   page: number = 1;
-  size: number = 10;
+  size: number = 20;
 
   // search name
   name: string;
@@ -12,7 +12,7 @@ export class PlayerSearch implements Deserializable, Serializable {
   deserialize(input: any) {
     Object.assign(this, {
       page: input.page || 1,
-      size: input.size || 10,
+      size: input.size || 20,
       name: input.name
     });
     return this;
