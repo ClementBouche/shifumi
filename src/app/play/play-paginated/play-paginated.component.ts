@@ -18,14 +18,7 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy, Tagable {
 
   plays: Play[];
 
-  dates: String[] = [
-    '2018-01-01',
-    '2018-02-01',
-    '2019-04-01',
-    '2018-03-01',
-    '2018-04-01',
-    '2017-04-01',
-  ];
+  dates: String[];
 
   count: number;
 
@@ -72,6 +65,17 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy, Tagable {
       queryParams: { 
         page: pageEvent.pageIndex + 1,
         size: pageEvent.pageSize
+      },
+      queryParamsHandling: 'merge'
+    });
+  }
+
+  nextPage() {
+    // router update
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { 
+        page: this.index + 2,
       },
       queryParamsHandling: 'merge'
     });

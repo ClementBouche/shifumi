@@ -12,6 +12,11 @@
   flex-grow: 1;
 }
 
+button {
+  margin-left: 90%;
+  transform: translateX(-100%);
+}
+
 @media (max-width: 600px) {
   .date-sidenav {
     display: none;

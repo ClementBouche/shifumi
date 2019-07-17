@@ -22,7 +22,7 @@ export class PlaySearchResolverService implements Resolve<PlaysPage> {
     if (route.queryParams.size) {
       // all is ok
     } else {
-      searchOptions.size = 100;
+      searchOptions.size = 50;
     }
     return this.playService.search(searchOptions)
         .then((playsPage) => playsPage)
