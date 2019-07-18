@@ -8,13 +8,10 @@
   display: flex;
 }
 
-.nav, .side {
-  /* flex-basis: 200px; */
-}
-
 .content {
   margin: 0 auto;
-  flex-grow: 1; 
+  flex-grow: 1;
+  width: 100%;
 }
 
 @media (max-width: 600px) {

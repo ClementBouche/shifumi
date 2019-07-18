@@ -35,7 +35,7 @@ export class BoardgameViewComponent implements OnInit, Tagable {
 
 
   ngOnInit() {
-    // more reactive way
+    // reactive way
     this.route.data
         .pipe(
           // load bg from data resolver
@@ -121,6 +121,15 @@ export class BoardgameViewComponent implements OnInit, Tagable {
         size: 10
       }
     });
+  }
+
+  scrollToElement(target: string) {
+    const element = document.getElementById(target);
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    })
   }
 
 }
