@@ -5,6 +5,7 @@ import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { BoardgameSearch } from '../shared/model/boardgame-search.model';
+import { BoardgameService } from '../shared/services/boardgame.service';
 
 @Component({
   selector: 'app-boardgame-search',
@@ -26,17 +27,34 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
 
   openSearch: boolean = false;
 
+  thematics: string[];
+  allThematics: string[] = [];
+
+  mechanics: string[];
+  allMechanics: string[] = [];
+
   private nameSubject: Subject<string> = new Subject();
 
   private routeSubscription: Subscription;
 
   constructor(
+    private boardgameService: BoardgameService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
+    this.boardgameService.getThematics().then((thematics) => {
+      this.allThematics = thematics;
+      this.cd.markForCheck();
+    });
+
+    this.boardgameService.getMechanics().then((mechanics) => {
+      this.allMechanics = mechanics;
+      this.cd.markForCheck();
+    });
+
     this.routeSubscription = this.route.queryParams.subscribe((params) => {
       if (Object.entries(params).length === 0 && params.constructor === Object) {
         // ne rien faire
@@ -84,8 +102,10 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
       name: this.boardgameSearch.name,
       min: this.boardgameSearch.time.min,
       max: this.boardgameSearch.time.max,
-      extended: this.boardgameSearch.extended
+      extended: this.boardgameSearch.extended,
     });
+    this.thematics = Array.isArray(this.boardgameSearch.thematics) ? this.boardgameSearch.thematics : [this.boardgameSearch.thematics];
+    this.mechanics = Array.isArray(this.boardgameSearch.mechanics) ? this.boardgameSearch.mechanics : [this.boardgameSearch.mechanics];
   }
 
   private isFormValid(): boolean {
@@ -100,6 +120,8 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     this.boardgameSearch.extended = this.form.value.extended;
     this.boardgameSearch.time.min = this.form.value.min;
     this.boardgameSearch.time.max = this.form.value.max;
+    this.boardgameSearch.thematics = this.thematics;
+    this.boardgameSearch.mechanics = this.mechanics;
     // force la nouvelle pagination
     this.boardgameSearch.page = 1;
     return true;

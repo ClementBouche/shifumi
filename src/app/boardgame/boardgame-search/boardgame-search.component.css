@@ -33,3 +33,7 @@ input.as-text {
 p {
   padding: 10px;
 }
+
+.chip-list {
+  width: 100%;
+}

@@ -21,7 +21,7 @@
             <mat-form-field [class.readonly]="form.value.extended">
               <input matInput type="number" name="min" formControlName="min" class="as-text" 
                     [readonly]="form.value.extended"/>
-              <mat-hint>autour de...</mat-hint>
+              <mat-hint>Durée de...</mat-hint>
               <span matSuffix>min</span>
             </mat-form-field>
     
@@ -32,7 +32,23 @@
               <mat-hint>Pas plus de...</mat-hint>
               <span matSuffix>min</span>
             </mat-form-field>
-    
+
+            <!-- thematics component -->
+            <ng-container *ngIf="allThematics">
+              <app-autocomplete-chips placeholder="Thématiques"
+                    [all]="allThematics"
+                    [values]="thematics">
+              </app-autocomplete-chips>
+            </ng-container>
+
+            <!-- mechanics component -->
+            <ng-container *ngIf="allMechanics">
+              <app-autocomplete-chips placeholder="Mécaniques"
+                    [all]="allMechanics"
+                    [values]="mechanics">
+              </app-autocomplete-chips>
+            </ng-container>
+
             <!-- extended seach input -->
             <mat-checkbox name="extended" formControlName="extended">chercher sur BoargameGeek</mat-checkbox>
           </div>

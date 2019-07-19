@@ -5,7 +5,7 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   name: string;
   
-  players: [number];
+  players: number[];
 
   time: {
     min: number;
@@ -15,9 +15,9 @@ export class BoardgameSearch implements Serializable, Deserializable {
     max: 9999
   };
 
-  thematics: [string];
+  thematics: string[];
 
-  mechanics: [string];
+  mechanics: string[];
 
   page: number = 1;
 

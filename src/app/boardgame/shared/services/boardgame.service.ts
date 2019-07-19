@@ -75,4 +75,18 @@ export class BoardgameService {
       .then(response => new Boardgame().deserialize(response));
   }
 
+  getThematics(): Promise<string[]> {
+    const url = `${environment.apiUrl}/thematic`;
+    return this.httpClient.get(url)
+      .toPromise()
+      .then(response => response as string[]);
+  }
+
+  getMechanics(): Promise<string[]> {
+    const url = `${environment.apiUrl}/mechanic`;
+    return this.httpClient.get(url)
+      .toPromise()
+      .then(response => response as string[]);
+  }
+
 }

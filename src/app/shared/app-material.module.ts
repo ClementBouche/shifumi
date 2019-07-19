@@ -53,6 +53,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatDividerModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatChipsModule,
   ],
   exports: [
     MatButtonModule,
@@ -80,6 +81,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatDividerModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatChipsModule,
   ]
 })
 export class AppMaterialModule { }

@@ -18,6 +18,7 @@ import { LayoutSideComponent } from './components/layout-side/layout-side.compon
 import { CustomLayoutComponent } from './components/custom-layout/custom-layout.component';
 import { PageShortcutComponent } from './components/page-shortcut/page-shortcut.component';
 import { ScrollToDirective } from './directives/scroll-to.directive';
+import { AutocompleteChipsComponent } from './components/autocomplete-chips/autocomplete-chips.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ScrollToDirective } from './directives/scroll-to.directive';
     CustomLayoutComponent,
     PageShortcutComponent,
     ScrollToDirective,
+    AutocompleteChipsComponent,
   ],
   imports: [
     CommonModule,
@@ -56,6 +58,7 @@ import { ScrollToDirective } from './directives/scroll-to.directive';
     CustomLayoutComponent,
     PageShortcutComponent,
     ScrollToDirective,
+    AutocompleteChipsComponent,
   ]
 })
 export class SharedModule { }
