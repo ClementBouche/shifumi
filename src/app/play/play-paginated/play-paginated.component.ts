@@ -92,7 +92,6 @@ export class PlayPaginatedComponent implements OnInit, OnDestroy, Tagable {
   }
 
   dateSelection(date: string) {
-    console.log(date);
   }
 
   private parseDates(plays: Play[]) {

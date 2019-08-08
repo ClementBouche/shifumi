@@ -53,7 +53,7 @@ export class AppTokenInterceptor implements HttpInterceptor {
           if (error.status == 401 || error.status == 403) {
             userService.authFailedRequest();
           } else {
-            console.log('TODO autre erreur réseau');
+            // autre erreur réseau
           }
           // TODO throw Error ?
         }

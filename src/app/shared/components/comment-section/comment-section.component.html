@@ -1,0 +1,26 @@
+<div class="content">
+  <h4>Commentaires</h4>
+</div>
+
+<div class="content">
+  <ng-container *ngFor='let message of messages'>
+    <app-custom-layout>
+      <h5>{{ message.sender }}</h5>
+      <p>{{ message.content }}</p>
+      <app-layout-side>
+        <div class="buttons">
+          <!-- <button mat-mini-fab color="primary" (click)='edit(message)'><mat-icon>edit</mat-icon></button> -->
+          <button mat-mini-fab color="primary" (click)='remove(message)'><mat-icon>delete</mat-icon></button>
+        </div>
+      </app-layout-side>
+    </app-custom-layout>
+  </ng-container>
+</div>
+
+<div class="content">
+  <mat-form-field>
+    <textarea matInput placeholder="Ajouter un commentaire..."
+          [(ngModel)]='currentMessage.content'></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)='addMessage()'><mat-icon>add</mat-icon></button>
+</div>

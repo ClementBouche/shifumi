@@ -41,7 +41,6 @@ export class PlayViewComponent implements OnInit, Tagable {
       this.router.navigate(['/', 'play', 'copy', this.play.id]);
     }
     if (actionName == 'star') {
-      console.log('star');
     }
     if (actionName == 'edit') {
       this.router.navigate(['/', 'play', 'update', this.play.id]);

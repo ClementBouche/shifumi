@@ -33,8 +33,8 @@ export class CustomLayoutComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.navs.forEach((instance) => console.log('LayoutNavComponent'));
-    this.sides.forEach((instance) => console.log('LayoutSideComponent'));
+    // this.navs.forEach((instance) => {});
+    // this.sides.forEach((instance) => {});
   }
 
 }

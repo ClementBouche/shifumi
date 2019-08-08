@@ -42,7 +42,6 @@ export class PlayFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('cocuou');
     if (this.play) {
       return this.playToForm();
     }

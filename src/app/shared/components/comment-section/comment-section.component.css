@@ -1,0 +1,11 @@
+.content {
+  margin: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.buttons {
+  margin-top: 2.0em;
+}
