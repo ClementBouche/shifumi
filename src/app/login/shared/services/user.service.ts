@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
-import { User } from '../../model/user.model';
-import { TokenReponse } from '../../model/token-response.model';
+import { User } from '../model/user.model';
+import { TokenReponse } from '../model/token-response.model';
 import { Router } from '@angular/router';
 
 @Injectable({

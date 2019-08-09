@@ -2,14 +2,13 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestro
 import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
-import * as moment from 'moment';
 
 import { appRouteAnimations } from './core/animation/app-route.animation';
 
 import { UserService } from './login/shared/services/user.service';
 
 import { Boardgame } from './boardgame/shared/model/boardgame.model';
-import { User } from './login/model/user.model';
+import { User } from './login/shared/model/user.model';
 import { MetadataTagsService } from './core/services/metadata-tags.service';
 
 @Component({

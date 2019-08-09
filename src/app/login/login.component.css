@@ -1,16 +1,13 @@
 .login-home {
-  position: relative;
-  min-height: 350px;
+  margin: auto;
+  max-width: 500px;
+  padding: 10px;
 }
 
-.mat-card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.login-home h2 {
+  text-align: center;
 }
 
-.grow {
-  display: block;
-  flex-grow: 1;
+.full-width {
+  width: 100%;
 }

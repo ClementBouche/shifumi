@@ -6,6 +6,7 @@ import { LoginService } from './shared/services/login.service';
 import { UserService } from './shared/services/user.service';
 import { Tagable } from '../core/model/tagable.interface';
 import { MetadataTagsService } from '../core/services/metadata-tags.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit, Tagable {
     private metadataTags: MetadataTagsService,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
+    private router: Router,
     private cd: ChangeDetectorRef,
     private location: Location
   ) { }

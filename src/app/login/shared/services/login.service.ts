@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 
-import { TokenReponse } from '../../model/token-response.model';
+import { TokenReponse } from '../model/token-response.model';
 
 @Injectable({
   providedIn: 'root'
