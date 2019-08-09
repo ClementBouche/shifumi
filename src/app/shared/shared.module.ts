@@ -20,6 +20,7 @@ import { PageShortcutComponent } from './components/page-shortcut/page-shortcut.
 import { ScrollToDirective } from './directives/scroll-to.directive';
 import { AutocompleteChipsComponent } from './components/autocomplete-chips/autocomplete-chips.component';
 import { CommentSectionComponent } from './components/comment-section/comment-section.component';
+import { SafeHtmlDirective } from './directives/safe-html.directive';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CommentSectionComponent } from './components/comment-section/comment-se
     ScrollToDirective,
     AutocompleteChipsComponent,
     CommentSectionComponent,
+    SafeHtmlDirective,
   ],
   imports: [
     CommonModule,
@@ -62,6 +64,7 @@ import { CommentSectionComponent } from './components/comment-section/comment-se
     ScrollToDirective,
     AutocompleteChipsComponent,
     CommentSectionComponent,
+    SafeHtmlDirective,
   ]
 })
 export class SharedModule { }

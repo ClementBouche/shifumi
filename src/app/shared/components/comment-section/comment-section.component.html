@@ -6,7 +6,8 @@
   <ng-container *ngFor='let message of messages'>
     <app-custom-layout>
       <h5>{{ message.sender }}</h5>
-      <p>{{ message.content }}</p>
+      <p [appSafeHtml]="message.content"></p>
+      <!-- <p [innerHTML]="message.content"></p> -->
       <app-layout-side>
         <div class="buttons">
           <!-- <button mat-mini-fab color="primary" (click)='edit(message)'><mat-icon>edit</mat-icon></button> -->

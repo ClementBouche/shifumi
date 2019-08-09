@@ -33,6 +33,8 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
 
     this.service.messages.subscribe((data) => {
       this.messages = data;
+      console.log(data);
+      this.cd.markForCheck();
     });
 
     this.newSubscription = this.service.newMessage.subscribe((message) => {
@@ -49,7 +51,8 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
     });
 
     this.updatedSubscription = this.service.updated.subscribe((message) => {
-    })
+      console.log(message);
+    });
   }
 
   ngOnDestroy() {
@@ -59,10 +62,6 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
   }
 
   addMessage() {
-    // update
-    this.messages.push(this.currentMessage);
-    this.cd.markForCheck();
-
     // socket emit
     this.service.addMessage(this.currentMessage);
 
@@ -71,12 +70,6 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
   }
 
   remove(message: Message) {
-    const index = this.getIndex(this.messages, message);
-    if (index != -1) {
-      this.messages.splice(this.getIndex(this.messages, message), 1);
-      this.cd.markForCheck();
-    }
-
     // socket emit
     this.service.removeMessage(message);
   }
