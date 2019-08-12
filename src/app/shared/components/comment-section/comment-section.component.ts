@@ -33,7 +33,6 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
 
     this.service.messages.subscribe((data) => {
       this.messages = data;
-      console.log(data);
       this.cd.markForCheck();
     });
 
@@ -51,7 +50,6 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
     });
 
     this.updatedSubscription = this.service.updated.subscribe((message) => {
-      console.log(message);
     });
   }
 
