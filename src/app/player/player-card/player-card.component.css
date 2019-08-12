@@ -25,3 +25,7 @@
 .mat-card-content {
   padding-top: 10px;
 }
+
+li span {
+  color: var(--second-color);
+}

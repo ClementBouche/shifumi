@@ -11,7 +11,7 @@ export class AvatarComponent implements OnInit {
   @Input() name;
 
   // if no color should be generated
-  @Input() color;
+  @Input() colors;
 
   // if no image use name & color
   @Input() image;
@@ -25,17 +25,21 @@ export class AvatarComponent implements OnInit {
   gradient = ['#777', '#aaa'];
 
   private randomGradients = [
-    ['#ec407a', '#ec407a', 'white'],
-    ['#673ab7', '#673ab7', 'white'],
-    ['#00bcd4', '#00bcd4', 'white'],
-    ['#2196f3', '#2196f3', 'white'],
-    ['#3f51b5', '#3f51b5', 'white'],
-    ['#ab47bc', '#ab47bc', 'white'],
-    ['#66bb6a', '#66bb6a', 'white'],
-    ['#ffee58', '#ffee58', 'black'],
-    ['#ffa726', '#ffa726', 'black'],
-    ['#bdbdbd', '#bdbdbd', 'black'],
-    ['#ef5350', '#ef5350', 'white'],
+    ['#001f3f', '#001f3f', 'hsla(210, 100%, 75%, 1.0)'],
+    ['#0074D9', '#0074D9', 'hsla(208, 100%, 85%, 1.0)'],
+    ['#7FDBFF', '#7FDBFF', 'hsla(197, 100%, 20%, 1.0)'],
+    ['#39CCCC', '#39CCCC', 'hsla(153, 43%, 15%, 1.0)'],
+    ['#3D9970', '#3D9970', 'hsla(127, 63%, 15%, 1.0)'],
+    ['#01FF70', '#01FF70', 'hsla(146, 100%, 20%, 1.0)'],
+    ['#FFDC00', '#FFDC00', 'hsla(52, 100%, 20%, 1.0)'],
+    ['#FF851B', '#FF851B', 'rgb(128, 6, 0)'],
+    ['#FF4136', '#FF4136', 'rgb(102, 48, 0)'],
+    ['#85144b', '#85144b', 'rgb(235, 122, 177)'],
+    ['#F012BE', '#F012BE', 'rgb(101, 6, 79)'],
+    ['#B10DC9', '#B10DC9', 'rgb(239, 169, 249)'],
+    ['#111111', '#111111', 'rgb(221, 221, 221)'],
+    ['#AAAAAA', '#AAAAAA', 'black'],
+    ['#DDDDDD', '#DDDDDD', 'black'],
   ];
 
   constructor() { }
@@ -49,10 +53,10 @@ export class AvatarComponent implements OnInit {
     } else {
       this.size = `${this.size}px`;
     }
-    if (!this.color || this.color === '') {
-      this.gradient = this.randomGradient;
+    if (this.colors && this.colors.length > 2) {
+      this.gradient = this.colors;
     } else {
-      this.gradient = [this.color, this.color, 'white'];
+      this.gradient = this.randomGradient;
     }
   }
 

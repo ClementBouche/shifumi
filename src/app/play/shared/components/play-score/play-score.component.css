@@ -1,28 +1,16 @@
-.mat-card {
-  min-width: 300px;
-}
-
-.mat-card:hover {
-  cursor: pointer;
-  box-shadow: 2px 2px 2px #aaa;
-}
-
 .app-card-avatar {
   position: absolute;
 }
 
 .mat-card-header {
   margin-left: 60px;
-  height: 50px;
 }
 
-.avatar {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
-.spacing {
-  padding-top: 10px;
+.mat-card-title {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mat-card-header {
@@ -31,4 +19,22 @@
 
 .mat-card-content {
   padding-top: 10px;
+}
+
+span {
+  color: var(--second-color);
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* transform: translate(10%, -25%); */
+  transform: translate(0%, -50%);
+  opacity: 0.8;
+}
+
+.icon .mat-chip {
+  color: white;
+  font-weight: bold;
 }

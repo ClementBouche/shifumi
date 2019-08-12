@@ -1,22 +1,20 @@
-<app-custom-layout>
-  <app-player-search (searchSubmited)="doSearch($event)"></app-player-search>
+<app-player-search (searchSubmited)="doSearch($event)"></app-player-search>
 
-  <ng-container *ngIf="page">
+<ng-container *ngIf="page">
 
-    <mat-paginator [length]="page.count"
-                  [pageSize]="page.size"
-                  [pageIndex]="index"
-                  [pageSizeOptions]="[5, 10, 25, 100]"
-                  (page)="changePage($event)">
-    </mat-paginator>
-    
-    <div *ngIf="page.result && page.result.length > 0 else noMore" class="cards">
-      <app-player-list [players]="page.result"></app-player-list>
-    </div>
+  <mat-paginator [length]="page.count"
+                [pageSize]="page.size"
+                [pageIndex]="index"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                (page)="changePage($event)">
+  </mat-paginator>
+  
+  <div *ngIf="page.result && page.result.length > 0 else noMore" class="cards">
+    <app-player-list [players]="page.result"></app-player-list>
+  </div>
 
-  </ng-container>
+</ng-container>
 
-  <ng-template #noMore>
-    <p>Aucun joueur ne correspond à la recherche.</p>
-  </ng-template>
-</app-custom-layout>
+<ng-template #noMore>
+  <p>Aucun joueur ne correspond à la recherche.</p>
+</ng-template>

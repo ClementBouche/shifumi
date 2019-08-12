@@ -5,10 +5,24 @@
 .scores {
   margin: 10px;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
-.scores app-play-score {
+.score app-play-score {
   margin: 10px;
+}
+
+.score, .inline-object {
+  margin: 10px;
+  width: 340px;
+}
+
+.score:hover {
+  cursor: pointer;
+}
+
+.score app-play-score:hover {
+  box-shadow: 2px 2px 2px #aaa;
 }

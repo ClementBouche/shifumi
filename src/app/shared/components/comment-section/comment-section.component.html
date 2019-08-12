@@ -6,7 +6,6 @@
     <h5>{{ message.sender }}</h5>
     <p [appSafeHtml]="message.content"></p>
   </div>
-  <!-- <p [innerHTML]="message.content"></p> -->
   <div class="buttons">
     <!-- <button mat-mini-fab color="primary" (click)='edit(message)'><mat-icon>edit</mat-icon></button> -->
     <button mat-mini-fab color="primary" (click)='remove(message)'><mat-icon>delete</mat-icon></button>

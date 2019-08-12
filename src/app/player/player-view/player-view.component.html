@@ -1,19 +1,38 @@
-<app-custom-layout>
-  <div *ngIf="player" class="content">
-    <app-player-card [player]="player"></app-player-card>
+<app-custom-layout padding="0" *ngIf="player">
 
-    <div class="separator"></div>
-    <ng-container *ngIf="plays else loading">
-      <app-play-list [plays]="plays"></app-play-list>
-    </ng-container>
+  <div id="description" class="banner">
+    <app-player-card [player]="player" detail=true></app-player-card>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div id="stats">
+    <h3>Statistiques</h3>
+    <p>En cours de développement...</p>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div *ngIf="plays else loading">
+    <h3>Dernières Parties</h3>
+    <app-play-list id="plays" [plays]="plays"></app-play-list>
     <a mat-button color="accent" (click)="search()">Voir toutes les parties</a>
   </div>
 
-  <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
+  <app-layout-side>
+    <app-page-shortcut>
+      <a mat-button class="active" color="primary" appScrollTo="description">Description</a>
+      <a mat-button color="primary" appScrollTo="stats">Statistiques</a>
+      <a mat-button color="primary" appScrollTo="plays">Dernières Parties</a>
+    </app-page-shortcut>
+  </app-layout-side>
 
-  <ng-template #loading>
-    <div class="center">
-      <mat-spinner></mat-spinner>
-    </div>
-  </ng-template>
 </app-custom-layout>
+
+<app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
+
+<ng-template #loading>
+  <div class="center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

@@ -1,10 +1,10 @@
 <!-- <div [@boardgameRouteAnimations]="prepareRoute(bgOutlet)"> -->
-<div>
+<app-custom-layout>
   <div class="player-home">
-      <div class="search">
-      </div>
-      <div class="data">
-        <router-outlet #bgOutlet="outlet"></router-outlet>
-      </div>
+    <div class="search">
+    </div>
+    <div class="data">
+      <router-outlet #bgOutlet="outlet"></router-outlet>
+    </div>
   </div>
-</div>
+</app-custom-layout>

@@ -10,6 +10,8 @@ export class PlayerCardComponent implements OnInit {
 
   @Input() player: Player;
 
+  @Input() detail: boolean = false;
+
   constructor() { }
 
   ngOnInit() {

@@ -1,25 +1,27 @@
 <mat-card *ngIf="player">
   <app-avatar class="app-card-avatar" size=60 [name]="player.name"
-      [color]="player.avatar.color"
+      [colors]="player.avatar.colors"
       [image]="player.avatar.image">
   </app-avatar>
   <mat-card-header>
-    <!-- <div mat-card-avatar class="avatar"></div> -->
     <!-- playername -->
     <mat-card-title>
       {{ player.name }}
     </mat-card-title>
     <mat-card-subtitle>
-      {{ player.time | playTime:"humanize" }}, {{ player.victoryRatio }}% Victoires
+        {{ player.counts.plays }} parties • {{ player.victoryRatio }}% de Victoires
     </mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
     <ul>
-      <li>{{ player.counts.boardgames }} jeux</li>
-      <li>{{ player.counts.plays }} parties, {{ player.counts.wins }} victoires</li>
-      <li>Dans {{ player.counts.places }} lieux</li>
-      <li>Avec {{ player.counts.players }} joueurs</li>
+      <li>Temps de jeux cumulé : <span>{{ player.time | playTime:"humanize" }}</span></li>
+      <li><span>{{ player.counts.boardgames }} jeux</span> différents testés</li>
+      <ng-container *ngIf="detail">
+        <li>{{ player.counts.plays }} parties, {{ player.counts.wins }} victoires</li>
+        <li *ngIf="player.counts.places > 1">Dans {{ player.counts.places }} lieux différents</li>
+        <li>Avec ou contre {{ player.counts.players }} autres joueurs</li>
+      </ng-container>
     </ul>
   </mat-card-content>
 </mat-card>

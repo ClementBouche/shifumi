@@ -8,7 +8,7 @@ export class Player implements Deserializable {
 
   avatar: {
     image: string;
-    color: string;
+    colors: string[];
   };
 
   // statitic
@@ -30,7 +30,7 @@ export class Player implements Deserializable {
       name: this.name,
       have_account: this.active,
       avatar_image: this.avatar ? this.avatar.image : '',
-      avatar_color: this.avatar ? this.avatar.color : '',
+      avatar_colors: this.avatar ? this.avatar.colors : '',
       play_time: this.time,
       win_ratio: this.victoryRatio
     };
@@ -51,11 +51,11 @@ export class Player implements Deserializable {
       },
       avatar: {
         image: input.avatar_image,
-        color: input.avatar_color
+        colors: input.avatar_colors
       },
       time: input.play_time,
       victoryRatio: input.win_ratio,
-    })
+    });
     return this;
   }
 

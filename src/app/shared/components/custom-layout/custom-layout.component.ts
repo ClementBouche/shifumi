@@ -1,11 +1,11 @@
-import { Component, OnInit, AfterContentInit, ContentChildren, QueryList } from '@angular/core';
+import { Component, OnInit, AfterContentInit, ContentChildren, QueryList, Input } from '@angular/core';
 import { LayoutNavComponent } from '../layout-nav/layout-nav.component';
 import { LayoutSideComponent } from '../layout-side/layout-side.component';
 
 @Component({
   selector: 'app-custom-layout',
   template: `
-    <div class="layout">
+    <div class="layout" [style.padding]="padding">
       <div class="nav">
         <ng-content select="app-layout-nav"></ng-content>
       </div>
@@ -20,6 +20,8 @@ import { LayoutSideComponent } from '../layout-side/layout-side.component';
   styleUrls: ['./custom-layout.component.css']
 })
 export class CustomLayoutComponent implements OnInit, AfterContentInit {
+
+  @Input() padding: string = "30px 24px 0px 24px";
 
   // nav component
   @ContentChildren(LayoutNavComponent) navs: QueryList<LayoutNavComponent>;
