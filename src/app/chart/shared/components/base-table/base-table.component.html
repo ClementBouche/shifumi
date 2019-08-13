@@ -10,22 +10,22 @@
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> N° </th>
-      <td mat-cell *matCellDef="let cell"> {{cell.id}} </td>
+      <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.id}} </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let cell"> {{cell.name}} </td>
+      <th mat-header-cell *matHeaderCellDef> Jeux </th>
+      <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="count">
       <th mat-header-cell *matHeaderCellDef> Parties </th>
-      <td mat-cell *matCellDef="let cell"> {{cell.count}} </td>
+      <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.count}} </td>
     </ng-container>
 
     <ng-container matColumnDef="win_rate">
       <th mat-header-cell *matHeaderCellDef> % Victoire </th>
-      <td mat-cell *matCellDef="let cell"> {{cell.win_rate}} </td>
+      <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.win_rate}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>

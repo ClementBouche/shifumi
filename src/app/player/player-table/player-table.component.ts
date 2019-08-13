@@ -15,7 +15,7 @@ export class PlayerTableComponent implements OnInit {
 
   @Input() plays: Play[];
 
-  tableData: any;
+  tableData: any[];
 
   tableRow = [{
     name: 'Jeux',
@@ -30,13 +30,22 @@ export class PlayerTableComponent implements OnInit {
 
   title: string;
 
+  counts: any;
+
   constructor(
     private tableService: TableService
   ) { }
 
   ngOnInit() {
     this.tableData = this.getTableData(this.player, this.plays);
-    this.title = this.getTitle()
+    this.title = this.getTitle();
+
+    this.counts = {
+      fives: this.tableData.filter((bg) => bg.count >= 5).length,
+      dimes: this.tableData.filter((bg) => bg.count >= 10).length,
+      quarters: this.tableData.filter((bg) => bg.count >= 25).length,
+      hundreds: this.tableData.filter((bg) => bg.count >= 100).length,
+    };
   }
 
   private getTableData(player: Player, plays: Play[]) {
@@ -44,7 +53,7 @@ export class PlayerTableComponent implements OnInit {
   }
 
   private getTitle() {
-    return 'Tableau';
+    return 'Toutes les parties';
   }
 
 }

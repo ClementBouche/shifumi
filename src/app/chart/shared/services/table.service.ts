@@ -18,18 +18,24 @@ export class TableService {
         previous.push({
           boardgameId: boardgameId,
           name: play.boardgameName,
+          incomplete: play.incomplete ? 1 : 0,
           win_rate: win ? 1 : 0,
           count: 1
         });
       } else {
         previous[index].count += 1;
+        previous[index].incomplete += play.incomplete ? 1 : 0;
         previous[index].win_rate += win ? 1 : 0;
       }
       return previous;
     }, []).sort((a, b) => b.count - a.count).map((value, index) => {
       value.id = index + 1;
-      value.win_rate = Math.round(value.win_rate / value.count * 100);
-      value.win_rate = `${value.win_rate} %`
+      if (value.count === value.incomplete) {
+        value.win_rate = '--';
+      } else {
+        value.win_rate = Math.round(value.win_rate / (value.count - value.incomplete) * 100);
+        value.win_rate = `${value.win_rate} %`
+      }
       return value;
     });
 

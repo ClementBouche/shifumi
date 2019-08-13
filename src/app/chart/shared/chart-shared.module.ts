@@ -4,6 +4,7 @@ import { BaseChartComponent } from './components/base-chart/chart.component';
 import { BaseTableComponent } from './components/base-table/base-table.component';
 import { ChartDirective } from './directives/chart.directive';
 import { AppMaterialModule } from 'src/app/shared/app-material.module';
+import { RowColorDirective } from './directives/row-color.directive';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { AppMaterialModule } from 'src/app/shared/app-material.module';
     BaseChartComponent,
     BaseTableComponent,
     ChartDirective,
+    RowColorDirective,
   ],
   imports: [
     CommonModule,

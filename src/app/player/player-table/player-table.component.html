@@ -1,5 +1,19 @@
 <div *ngIf="tableData else loading" class="player-table">
   <h4>{{ title }}</h4>
+  <div class="chips">
+    <app-text-chip *ngIf="counts.hundreds > 0" color="#ffdc00">
+      Centaines {{ counts.hundreds }}
+    </app-text-chip>
+    <app-text-chip *ngIf="counts.quarters > 0" color="#2ecc40">
+      Quarters {{ counts.quarters }}
+    </app-text-chip>
+    <app-text-chip *ngIf="counts.dimes > 0" color="#39cccc">
+      Dimes {{ counts.dimes }}
+    </app-text-chip>
+    <app-text-chip *ngIf="counts.fives > 0" color="#7fdbff">
+      Fives {{ counts.fives }}
+    </app-text-chip>
+  </div>
   <!-- <app-base-table [tableData]="tableData" [tableRow]="tableRow"></app-base-table> -->
   <app-base-table [tableData]="tableData"></app-base-table>
 </div>

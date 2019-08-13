@@ -5,11 +5,9 @@
         [image]="player.avatar.image">
     </app-avatar>
     <div *ngIf="score.winner" class="icon">
-      <mat-chip-list>
-        <mat-chip color="accent" selected>
-          Victoire <mat-icon>stars</mat-icon>
-        </mat-chip>
-      </mat-chip-list>
+      <app-text-chip color="accent">
+        Victoire <mat-icon>stars</mat-icon>
+      </app-text-chip>
     </div>
     <mat-card-header>
       <!-- playername -->

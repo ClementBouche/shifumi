@@ -24,6 +24,7 @@ import { ColorGradientDirective } from './directives/color-gradient.directive';
 
 import { PlayTimePipe } from './pipes/play-time.pipe';
 import { DatePipe } from './pipes/date.pipe';
+import { TextChipComponent } from './components/text-chip/text-chip.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DatePipe } from './pipes/date.pipe';
     PlayerSearchInputComponent,
     SpinnerComponent,
     TimelineComponent,
+    TextChipComponent,
     ColorGradientDirective,
     ScrollToDirective,
     BackgroundImageDirective,
@@ -65,6 +67,7 @@ import { DatePipe } from './pipes/date.pipe';
     PlayerSearchInputComponent,
     SpinnerComponent,
     TimelineComponent,
+    TextChipComponent,
     ColorGradientDirective,
     ScrollToDirective,
     BackgroundImageDirective,

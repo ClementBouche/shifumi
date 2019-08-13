@@ -1,0 +1,8 @@
+.chips {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.chips > * {
+  padding: 10px;
+}

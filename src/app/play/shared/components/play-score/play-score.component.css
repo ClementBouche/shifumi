@@ -33,8 +33,3 @@ span {
   transform: translate(0%, -50%);
   opacity: 0.8;
 }
-
-.icon .mat-chip {
-  color: white;
-  font-weight: bold;
-}
