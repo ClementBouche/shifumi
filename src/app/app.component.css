@@ -14,7 +14,6 @@
   right: 0;
   height: 70px;
   z-index: 2;
-  /* min-width: 600px; */
 }
 
 .mat-progress-bar {
@@ -35,8 +34,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  /* min-width: 600px; */
-  /* min-height: 500px; */
 }
 
 .title {
@@ -85,14 +82,10 @@
 
 @media (max-width: 600px) {
   .app-toolbar {
-    /* min-width: 300px; */
     padding: 0;
   }
   .home-button, .separator, .profil-button {
     display: none;
-  }
-  .app-container {
-    /* min-width: 500px; */
   }
   .grow {
     margin: 0px;

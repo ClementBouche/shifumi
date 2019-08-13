@@ -1,0 +1,8 @@
+<div *ngIf="chartData else loading" class="player-chart">
+  <h4>{{ title }}</h4>
+  <app-base-chart [chartData]="chartData"></app-base-chart>
+</div>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

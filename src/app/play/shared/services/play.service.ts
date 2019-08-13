@@ -5,6 +5,7 @@ import { environment } from '../../../../environments/environment';
 import { Play } from '../model/play.model';
 import { PlaySearch } from '../model/play-search.model';
 import { PlaysPage } from '../model/plays-page.model';
+import { Player } from 'src/app/player/shared/model/player.model';
 
 @Injectable({
   providedIn: 'root'
@@ -63,5 +64,15 @@ export class PlayService {
       .toPromise()
       .then(response => new PlaysPage().deserialize(response));
   };
+
+  allPlayerPlays(player: Player): Promise<PlaysPage> {
+    const url = `${environment.apiUrl}/play/search`;
+    const search = new PlaySearch().deserialize({
+      player: player.name,
+      page: 1,
+      size: player.counts.plays
+    });
+    return this.search(search);
+  }
 
 }

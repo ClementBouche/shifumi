@@ -15,6 +15,16 @@ app-page-shortcut .active {
   font-weight: bold;
 }
 
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.charts .inline {
+  width: 400px;
+}
+
 @media (max-width: 600px) {
   .content {
     padding: 10px 0px;

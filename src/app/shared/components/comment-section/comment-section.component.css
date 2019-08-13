@@ -9,8 +9,26 @@ mat-form-field {
 .message {
   display: flex;
   margin: 10px;
+  position: relative;
 }
 
 .content {
   flex-grow: 1;
+  max-width: 100%;
+}
+
+.message .icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(10%, 30%);
+}
+
+mat-chip {
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
+mat-chip:hover {
+  cursor: pointer;
 }

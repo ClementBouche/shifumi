@@ -18,6 +18,7 @@ import { PlayerPickDialogComponent } from './dialogs/player-pick-dialog/player-p
 import { AppTokenInterceptor } from './core/interceptors/app-token.interceptor';
 import { HomeComponent } from './home/home.component';
 import { MatPaginatorIntlFr } from './core/intl/mat-paginator-intl.fr';
+import { ChartModule } from './chart/chart.module';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -42,6 +43,7 @@ const config: SocketIoConfig = {
     AppMaterialModule,
     SocketIoModule.forRoot(config),
     SharedModule,
+    ChartModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },

@@ -10,7 +10,7 @@ export class DatePipe implements PipeTransform {
     if (mode == 'from') {
       const time = moment.parseZone(value, 'YYYY-MM-DD').locale('fr');
       const now = moment.parseZone(moment.now()).locale('fr');
-      return time.isSame(now, 'day') ? 'Aujourd\'hui' : time.from(now);
+      return time.isSame(now, 'day') ? 'Aujourd\'hui' : time.from(now.startOf('day'));
     }
     if (mode == 'humanize') {
       return moment.parseZone(value, 'YYYY-MM-DD').locale('fr').format('dddd LL');

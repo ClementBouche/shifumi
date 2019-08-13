@@ -12,6 +12,7 @@ import { PlaySearch } from 'src/app/play/shared/model/play-search.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
 import { PlayerService } from '../shared/services/player.service';
 import { map, switchMap } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-player-view',
@@ -27,6 +28,8 @@ export class PlayerViewComponent implements OnInit, Tagable {
   plays: Play[];
 
   actions: string[] = ['delete', 'edit'];
+
+  allPlays$: Observable<Play[]>;
 
   constructor(
     private playerService: PlayerService,
@@ -55,6 +58,11 @@ export class PlayerViewComponent implements OnInit, Tagable {
       this.loading = false;
       this.cd.markForCheck();
     });
+
+    // all plays are retrieve for statistics
+    this.allPlays$ = from(this.playService.allPlayerPlays(this.player)).pipe(
+      map((page: PlaysPage) => page.result)
+    );
 
     this.updateTags();
   }

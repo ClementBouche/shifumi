@@ -1,0 +1,9 @@
+<div *ngIf="tableData else loading" class="player-table">
+  <h4>{{ title }}</h4>
+  <!-- <app-base-table [tableData]="tableData" [tableRow]="tableRow"></app-base-table> -->
+  <app-base-table [tableData]="tableData"></app-base-table>
+</div>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

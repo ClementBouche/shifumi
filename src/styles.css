@@ -121,3 +121,11 @@ input::-webkit-inner-spin-button {
 .black { background-color: #111111 }
 .gray { background-color: #aaaaaa }
 .silver { background-color: #dddddd }
+
+.app-markdown {
+  max-width: 100%;
+}
+
+.app-markdown img {
+  max-width: 100%
+}

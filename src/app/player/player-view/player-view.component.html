@@ -8,7 +8,15 @@
 
   <div id="stats">
     <h3>Statistiques</h3>
-    <p>En cours de développement...</p>
+    <ng-container *ngIf="allPlays$ | async as allPlays; else loading">
+      <div class="charts">
+        <app-player-chart [player]="player" [plays]="allPlays" type="player"></app-player-chart>
+        <app-player-chart [player]="player" [plays]="allPlays" type="playerCount"></app-player-chart>
+        <app-player-chart [player]="player" [plays]="allPlays" type="time"></app-player-chart>
+        <div class="inline"></div>
+      </div>
+      <app-player-table [player]="player" [plays]="allPlays"></app-player-table>
+    </ng-container>
   </div>
 
   <mat-divider></mat-divider>
@@ -32,7 +40,5 @@
 <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
 
 <ng-template #loading>
-  <div class="center">
-    <mat-spinner></mat-spinner>
-  </div>
+  <app-spinner></app-spinner>
 </ng-template>

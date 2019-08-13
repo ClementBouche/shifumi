@@ -11,7 +11,6 @@ import { BoardgameInfoComponent } from './boardgame-info/boardgame-info.componen
 import { BoardgameSharedModule } from './shared/boardgame-shared.module';
 import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { AppMaterialModule } from '../shared/app-material.module';
-import { BoardgameTableComponent } from './boardgame-table/boardgame-table.component';
 import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
 import { SharedModule } from '../shared/shared.module';
 
@@ -21,7 +20,6 @@ import { SharedModule } from '../shared/shared.module';
     BoardgameViewComponent,
     BoardgameSearchComponent,
     BoardgameInfoComponent,
-    BoardgameTableComponent,
     BoardgamePaginatedComponent,
   ],
   imports: [
