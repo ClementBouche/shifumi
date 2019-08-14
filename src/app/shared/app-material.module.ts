@@ -25,6 +25,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   imports: [
@@ -54,6 +56,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSnackBarModule,
     MatProgressBarModule,
     MatChipsModule,
+    MatBadgeModule,
+    MatRadioModule,
   ],
   exports: [
     MatButtonModule,
@@ -82,6 +86,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSnackBarModule,
     MatProgressBarModule,
     MatChipsModule,
+    MatBadgeModule,
+    MatRadioModule,
   ]
 })
 export class AppMaterialModule { }

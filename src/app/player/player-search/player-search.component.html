@@ -7,10 +7,18 @@
         <input matInput placeholder="Par nom..." type="string" name="name" formControlName="name"/>
       </mat-form-field>
 
-      <!-- trié par -->
-      <!-- nom -->
-      <!-- partie récente -->
-      <!-- succes -->
+      <span id="orderBy">Trier par: </span>
+      <mat-radio-group class="radio-group" formControlName="orderBy">
+        <mat-radio-button class="radio-button" value="name" selected>Nom</mat-radio-button>
+        <mat-radio-button class="radio-button" value="play">Parties</mat-radio-button>
+        <mat-radio-button class="radio-button" value="win">Victoires</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field>
+        <input matInput type="number" name="plays" formControlName="plays" class="as-text"/>
+        <mat-hint>Au minimum...</mat-hint>
+        <span matSuffix>parties</span>
+      </mat-form-field>
 
     </div>
     <div class="actions">

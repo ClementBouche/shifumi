@@ -16,6 +16,8 @@ export class PlayerSearchComponent implements OnInit {
 
   form: FormGroup = this.formBuilder.group({
     name: [''],
+    orderBy: ['name'],
+    plays: [0],
   });
 
   private playerSearch: PlayerSearch = new PlayerSearch();
@@ -39,8 +41,8 @@ export class PlayerSearchComponent implements OnInit {
     ).subscribe();
 
     // search on valueChanges (name)
-    this.form.controls.name.valueChanges.pipe(
-      debounceTime(500),
+    this.form.valueChanges.pipe(
+      debounceTime(200),
       map((value) => this.search())
     ).subscribe();
   }
@@ -65,6 +67,8 @@ export class PlayerSearchComponent implements OnInit {
 
   private isFormValid() {
     this.playerSearch.name = this.form.value.name;
+    this.playerSearch.order = this.form.value.orderBy;
+    this.playerSearch.minPlay = this.form.value.plays;
     // force la nouvelle pagination
     this.playerSearch.page = 1;
     return true;

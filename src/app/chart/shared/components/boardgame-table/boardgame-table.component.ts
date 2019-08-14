@@ -54,13 +54,12 @@ export class BoardgameTableComponent implements OnInit, OnChanges {
     this.title = this.getTitle();
 
     this.counts = {
-      fives: this.tableData.filter((bg) => bg.count >= 5).length,
-      dimes: this.tableData.filter((bg) => bg.count >= 10).length,
-      quarters: this.tableData.filter((bg) => bg.count >= 25).length,
+      fives: this.tableData.filter((bg) => bg.count >= 5 && bg.count < 10).length,
+      dimes: this.tableData.filter((bg) => bg.count >= 10 && bg.count < 25).length,
+      quarters: this.tableData.filter((bg) => bg.count >= 25 && bg.count < 100).length,
       hundreds: this.tableData.filter((bg) => bg.count >= 100).length,
     };
   }
-
 
   private getTableData(boardgame: Boardgame, plays: Play[]) {
     return this.tableService.createBgTable(boardgame, plays);

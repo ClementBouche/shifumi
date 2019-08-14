@@ -53,7 +53,9 @@ export class PlayerHomeComponent implements OnInit, Tagable {
       queryParams: { 
         page: search.page,
         size: search.size,
-        name: search.name
+        name: search.name,
+        order: search.order,
+        minPlay: search.minPlay
       },
       queryParamsHandling: 'merge'
     });

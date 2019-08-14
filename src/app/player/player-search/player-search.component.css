@@ -11,3 +11,20 @@
 .readonly {
   color: #aaa;
 }
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.radio-button {
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}
+
+.full-width {
+  width: 100%;
+}
+
