@@ -127,5 +127,10 @@ input::-webkit-inner-spin-button {
 }
 
 .app-markdown img {
-  max-width: 100%
+  max-width: 100%;
+}
+
+.app-markdown ul {
+  list-style: disc;
+  margin-left: 2.0em;
 }

@@ -1,12 +1,12 @@
-<app-custom-layout>
-  <ng-container *ngIf="play">
-    <app-play-info [play]="play" (scoreClicked)="actionScore($event)"></app-play-info>
-    <a mat-button color="accent" (click)="goBoardgame()">Voir le jeux</a>
+<app-custom-layout *ngIf="play">
+  <app-play-info [play]="play" (scoreClicked)="actionScore($event)"></app-play-info>
+  <a mat-button color="accent" (click)="goBoardgame()">Voir le jeux</a>
 
-    <app-comment-section [room]="play.id"></app-comment-section>
+  <app-comment-section [room]="play.id"></app-comment-section>
 
-    <!-- <app-play-card [play]="play" (scoreClicked)="actionScore($event)"></app-play-card> -->
-    <!-- menu copy / like / edit -->
-    <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
-  </ng-container>
+  
+
+  <!-- <app-play-card [play]="play" (scoreClicked)="actionScore($event)"></app-play-card> -->
+  <!-- menu copy / like / edit -->
+  <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
 </app-custom-layout>

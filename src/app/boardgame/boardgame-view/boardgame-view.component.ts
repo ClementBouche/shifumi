@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable, from } from 'rxjs';
@@ -10,6 +10,7 @@ import { Tagable } from 'src/app/core/model/tagable.interface';
 import { PlayService } from 'src/app/play/shared/services/play.service';
 import { PlaySearch } from 'src/app/play/shared/model/play-search.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
+import { Play } from 'src/app/play/shared/model/play.model';
 
 @Component({
   selector: 'app-boardgame-view',
@@ -20,9 +21,11 @@ export class BoardgameViewComponent implements OnInit, Tagable {
 
   boardgame: Boardgame;
 
-  playsPage$: Observable<PlaysPage>;
-
   actions: string[] = ['add'];
+
+  allPlays$: Observable<Play[]>;
+
+  lastPlays: Play[];
 
   constructor(
     private boardgameService: BoardgameService,
@@ -35,25 +38,8 @@ export class BoardgameViewComponent implements OnInit, Tagable {
 
 
   ngOnInit() {
-    // reactive way
-    this.route.data
-        .pipe(
-          // load bg from data resolver
-          map((data: { boardgame: Boardgame }) => this.boardgame = data.boardgame),
-          // create new playSearch
-          map(() => new PlaySearch().byBoardgameName(this.boardgame.name)),
-          // search for bg plays
-          //switchMap((playSearch) => this.playService.search(playSearch))
-          switchMap((playSearch) => this.playsPage$ = from(this.playService.search(playSearch))),
-        )
-        .subscribe();
-        // subscribe for results
-        // .subscribe((page: PlaysPage) => {
-        //   this.plays = page.result;
-        //   this.cd.markForCheck();
-        // });
 
-    // old way
+    // old way (for historic purpose)
     // this.route.data.subscribe((data: {boardgame: Boardgame}) => {
     //   this.boardgame = data.boardgame;
     //   const playSearch = new PlaySearch();
@@ -65,9 +51,22 @@ export class BoardgameViewComponent implements OnInit, Tagable {
     //   this.cd.markForCheck();
     // });
 
+    // all plays are retrieve for statistics && last plays
+    this.allPlays$ = this.route.data.pipe(
+      // load bg from data resolver
+      map((data: { boardgame: Boardgame }) => this.boardgame = data.boardgame),
+      // create new playSearch
+      switchMap((bg) => from(this.playService.allBoardgamePlays(bg))),
+      map((page: PlaysPage) => {
+        this.lastPlays = page.result.slice(0, 5);
+        return page.result;
+      }),
+    );
+
+    this.allPlays$.subscribe();
+
     this.updateTags();
   }
-
 
   import() {
     this.boardgameService.getPreview(this.boardgame.xmlId, false).then((bg) => {

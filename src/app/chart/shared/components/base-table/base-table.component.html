@@ -13,9 +13,19 @@
       <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.id}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="boardgame">
       <th mat-header-cell *matHeaderCellDef> Jeux </th>
-      <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.name}} </td>
+      <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.boardgame}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="player">
+      <th mat-header-cell *matHeaderCellDef> Joueur </th>
+      <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.player}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="place">
+      <th mat-header-cell *matHeaderCellDef> Lieux </th>
+      <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.place}} </td>
     </ng-container>
 
     <ng-container matColumnDef="count">

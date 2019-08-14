@@ -57,9 +57,15 @@
 
   <mat-divider></mat-divider>
 
-  <ng-container *ngIf="playsPage$ | async as playsPage; else loading">
+  <ng-container *ngIf="allPlays$ | async as allPlays; else loading">
+    <app-boardgame-table id="table" [boardgame]="boardgame" [plays]="allPlays"></app-boardgame-table>
+  </ng-container>
+
+  <mat-divider></mat-divider>
+
+  <ng-container *ngIf="lastPlays; else loading">
     <h3 id="plays">Dernières parties</h3>
-    <app-play-list [plays]="playsPage.result"></app-play-list>
+    <app-play-list [plays]="lastPlays"></app-play-list>
     <a mat-button color="accent" (click)="search()">Voir toutes les parties</a>
   </ng-container>
 
@@ -70,7 +76,8 @@
       <a mat-button color="primary" appScrollTo="mechanics">Mécaniques</a>
       <a mat-button color="primary" appScrollTo="credits">Concepteurs</a>
       <a mat-button color="primary" appScrollTo="credits">Artistes</a>
-      <a mat-button color="primary" appScrollTo="plays">Parties</a>
+      <a mat-button color="primary" appScrollTo="table">Statistiques</a>
+      <a mat-button color="primary" appScrollTo="plays">Dernières Parties</a>
     </app-page-shortcut>
   </app-layout-side>
 
@@ -79,9 +86,5 @@
 <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
 
 <ng-template #loading>
-  <mat-grid-list cols="1" rowHeight="4:1">
-    <mat-grid-tile>
-      <mat-spinner></mat-spinner>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <app-spinner></app-spinner>
 </ng-template>

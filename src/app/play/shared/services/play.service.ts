@@ -6,6 +6,7 @@ import { Play } from '../model/play.model';
 import { PlaySearch } from '../model/play-search.model';
 import { PlaysPage } from '../model/plays-page.model';
 import { Player } from 'src/app/player/shared/model/player.model';
+import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 
 @Injectable({
   providedIn: 'root'
@@ -66,11 +67,19 @@ export class PlayService {
   };
 
   allPlayerPlays(player: Player): Promise<PlaysPage> {
-    const url = `${environment.apiUrl}/play/search`;
     const search = new PlaySearch().deserialize({
       player: player.name,
       page: 1,
       size: player.counts.plays
+    });
+    return this.search(search);
+  }
+
+  allBoardgamePlays(boardgame: Boardgame) {
+    const search = new PlaySearch().deserialize({
+      boardgame: boardgame.name,
+      page: 1,
+      size: 9999
     });
     return this.search(search);
   }

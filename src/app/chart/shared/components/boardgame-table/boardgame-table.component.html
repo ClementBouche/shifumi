@@ -1,0 +1,35 @@
+<div *ngIf="tableData else loading" class="player-table">
+  <h4>{{ title }}</h4>
+  <div class="chips">
+    <app-text-chip *ngIf="counts.hundreds > 0" color="#ffdc00">
+      Centaines {{ counts.hundreds }}
+    </app-text-chip>
+    <app-text-chip *ngIf="counts.quarters > 0" color="#2ecc40">
+      Quarters {{ counts.quarters }}
+    </app-text-chip>
+    <app-text-chip *ngIf="counts.dimes > 0" color="#39cccc">
+      Dimes {{ counts.dimes }}
+    </app-text-chip>
+    <app-text-chip *ngIf="counts.fives > 0" color="#7fdbff">
+      Fives {{ counts.fives }}
+    </app-text-chip>
+  </div>
+
+  <!-- table -->
+  <ng-container *ngIf="tableData.length != 0 else noPlays">
+    <app-base-table [tableData]="tableData" [displayedColumns]="displayedColumns"></app-base-table>
+  </ng-container>
+
+</div>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>
+
+<ng-template #noPlays>
+  <mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile>
+      <p>Aucune partie pour l'instant. Vous pouvez ajouter une partie.</p>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>

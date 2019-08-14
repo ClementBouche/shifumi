@@ -49,7 +49,7 @@ export class PlayerTableComponent implements OnInit {
   }
 
   private getTableData(player: Player, plays: Play[]) {
-    return this.tableService.createBgTable(player, plays);
+    return this.tableService.createPlayerTable(player, plays);
   }
 
   private getTitle() {
