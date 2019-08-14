@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AvatarComponent implements OnInit {
 
   // name
-  @Input() name;
+  @Input() name: string;
 
   // if no color should be generated
   @Input() colors;
@@ -62,7 +62,7 @@ export class AvatarComponent implements OnInit {
 
   get shortName(): string {
     if (this.name) {
-      return this.name.substring(0, 3);
+      return this.name.split(' ').reduce((str, part) => str += part[0], '');
     }
   }
 
