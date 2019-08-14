@@ -9,13 +9,15 @@
   <div id="stats">
     <h3>Statistiques</h3>
     <ng-container *ngIf="allPlays$ | async as allPlays; else loading">
-      <div class="charts">
-        <app-player-chart [player]="player" [plays]="allPlays" type="player"></app-player-chart>
-        <app-player-chart [player]="player" [plays]="allPlays" type="playerCount"></app-player-chart>
-        <app-player-chart [player]="player" [plays]="allPlays" type="time"></app-player-chart>
-        <div class="inline"></div>
-      </div>
-      <app-player-table [player]="player" [plays]="allPlays"></app-player-table>
+      <ng-container *ngIf="allPlays.length !== 0; else noPlays">
+        <div class="charts">
+          <app-player-chart [player]="player" [plays]="allPlays" type="player"></app-player-chart>
+          <app-player-chart [player]="player" [plays]="allPlays" type="playerCount"></app-player-chart>
+          <app-player-chart [player]="player" [plays]="allPlays" type="time"></app-player-chart>
+          <div class="inline"></div>
+        </div>
+        <app-player-table [player]="player" [plays]="allPlays"></app-player-table>
+      </ng-container>
     </ng-container>
   </div>
 
@@ -41,4 +43,12 @@
 
 <ng-template #loading>
   <app-spinner></app-spinner>
+</ng-template>
+
+<ng-template #noPlays>
+  <mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile>
+      <p>Aucune partie pour l'instant. Vous pouvez ajouter une partie.</p>
+    </mat-grid-tile>
+  </mat-grid-list>
 </ng-template>

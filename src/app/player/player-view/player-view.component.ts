@@ -69,9 +69,9 @@ export class PlayerViewComponent implements OnInit, Tagable {
 
   doAction(actionName: string) {
     if (actionName === 'delete') {
-      this.playerService.delete(this.player).then(() => {
-        this.router.navigate(['/', 'player']);
-      });
+      // this.playerService.delete(this.player).then(() => {
+      //   this.router.navigate(['/', 'player']);
+      // });
     }
     if (actionName === 'edit') {
       // TODO
