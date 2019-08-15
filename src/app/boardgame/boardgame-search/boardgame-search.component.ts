@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Subject, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 import { BoardgameSearch } from '../shared/model/boardgame-search.model';
 import { BoardgameService } from '../shared/services/boardgame.service';
@@ -19,7 +19,7 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
   form: FormGroup = this.formBuilder.group({
     name: [''],
     min: [0],
-    max: [100],
+    max: [1440],
     extended: [false]
   });
 
@@ -32,8 +32,6 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
 
   mechanics: string[];
   allMechanics: string[] = [];
-
-  private nameSubject: Subject<string> = new Subject();
 
   private routeSubscription: Subscription;
 
@@ -55,34 +53,26 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
       this.cd.markForCheck();
     });
 
-    this.routeSubscription = this.route.queryParams.subscribe((params) => {
-      if (Object.entries(params).length === 0 && params.constructor === Object) {
-        // ne rien faire
-      } else {
-        // see if search panel must be open
-        if (params.openSearch) {
-          this.openSearch = params.openSearch;
-        }
-        this.boardgameSearch = new BoardgameSearch().deserialize(params);
-        this.searchToForm();
+    this.routeSubscription = this.route.queryParams.pipe(
+      filter((params) => !this.compare(params, {})),
+      distinctUntilChanged((x, y) => this.compare(x, y))
+    ).subscribe((params) => {
+      if (params.openSearch) {
+        this.openSearch = params.openSearch;
       }
+      this.boardgameSearch = new BoardgameSearch().deserialize(params);
+      this.searchToForm();
     });
-    // subscribe keyup change
-    this.nameSubject.pipe(
-        debounceTime(500)
+
+    this.form.valueChanges.pipe(
+        debounceTime(500),
       ).subscribe(() => {
-        // run a new search with actual input name
         this.search();
       });
   }
 
   ngOnDestroy() {
     this.routeSubscription.unsubscribe();
-    this.nameSubject.unsubscribe();
-  }
-
-  searchByName() {
-    this.nameSubject.next();
   }
 
   reset() {
@@ -97,6 +87,16 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     }
   }
 
+  thematicChange(values: string[]) {
+    this.thematics = values;
+    this.search();
+  }
+
+  mechanicChange(values: string[]) {
+    this.mechanics = values;
+    this.search();
+  }
+
   private searchToForm() {
     this.form.patchValue({
       name: this.boardgameSearch.name,
@@ -104,8 +104,12 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
       max: this.boardgameSearch.time.max,
       extended: this.boardgameSearch.extended,
     });
-    this.thematics = Array.isArray(this.boardgameSearch.thematics) ? this.boardgameSearch.thematics : [this.boardgameSearch.thematics];
-    this.mechanics = Array.isArray(this.boardgameSearch.mechanics) ? this.boardgameSearch.mechanics : [this.boardgameSearch.mechanics];
+    if (this.boardgameSearch.thematics) {
+      this.thematics = Array.isArray(this.boardgameSearch.thematics) ? this.boardgameSearch.thematics : [this.boardgameSearch.thematics];
+    }
+    if (this.boardgameSearch.mechanics) {
+      this.mechanics = Array.isArray(this.boardgameSearch.mechanics) ? this.boardgameSearch.mechanics : [this.boardgameSearch.mechanics];
+    }
   }
 
   private isFormValid(): boolean {
@@ -125,6 +129,15 @@ export class BoardgameSearchComponent implements OnInit, OnDestroy {
     // force la nouvelle pagination
     this.boardgameSearch.page = 1;
     return true;
+  }
+
+  private compare(x, y): boolean {
+    if (Object.entries(x).length !== Object.entries(y).length) {
+      return false;
+    }
+    return Object.entries(x).findIndex((param) => {
+      return x['param'] !== y['param'];
+    }) === -1;
   }
 
 }

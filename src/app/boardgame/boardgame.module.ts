@@ -13,7 +13,7 @@ import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { AppMaterialModule } from '../shared/app-material.module';
 import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
 import { SharedModule } from '../shared/shared.module';
-import { ChartSharedModule } from '../chart/shared/chart-shared.module';
+import { ChartSharedModule } from '../chart-shared/chart-shared.module';
 
 @NgModule({
   declarations: [

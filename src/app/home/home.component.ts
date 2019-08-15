@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, Tagable {
   go(page: string) {
     if (page === 'boardgame' ||
         page === 'player' ||
+        page === 'place' ||
         page === 'play'
     ) {
       this.router.navigate(['/', page]);

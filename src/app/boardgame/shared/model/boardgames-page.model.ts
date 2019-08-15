@@ -1,7 +1,7 @@
-import { Serializable } from "src/app/core/model/serializable.interface";
-import { Deserializable } from "src/app/core/model/deserializable.interface";
+import { Serializable } from 'src/app/core/model/serializable.interface';
+import { Deserializable } from 'src/app/core/model/deserializable.interface';
 
-import { Boardgame } from "./boardgame.model";
+import { Boardgame } from './boardgame.model';
 
 export class BoardgamesPage implements Serializable, Deserializable {
 
@@ -27,7 +27,7 @@ export class BoardgamesPage implements Serializable, Deserializable {
       count: input.count || input.result.length || 0,
       size: input.size || input.result.length || 0,
       page: input.page || 1,
-      result: input.result.length > 0 ? input.result.map((bg : any) => new Boardgame().deserialize(bg)) : []
+      result: input.result.length > 0 ? input.result.map((bg: any) => new Boardgame().deserialize(bg)) : []
     });
     return this;
   }

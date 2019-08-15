@@ -8,6 +8,7 @@ import { PlayersPage } from '../shared/model/players-page.model';
 import { PlayerSearch } from '../shared/model/player-seach.model';
 
 import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
+import { Player } from '../shared/model/player.model';
 
 @Component({
   selector: 'app-player-home',
@@ -16,9 +17,13 @@ import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service
 })
 export class PlayerHomeComponent implements OnInit, Tagable {
 
-  page: PlayersPage;
+  players: Player[];
+
+  count: number;
 
   index: number;
+
+  size: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,11 +35,15 @@ export class PlayerHomeComponent implements OnInit, Tagable {
   ngOnInit() {
     this.route.data.pipe(
       // get page from resolver
-      map((data: { page: PlayersPage }) => {
-        this.page = data.page;
-        this.index = data.page.page;
+      map((data: { playersPage: PlayersPage }) => {
+        // mise a jour recherche
+        this.count = data.playersPage.count;
+        this.index = data.playersPage.page - 1;
+        this.size = data.playersPage.size;
 
-        // ok important pour synchronisation modification page / index
+        // mise a jour resultat
+        this.players = data.playersPage.result;
+
         this.cd.markForCheck();
       })
     ).subscribe();
@@ -50,7 +59,7 @@ export class PlayerHomeComponent implements OnInit, Tagable {
     // router update
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { 
+      queryParams: {
         page: search.page,
         size: search.size,
         name: search.name,
@@ -65,7 +74,7 @@ export class PlayerHomeComponent implements OnInit, Tagable {
     // router update
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { 
+      queryParams: {
         page: pageEvent.pageIndex + 1,
         size: pageEvent.pageSize
       },

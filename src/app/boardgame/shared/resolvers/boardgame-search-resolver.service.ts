@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { BoardgameService } from '../services/boardgame.service';
@@ -12,6 +13,7 @@ export class BoardgameSearchResolverService implements Resolve<BoardgamesPage> {
 
   constructor(
     private boardgameService: BoardgameService,
+    private snackBar: MatSnackBar,
     private router: Router
   ) { }
 
@@ -20,7 +22,10 @@ export class BoardgameSearchResolverService implements Resolve<BoardgamesPage> {
     return this.boardgameService.search(searchOptions)
         .then((boardgamesPage) => boardgamesPage)
         .catch((error) => {
-          this.router.navigate(['']);
+          this.router.navigate(['/']);
+          this.snackBar.open('Erreur Réseau', 'Ok', {
+            duration: 2000,
+          });
           return null;
         });
   }

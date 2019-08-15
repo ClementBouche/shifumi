@@ -38,6 +38,11 @@
       <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.win_rate}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Temps </th>
+      <td mat-cell [appRowColor]="cell.count" *matCellDef="let cell"> {{cell.time}} </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 

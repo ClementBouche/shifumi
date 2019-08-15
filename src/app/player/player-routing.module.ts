@@ -19,7 +19,7 @@ const routes: Routes = [
         component: PlayerHomeComponent,
         runGuardsAndResolvers: 'always',
         resolve: {
-          page: PlayerSearchResolverService
+          playersPage: PlayerSearchResolverService
         },
         data: { animation: 'playerListPage' },
       },

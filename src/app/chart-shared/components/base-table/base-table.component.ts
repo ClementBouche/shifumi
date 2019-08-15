@@ -18,7 +18,7 @@ export class BaseTableComponent implements OnInit {
   @Input() tableData: any;
 
   @Input() displayedColumns: string[] = [
-    'id', 'boardgame', 'player', 'place', 'count', 'win_rate'
+    'id', 'boardgame', 'player', 'place', 'count', 'win_rate', 'time'
   ];
 
   constructor() { }

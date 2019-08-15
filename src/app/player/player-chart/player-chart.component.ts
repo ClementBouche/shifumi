@@ -2,10 +2,10 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ChartService } from 'src/app/chart/shared/services/chart.service';
+import { ChartService } from 'src/app/chart-shared/services/chart.service';
 import { PlayService } from 'src/app/play/shared/services/play.service';
 
-import { ChartData } from 'src/app/chart/shared/model/chart-data.model';
+import { ChartData } from 'src/app/chart-shared/model/chart-data.model';
 import { Play } from 'src/app/play/shared/model/play.model';
 import { Player } from '../shared/model/player.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';

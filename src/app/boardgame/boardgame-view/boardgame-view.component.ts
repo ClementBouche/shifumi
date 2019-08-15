@@ -85,7 +85,7 @@ export class BoardgameViewComponent implements OnInit, Tagable {
 
 
   doAction(actionName: string) {
-    if (actionName == 'add') {
+    if (actionName === 'add') {
       this.router.navigate(['/', 'play', 'add', this.boardgame.id]);
     }
   }
@@ -128,7 +128,7 @@ export class BoardgameViewComponent implements OnInit, Tagable {
       behavior: 'smooth',
       block: 'start',
       inline: 'nearest'
-    })
+    });
   }
 
 }

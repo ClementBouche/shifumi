@@ -56,7 +56,7 @@ export class BoardgamePaginatedComponent implements OnInit, OnDestroy, Tagable {
     // router update
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { 
+      queryParams: {
         page: pageEvent.pageIndex + 1,
         size: pageEvent.pageSize
       },

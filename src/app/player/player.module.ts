@@ -19,7 +19,7 @@ import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { PlayerSearchComponent } from './player-search/player-search.component';
 import { PlayerHomeComponent } from './player-home/player-home.component';
 import { PlayerChartComponent } from './player-chart/player-chart.component';
-import { ChartSharedModule } from '../chart/shared/chart-shared.module';
+import { ChartSharedModule } from '../chart-shared/chart-shared.module';
 import { PlayerTableComponent } from './player-table/player-table.component';
 
 @NgModule({

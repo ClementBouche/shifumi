@@ -1,5 +1,5 @@
-import { Deserializable } from "src/app/core/model/deserializable.interface";
-import { Serializable } from "src/app/core/model/serializable.interface";
+import { Deserializable } from 'src/app/core/model/deserializable.interface';
+import { Serializable } from 'src/app/core/model/serializable.interface';
 
 export class PlayerSearch implements Deserializable, Serializable {
   // pagination
@@ -7,7 +7,7 @@ export class PlayerSearch implements Deserializable, Serializable {
   size: number = 20;
 
   // order
-  order: string = 'name';
+  order: string = 'play';
 
   // search name
   name: string;
@@ -17,7 +17,7 @@ export class PlayerSearch implements Deserializable, Serializable {
     Object.assign(this, {
       page: input.page || 1,
       size: input.size || 20,
-      order: input.order || 'name',
+      order: input.order || 'play',
       name: input.name,
       minPlay: input.minPlay
     });
@@ -31,7 +31,7 @@ export class PlayerSearch implements Deserializable, Serializable {
       order: this.order,
       name: this.name,
       minPlay: this.minPlay
-    }
+    };
   }
 
 }

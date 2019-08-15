@@ -16,7 +16,7 @@ export class PlayerSearchComponent implements OnInit {
 
   form: FormGroup = this.formBuilder.group({
     name: [''],
-    orderBy: ['name'],
+    orderBy: ['play'],
     plays: [0],
   });
 

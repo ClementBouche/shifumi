@@ -23,7 +23,7 @@ export class PlayerSearchResolverService implements Resolve<PlayersPage> {
         .then(playersPage => playersPage)
         .catch((error) => {
           this.router.navigate(['/']);
-          this.snackBar.open("Erreur Réseau", "Ok", {
+          this.snackBar.open('Erreur Réseau', 'Ok', {
             duration: 2000,
           });
           return null;

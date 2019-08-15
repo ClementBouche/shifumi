@@ -20,14 +20,14 @@ export class PlayerViewResolverService implements Resolve<Player> {
     return this.service.getPlayer(id)
         .then((play) => play)
         .catch((error) => {
-          if (error.status == 404) {
+          if (error.status === 404) {
             const searchPlayer = new PlayerSearch();
             searchPlayer.name = id;
             // TODO something better
             return this.service.search(searchPlayer).then((playersPage: PlayersPage) => {
               if (playersPage.count > 0) {
-                const id = playersPage.result[0].id;
-                this.router.navigate(['player', id]);
+                const realId = playersPage.result[0].id;
+                this.router.navigate(['player', realId]);
               } else {
                 this.router.navigate(['player']);
               }

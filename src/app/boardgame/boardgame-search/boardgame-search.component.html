@@ -13,8 +13,7 @@
           <div class="values">
             <!-- name input -->
             <mat-form-field class="long">
-              <input matInput placeholder="Par nom..." type="string" name="name" formControlName="name"
-                    (keyup)="searchByName()" />
+              <input matInput placeholder="Par nom..." type="string" name="name" formControlName="name"/>
             </mat-form-field>
     
             <!-- time.min input -->
@@ -37,7 +36,8 @@
             <ng-container *ngIf="allThematics">
               <app-autocomplete-chips placeholder="Thématiques"
                     [all]="allThematics"
-                    [values]="thematics">
+                    [values]="thematics"
+                    (valuesChanged)="thematicChange($event)">
               </app-autocomplete-chips>
             </ng-container>
 
@@ -45,7 +45,8 @@
             <ng-container *ngIf="allMechanics">
               <app-autocomplete-chips placeholder="Mécaniques"
                     [all]="allMechanics"
-                    [values]="mechanics">
+                    [values]="mechanics"
+                    (valuesChanged)="mechanicChange($event)">
               </app-autocomplete-chips>
             </ng-container>
 
@@ -61,10 +62,3 @@
       </div>
   </mat-expansion-panel>
 </mat-accordion>
-
-<!-- <ng-container *ngIf="boardgameSearch.thematics || boardgameSearch.mechanics">
-  <p>
-    <span *ngIf="boardgameSearch.thematics">Thématiques : {{ boardgameSearch.thematics }}</span>
-    <span *ngIf="boardgameSearch.mechanics">Mécaniques : {{ boardgameSearch.mechanics }}</span>
-  </p>
-</ng-container> -->

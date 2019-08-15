@@ -1,4 +1,4 @@
-import { Deserializable } from "src/app/core/model/deserializable.interface";
+import { Deserializable } from 'src/app/core/model/deserializable.interface';
 
 export class Player implements Deserializable {
   id: string;

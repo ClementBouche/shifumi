@@ -1,10 +1,10 @@
-import { Serializable } from "src/app/core/model/serializable.interface";
-import { Deserializable } from "src/app/core/model/deserializable.interface";
+import { Serializable } from 'src/app/core/model/serializable.interface';
+import { Deserializable } from 'src/app/core/model/deserializable.interface';
 
 export class BoardgameSearch implements Serializable, Deserializable {
 
   name: string;
-  
+
   players: number[];
 
   time: {
@@ -12,12 +12,12 @@ export class BoardgameSearch implements Serializable, Deserializable {
     max: number;
   } = {
     min: 0,
-    max: 9999
+    max: 1440
   };
 
-  thematics: string[];
+  thematics: string[] = [];
 
-  mechanics: string[];
+  mechanics: string[] = [];
 
   page: number = 1;
 
@@ -28,7 +28,6 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   /**
    * extended search are performed with xmlApi
-   * @type {boolean}
    * @memberOf BoardgameSearch
    */
   extended: boolean = false;
@@ -45,7 +44,7 @@ export class BoardgameSearch implements Serializable, Deserializable {
       size: this.size,
       people_name: this.peopleName,
       extended: this.extended,
-    }
+    };
   }
 
   deserialize(input: any) {
@@ -54,14 +53,14 @@ export class BoardgameSearch implements Serializable, Deserializable {
       players: input.players,
       time: {
         min: input.min_time || 0,
-        max: input.max_time || 9999,
+        max: input.max_time || 1440,
       },
       thematics: input.thematics,
       mechanics: input.mechanics,
       page: input.page || 1,
       size: input.size || 20,
       peopleName: input.people_name,
-      extended: input.extended == "true" ? true : false
+      extended: input.extended === 'true' ? true : false
     });
     return this;
   }

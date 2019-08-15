@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Player } from 'src/app/player/shared/model/player.model';
 import { Play } from 'src/app/play/shared/model/play.model';
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
+import { Place } from 'src/app/place/shared/model/place.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class TableService {
       const boardgameId = play.boardgameId;
       const win = play.scores.find((sc) => sc.playerName === player.name).winner;
       const index = previous.findIndex((el) => el.boardgameId === boardgameId);
-      if (index == -1) {
+      if (index === -1) {
         previous.push({
           boardgameId: boardgameId,
           boardgame: play.boardgameName,
@@ -35,7 +36,7 @@ export class TableService {
         value.win_rate = '--';
       } else {
         value.win_rate = Math.round(value.win_rate / (value.count - value.incomplete) * 100);
-        value.win_rate = `${value.win_rate} %`
+        value.win_rate = `${value.win_rate} %`;
       }
       return value;
     });
@@ -50,7 +51,7 @@ export class TableService {
         const win = sc.winner;
         // ajout des stats du joueurs
         const index = previous.findIndex((el) => el.player === playerName);
-        if (index == -1) {
+        if (index === -1) {
           previous.push({
             player: playerName,
             incomplete: play.incomplete ? 1 : 0,
@@ -70,8 +71,24 @@ export class TableService {
         value.win_rate = '--';
       } else {
         value.win_rate = Math.round(value.win_rate / (value.count - value.incomplete) * 100);
-        value.win_rate = `${value.win_rate} %`
+        value.win_rate = `${value.win_rate} %`;
       }
+      return value;
+    });
+
+    return data;
+  }
+
+  createPlaceTable(places: Place[]) {
+    const data = places.map((pl) => {
+      return {
+        id: 1,
+        place: pl.name,
+        count: pl.counts.plays,
+        time: pl.counts.time,
+      };
+    }).sort((a, b) => b.count - a.count).map((value, index) => {
+      value.id = index + 1;
       return value;
     });
 

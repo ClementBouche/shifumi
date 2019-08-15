@@ -1,10 +1,10 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, ElementRef, ViewChild, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-autocomplete-chips',
@@ -12,11 +12,13 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['autocomplete-chips.component.css'],
 })
 export class AutocompleteChipsComponent implements OnInit {
-  @Input() values: string[] = ['Lime'];
+  @Input() values: string[];
 
-  @Input() all: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  @Input() all: string[];
 
-  @Input() placeholder: string = 'New fruit';
+  @Input() placeholder: string;
+
+  @Output() valuesChanged: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   visible = true;
   selectable = true;
@@ -37,11 +39,10 @@ export class AutocompleteChipsComponent implements OnInit {
 
   ngOnInit() {
     // ??
-    if (this.values && this.values.length == 1 && !this.values[0]) {
+    if (!this.values) {
       this.values = [];
     }
     this.filtered = this.control.valueChanges.pipe(
-      startWith(null),
       map((value: string | null) => value ? this._filter(value) : this.all.slice())
     );
   }
@@ -62,6 +63,8 @@ export class AutocompleteChipsComponent implements OnInit {
       }
 
       this.control.setValue(null);
+
+      this.valuesChanged.emit(this.values);
     }
   }
 
@@ -71,12 +74,16 @@ export class AutocompleteChipsComponent implements OnInit {
     if (index >= 0) {
       this.values.splice(index, 1);
     }
+
+    this.valuesChanged.emit(this.values);
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.values.push(event.option.viewValue);
     this.chipInput.nativeElement.value = '';
     this.control.setValue(null);
+
+    this.valuesChanged.emit(this.values);
   }
 
   private _filter(value: string): string[] {
