@@ -13,8 +13,8 @@ export class PlayTimePipe implements PipeTransform {
 
     const hours = Math.floor(moment.duration(value, 'minutes').asHours());
     const minutes = moment.duration(value, 'minutes').minutes();
-    let playTime = hours === 0 ? '' : hours+'h';
-    playTime += minutes === 0 ? '' : minutes+'min';
+    let playTime = hours === 0 ? '' : hours + 'h';
+    playTime += minutes === 0 ? '' : minutes + 'min';
     return playTime || '0min';
   }
 
