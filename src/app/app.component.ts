@@ -97,12 +97,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   select(boardgame: Boardgame) {
-    this.router.navigate(['/', 'boardgame', boardgame.id])
+    this.router.navigate(['/', 'boardgame', boardgame.id]);
   }
 
   private welcomeMessage() {
     this.snackBar.open(`Bienvenue ${this.registered.username}`, 'Ok', {
-      duration: 500000,
+      duration: 5000,
     });
   }
 

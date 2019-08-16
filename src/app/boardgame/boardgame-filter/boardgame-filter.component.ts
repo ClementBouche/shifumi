@@ -42,7 +42,13 @@ export class BoardgameFilterComponent implements OnInit {
       map((values) => {
         this.thematics = values;
         const fa = this.form.get('thematics') as FormArray;
-        values.forEach((value) => fa.push(this.fb.control(false)));
+        values.forEach((value) => {
+          let start = false;
+          if (this.search.thematics) {
+            start = this.search.thematics.findIndex((th) => th === value) !== -1;
+          }
+          fa.push(this.fb.control(start));
+        });
         return values;
       })
     ).subscribe();
@@ -51,7 +57,13 @@ export class BoardgameFilterComponent implements OnInit {
       map((values) => {
         this.mechanics = values;
         const fa = this.form.get('mechanics') as FormArray;
-        values.forEach((value) => fa.push(this.fb.control(false)));
+        values.forEach((value) => {
+          let start = false;
+          if (this.search.mechanics) {
+            start = this.search.mechanics.findIndex((th) => th === value) !== -1;
+          }
+          fa.push(this.fb.control(start));
+        });
         return values;
       })
     ).subscribe();

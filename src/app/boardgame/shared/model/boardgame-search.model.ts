@@ -54,6 +54,14 @@ export class BoardgameSearch implements Serializable, Deserializable {
   }
 
   deserialize(input: any) {
+    let thematics = input.thematics;
+    if (!Array.isArray(input.thematics)) {
+      thematics = [thematics];
+    }
+    let mechanics = input.mechanics;
+    if (!Array.isArray(input.mechanics)) {
+      mechanics = [mechanics];
+    }
     Object.assign(this, {
       name: input.name,
       players: input.players,
@@ -61,8 +69,8 @@ export class BoardgameSearch implements Serializable, Deserializable {
         min: input.min_time || 0,
         max: input.max_time || 1440,
       },
-      thematics: input.thematics,
-      mechanics: input.mechanics,
+      thematics: thematics,
+      mechanics: mechanics,
       page: input.page || 1,
       size: input.size || 20,
       orderBy: input.order_by,

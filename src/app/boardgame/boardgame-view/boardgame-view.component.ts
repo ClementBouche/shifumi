@@ -107,7 +107,6 @@ export class BoardgameViewComponent implements OnInit, Tagable {
       queryParams: {
         thematics: [name],
         page: 1,
-        size: 10
       }
     });
   }
@@ -117,7 +116,6 @@ export class BoardgameViewComponent implements OnInit, Tagable {
       queryParams: {
         mechanics: [name],
         page: 1,
-        size: 10
       }
     });
   }
