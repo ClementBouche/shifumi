@@ -8,8 +8,17 @@ import { BoardgameViewComponent } from './boardgame-view/boardgame-view.componen
 import { BoardgameSearchResolverService } from './shared/resolvers/boardgame-search-resolver.service';
 import { BoardgamePreviewResolverService } from './shared/resolvers/boardgame-preview-resolver.service';
 import { BoardgameViewResolverService } from './shared/resolvers/boardgame-view-resolver.service';
+import { BoardgameHomeComponent } from './boardgame-home/boardgame-home.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: BoardgameHomeComponent,
+  //   runGuardsAndResolvers: 'always',
+  //   resolve: {
+  //     boardgamesPage: BoardgameSearchResolverService
+  //   },
+  // },
   {
     path: '',
     component: BoardgameComponent,
@@ -18,7 +27,8 @@ const routes: Routes = [
       {
         path: '',
         // component: BoardgameListComponent,
-        component: BoardgamePaginatedComponent,
+        // component: BoardgamePaginatedComponent,
+        component: BoardgameHomeComponent,
         runGuardsAndResolvers: 'always',
         resolve: {
           boardgamesPage: BoardgameSearchResolverService

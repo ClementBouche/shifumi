@@ -37,17 +37,17 @@ export class PlayViewComponent implements OnInit, Tagable {
   }
 
   doAction(actionName: string) {
-    if (actionName == 'format_paint') {
+    if (actionName === 'format_paint') {
       this.router.navigate(['/', 'play', 'copy', this.play.id]);
     }
-    if (actionName == 'star') {
+    if (actionName === 'star') {
     }
-    if (actionName == 'edit') {
+    if (actionName === 'edit') {
       this.router.navigate(['/', 'play', 'update', this.play.id]);
     }
-    if (actionName == 'delete') {
+    if (actionName === 'delete') {
       this.playService.delete(this.play).then(() => {
-        this.router.navigate(['/', 'play'])
+        this.router.navigate(['/', 'play']);
       });
     }
   }

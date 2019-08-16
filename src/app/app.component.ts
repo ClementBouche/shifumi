@@ -55,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
               this.cd.markForCheck();
             }, 500);
             // scroll to top
-            document.getElementById('main-content').scrollTo(0, 0);
+            // document.getElementById('main-content').scrollTo(0, 0);
             break;
           }
 
@@ -102,7 +102,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private welcomeMessage() {
     this.snackBar.open(`Bienvenue ${this.registered.username}`, 'Ok', {
-      duration: 5000,
+      duration: 500000,
     });
   }
 

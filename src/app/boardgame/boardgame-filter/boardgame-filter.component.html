@@ -1,0 +1,48 @@
+<form [formGroup]="form">
+    <!-- nom -->
+    <app-search-filter title="Nom" accordion=true>
+        <div class="accordion margin">
+          <mat-form-field>
+            <input matInput placeholder="Nom" formControlName="name">
+          </mat-form-field>
+        </div>
+    </app-search-filter>
+
+    <!-- duree -->
+    <app-search-filter title="Temps" accordion=true>
+      <div class="accordion margin">
+        <p>Entre {{ form.value.min | playTime:'humanize' }} et {{ form.value.max | playTime:'humanize' }}</p>
+        <mat-slider min=0 max=120 step=5 thumbLabel=true formControlName="min"></mat-slider>
+        <mat-slider min=0 max=120 step=5 thumbLabel=true formControlName="max"></mat-slider>
+      </div>
+    </app-search-filter>
+
+    <!-- thematics -->
+    <app-search-filter title="Thématiques" accordion=true>
+        <div class="accordion">
+          <ng-container *ngIf="thematics" formArrayName="thematics">
+            <div *ngFor="let thematic of thematics; let i = index" class="chekbox-item">
+               <mat-checkbox [formControlName]="i">
+                 {{ thematic }}
+               </mat-checkbox>
+               <button mat-button (click)="onlyTheme(thematic, i)">seul</button>
+            </div>
+         </ng-container>
+        </div>
+    </app-search-filter>
+
+    <!-- Mécaniques -->
+    <app-search-filter title="Mécaniques" accordion=true>
+        <div class="accordion">
+          <ng-container *ngIf="mechanics" formArrayName="mechanics">
+            <div *ngFor="let mechanic of mechanics; let i = index" class="chekbox-item">
+               <mat-checkbox [formControlName]="i">
+                 {{ mechanic }}
+               </mat-checkbox>
+               <button mat-button (click)="onlyMech(mechanic, i)">seul</button>
+            </div>
+         </ng-container>
+        </div>
+    </app-search-filter>
+
+</form>

@@ -14,6 +14,8 @@ import { AppMaterialModule } from '../shared/app-material.module';
 import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
 import { SharedModule } from '../shared/shared.module';
 import { ChartSharedModule } from '../chart-shared/chart-shared.module';
+import { BoardgameHomeComponent } from './boardgame-home/boardgame-home.component';
+import { BoardgameFilterComponent } from './boardgame-filter/boardgame-filter.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ChartSharedModule } from '../chart-shared/chart-shared.module';
     BoardgameSearchComponent,
     BoardgameInfoComponent,
     BoardgamePaginatedComponent,
+    BoardgameHomeComponent,
+    BoardgameFilterComponent,
   ],
   imports: [
     CommonModule,

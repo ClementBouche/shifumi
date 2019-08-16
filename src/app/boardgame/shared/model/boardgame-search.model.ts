@@ -23,6 +23,10 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   size: number = 20;
 
+  orderBy: string = 'rank';
+  // 1 croissant / -1 décroisssant
+  order: string = '1';
+
   // test recherche par auteur
   peopleName: String;
 
@@ -42,6 +46,8 @@ export class BoardgameSearch implements Serializable, Deserializable {
       mechanics: this.mechanics,
       page: this.page,
       size: this.size,
+      order_by: this.orderBy,
+      order: this.order,
       people_name: this.peopleName,
       extended: this.extended,
     };
@@ -59,6 +65,8 @@ export class BoardgameSearch implements Serializable, Deserializable {
       mechanics: input.mechanics,
       page: input.page || 1,
       size: input.size || 20,
+      orderBy: input.order_by,
+      order: input.order,
       peopleName: input.people_name,
       extended: input.extended === 'true' ? true : false
     });

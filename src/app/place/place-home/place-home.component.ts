@@ -34,7 +34,6 @@ export class PlaceHomeComponent implements OnInit {
     this.route.data.pipe(
       // get page from resolver
       map((data: { placesPage: PlacesPage }) => {
-        console.log(data);
         this.places = data.placesPage.result;
 
         this.tableData = this.tableService.createPlaceTable(this.places);

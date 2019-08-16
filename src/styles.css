@@ -134,3 +134,8 @@ input::-webkit-inner-spin-button {
   list-style: disc;
   margin-left: 2.0em;
 }
+
+
+.custom-panel .mat-expansion-panel-body {
+  padding: 0;
+}

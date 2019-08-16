@@ -1,0 +1,42 @@
+<app-custom-layout>
+  <ng-container *ngIf="boardgamePage$ | async as boardgamePage; else loading">
+
+    <div class="options">
+      <div class="extended">
+          <mat-checkbox name="extended" value=false (change)="setExtended()">Rechercher sur BoargameGeek</mat-checkbox>
+      </div>
+      <div class="order-by">
+        <mat-form-field>
+          <mat-label>Trier par</mat-label>
+          <mat-select [value]="orderSelected" (selectionChange)="setOrderBy($event.source.value)">
+            <mat-option *ngFor="let orderOption of orderOptions" [value]="orderOption">
+              {{ orderOption.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-paginator class="custom-paginator"
+        [length]="boardgamePage.count"
+        [pageSize]="boardgamePage.size"
+        [pageIndex]="boardgamePage.page - 1"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="changePage($event)">
+    </mat-paginator>
+    <app-boardgame-list [boardgames]="boardgamePage.result"></app-boardgame-list>
+
+    <app-input-scroll-top></app-input-scroll-top>
+  </ng-container>
+  <app-layout-nav>
+      <ng-container *ngIf="search">
+          <app-boardgame-filter [search]="search" (searchChanged)="changed($event)"></app-boardgame-filter>
+      </ng-container>
+  </app-layout-nav>
+</app-custom-layout>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

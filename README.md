@@ -6,11 +6,19 @@
 
 Boardgames
 - [X] search boardgame
-- [ ] paginated view
+- [X] paginated view
 - [ ] infinite scroll view
-- [ ] table view ?
-- [ ] import boardgame
+- [X] table view
+- [X] import boardgame
 
 Play
-- [ ] add play
-- [ ] edit play
+- [X] add play
+- [X] edit play
+- [ ] See others players statistisques
+  - can be for all play
+  - or limited by group (current players)
+- [ ] See 
+
+Place
+- [ ] Build a map ?
+

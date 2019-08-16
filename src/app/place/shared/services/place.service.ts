@@ -38,7 +38,6 @@ export class PlaceService {
 
   search(search: PlaceSearch): Promise<PlacesPage> {
     // dumb search
-    console.log(search);
     return this.getPlaces(9999, 1).then((places) => {
       const page = new PlacesPage();
       page.count = places.length;

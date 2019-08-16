@@ -1,0 +1,35 @@
+.chekbox-item {
+  padding: 2px 6px;
+  border-radius: 3px;
+  display: flex;
+}
+
+.chekbox-item:hover {
+  background: #eee;
+}
+
+.chekbox-item mat-checkbox {
+  flex-grow: 1;
+}
+
+.chekbox-item button {
+  opacity: 0;
+}
+
+.chekbox-item:hover button {
+  opacity: 1;
+}
+
+.accordion {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.content, .accordion.margin {
+  margin-right: 2.0em;
+}
+
+.content .mat-form-field, .content .mat-slider,
+.accordion .mat-form-field, .accordion .mat-slider {
+  width: 100%;
+}

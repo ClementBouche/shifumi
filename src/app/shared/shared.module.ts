@@ -25,6 +25,8 @@ import { ColorGradientDirective } from './directives/color-gradient.directive';
 import { PlayTimePipe } from './pipes/play-time.pipe';
 import { DatePipe } from './pipes/date.pipe';
 import { TextChipComponent } from './components/text-chip/text-chip.component';
+import { SearchFilterComponent } from './components/search-filter/search-filter.component';
+import { InputScrollTopComponent } from './components/input-scroll-top/input-scroll-top.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { TextChipComponent } from './components/text-chip/text-chip.component';
     SpinnerComponent,
     TimelineComponent,
     TextChipComponent,
+    SearchFilterComponent,
+    InputScrollTopComponent,
     ColorGradientDirective,
     ScrollToDirective,
     BackgroundImageDirective,
@@ -68,6 +72,8 @@ import { TextChipComponent } from './components/text-chip/text-chip.component';
     SpinnerComponent,
     TimelineComponent,
     TextChipComponent,
+    SearchFilterComponent,
+    InputScrollTopComponent,
     ColorGradientDirective,
     ScrollToDirective,
     BackgroundImageDirective,

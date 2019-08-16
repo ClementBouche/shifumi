@@ -1,0 +1,12 @@
+.options {
+  display:flex;
+}
+
+.options .extended {
+  padding-top: 15px;
+  flex-grow: 1;
+}
+
+.custom-paginator.mat-paginator {
+  background: none;
+}

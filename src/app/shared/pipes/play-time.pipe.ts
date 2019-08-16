@@ -7,7 +7,7 @@ import * as moment from 'moment';
 export class PlayTimePipe implements PipeTransform {
 
   transform(value: any, mode?: string): String {
-    if (mode == 'humanize') {
+    if (mode === 'humanize') {
       return moment.duration(value, 'minutes').locale('fr').humanize();
     }
 

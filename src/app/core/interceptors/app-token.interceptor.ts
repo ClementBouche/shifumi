@@ -9,8 +9,6 @@ import { environment } from 'src/environments/environment';
 /**
  * Intercepte les requêtes Http pour aposer le token d'authentification
  * @export
- * @class TokenInterceptor
- * @implements {HttpInterceptor}
  */
 @Injectable({
   providedIn: 'root'
@@ -25,9 +23,8 @@ export class AppTokenInterceptor implements HttpInterceptor {
    * Intercepte les requêtes Http pour aposer le token d'authentification
    *
    * Implémente la méthode intercept de HttpInterceptor
-   * @param {HttpRequest<any>} request request
-   * @param {HttpHandler} next next
-   * @returns {Observable<HttpEvent<any>>}
+   * @param request request
+   * @param next next
    * @memberOf AppTokenInterceptor
    */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -50,7 +47,7 @@ export class AppTokenInterceptor implements HttpInterceptor {
       tap(
         (event: HttpEvent<any>) => event,
         (error: HttpErrorResponse) => {
-          if (error.status == 401 || error.status == 403) {
+          if (error.status === 401 || error.status === 403) {
             userService.authFailedRequest();
           } else {
             // autre erreur réseau
@@ -58,13 +55,13 @@ export class AppTokenInterceptor implements HttpInterceptor {
           // TODO throw Error ?
         }
       ),
-      catchError((error) => {return throwError(error);})
+      catchError((error) => throwError(error))
     );
   }
 
   /**
    * Lecture du token depuis le localStorage du navigateur
-   * @returns {string|null} le jeton d'authentification s'il existe
+   * @returns le jeton d'authentification s'il existe
    * @memberOf AppTokenInterceptor
    */
   getToken(): string | null {
