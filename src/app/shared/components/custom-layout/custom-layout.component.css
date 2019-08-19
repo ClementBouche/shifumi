@@ -14,10 +14,6 @@
   width: 100%;
 }
 
-.nav {
-  transform: translateX(-100%);
-}
-
 @media (max-width: 600px) {
 
   .layout {
