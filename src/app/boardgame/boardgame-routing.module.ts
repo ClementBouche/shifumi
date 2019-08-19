@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { BoardgameComponent } from './boardgame.component';
-import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
 
 import { BoardgameSearchResolverService } from './shared/resolvers/boardgame-search-resolver.service';
@@ -11,14 +10,6 @@ import { BoardgameViewResolverService } from './shared/resolvers/boardgame-view-
 import { BoardgameHomeComponent } from './boardgame-home/boardgame-home.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: BoardgameHomeComponent,
-  //   runGuardsAndResolvers: 'always',
-  //   resolve: {
-  //     boardgamesPage: BoardgameSearchResolverService
-  //   },
-  // },
   {
     path: '',
     component: BoardgameComponent,
@@ -27,7 +18,6 @@ const routes: Routes = [
       {
         path: '',
         // component: BoardgameListComponent,
-        // component: BoardgamePaginatedComponent,
         component: BoardgameHomeComponent,
         runGuardsAndResolvers: 'always',
         resolve: {

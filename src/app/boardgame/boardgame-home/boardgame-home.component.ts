@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { BoardgamesPage } from '../shared/model/boardgames-page.model';
-import { map } from 'rxjs/operators';
-import { BoardgameSearch } from '../shared/model/boardgame-search.model';
 import { PageEvent } from '@angular/material/paginator';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { BoardgamesPage } from '../shared/model/boardgames-page.model';
+import { BoardgameSearch } from '../shared/model/boardgame-search.model';
 
 @Component({
   selector: 'app-boardgame-home',
@@ -28,7 +29,7 @@ export class BoardgameHomeComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit() {

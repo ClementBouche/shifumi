@@ -1,5 +1,5 @@
 <app-custom-layout>
-  <ng-container *ngIf="boardgamePage$ | async as boardgamePage; else loading">
+  <div *ngIf="boardgamePage$ | async as boardgamePage; else loading" class="margin">
 
     <div class="options">
       <div class="extended">
@@ -29,11 +29,12 @@
     <app-boardgame-list [boardgames]="boardgamePage.result"></app-boardgame-list>
 
     <app-input-scroll-top></app-input-scroll-top>
-  </ng-container>
+
+  </div>
   <app-layout-nav>
-      <ng-container *ngIf="search">
-          <app-boardgame-filter [search]="search" (searchChanged)="changed($event)"></app-boardgame-filter>
-      </ng-container>
+    <ng-container *ngIf="search">
+      <app-boardgame-filter [search]="search" (searchChanged)="changed($event)"></app-boardgame-filter>
+    </ng-container>
   </app-layout-nav>
 </app-custom-layout>
 

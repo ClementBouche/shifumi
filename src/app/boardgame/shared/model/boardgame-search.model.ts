@@ -66,15 +66,15 @@ export class BoardgameSearch implements Serializable, Deserializable {
       name: input.name,
       players: input.players,
       time: {
-        min: input.min_time || 0,
-        max: input.max_time || 1440,
+        min: Number.parseInt(input.min_time) || 0,
+        max: Number.parseInt(input.max_time) || 1440,
       },
       thematics: thematics,
       mechanics: mechanics,
-      page: input.page || 1,
-      size: input.size || 20,
+      page: Number.parseInt(input.page) || 1,
+      size: Number.parseInt(input.size) || 20,
       orderBy: input.order_by,
-      order: input.order,
+      order: Number.parseInt(input.order),
       peopleName: input.people_name,
       extended: input.extended === 'true' ? true : false
     });

@@ -23,13 +23,19 @@
 .accordion {
   max-height: 400px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.content, .accordion.margin {
-  margin-right: 2.0em;
+.accordion p {
+  margin-top: 0px;
 }
 
-.content .mat-form-field, .content .mat-slider,
+.accordion button.reset {
+  margin-left: 100%;
+  transform: translateX(-100%);
+}
+
 .accordion .mat-form-field, .accordion .mat-slider {
-  width: 100%;
+  transform: translateX(5%);
+  width: 90%;
 }

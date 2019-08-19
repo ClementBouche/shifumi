@@ -4,7 +4,6 @@ import { from } from 'rxjs';
 import { debounceTime, map, filter } from 'rxjs/operators';
 
 import { BoardgameSearch } from '../shared/model/boardgame-search.model';
-
 import { BoardgameService } from '../shared/services/boardgame.service';
 
 @Component({
@@ -26,7 +25,7 @@ export class BoardgameFilterComponent implements OnInit {
 
   constructor(
     private boardgameService: BoardgameService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit() {
@@ -69,7 +68,7 @@ export class BoardgameFilterComponent implements OnInit {
     ).subscribe();
 
     this.form.valueChanges.pipe(
-      debounceTime(500),
+      debounceTime(1000),
       filter((form) => this.buildSearch())
     ).subscribe(() => {
       this.searchChanged.emit(this.search);
@@ -85,6 +84,31 @@ export class BoardgameFilterComponent implements OnInit {
   onlyMech(value: string, index: number) {
     this.form.get('mechanics').patchValue(
       this.mechanics.map((v, i) => i === index)
+    );
+  }
+
+  resetName() {
+    this.form.patchValue({
+      name: '',
+    });
+  }
+
+  resetTime() {
+    this.form.patchValue({
+      min: 0,
+      max: 1440,
+    });
+  }
+
+  resetTheme() {
+    this.form.get('thematics').patchValue(
+      this.mechanics.map((v) => false)
+    );
+  }
+
+  resetMech() {
+    this.form.get('mechanics').patchValue(
+      this.mechanics.map((v) => false)
     );
   }
 
