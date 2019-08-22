@@ -15,10 +15,16 @@ export class User implements Deserializable, Serializable {
 
     lastname: String;
 
+    activated: Boolean;
+
     admin: Boolean;
 
     // token
     token: string;
+
+    playerId: string;
+
+    playerIdsClaimed: string[];
 
     serialize() {
       return {
@@ -27,8 +33,11 @@ export class User implements Deserializable, Serializable {
         email: this.email,
         surname: this.surname,
         lastname: this.lastname,
-        admin: this.admin
-      }
+        admin: this.admin,
+        activated: this.activated,
+        player_id: this.playerId,
+        player_ids_claimed: this.playerIdsClaimed,
+      };
     }
 
     deserialize(input: any) {
@@ -39,7 +48,10 @@ export class User implements Deserializable, Serializable {
         email: input.email,
         surname: input.surname,
         lastname: input.lastname,
-        admin: input.admin
+        admin: input.admin,
+        activated: input.activated,
+        playerId: input.player_id,
+        playerIdsClaimed: input.player_ids_claimed,
       });
       return this;
     }

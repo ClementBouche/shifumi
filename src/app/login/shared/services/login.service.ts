@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 import { TokenReponse } from '../model/token-response.model';
+import { User } from 'src/app/user/shared/model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +25,10 @@ export class LoginService {
       .then(response => new TokenReponse().deserialize(response));
   }
 
+  register(user: User): Promise<User> {
+    const url = `${environment.apiUrl}/user/register`;
+    return this.httpClient.post(url, user)
+      .toPromise()
+      .then(response => new User().deserialize(response));
+  }
 }

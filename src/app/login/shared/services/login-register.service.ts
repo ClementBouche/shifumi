@@ -1,13 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
-
-import { User } from '../model/user.model';
-import { TokenReponse } from '../model/token-response.model';
 import { Router } from '@angular/router';
+
+import { TokenReponse } from '../model/token-response.model';
+import { User } from 'src/app/user/shared/model/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class LoginRegisterService {
 
   logginEvent: EventEmitter<User> = new EventEmitter<User>();
 

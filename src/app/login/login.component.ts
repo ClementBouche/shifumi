@@ -3,10 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 
 import { LoginService } from './shared/services/login.service';
-import { UserService } from './shared/services/user.service';
+import { LoginRegisterService } from './shared/services/login-register.service';
 import { Tagable } from '../core/model/tagable.interface';
 import { MetadataTagsService } from '../core/services/metadata-tags.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,11 +22,10 @@ export class LoginComponent implements OnInit, Tagable {
   message: string;
 
   constructor(
-    private userService: UserService,
+    private loginRegisterService: LoginRegisterService,
     private metadataTags: MetadataTagsService,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private router: Router,
     private cd: ChangeDetectorRef,
     private location: Location
   ) { }
@@ -41,7 +39,7 @@ export class LoginComponent implements OnInit, Tagable {
       return;
     }
     this.loginService.authenticate(this.form.value.login, this.form.value.password).then((response) => {
-      if (this.userService.registerFromAuthentification(response)) {
+      if (this.loginRegisterService.registerFromAuthentification(response)) {
         this.location.back();
       } else {
         this.message = response.message;

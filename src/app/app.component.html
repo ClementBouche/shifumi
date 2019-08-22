@@ -5,7 +5,7 @@
     <span class="separator"></span>
     <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher un jeux..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
     <ng-container *ngIf="registered && registered.username != '' else login">
-      <a mat-button class="profil-button" routerLink="profil" routerLinkActive="active">
+      <a mat-button class="profil-button" routerLink="user" routerLinkActive="active">
         {{ registered.username }}
         <mat-icon>person</mat-icon>
       </a>

@@ -5,11 +5,10 @@ import { Subscription } from 'rxjs';
 
 import { appRouteAnimations } from './core/animation/app-route.animation';
 
-import { UserService } from './login/shared/services/user.service';
-
 import { Boardgame } from './boardgame/shared/model/boardgame.model';
-import { User } from './login/shared/model/user.model';
 import { MetadataTagsService } from './core/services/metadata-tags.service';
+import { User } from './user/shared/model/user.model';
+import { LoginRegisterService } from './login/shared/services/login-register.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
   loading: boolean = false;
 
   constructor(
-    private userService: UserService,
+    private loginRegisterService: LoginRegisterService,
     private metadataTagsService: MetadataTagsService,
     private router: Router,
     private snackBar: MatSnackBar,
@@ -66,7 +65,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       });
 
-    this.logSubscription = this.userService.logginEvent.subscribe((user) => {
+    this.logSubscription = this.loginRegisterService.logginEvent.subscribe((user) => {
       this.registered = user;
       if (this.registered) {
         this.welcomeMessage();
@@ -78,7 +77,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // TODO clean that up !
     setTimeout(() => {
-      this.userService.registerFromLocalStorage();
+      this.loginRegisterService.registerFromLocalStorage();
     }, 500);
   }
 
@@ -89,7 +88,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   loggout() {
-    this.userService.logout();
+    this.loginRegisterService.logout();
   }
 
   prepareRoute(outlet: RouterOutlet) {

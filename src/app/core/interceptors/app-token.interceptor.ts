@@ -3,8 +3,8 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
-import { UserService } from 'src/app/login/shared/services/user.service';
 import { environment } from 'src/environments/environment';
+import { LoginRegisterService } from 'src/app/login/shared/services/login-register.service';
 
 /**
  * Intercepte les requêtes Http pour aposer le token d'authentification
@@ -28,7 +28,7 @@ export class AppTokenInterceptor implements HttpInterceptor {
    * @memberOf AppTokenInterceptor
    */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const userService = this.injector.get(UserService);
+    const loginRegisterService = this.injector.get(LoginRegisterService);
 
     // route d authentification
     const urlAuth = `${environment.apiUrl}/${environment.routes.authenticate}`;
@@ -48,7 +48,7 @@ export class AppTokenInterceptor implements HttpInterceptor {
         (event: HttpEvent<any>) => event,
         (error: HttpErrorResponse) => {
           if (error.status === 401 || error.status === 403) {
-            userService.authFailedRequest();
+            loginRegisterService.authFailedRequest();
           } else {
             // autre erreur réseau
           }
@@ -65,8 +65,8 @@ export class AppTokenInterceptor implements HttpInterceptor {
    * @memberOf AppTokenInterceptor
    */
   getToken(): string | null {
-    const userService = this.injector.get(UserService);
-    return userService.getUser() ? userService.getUser().token : null;
+    const loginRegisterService = this.injector.get(LoginRegisterService);
+    return loginRegisterService.getUser() ? loginRegisterService.getUser().token : null;
   }
 
 }

@@ -1,10 +1,10 @@
-.login-home {
+.form {
   margin: auto;
   max-width: 500px;
   padding: 10px;
 }
 
-.login-home h2, .login-home p {
+.form h2, .form p {
   text-align: center;
 }
 

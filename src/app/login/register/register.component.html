@@ -1,0 +1,25 @@
+<app-custom-layout>
+  <div class="form">
+    <h2>Inscription à Shi.Fu.Mi</h2>
+    <mat-card>
+      <form [formGroup]="form" (ngSubmit)="register()">
+        <mat-form-field class="full-width">
+          <input matInput type="string" placeholder="Username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput type="password" placeholder="Mot de passe" formControlName="password">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput type="password" placeholder="Confirmation" formControlName="passwordConfirmed">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput type="string" placeholder="email" formControlName="email">
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" color="accent">S'incrire</button>
+      </form>
+
+      <p *ngIf="formError">Erreur dans le formulaire: vérifiez les champs et les mots de passe</p>
+    </mat-card>
+  </div>
+</app-custom-layout>

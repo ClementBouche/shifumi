@@ -1,0 +1,7 @@
+<app-custom-layout>
+  <div *ngIf="user$ | async; let user" class="fit">
+    <mat-card>
+      <h2>Bienvenue {{ user.name }}</h2>
+    </mat-card>
+  </div>
+</app-custom-layout>
