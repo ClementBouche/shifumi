@@ -9,13 +9,24 @@
     </app-search-filter>
 
     <!-- duree -->
-    <app-search-filter title="Temps" accordion=true>
+    <app-search-filter title="Temps de jeux" accordion=true>
       <div class="accordion">
         <button mat-button class="reset" color="accent" (click)="resetTime()">Effacer</button>
 
         <p>Entre {{ form.value.min | playTime:'humanize' }} et {{ form.value.max | playTime:'humanize' }}</p>
         <mat-slider min=0 max=120 step=5 thumbLabel=true formControlName="min"></mat-slider>
         <mat-slider min=0 max=120 step=5 thumbLabel=true formControlName="max"></mat-slider>
+      </div>
+    </app-search-filter>
+
+    <!-- duree -->
+    <app-search-filter title="Nombre de joueurs" accordion=true>
+      <div class="accordion">
+        <button mat-button class="reset" color="accent" (click)="resetPlayer()">Effacer</button>
+
+        <p>De {{ form.value.minPlayer }} à {{ form.value.maxPlayer }} joueurs</p>
+        <mat-slider min=1 max=9 step=1 thumbLabel=true formControlName="minPlayer"></mat-slider>
+        <mat-slider min=1 max=9 step=1 thumbLabel=true formControlName="maxPlayer"></mat-slider>
       </div>
     </app-search-filter>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
@@ -22,26 +22,41 @@ export class BoardgameHomeComponent implements OnInit {
 
   orderOptions = [{
     value: 'rank',
-    order: -1,
+    order: 1,
     viewValue: 'par Note décroissante',
     selected: true
+  }, {
+    value: 'year_published',
+    order: -1,
+    viewValue: 'par Année décroissante',
+  }, {
+    value: 'year_published',
+    order: 1,
+    viewValue: 'par Année croissante',
   }];
+
+  loading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
     this.orderSelected = this.orderOptions[0];
 
     this.boardgamePage$ = this.route.data.pipe(
+      map((data) => {
+        this.loading = false;
+        return data;
+      }),
       map((data: {boardgamesPage: BoardgamesPage}) => data.boardgamesPage)
     );
 
     this.route.queryParams.pipe(
       map((params) => new BoardgameSearch().deserialize(params)),
-      map((search) => this.search = search)
+      map((search) => this.search = search),
     ).subscribe();
   }
 
@@ -75,6 +90,9 @@ export class BoardgameHomeComponent implements OnInit {
   }
 
   private doSearch() {
+    this.loading = true;
+    this.cd.markForCheck();
+
     this.router.navigate(['boardgame'], {queryParams: this.search.serialize()});
   }
 

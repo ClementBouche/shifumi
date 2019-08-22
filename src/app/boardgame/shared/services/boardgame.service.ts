@@ -42,6 +42,7 @@ export class BoardgameService {
     if (search.extended) {
       return this.extendedSearch(search.name, 100);
     }
+    console.log('search', search.serialize());
     const url = `${environment.apiUrl}/boardgame/search`;
     return this.httpClient.post(url, search.serialize())
       .toPromise()

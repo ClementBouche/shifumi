@@ -5,7 +5,13 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   name: string;
 
-  players: number[];
+  players: {
+    min: number;
+    max: number;
+  } = {
+    min: 0,
+    max: 99
+  };
 
   time: {
     min: number;
@@ -15,9 +21,9 @@ export class BoardgameSearch implements Serializable, Deserializable {
     max: 1440
   };
 
-  thematics: string[] = [];
+  thematics: string[];
 
-  mechanics: string[] = [];
+  mechanics: string[];
 
   page: number = 1;
 
@@ -39,9 +45,10 @@ export class BoardgameSearch implements Serializable, Deserializable {
   serialize(): any {
     return {
       name: this.name,
-      players: this.players,
       min_time: this.time.min,
       max_time: this.time.max,
+      min_players: this.players.min,
+      max_players: this.players.max,
       thematics: this.thematics,
       mechanics: this.mechanics,
       page: this.page,
@@ -55,16 +62,19 @@ export class BoardgameSearch implements Serializable, Deserializable {
 
   deserialize(input: any) {
     let thematics = input.thematics;
-    if (!Array.isArray(input.thematics)) {
+    if (input.thematics && !Array.isArray(input.thematics)) {
       thematics = [thematics];
     }
     let mechanics = input.mechanics;
-    if (!Array.isArray(input.mechanics)) {
+    if (input.mechanics && !Array.isArray(input.mechanics)) {
       mechanics = [mechanics];
     }
     Object.assign(this, {
       name: input.name,
-      players: input.players,
+      players: {
+        min: Number.parseInt(input.min_players) || 0,
+        max: Number.parseInt(input.max_players) || 99,
+      },
       time: {
         min: Number.parseInt(input.min_time) || 0,
         max: Number.parseInt(input.max_time) || 1440,
@@ -73,8 +83,8 @@ export class BoardgameSearch implements Serializable, Deserializable {
       mechanics: mechanics,
       page: Number.parseInt(input.page) || 1,
       size: Number.parseInt(input.size) || 20,
-      orderBy: input.order_by,
-      order: Number.parseInt(input.order),
+      orderBy: input.order_by || 'rank',
+      order: Number.parseInt(input.order) || 1,
       peopleName: input.people_name,
       extended: input.extended === 'true' ? true : false
     });

@@ -1,5 +1,7 @@
 <app-custom-layout>
-  <div *ngIf="boardgamePage$ | async as boardgamePage; else loading" class="margin">
+
+  <!-- contenu page home -->
+  <div *ngIf="boardgamePage$ | async as boardgamePage; else templateLoading" class="margin">
 
     <div class="options">
       <div class="extended">
@@ -26,18 +28,21 @@
         [pageSizeOptions]="[5, 10, 25, 100]"
         (page)="changePage($event)">
     </mat-paginator>
-    <app-boardgame-list [boardgames]="boardgamePage.result"></app-boardgame-list>
+    <app-boardgame-list *ngIf="!loading; else templateLoading" [boardgames]="boardgamePage.result"></app-boardgame-list>
 
     <app-input-scroll-top></app-input-scroll-top>
 
   </div>
+
+  <!-- nav layout: boardgame filter -->
   <app-layout-nav>
     <ng-container *ngIf="search">
       <app-boardgame-filter [search]="search" (searchChanged)="changed($event)"></app-boardgame-filter>
     </ng-container>
   </app-layout-nav>
+
 </app-custom-layout>
 
-<ng-template #loading>
+<ng-template #templateLoading>
   <app-spinner></app-spinner>
 </ng-template>

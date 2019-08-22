@@ -33,6 +33,8 @@ export class BoardgameFilterComponent implements OnInit {
       name: this.fb.control(this.search.name),
       min: this.fb.control(this.search.time.min),
       max: this.fb.control(this.search.time.max),
+      minPlayer: this.fb.control(this.search.players.min),
+      maxPlayer: this.fb.control(this.search.players.max),
       thematics: this.fb.array([]),
       mechanics: this.fb.array([]),
     });
@@ -68,7 +70,7 @@ export class BoardgameFilterComponent implements OnInit {
     ).subscribe();
 
     this.form.valueChanges.pipe(
-      debounceTime(1000),
+      debounceTime(500),
       filter((form) => this.buildSearch())
     ).subscribe(() => {
       this.searchChanged.emit(this.search);
@@ -100,6 +102,13 @@ export class BoardgameFilterComponent implements OnInit {
     });
   }
 
+  resetPlayer() {
+    this.form.patchValue({
+      minPlayer: 0,
+      maxPlayer: 99,
+    });
+  }
+
   resetTheme() {
     this.form.get('thematics').patchValue(
       this.mechanics.map((v) => false)
@@ -119,6 +128,8 @@ export class BoardgameFilterComponent implements OnInit {
     this.search.name = this.form.value.name;
     this.search.time.min = this.form.value.min;
     this.search.time.max = this.form.value.max === 120 ? 1440 : this.form.value.max;
+    this.search.players.min = this.form.value.minPlayer;
+    this.search.players.max = this.form.value.maxPlayer === 9 ? 99 : this.form.value.maxPlayer;
     this.search.thematics = this.getThematics();
     this.search.mechanics = this.getMechanics();
     // force la nouvelle pagination
