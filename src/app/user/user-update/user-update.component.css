@@ -1,0 +1,9 @@
+.form {
+  margin: auto;
+  max-width: 500px;
+  padding: 10px;
+}
+
+.form h2 {
+  text-align: center;
+}

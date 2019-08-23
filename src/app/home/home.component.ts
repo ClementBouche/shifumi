@@ -28,6 +28,9 @@ export class HomeComponent implements OnInit, Tagable {
     ) {
       this.router.navigate(['/', page]);
     }
+    if (page === 'myPlay') {
+      this.router.navigate(['/', 'play', 'me']);
+    }
   }
 
   updateTags() {

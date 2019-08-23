@@ -24,6 +24,14 @@ const routes: Routes = [
         },
       },
       {
+        path: 'me',
+        component: PlayPaginatedComponent,
+        runGuardsAndResolvers: 'always',
+        resolve: {
+          playsPage: PlaySearchResolverService
+        },
+      },
+      {
         path: 'add',
         component: PlayAddComponent
       },

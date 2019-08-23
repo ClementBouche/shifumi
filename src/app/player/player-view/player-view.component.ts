@@ -13,6 +13,7 @@ import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
 import { PlayerService } from '../shared/services/player.service';
 import { map, switchMap } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
+import { UserService } from 'src/app/user/shared/services/user.service';
 
 @Component({
   selector: 'app-player-view',
@@ -27,13 +28,14 @@ export class PlayerViewComponent implements OnInit, Tagable {
 
   plays: Play[];
 
-  actions: string[] = ['delete', 'edit'];
+  actions: string[] = ['delete', 'edit', 'sync'];
 
   allPlays$: Observable<Play[]>;
 
   constructor(
     private playerService: PlayerService,
     private playService: PlayService,
+    private userService: UserService,
     private metadataTags: MetadataTagsService,
     private route: ActivatedRoute,
     private router: Router,
@@ -64,17 +66,23 @@ export class PlayerViewComponent implements OnInit, Tagable {
       map((page: PlaysPage) => page.result)
     );
 
+    // sync action
+
     this.updateTags();
   }
 
   doAction(actionName: string) {
     if (actionName === 'delete') {
-      // this.playerService.delete(this.player).then(() => {
-      //   this.router.navigate(['/', 'player']);
-      // });
+      this.playerService.delete(this.player).then(() => {
+        this.router.navigate(['/', 'player']);
+      });
     }
     if (actionName === 'edit') {
       // TODO
+    }
+    if (actionName === 'sync') {
+      // TODO
+      this.userService.claimPlayer(this.player.id).subscribe();
     }
   }
 

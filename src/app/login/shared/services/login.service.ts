@@ -16,7 +16,7 @@ export class LoginService {
   ) { }
 
   authenticate(username: string, password: string): Promise<TokenReponse> {
-    const url = `${environment.apiUrl}/user/authenticate`;
+    const url = `${environment.apiUrl}/authenticate`;
     return this.httpClient.post(url, {
         username: username,
         password: password
@@ -26,9 +26,10 @@ export class LoginService {
   }
 
   register(user: User): Promise<User> {
-    const url = `${environment.apiUrl}/user/register`;
+    const url = `${environment.apiUrl}/register`;
     return this.httpClient.post(url, user)
       .toPromise()
       .then(response => new User().deserialize(response));
   }
+
 }

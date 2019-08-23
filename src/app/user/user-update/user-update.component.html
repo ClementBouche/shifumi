@@ -1,0 +1,8 @@
+<app-custom-layout>
+  <div *ngIf="user$ | async as user" class="form">
+    <h2>Modifier</h2>
+    <mat-card>
+      <app-user-form [user]="user" (userChanged)="update($event)"></app-user-form>
+    </mat-card>
+  </div>
+</app-custom-layout>

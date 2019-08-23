@@ -76,9 +76,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     // TODO clean that up !
-    setTimeout(() => {
-      this.loginRegisterService.registerFromLocalStorage();
-    }, 500);
+    this.loginRegisterService.registerFromLocalStorage();
   }
 
   ngOnDestroy() {

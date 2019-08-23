@@ -1,0 +1,13 @@
+<div class="users">
+  <ng-container *ngFor="let user of users">
+    <div class="user">
+      <app-user-card [user]="user" (actionTriggered)="userAction(user, $event)"></app-user-card>
+    </div>
+  </ng-container>
+  <div class="inline-object"></div>
+  <div class="inline-object"></div>
+</div>
+
+<ng-template #noResult>
+  <p>No users</p>
+</ng-template>

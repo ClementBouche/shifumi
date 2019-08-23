@@ -1,7 +1,15 @@
-<app-custom-layout>
-  <div *ngIf="user$ | async; let user" class="fit">
-    <mat-card>
-      <h2>Bienvenue {{ user.name }}</h2>
-    </mat-card>
+<app-custom-layout *ngIf="user$ | async as user">
+  <div class="fit">
+      <h2>Bienvenue<span *ngIf="user.admin"> admin</span> {{ user.username }}</h2>
+      <app-user-card [user]="user" [actions]="actions" (actionTriggered)="goUpdate()"></app-user-card>
+  </div>
+
+  <div class="admin" *ngIf="users$ | async as users">
+    <h2>Admin - Liste des utilisateurs</h2>
+    <app-user-list [users]="users"
+        (userDeleted)="delete($event)"
+        (userUpdated)="update($event)"
+        (userSynched)="sync($event)">
+    </app-user-list>
   </div>
 </app-custom-layout>

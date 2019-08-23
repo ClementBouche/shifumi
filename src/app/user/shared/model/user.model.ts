@@ -17,7 +17,7 @@ export class User implements Deserializable, Serializable {
 
     activated: Boolean;
 
-    admin: Boolean;
+    admin: boolean;
 
     // token
     token: string;

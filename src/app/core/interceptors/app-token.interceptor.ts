@@ -31,7 +31,7 @@ export class AppTokenInterceptor implements HttpInterceptor {
     const loginRegisterService = this.injector.get(LoginRegisterService);
 
     // route d authentification
-    const urlAuth = `${environment.apiUrl}/${environment.routes.authenticate}`;
+    const urlAuth = `${environment.apiUrl}/authenticate`;
     if (request.url.match(urlAuth)) {
       return next.handle(request);
     }

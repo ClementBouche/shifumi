@@ -6,10 +6,13 @@ import { AppMaterialModule } from '../shared/app-material.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserComponent } from './user.component';
 import { UserRoutingModule } from './user-routing.module';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { UserSharedModule } from './shared/user-shared.module';
 
 @NgModule({
   declarations: [
-    UserComponent
+    UserComponent,
+    UserUpdateComponent,
   ],
   imports: [
     CommonModule,
@@ -17,7 +20,8 @@ import { UserRoutingModule } from './user-routing.module';
     ReactiveFormsModule,
     AppMaterialModule,
     SharedModule,
-    UserRoutingModule
+    UserRoutingModule,
+    UserSharedModule,
   ]
 })
 export class UserModule { }
