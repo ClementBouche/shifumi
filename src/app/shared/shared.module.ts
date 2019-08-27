@@ -8,9 +8,6 @@ import { AutocompleteChipsComponent } from './components/autocomplete-chips/auto
 import { AutocompleteSearchInputComponent } from './components/autocomplete-search-input/autocomplete-search-input.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { CommentSectionComponent } from './components/comment-section/comment-section.component';
-import { CustomLayoutComponent } from './components/custom-layout/custom-layout.component';
-import { LayoutNavComponent } from './components/layout-nav/layout-nav.component';
-import { LayoutSideComponent } from './components/layout-side/layout-side.component';
 import { MenuButtonComponent } from './components/menu-button/menu-button.component';
 import { PageShortcutComponent } from './components/page-shortcut/page-shortcut.component';
 import { PlayerSearchInputComponent } from './components/player-search-input/player-search-input.component';
@@ -36,9 +33,6 @@ import { SharedChartModule } from '../shared-chart/shared-chart.module';
     AutocompleteSearchInputComponent,
     AvatarComponent,
     CommentSectionComponent,
-    CustomLayoutComponent,
-    LayoutNavComponent,
-    LayoutSideComponent,
     MenuButtonComponent,
     PageShortcutComponent,
     PlayerSearchInputComponent,
@@ -69,9 +63,6 @@ import { SharedChartModule } from '../shared-chart/shared-chart.module';
     AutocompleteSearchInputComponent,
     AvatarComponent,
     CommentSectionComponent,
-    CustomLayoutComponent,
-    LayoutNavComponent,
-    LayoutSideComponent,
     MenuButtonComponent,
     PageShortcutComponent,
     PlayerSearchInputComponent,
