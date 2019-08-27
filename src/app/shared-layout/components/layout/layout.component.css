@@ -1,0 +1,32 @@
+.layout {
+  margin: 0 auto;
+  position: relative;
+  max-width: 90em;
+  padding-top: 30px;
+  padding-left: 24px;
+  padding-right: 24px;
+  display: flex;
+}
+
+.content {
+  margin: 0 auto;
+  flex-grow: 1;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+
+  .layout {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .side {
+    display: none;
+  }
+
+}
