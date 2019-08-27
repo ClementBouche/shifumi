@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
-import { LoginRegisterService } from 'src/app/login/shared/services/login-register.service';
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 
 /**
  * Intercepte les requêtes Http pour aposer le token d'authentification

@@ -27,6 +27,8 @@ import { DatePipe } from './pipes/date.pipe';
 import { TextChipComponent } from './components/text-chip/text-chip.component';
 import { SearchFilterComponent } from './components/search-filter/search-filter.component';
 import { InputScrollTopComponent } from './components/input-scroll-top/input-scroll-top.component';
+import { SharedLayoutModule } from '../shared-layout/shared-layout.module';
+import { SharedChartModule } from '../shared-chart/shared-chart.module';
 
 @NgModule({
   declarations: [
@@ -57,8 +59,12 @@ import { InputScrollTopComponent } from './components/input-scroll-top/input-scr
     FormsModule,
     ReactiveFormsModule,
     AppMaterialModule,
+    SharedChartModule,
+    SharedLayoutModule,
   ],
   exports: [
+    SharedChartModule,
+    SharedLayoutModule,
     AutocompleteChipsComponent,
     AutocompleteSearchInputComponent,
     AvatarComponent,

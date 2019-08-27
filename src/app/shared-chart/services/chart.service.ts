@@ -57,9 +57,9 @@ export class ChartService {
     const players = plays.reduce((previous, play) => {
       const names = play.scores.map((sc) => sc.playerName);
       names.forEach((name) => {
-        if (name == player.name) return;
+        if (name === player.name) { return; }
         const index = previous.findIndex((o) => o.name === name);
-        if (index == -1) {
+        if (index === -1) {
           previous.push({
             name: name,
             count: 1
@@ -67,7 +67,7 @@ export class ChartService {
         } else {
           previous[index].count += 1;
         }
-      })
+      });
       return previous;
     }, []).sort((a, b) => b.count - a.count).slice(0, 6);
 
@@ -84,7 +84,7 @@ export class ChartService {
     const players = plays.reduce((previous, play) => {
       const playerCount = play.scores.length;
       const index = previous.findIndex((el) => el.player_count === playerCount);
-      if (index == -1) {
+      if (index === -1) {
         previous.push({
           player_count: playerCount,
           count: 1
@@ -113,9 +113,9 @@ export class ChartService {
       {time: '+120min', count: 0, min: 120, max: 99999999},
     ];
     const players = plays.reduce((previous, play: Play) => {
-      const time = parseInt(play.playingTime);
+      const time = parseInt(play.playingTime, 10);
       const index = previous.findIndex((t) => time > t.min && time <= t.max);
-      if (index == -1) return previous;
+      if (index === -1) { return previous; }
       previous[index].count += 1;
       return previous;
     }, byTimes).sort((a, b) => b.count - a.count).slice(0, 6);

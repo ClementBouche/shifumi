@@ -13,10 +13,9 @@ import { AppMaterialModule } from './shared/app-material.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { BoardgamePickDialogComponent } from './dialogs/boardgame-pick-dialog/boardgame-pick-dialog.component';
-import { PlayerPickDialogComponent } from './dialogs/player-pick-dialog/player-pick-dialog.component';
+import { BoardgamePickDialogComponent } from './core/entry-components/boardgame-pick-dialog/boardgame-pick-dialog.component';
+import { PlayerPickDialogComponent } from './core/entry-components/player-pick-dialog/player-pick-dialog.component';
 import { AppTokenInterceptor } from './core/interceptors/app-token.interceptor';
-import { HomeComponent } from './home/home.component';
 import { MatPaginatorIntlFr } from './core/intl/mat-paginator-intl.fr';
 
 const config: SocketIoConfig = {
@@ -27,7 +26,6 @@ const config: SocketIoConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     // entry components
     BoardgamePickDialogComponent,
     PlayerPickDialogComponent,

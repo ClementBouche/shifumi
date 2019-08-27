@@ -1,10 +1,10 @@
-import { Deserializable } from "src/app/core/model/deserializable.interface";
+import { Deserializable } from 'src/app/core/model/deserializable.interface';
 
 export class ChartData implements Deserializable {
   type: string;
   data: {
     labels: string[];
-    datasets:[{
+    datasets: [{
       label: string;
       data: number[];
       backgroundColor: string[];

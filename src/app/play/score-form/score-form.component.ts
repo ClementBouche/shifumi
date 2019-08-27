@@ -7,7 +7,7 @@ import { debounceTime } from 'rxjs/operators';
 import { NumericValidator } from 'src/app/core/validators/numeric.validator';
 import { Score } from '../shared/model/score.model';
 import { Player } from 'src/app/player/shared/model/player.model';
-import { PlayerPickDialogComponent } from 'src/app/dialogs/player-pick-dialog/player-pick-dialog.component';
+import { PlayerPickDialogComponent } from 'src/app/core/entry-components/player-pick-dialog/player-pick-dialog.component';
 
 @Component({
   selector: 'app-score-form',

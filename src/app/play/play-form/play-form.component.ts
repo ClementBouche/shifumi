@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 
-import { BoardgamePickDialogComponent } from 'src/app/dialogs/boardgame-pick-dialog/boardgame-pick-dialog.component';
+import { BoardgamePickDialogComponent } from 'src/app/core/entry-components/boardgame-pick-dialog/boardgame-pick-dialog.component';
 import { Play } from '../shared/model/play.model';
 import { Boardgame } from '../../boardgame/shared/model/boardgame.model';
 import { Score } from '../shared/model/score.model';

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 import { Play } from 'src/app/play/shared/model/play.model';
-import { TableService } from '../../services/table.service';
+import { TableService } from 'src/app/shared-chart/services/table.service';
 
 @Component({
   selector: 'app-boardgame-table',

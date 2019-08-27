@@ -8,7 +8,7 @@ import { appRouteAnimations } from './core/animation/app-route.animation';
 import { Boardgame } from './boardgame/shared/model/boardgame.model';
 import { MetadataTagsService } from './core/services/metadata-tags.service';
 import { User } from './user/shared/model/user.model';
-import { LoginRegisterService } from './login/shared/services/login-register.service';
+import { LoginRegisterService } from './home/shared/services/login-register.service';
 
 @Component({
   selector: 'app-root',

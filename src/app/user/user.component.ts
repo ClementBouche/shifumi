@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './shared/model/user.model';
-import { LoginRegisterService } from '../login/shared/services/login-register.service';
+import { LoginRegisterService } from '../home/shared/services/login-register.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { startWith, map, switchMap, filter } from 'rxjs/operators';

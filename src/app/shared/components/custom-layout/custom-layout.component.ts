@@ -15,13 +15,16 @@ import { LayoutSideComponent } from '../layout-side/layout-side.component';
       <div class="side">
         <ng-content select="app-layout-side"></ng-content>
       </div>
+      <div class="mobile">
+        <ng-content select="app-layout-mobile"></ng-content>
+      </div>
     </div>
   `,
   styleUrls: ['./custom-layout.component.css']
 })
 export class CustomLayoutComponent implements OnInit, AfterContentInit {
 
-  @Input() padding: string = "30px 24px 0px 24px";
+  @Input() padding: string = '30px 24px 0px 24px';
 
   // nav component
   @ContentChildren(LayoutNavComponent) navs: QueryList<LayoutNavComponent>;

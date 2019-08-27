@@ -5,7 +5,7 @@ import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service
 import { map } from 'rxjs/operators';
 import { PlacesPage } from '../shared/model/places-page.model';
 import { Place } from '../shared/model/place.model';
-import { TableService } from 'src/app/chart-shared/services/table.service';
+import { TableService } from 'src/app/shared-chart/services/table.service';
 
 @Component({
   selector: 'app-place-home',

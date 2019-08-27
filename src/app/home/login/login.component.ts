@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 
-import { LoginService } from './shared/services/login.service';
-import { LoginRegisterService } from './shared/services/login-register.service';
-import { Tagable } from '../core/model/tagable.interface';
-import { MetadataTagsService } from '../core/services/metadata-tags.service';
+import { LoginService } from '../shared/services/login.service';
+import { LoginRegisterService } from '../shared/services/login-register.service';
+import { Tagable } from '../../core/model/tagable.interface';
+import { MetadataTagsService } from '../../core/services/metadata-tags.service';
 
 @Component({
   selector: 'app-login',

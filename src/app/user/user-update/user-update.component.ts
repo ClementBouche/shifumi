@@ -3,7 +3,7 @@ import { startWith, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from '../shared/model/user.model';
 import { UserService } from '../shared/services/user.service';
-import { LoginRegisterService } from 'src/app/login/shared/services/login-register.service';
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 import { Router } from '@angular/router';
 
 @Component({
