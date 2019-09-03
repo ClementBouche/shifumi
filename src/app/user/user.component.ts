@@ -45,16 +45,13 @@ export class UserComponent implements OnInit {
   }
 
   update(user: User) {
-    console.log('update', user);
   }
 
   delete(user: User) {
-    console.log('delete', user);
     this.adminService.delete(user.id).subscribe();
   }
 
   sync(user: User) {
-    console.log('sync', user);
     this.adminService.syncUser(user.id).subscribe();
   }
 

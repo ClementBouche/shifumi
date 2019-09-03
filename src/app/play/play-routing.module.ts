@@ -8,6 +8,7 @@ import { PlayUpdateComponent } from './play-update/play-update.component';
 import { PlayPaginatedComponent } from './play-paginated/play-paginated.component';
 import { PlaySearchResolverService } from './shared/resolvers/play-search-resolver.service';
 import { PlayViewResolverService } from './shared/resolvers/play-view-resolver.service';
+import { MyPlayResolverService } from './shared/resolvers/my-play-resolver.service';
 
 const routes: Routes = [
   {
@@ -28,7 +29,7 @@ const routes: Routes = [
         component: PlayPaginatedComponent,
         runGuardsAndResolvers: 'always',
         resolve: {
-          playsPage: PlaySearchResolverService
+          playsPage: MyPlayResolverService
         },
       },
       {

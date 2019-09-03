@@ -28,4 +28,5 @@ export class AdminService {
         map((response) => new User().deserialize(response))
       );
   }
+
 }
