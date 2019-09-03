@@ -9,6 +9,8 @@ import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { PlaySharedModule } from '../play/shared/play-shared.module';
+import { PlayerSharedModule } from '../player/shared/player-shared.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { HomeRoutingModule } from './home-routing.module';
     ReactiveFormsModule,
     AppMaterialModule,
     SharedModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    PlaySharedModule,
+    PlayerSharedModule
   ]
 })
 export class HomeModule { }

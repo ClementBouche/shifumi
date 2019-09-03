@@ -16,7 +16,7 @@
   <mat-card-content>
     <ul>
       <li>Temps de jeux cumulé : <span>{{ player.time | playTime:"humanize" }}</span></li>
-      <li><span>{{ player.counts.boardgames }} jeux</span> différents testés</li>
+      <li><span>{{ player.counts.boardgames }} jeux</span> testés</li>
       <ng-container *ngIf="detail">
         <li>{{ player.counts.plays }} parties, {{ player.counts.wins }} victoires</li>
         <li *ngIf="player.counts.places > 1">Dans {{ player.counts.places }} lieux différents</li>

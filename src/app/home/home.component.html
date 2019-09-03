@@ -18,30 +18,56 @@
       </button>
     </div>
   </app-layout-nav>
+
   <div class="contenu">
     <p>
       Shifumi est un assistant ludique.
-      Il vous permet de trouver des <a mat-button color="accent" routerLink="boardgame">jeux</a>,
-      que ce soit selon le nombre de joueurs ou la durée.
+      Il vous permet de rechercher votre prochain jeux,
+      du petits jeux d'ambiance réunissant de nombreux joueurs,
+      au jeux pour les plus initiés souhaitant y passer la soirée.
     </p>
     <p>
-      <a mat-button color="accent" routerLink="login">Connectez-vous</a>
-      et utilisez l'application pour enregistrer toutes vos parties.
+      Connectez-vous pour enregistrer vos parties, et planifier les prochaines séances.
     </p>
     <p>
-      Comparez vos résultats avec d'autres 
-      <a mat-button color="accent" routerLink="player">joueurs</a>
-    </p>
-    <p class="credit">
-      Icon designed by <a href="https://www.flaticon.com/authors/dinosoftlabs">dinosoftlabs</a> from Flaticon.
-    </p>
-    <p class="credit">
-      All boardgames data retrieve from <a href="https://www.boardgamegeek.com/">boardgamegeek</a>.
+      Comparez vos résultats avec d'autres joueurs.
     </p>
   </div>
 
   <mat-divider></mat-divider>
 
-  <app-comment-section room=home></app-comment-section>
+  <div *ngIf="plays$ | async as plays">
+    <h4>Les dernières parties</h4>
+    <app-play-list [plays]="plays"></app-play-list>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div *ngIf="players$ | async as players">
+    <h4>Les supers joueurs</h4>
+    <app-player-list [players]="players"></app-player-list>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <app-comment-section room="home" title="Commentaires libres">
+    <p>Laissez-nous un message, vos impressions sur le site, partagez une image de jeux.</p>
+    <p>Cet espace est libre, pas besoin de vous connecter.</p>
+    <p>Pour embellir votre message, utilisez <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">le format markdown</a>.</p>
+    <p>L'équipe Shi.Fu.Mi.</p>
+    <a mat-raised-button class="active" color="primary" appScrollTo="add-comment"><mat-icon>add</mat-icon> commentaire</a>
+  </app-comment-section>
+
+  <mat-divider></mat-divider>
+
+  <div>
+    <h4>Crédits</h4>
+    <p class="credit">
+      Icon designed by <a href="https://www.flaticon.com/authors/dinosoftlabs" target="_blank">dinosoftlabs</a> from Flaticon.
+    </p>
+    <p class="credit">
+      All boardgames data retrieve from <a href="https://www.boardgamegeek.com/" target="_blank">boardgamegeek</a>.
+    </p>
+  </div>
 
 </app-custom-layout>

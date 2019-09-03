@@ -1,28 +1,29 @@
-<h4>Commentaires</h4>
+<h4>{{ title }}</h4>
+<ng-content></ng-content>
 
 <ng-container *ngFor='let message of messages'>
-<div class="message">
-  <div class="content">
-    <h5>{{ message.sender }}</h5>
-    <div class="app-markdown" [appSafeHtml]="message.content"></div>
+  <div class="message">
+    <div class="content">
+      <h5>{{ message.sender }}</h5>
+      <div class="app-markdown" [appSafeHtml]="message.content"></div>
+    </div>
+    <div class="buttons">
+      <!-- <button mat-mini-fab color="primary" (click)='edit(message)'><mat-icon>edit</mat-icon></button> -->
+      <!-- <button mat-mini-fab color="primary" (click)='remove(message)'><mat-icon>delete</mat-icon></button> -->
+      <mat-chip-list class="icon">
+        <mat-chip color="primary" selected (click)='remove(message)'>
+          Supprimer
+          <mat-icon>delete</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
   </div>
-  <div class="buttons">
-    <!-- <button mat-mini-fab color="primary" (click)='edit(message)'><mat-icon>edit</mat-icon></button> -->
-    <!-- <button mat-mini-fab color="primary" (click)='remove(message)'><mat-icon>delete</mat-icon></button> -->
-    <mat-chip-list class="icon">
-      <mat-chip color="primary" selected (click)='remove(message)'>
-        Supprimer
-        <mat-icon>delete</mat-icon>
-      </mat-chip>
-    </mat-chip-list>
-  </div>
-</div>
 </ng-container>
 
-<div class="content">
+<div id="add-comment" class="content add-comment">
   <mat-form-field>
-    <textarea matInput placeholder="Ajouter un commentaire..."
+    <textarea matInput placeholder="Tapper votre commentaire..."
           [(ngModel)]='currentMessage.content'></textarea>
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)='addMessage()'><mat-icon>add</mat-icon></button>
+  <button mat-raised-button color="primary" (click)='addMessage()'><mat-icon>add</mat-icon>Commentaire</button>
 </div>

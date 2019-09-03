@@ -17,6 +17,10 @@ mat-form-field {
   max-width: 100%;
 }
 
+.add-comment {
+  margin-bottom: 15px;
+}
+
 .message .icon {
   position: absolute;
   top: 0;

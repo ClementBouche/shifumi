@@ -1,7 +1,10 @@
 <div class="page">
   <mat-toolbar class="app-toolbar mat-elevation-z6" color="primary">
-    <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-    <a mat-button class="home-button" color="accent" routerLink="" routerLinkActive="active"><h1 class="title">Shi.Fu.Mi</h1></a>
+    <button class="home-button" mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <img src="../assets/shifumi-icon.png" (click)="sidenav.toggle()">
+    <a mat-button class="home-button" color="accent" routerLink="" routerLinkActive="active">
+      <h1 class="title">Shi.Fu.Mi</h1>
+    </a>
     <span class="separator"></span>
     <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher un jeux..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
     <ng-container *ngIf="registered && registered.username != '' else login">
@@ -60,7 +63,9 @@
         <!-- </div> -->
         <div class="end-page"></div>
         <mat-toolbar class="footer" color="primary">
-          <span>Shi.Fu.Mi</span>
+          <a mat-button class="home-button" color="accent" routerLink="" routerLinkActive="active">
+            <h1 class="title">Shi.Fu.Mi</h1>
+          </a>
           <span class="small"><a mat-button href="https://github.com/ClementBouche/shifumi" target="_blank">GitHub</a></span>
         </mat-toolbar>
       </div>

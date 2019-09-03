@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Player } from '../shared/model/player.model';
 import { Router } from '@angular/router';
+import { Player } from '../../model/player.model';
 
 @Component({
   selector: 'app-player-list',

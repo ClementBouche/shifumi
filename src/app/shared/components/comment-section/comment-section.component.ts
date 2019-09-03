@@ -10,6 +10,10 @@ import { MessageService } from '../../services/comment.service';
 })
 export class CommentSectionComponent implements OnInit, OnDestroy {
 
+  @Input() title: string = 'Commentaires';
+
+  @Input() room: string;
+
   messages: Message[];
 
   currentMessage: Message = new Message();
@@ -19,8 +23,6 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
   private deletedSubscription: Subscription;
 
   private updatedSubscription: Subscription;
-
-  @Input() room: string;
 
   constructor(
     private service: MessageService,
