@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
     user.activated = false;
     user.admin = false;
     user.username = this.form.value.username;
-    user.password = this.form.value.username;
+    user.password = this.form.value.password;
     user.email = this.form.value.email;
 
     this.loginService.register(user).then(() => {
