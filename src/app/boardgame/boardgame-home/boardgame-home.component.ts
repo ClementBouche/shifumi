@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 
 import { BoardgamesPage } from '../shared/model/boardgames-page.model';
 import { BoardgameSearch } from '../shared/model/boardgame-search.model';
+import { User } from 'src/app/user/shared/model/user.model';
+
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 
 @Component({
   selector: 'app-boardgame-home',
@@ -37,13 +40,18 @@ export class BoardgameHomeComponent implements OnInit {
 
   loading: boolean = false;
 
+  user: User;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private loginService: LoginRegisterService,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
+    this.user = this.loginService.getUser();
+
     this.orderSelected = this.orderOptions[0];
 
     this.boardgamePage$ = this.route.data.pipe(

@@ -7,6 +7,8 @@ import { BoardgamePickDialogComponent } from 'src/app/core/entry-components/boar
 import { Play } from '../shared/model/play.model';
 import { Boardgame } from '../../boardgame/shared/model/boardgame.model';
 import { Score } from '../shared/model/score.model';
+import { User } from 'src/app/user/shared/model/user.model';
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 
 @Component({
   selector: 'app-play-form',
@@ -36,18 +38,25 @@ export class PlayFormComponent implements OnInit {
   private dateFormat: string = "YYYY-MM-DD";
 
   constructor(
+    private loginRegisterService: LoginRegisterService,
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
     private cd: ChangeDetectorRef
   ) { }
 
+
   ngOnInit() {
+    const user = this.loginRegisterService.getUser();
+
     if (this.play) {
       return this.playToForm();
     }
     this.play = new Play();
     if (this.boardgame) {
       this.patchForm(this.boardgame);
+    }
+    if (user) {
+      this.addUser(user);
     }
     if (this.newPlay) {
       this.form.patchValue({
@@ -92,6 +101,16 @@ export class PlayFormComponent implements OnInit {
 
   addPlayer() {
     this.form.value.scores.push(new Score());
+  }
+
+  private addUser(user: User) {
+    const score = new Score();
+    score.playerId = user.playerId;
+    score.playerName = user.username;
+    this.form.patchValue({
+      scores: [score]
+    });
+    this.cd.markForCheck();
   }
 
   private playToForm() {

@@ -11,12 +11,14 @@ import { RegisterComponent } from './register/register.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { PlayerSharedModule } from '../player/shared/player-shared.module';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,

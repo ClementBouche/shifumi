@@ -1,12 +1,13 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { of, merge } from 'rxjs';
+import { switchMap, filter } from 'rxjs/operators';
 
-import { Boardgame } from '../../boardgame/shared/model/boardgame.model';
 import { BoardgameService } from '../../boardgame/shared/services/boardgame.service';
 import { PlayService } from '../shared/services/play.service';
+
+import { Boardgame } from '../../boardgame/shared/model/boardgame.model';
 import { Play } from '../shared/model/play.model';
-import { switchMap, filter, endWith, defaultIfEmpty, map, mapTo } from 'rxjs/operators';
-import { of, concat, merge, zip } from 'rxjs';
 
 @Component({
   selector: 'app-play-add',

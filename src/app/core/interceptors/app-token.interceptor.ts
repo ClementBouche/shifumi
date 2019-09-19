@@ -64,9 +64,9 @@ export class AppTokenInterceptor implements HttpInterceptor {
    * @returns le jeton d'authentification s'il existe
    * @memberOf AppTokenInterceptor
    */
-  getToken(): string | null {
+  getToken(): string {
     const loginRegisterService = this.injector.get(LoginRegisterService);
-    return loginRegisterService.getUser() ? loginRegisterService.getUser().token : null;
+    return loginRegisterService.getToken();
   }
 
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
+
 import { Boardgame } from '../../model/boardgame.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boardgame-card',
@@ -10,9 +14,16 @@ export class BoardgameCardComponent implements OnInit {
 
   @Input() boardgame: Boardgame;
 
-  constructor() { }
+  constructor(
+    private loginService: LoginRegisterService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  goTo() {
+    this.router.navigate(['/', 'boardgame', this.boardgame.id]);
   }
 
 }

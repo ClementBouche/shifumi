@@ -3,7 +3,7 @@
   flex-wrap: wrap;
 }
 
-.options .extended {
+.options .extended, .options .library {
   padding-top: 15px;
   flex-grow: 1;
 }

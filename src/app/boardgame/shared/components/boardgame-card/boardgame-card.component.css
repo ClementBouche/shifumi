@@ -23,3 +23,11 @@
 .mat-card-content {
   padding-top: 10px;
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+.field {
+  max-width: 100px;
+}

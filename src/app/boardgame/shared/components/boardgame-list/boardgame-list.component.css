@@ -9,14 +9,6 @@
   width: 340px;
 }
 
-.boardgame:hover {
-  cursor: pointer;
-}
-
-.boardgames app-boardgame-card:hover {
-  box-shadow: 2px 2px 2px #aaa;
-}
-
 @media (max-width: 600px) {
   .boardgame {
     margin: 10px auto;

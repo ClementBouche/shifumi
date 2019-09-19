@@ -87,6 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   loggout() {
     this.loginRegisterService.logout();
+    this.router.navigate(['/']);
   }
 
   prepareRoute(outlet: RouterOutlet) {

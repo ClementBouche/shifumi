@@ -9,6 +9,9 @@ export class PlayerSearch implements Deserializable, Serializable {
   // order
   order: string = 'play';
 
+  // exact name
+  strict: boolean = false;
+
   // search name
   name: string;
   minPlay: number;

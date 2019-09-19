@@ -1,8 +1,10 @@
 <div class="boardgames" *ngIf="boardgames && boardgames.length != 0 else noResult">
   <ng-container *ngFor="let boardgame of boardgames">
-    <div class="boardgame" (click)="select(boardgame)">
+    <div class="boardgame">
       <!-- <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info> -->
-      <app-boardgame-card [boardgame]="boardgame"></app-boardgame-card>
+      <app-boardgame-card [boardgame]="boardgame">
+        <app-library-tool *ngIf="connected" [boardgame]="boardgame"></app-library-tool>
+      </app-boardgame-card>
     </div>
   </ng-container>
   <div class="inline-object"></div>

@@ -1,5 +1,6 @@
 import { Deserializable } from "src/app/core/model/deserializable.interface";
 import { Serializable } from "src/app/core/model/serializable.interface";
+import { User } from 'src/app/user/shared/model/user.model';
 
 export class TokenReponse implements Deserializable, Serializable {
 
@@ -10,26 +11,24 @@ export class TokenReponse implements Deserializable, Serializable {
   token: string;
 
   // user id
-  id: string;
-  username: string;
+  user: User;
 
   serialize() {
     return {
       success: this.success,
       message: this.message,
       token: this.token,
-      id: this.id,
-      username: this.username
+      user: this.user.serialize(),
     }
   }
 
   deserialize(input: any) {
+    const user = input.user ? new User().deserialize(input.user) : null;
     Object.assign(this, {
       success: input.success,
       message: input.message,
       token: input.token,
-      id: input.id,
-      username: input.username
+      user: user,
     });
     return this;
   }

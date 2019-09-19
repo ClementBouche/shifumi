@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 import { PlaysPage } from '../play/shared/model/plays-page.model';
 import { PlayerSearch } from '../player/shared/model/player-seach.model';
 import { PlayersPage } from '../player/shared/model/players-page.model';
+import { LoginRegisterService } from './shared/services/login-register.service';
 
 
 @Component({
@@ -25,15 +26,19 @@ export class HomeComponent implements OnInit, Tagable {
 
   players$: Observable<Player[]>;
 
+  connected: boolean = false;
+
   constructor(
     private playService: PlayService,
     private playerService: PlayerService,
+    private loginRegisterService: LoginRegisterService,
     private metadataTags: MetadataTagsService,
     private router: Router,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
+    this.connected = this.loginRegisterService.isConnect();
 
     {
       const search = new PlaySearch();

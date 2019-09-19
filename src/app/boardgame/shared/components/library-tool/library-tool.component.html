@@ -1,0 +1,28 @@
+<mat-divider></mat-divider>
+<div class="state">
+  <button mat-button [color]="getColor('owned')" (click)="setState('owned')">Owned</button>
+  <button mat-button [color]="getColor('play')" (click)="setState('play')">Play</button>
+  <button mat-button [color]="getColor('buy')" (click)="setState('buy')">Buy</button>
+</div>
+<mat-divider></mat-divider>
+<div class="rate">
+  <button mat-icon-button [color]="getRateColor(1)" (click)="setRate(1)">
+    <mat-icon *ngIf="rate >= 1; else bordered">star</mat-icon>
+  </button>
+  <button mat-icon-button [color]="getRateColor(2)" (click)="setRate(2)">
+    <mat-icon *ngIf="rate >= 2; else bordered">star</mat-icon>
+  </button>
+  <button mat-icon-button [color]="getRateColor(3)" (click)="setRate(3)">
+    <mat-icon *ngIf="rate >= 3; else bordered">star</mat-icon>
+  </button>
+  <button mat-icon-button [color]="getRateColor(4)" (click)="setRate(4)">
+    <mat-icon *ngIf="rate >= 4; else bordered">star</mat-icon>
+  </button>
+  <button mat-icon-button [color]="getRateColor(5)" (click)="setRate(5)">
+    <mat-icon *ngIf="rate >= 5; else bordered">star</mat-icon>
+  </button>
+</div>
+
+<ng-template #bordered>
+  <mat-icon>star_border</mat-icon>
+</ng-template>

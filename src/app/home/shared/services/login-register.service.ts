@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { TokenReponse } from '../model/token-response.model';
 import { User } from 'src/app/user/shared/model/user.model';
+import { UserService } from 'src/app/user/shared/services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,20 @@ export class LoginRegisterService {
   private user: User;
 
   constructor(
+    private userService: UserService,
     private router: Router
   ) { }
 
+  isConnect() {
+    return this.user && this.user.username && this.user.username !== '';
+  }
+
   getUser() {
     return this.user;
+  }
+
+  getToken() {
+    return localStorage.getItem('currentToken');
   }
 
   private setUser(user: User) {
@@ -31,26 +41,28 @@ export class LoginRegisterService {
     if (!response.success) {
       return false;
     }
-    const user = new User();
-    user.id = response.id;
-    user.token = response.token;
-    user.username = response.username;
-    this.setUser(user);
+    localStorage.setItem('currentToken', response.token);
+    this.setUser(response.user);
     return true;
   }
 
   registerFromLocalStorage() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     if (user) {
+      this.userService.me().subscribe((me) => {
+        // final user
+        this.setUser(me);
+      });
+      // tmp user
       this.setUser(user);
     } else {
-      this.user = new User();
+      this.user = null;
     }
   }
 
   logout() {
     // clear token remove user from local storage to log user out
-    this.user = new User();
+    this.user = null;
     localStorage.removeItem('currentUser');
     this.logginEvent.emit(null);
   }

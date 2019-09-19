@@ -1,8 +1,7 @@
 <mat-card class="card" *ngIf="form">
-  <app-avatar class="app-card-avatar" size=60 [name]="score.playerName"></app-avatar>
+  <!-- <app-avatar class="app-card-avatar" size=60 [name]="score.playerName"></app-avatar> -->
   <form [formGroup]="form" (ngSubmit)="submit()">
     <mat-card-header>
-      <!-- <div mat-card-avatar class="avatar"></div> -->
       <!-- playername -->
       <mat-card-title>
         <mat-icon *ngIf="form.winner">star</mat-icon>

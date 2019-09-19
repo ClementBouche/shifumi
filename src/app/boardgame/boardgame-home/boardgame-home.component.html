@@ -4,8 +4,11 @@
   <div *ngIf="boardgamePage$ | async as boardgamePage; else templateLoading" class="margin">
 
     <div class="options">
+      <!-- <div *ngIf="user" class="library">
+        <mat-checkbox name="library" value=false (change)="setLibrary()">Ma Ludothèque</mat-checkbox>
+      </div> -->
       <div class="extended">
-          <mat-checkbox name="extended" value=false (change)="setExtended()">Rechercher sur BoargameGeek</mat-checkbox>
+        <mat-checkbox name="extended" value=false (change)="setExtended()">Rechercher sur BoargameGeek</mat-checkbox>
       </div>
       <div class="order-by">
         <mat-form-field>
