@@ -11,6 +11,8 @@ import { PlayService } from 'src/app/play/shared/services/play.service';
 import { PlaySearch } from 'src/app/play/shared/model/play-search.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
 import { Play } from 'src/app/play/shared/model/play.model';
+import { User } from 'src/app/user/shared/model/user.model';
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 
 @Component({
   selector: 'app-boardgame-view',
@@ -27,7 +29,10 @@ export class BoardgameViewComponent implements OnInit, Tagable {
 
   lastPlays: Play[];
 
+  user: User;
+
   constructor(
+    private loginRegisterService: LoginRegisterService,
     private boardgameService: BoardgameService,
     private playService: PlayService,
     private metadataTags: MetadataTagsService,
@@ -36,8 +41,8 @@ export class BoardgameViewComponent implements OnInit, Tagable {
     private cd: ChangeDetectorRef
   ) { }
 
-
   ngOnInit() {
+    this.user = this.loginRegisterService.getUser();
 
     // old way (for historic purpose)
     // this.route.data.subscribe((data: {boardgame: Boardgame}) => {

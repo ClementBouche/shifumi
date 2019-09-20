@@ -19,6 +19,7 @@ import { PlayerHomeComponent } from './player-home/player-home.component';
 import { PlayerChartComponent } from './player-chart/player-chart.component';
 import { PlayerTableComponent } from './player-table/player-table.component';
 import { SharedChartModule } from '../shared-chart/shared-chart.module';
+import { PlayerLibraryComponent } from './player-library/player-library.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SharedChartModule } from '../shared-chart/shared-chart.module';
     PlayerSearchComponent,
     PlayerHomeComponent,
     PlayerChartComponent,
-    PlayerTableComponent
+    PlayerTableComponent,
+    PlayerLibraryComponent
   ],
   imports: [
     CommonModule,

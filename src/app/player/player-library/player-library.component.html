@@ -1,0 +1,24 @@
+<div class="boardgames" *ngIf="boardgames$ | async as boardgames; else noResult">
+  <ng-container *ngFor="let boardgame of boardgames">
+    <div class="boardgame">
+      <!-- <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info> -->
+      <app-boardgame-card [boardgame]="boardgame">
+        <app-library-tool [boardgame]="boardgame"
+            [library]="library"
+            [editable]="editable"
+            [rateOnly]="rateOnly">
+        </app-library-tool>
+      </app-boardgame-card>
+    </div>
+  </ng-container>
+  <div class="inline-object"></div>
+  <div class="inline-object"></div>
+</div>
+
+<ng-template #noResult>
+  <mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile>
+      <p>La ludothèque est vide.</p>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>

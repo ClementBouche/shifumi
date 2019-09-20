@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user.model';
 import { environment } from 'src/environments/environment';
 import { map, switchMap } from 'rxjs/operators';
+import { LibraryItem } from '../model/library-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,14 @@ export class UserService {
     return this.http.get(url)
       .pipe(
         map((response: any[]) => response.map((input) => new User().deserialize(input)))
+      );
+  }
+
+  getUserLibrary(userid: string) {
+    const url = `${environment.apiUrl}/user/${userid}/library`;
+    return this.http.get(url)
+      .pipe(
+        map((response: any[]) => response.map((item) => new LibraryItem().deserialize(item)))
       );
   }
 

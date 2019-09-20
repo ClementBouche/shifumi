@@ -37,7 +37,7 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
       playerName: ['', Validators.required],
       new: [false],
       winner: [false],
-      value: [0, NumericValidator],
+      value: [null, NumericValidator],
       role: ['']
     });
 

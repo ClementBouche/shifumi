@@ -3,7 +3,9 @@
     <div class="boardgame">
       <!-- <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info> -->
       <app-boardgame-card [boardgame]="boardgame">
-        <app-library-tool [boardgame]="boardgame"></app-library-tool>
+        <ng-container *ngIf="user">
+          <app-library-tool [boardgame]="boardgame" [editable]="true" [rateOnly]="false"></app-library-tool>
+        </ng-container>
       </app-boardgame-card>
     </div>
   </ng-container>

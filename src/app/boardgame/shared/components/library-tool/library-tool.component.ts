@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, map } from 'rxjs/operators';
 
 import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 import { LibraryService } from 'src/app/user/shared/services/library.service';
 
 import { User } from 'src/app/user/shared/model/user.model';
 import { Boardgame } from '../../model/boardgame.model';
+import { ActivatedRoute } from '@angular/router';
+import { LibraryItem } from 'src/app/user/shared/model/library-item.model';
 
 @Component({
   selector: 'app-library-tool',
@@ -16,9 +18,13 @@ export class LibraryToolComponent implements OnInit {
 
   @Input() boardgame: Boardgame;
 
-  user: User;
+  @Input() library: LibraryItem[];
 
-  connected: boolean;
+  @Input() editable: boolean = false;
+
+  @Input() rateOnly: boolean = false;
+
+  user: User;
 
   state: string;
 
@@ -26,16 +32,15 @@ export class LibraryToolComponent implements OnInit {
 
   constructor(
     private loginService: LoginRegisterService,
-    private libraryService: LibraryService
+    private libraryService: LibraryService,
   ) { }
 
   ngOnInit() {
     this.user = this.loginService.getUser();
-    this.connected = this.loginService.isConnect();
 
-    this.state = this.libraryService.getState(this.boardgame);
+    this.state = this.libraryService.getState(this.boardgame, this.library);
 
-    this.rate = this.libraryService.getRate(this.boardgame);
+    this.rate = this.libraryService.getRate(this.boardgame, this.library);
   }
 
   setState(state: string) {

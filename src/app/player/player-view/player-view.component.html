@@ -34,11 +34,16 @@
   <mat-divider></mat-divider>
 
   <div id="library" *ngIf="player.userId">
-    <div class="title-n-btn">
-      <h3>Ludothèque</h3>
-      <a mat-button color="accent" (click)="goLibrary()">Tout voir</a>
-    </div>
-    <app-boardgame-list *ngIf="boardgames$ | async as boardgames; else loading" [boardgames]="boardgames"></app-boardgame-list>
+    <ng-container *ngIf="library$ | async as library else loading">
+      <div class="title-n-btn">
+        <h3>Ludothèque - {{ library.length }} jeux annotés</h3>
+        <a mat-button color="primary" (click)="toggleLibraryAll()" >
+          <span *ngIf="!libraryAll">voir plus...</span>
+          <span *ngIf="libraryAll">voir moins</span>
+        </a>
+      </div>
+      <app-player-library [library]="library" [owner]="player.userId" [size]="getLibrarySize()"></app-player-library>
+    </ng-container>
   </div>
 
   <mat-divider></mat-divider>

@@ -39,6 +39,9 @@ export class BoardgameSearch implements Serializable, Deserializable {
     mode: string;
   }
 
+  // recherche par liste d'identifiant (utilise pour les library)
+  listId: string[];
+
   // test recherche par auteur
   peopleName: String;
 
@@ -65,6 +68,7 @@ export class BoardgameSearch implements Serializable, Deserializable {
       extended: this.extended,
       library_user_id: this.library ? this.library.userId : null,
       library_mode: this.library ? this.library.mode : null,
+      list_id: this.listId,
     };
   }
 
@@ -98,7 +102,8 @@ export class BoardgameSearch implements Serializable, Deserializable {
       library: {
         userId: input.library_user_id,
         mode: input.library_mode
-      }
+      },
+      listId: input.list_id,
     });
     return this;
   }

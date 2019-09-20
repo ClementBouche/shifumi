@@ -17,20 +17,24 @@ export class LibraryService {
     private userService: UserService
   ) { }
 
-  getState(boardgame: Boardgame) {
-    const user = this.register.getUser();
-    const index = user.library.findIndex((item) => item.boardgame.id === boardgame.id);
+  getState(boardgame: Boardgame, library: LibraryItem[] = null) {
+    if (library === null) {
+      library = this.register.getUser().library;
+    }
+    const index = library.findIndex((item) => item.boardgame.id === boardgame.id);
     if (index !== -1) {
-      return user.library[index].state;
+      return library[index].state;
     }
     return null;
   }
 
-  getRate(boardgame: Boardgame) {
-    const user = this.register.getUser();
-    const index = user.library.findIndex((item) => item.boardgame.id === boardgame.id);
+  getRate(boardgame: Boardgame, library: LibraryItem[] = null) {
+    if (library === null) {
+      library = this.register.getUser().library;
+    }
+    const index = library.findIndex((item) => item.boardgame.id === boardgame.id);
     if (index !== -1) {
-      return user.library[index].rating;
+      return library[index].rating;
     }
     return null;
   }

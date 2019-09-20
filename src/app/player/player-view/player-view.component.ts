@@ -16,10 +16,7 @@ import { from, Observable } from 'rxjs';
 import { UserService } from 'src/app/user/shared/services/user.service';
 import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 import { User } from 'src/app/user/shared/model/user.model';
-import { BoardgameService } from 'src/app/boardgame/shared/services/boardgame.service';
-import { BoardgameSearch } from 'src/app/boardgame/shared/model/boardgame-search.model';
-import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
-import { BoardgamesPage } from 'src/app/boardgame/shared/model/boardgames-page.model';
+import { LibraryItem } from 'src/app/user/shared/model/library-item.model';
 
 @Component({
   selector: 'app-player-view',
@@ -38,13 +35,14 @@ export class PlayerViewComponent implements OnInit, Tagable {
 
   allPlays$: Observable<Play[]>;
 
-  boardgames$: Observable<Boardgame[]>;
+  library$: Observable<LibraryItem[]>;
+
+  libraryAll: boolean = false;
 
   user: User;
 
   constructor(
     private loginRegisterService: LoginRegisterService,
-    private boardgameService: BoardgameService,
     private playerService: PlayerService,
     private playService: PlayService,
     private userService: UserService,
@@ -75,18 +73,10 @@ export class PlayerViewComponent implements OnInit, Tagable {
       this.cd.markForCheck();
     });
 
-    this.boardgames$ = this.route.data.pipe(
+    this.library$ = this.route.data.pipe(
       map((data: {player: Player}) => data.player),
       filter((player: Player) => player.userId && player.userId !== ''),
-      switchMap((player) => {
-        const search = new BoardgameSearch().deserialize({
-          library_user_id: player.userId,
-          library_mode: 'owned',
-          size: 6
-        });
-        return this.boardgameService.search(search);
-      }),
-      map((page: BoardgamesPage) => page.result)
+      switchMap((player) => this.userService.getUserLibrary(player.userId))
     );
 
     // all plays are retrieve for statistics
@@ -112,6 +102,15 @@ export class PlayerViewComponent implements OnInit, Tagable {
       // TODO
       this.userService.claimPlayer(this.player.id).subscribe();
     }
+  }
+
+  getLibrarySize() {
+    return this.libraryAll ? null : 6;
+  }
+
+  toggleLibraryAll() {
+    this.libraryAll = !this.libraryAll;
+    this.cd.markForCheck();
   }
 
   updateTags() {

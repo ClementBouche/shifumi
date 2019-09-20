@@ -1,0 +1,16 @@
+.boardgames {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.boardgame, .inline-object {
+  margin: 10px;
+  width: 340px;
+}
+
+@media (max-width: 600px) {
+  .boardgame {
+    margin: 10px auto;
+  }
+}
