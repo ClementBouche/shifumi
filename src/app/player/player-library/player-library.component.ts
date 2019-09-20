@@ -23,6 +23,8 @@ export class PlayerLibraryComponent implements OnInit, OnChanges {
 
   @Input() rateOnly: boolean = true;
 
+  @Input() showMyRate: boolean = false;
+
   @Input() size: number;
 
   boardgames$: Observable<Boardgame[]>;
@@ -43,7 +45,9 @@ export class PlayerLibraryComponent implements OnInit, OnChanges {
       this.size = this.library.length;
     }
     const search = new BoardgameSearch().deserialize({
-      list_id: this.library.filter((item) => item.state === 'owned').map((item) => item.boardgame.id),
+      // list_id: this.library.filter((item) => item.state === 'owned').map((item) => item.boardgame.id),
+      list_id: this.library.filter((item) => item.rating).map((item) => item.boardgame.id),
+      // list_id: this.library.map((item) => item.boardgame.id),
       size: this.size
     });
     this.boardgames$ = from(this.boardgameService.search(search)).pipe(

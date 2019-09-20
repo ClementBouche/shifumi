@@ -42,7 +42,11 @@
           <span *ngIf="libraryAll">voir moins</span>
         </a>
       </div>
-      <app-player-library [library]="library" [owner]="player.userId" [size]="getLibrarySize()"></app-player-library>
+      <app-player-library [library]="library"
+          [owner]="player.userId"
+          [size]="getLibrarySize()"
+          [showMyRate]="player.userId !== user.id">
+      </app-player-library>
     </ng-container>
   </div>
 

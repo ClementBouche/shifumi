@@ -1,12 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { debounceTime, map } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 import { LibraryService } from 'src/app/user/shared/services/library.service';
 
 import { User } from 'src/app/user/shared/model/user.model';
 import { Boardgame } from '../../model/boardgame.model';
-import { ActivatedRoute } from '@angular/router';
 import { LibraryItem } from 'src/app/user/shared/model/library-item.model';
 
 @Component({
@@ -24,11 +23,15 @@ export class LibraryToolComponent implements OnInit {
 
   @Input() rateOnly: boolean = false;
 
+  @Input() showMyRate: boolean = false;
+
   user: User;
 
   state: string;
 
   rate: number;
+
+  myRate: number;
 
   constructor(
     private loginService: LoginRegisterService,
@@ -37,6 +40,9 @@ export class LibraryToolComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.loginService.getUser();
+    if (this.user) {
+      this.myRate = this.libraryService.getRate(this.boardgame);
+    }
 
     this.state = this.libraryService.getState(this.boardgame, this.library);
 
@@ -53,12 +59,12 @@ export class LibraryToolComponent implements OnInit {
   }
 
   setRate(value: number) {
-    if (this.rate === value) {
-      this.rate = null;
+    if (this.myRate === value) {
+      this.myRate = null;
     } else {
-      this.rate = value;
+      this.myRate = value;
     }
-    this.libraryService.rate(this.boardgame, this.rate).pipe(debounceTime(500)).subscribe();
+    this.libraryService.rate(this.boardgame, this.myRate).pipe(debounceTime(500)).subscribe();
   }
 
   getColor(state: string) {
@@ -66,7 +72,10 @@ export class LibraryToolComponent implements OnInit {
   }
 
   getRateColor(seuil: number) {
-    const color = this.rate >= seuil ? 'accent' : '';
+    let color = this.myRate >= seuil ? 'accent' : '';
+    if (this.showMyRate) {
+      color = this.myRate === seuil ? 'accent' : 'primary';
+    }
     return color;
   }
 
