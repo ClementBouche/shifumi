@@ -3,7 +3,7 @@
     <div class="boardgame">
       <!-- <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info> -->
       <app-boardgame-card [boardgame]="boardgame">
-        <app-library-tool *ngIf="connected" [boardgame]="boardgame"></app-library-tool>
+        <app-library-tool [boardgame]="boardgame"></app-library-tool>
       </app-boardgame-card>
     </div>
   </ng-container>

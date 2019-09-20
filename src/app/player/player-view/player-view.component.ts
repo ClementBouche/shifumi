@@ -11,9 +11,15 @@ import { Play } from 'src/app/play/shared/model/play.model';
 import { PlaySearch } from 'src/app/play/shared/model/play-search.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
 import { PlayerService } from '../shared/services/player.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, filter } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
 import { UserService } from 'src/app/user/shared/services/user.service';
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
+import { User } from 'src/app/user/shared/model/user.model';
+import { BoardgameService } from 'src/app/boardgame/shared/services/boardgame.service';
+import { BoardgameSearch } from 'src/app/boardgame/shared/model/boardgame-search.model';
+import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
+import { BoardgamesPage } from 'src/app/boardgame/shared/model/boardgames-page.model';
 
 @Component({
   selector: 'app-player-view',
@@ -32,7 +38,13 @@ export class PlayerViewComponent implements OnInit, Tagable {
 
   allPlays$: Observable<Play[]>;
 
+  boardgames$: Observable<Boardgame[]>;
+
+  user: User;
+
   constructor(
+    private loginRegisterService: LoginRegisterService,
+    private boardgameService: BoardgameService,
     private playerService: PlayerService,
     private playService: PlayService,
     private userService: UserService,
@@ -43,6 +55,8 @@ export class PlayerViewComponent implements OnInit, Tagable {
   ) { }
 
   ngOnInit() {
+    this.user = this.loginRegisterService.getUser();
+
     this.route.data.pipe(
       map((data: {player: Player}) => {
         this.player = data.player;
@@ -52,7 +66,7 @@ export class PlayerViewComponent implements OnInit, Tagable {
           this.cd.markForCheck();
         });
         // fin TODO
-        return new PlaySearch().deserialize({ player: this.player.name });
+        return new PlaySearch().deserialize({ player: this.player.name, size: 6 });
       }),
       switchMap((playSearch: PlaySearch) => this.playService.search(playSearch))
     ).subscribe((page: PlaysPage) => {
@@ -60,6 +74,20 @@ export class PlayerViewComponent implements OnInit, Tagable {
       this.loading = false;
       this.cd.markForCheck();
     });
+
+    this.boardgames$ = this.route.data.pipe(
+      map((data: {player: Player}) => data.player),
+      filter((player: Player) => player.userId && player.userId !== ''),
+      switchMap((player) => {
+        const search = new BoardgameSearch().deserialize({
+          library_user_id: player.userId,
+          library_mode: 'owned',
+          size: 6
+        });
+        return this.boardgameService.search(search);
+      }),
+      map((page: BoardgamesPage) => page.result)
+    );
 
     // all plays are retrieve for statistics
     this.allPlays$ = from(this.playService.allPlayerPlays(this.player)).pipe(
@@ -92,7 +120,15 @@ export class PlayerViewComponent implements OnInit, Tagable {
     }
   }
 
-  search() {
+  goLibrary() {
+    this.router.navigate(['/', 'boardgame'], {
+      queryParams: {
+        library_user_id: this.player.userId
+      }
+    });
+  }
+
+  goPlays() {
     this.router.navigate(['/', 'play'], {
       queryParams: {
         player: this.player.name

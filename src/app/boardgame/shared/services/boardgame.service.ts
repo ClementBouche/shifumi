@@ -36,7 +36,6 @@ export class BoardgameService {
   }
 
   search(search: BoardgameSearch): Promise<BoardgamesPage> {
-    console.log({search});
     // switch mode extended search
     if (search.extended) {
       return this.extendedSearch(search.name, 100);

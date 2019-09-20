@@ -25,6 +25,9 @@ export class Player implements Deserializable {
   time: number;
   victoryRatio: number;
 
+  // user
+  userId: string;
+
   serialize() {
     return {
       name: this.name,
@@ -32,7 +35,8 @@ export class Player implements Deserializable {
       avatar_image: this.avatar ? this.avatar.image : '',
       avatar_colors: this.avatar ? this.avatar.colors : '',
       play_time: this.time,
-      win_ratio: this.victoryRatio
+      win_ratio: this.victoryRatio,
+      user_id: this.userId,
     };
   }
 
@@ -55,6 +59,7 @@ export class Player implements Deserializable {
       },
       time: input.play_time,
       victoryRatio: input.win_ratio,
+      userId: input.user_id,
     });
     return this;
   }

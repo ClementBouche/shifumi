@@ -1,7 +1,17 @@
 <app-custom-layout padding="0" *ngIf="player">
 
   <div id="description" class="banner">
-    <app-player-card [player]="player" detail=true></app-player-card>
+    <app-player-card [player]="player" detail=true>
+      <div *ngIf="user && !player.userId">
+        <mat-divider></mat-divider>
+        <div>
+          <button mat-button color="accent" (click)="doAction('sync')">
+            <mat-icon>sync</mat-icon> Récupérer les parties de ce joueur
+          </button>
+          <p class="help">L'action sera validé dans quelques temps.</p>
+        </div>
+      </div>
+    </app-player-card>
   </div>
 
   <mat-divider></mat-divider>
@@ -23,23 +33,36 @@
 
   <mat-divider></mat-divider>
 
-  <div *ngIf="plays else loading">
-    <h3>Dernières Parties</h3>
-    <app-play-list id="plays" [plays]="plays"></app-play-list>
-    <a mat-button color="accent" (click)="search()">Voir toutes les parties</a>
+  <div id="library" *ngIf="player.userId">
+    <div class="title-n-btn">
+      <h3>Ludothèque</h3>
+      <a mat-button color="accent" (click)="goLibrary()">Tout voir</a>
+    </div>
+    <app-boardgame-list *ngIf="boardgames$ | async as boardgames; else loading" [boardgames]="boardgames"></app-boardgame-list>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div id="plays" *ngIf="plays else loading">
+    <div class="title-n-btn">
+      <h3>Dernières Parties</h3>
+      <a mat-button color="accent" (click)="goPlays()">Tout voir</a>
+    </div>
+    <app-play-list [plays]="plays"></app-play-list>
   </div>
 
   <app-layout-side>
     <app-page-shortcut>
       <a mat-button class="active" color="primary" appScrollTo="description">Description</a>
       <a mat-button color="primary" appScrollTo="stats">Statistiques</a>
+      <a mat-button color="primary" appScrollTo="library">Ludothèque</a>
       <a mat-button color="primary" appScrollTo="plays">Dernières Parties</a>
     </app-page-shortcut>
   </app-layout-side>
 
 </app-custom-layout>
 
-<app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button>
+<!-- <app-menu-button [actions]="actions" (actionTriggered)="doAction($event)"></app-menu-button> -->
 
 <ng-template #loading>
   <app-spinner></app-spinner>
