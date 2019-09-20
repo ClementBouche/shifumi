@@ -38,6 +38,20 @@ export class BoardgameHomeComponent implements OnInit {
     viewValue: 'par Année croissante',
   }];
 
+  libraryModeSelected: any;
+
+  libraryModes = [{
+    value: 'all',
+    viewValue: 'Tous les jeux',
+    selected: true
+  }, {
+    value: 'owned',
+    viewValue: 'Ma ludothèque',
+  }, {
+    value: 'library',
+    viewValue: 'Les jeux annotés',
+  }];
+
   loading: boolean = false;
 
   user: User;
@@ -53,6 +67,8 @@ export class BoardgameHomeComponent implements OnInit {
     this.user = this.loginService.getUser();
 
     this.orderSelected = this.orderOptions[0];
+
+    this.libraryModeSelected = this.libraryModes[0];
 
     this.boardgamePage$ = this.route.data.pipe(
       map((data) => {
@@ -75,12 +91,28 @@ export class BoardgameHomeComponent implements OnInit {
   setOrderBy(value: any) {
     this.search.orderBy = value.value;
     this.search.order = value.order;
+    this.search.page = 1;
+
+    this.doSearch();
+  }
+
+  setLibrary(selection: any) {
+    if (selection.value === 'all') {
+      this.search.library = null;
+    } else {
+      this.search.library = {
+        userId: this.user.id,
+        mode: selection.value
+      };
+    }
+    this.search.page = 1;
 
     this.doSearch();
   }
 
   setExtended() {
     this.search.extended = !this.search.extended;
+    this.search.page = 1;
 
     this.doSearch();
   }

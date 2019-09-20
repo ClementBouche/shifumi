@@ -4,12 +4,22 @@
   <div *ngIf="boardgamePage$ | async as boardgamePage; else templateLoading" class="margin">
 
     <div class="options">
-      <!-- <div *ngIf="user" class="library">
-        <mat-checkbox name="library" value=false (change)="setLibrary()">Ma Ludothèque</mat-checkbox>
-      </div> -->
+      <!-- voir sur bggeek... -->
       <div class="extended">
         <mat-checkbox name="extended" value=false (change)="setExtended()">Rechercher sur BoargameGeek</mat-checkbox>
       </div>
+      <!-- rechercher parmi... -->
+      <div *ngIf="user" class="library">
+        <mat-form-field>
+          <mat-label>Rechercher parmi...</mat-label>
+          <mat-select [value]="libraryModeSelected" (selectionChange)="setLibrary($event.source.value)">
+            <mat-option *ngFor="let libraryMode of libraryModes" [value]="libraryMode">
+              {{ libraryMode.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- trier par... -->
       <div class="order-by">
         <mat-form-field>
           <mat-label>Trier par</mat-label>

@@ -11,9 +11,6 @@ import { BoardgamesPage } from '../model/boardgames-page.model';
 })
 export class BoardgameService {
 
-  // private boardgameUrl = `${environment.apiUrl}/boardgame/`; // url to web api
-  // private databaseUrl = `${environment.apiUrl}/database/boardgame`; // url to web api
-
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -39,9 +36,16 @@ export class BoardgameService {
   }
 
   search(search: BoardgameSearch): Promise<BoardgamesPage> {
+    console.log({search});
+    // switch mode extended search
     if (search.extended) {
       return this.extendedSearch(search.name, 100);
     }
+    // switch mode library
+    if (search.library && typeof search.library.userId !== 'undefined') {
+      return this.librarySearch(search);
+    }
+    // vanilla search request
     const url = `${environment.apiUrl}/boardgame/search`;
     return this.httpClient.post(url, search.serialize())
       .toPromise()
@@ -66,6 +70,13 @@ export class BoardgameService {
         boardgamePage.result = results;
         return boardgamePage;
       });
+  }
+
+  librarySearch(search: BoardgameSearch): Promise<BoardgamesPage> {
+    const url = `${environment.apiUrl}/user/${search.library.userId}/library`;
+    return this.httpClient.post(url, search.serialize())
+      .toPromise()
+      .then(response => new BoardgamesPage().deserialize(response));
   }
 
   getPreview(xmlId: string, preview: boolean = true): Promise<Boardgame> {

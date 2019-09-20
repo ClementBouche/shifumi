@@ -33,6 +33,12 @@ export class BoardgameSearch implements Serializable, Deserializable {
   // 1 croissant / -1 décroisssant
   order: string = '1';
 
+  // mode de recherche parmi une ludotheque (retrouve par l'id user)
+  library: {
+    userId: string;
+    mode: string;
+  }
+
   // test recherche par auteur
   peopleName: String;
 
@@ -57,6 +63,8 @@ export class BoardgameSearch implements Serializable, Deserializable {
       order: this.order,
       people_name: this.peopleName,
       extended: this.extended,
+      library_user_id: this.library ? this.library.userId : null,
+      library_mode: this.library ? this.library.mode : null,
     };
   }
 
@@ -86,7 +94,11 @@ export class BoardgameSearch implements Serializable, Deserializable {
       orderBy: input.order_by || 'rank',
       order: Number.parseInt(input.order) || 1,
       peopleName: input.people_name,
-      extended: input.extended === 'true' ? true : false
+      extended: input.extended === 'true' ? true : false,
+      library: {
+        userId: input.library_user_id,
+        mode: input.library_mode
+      }
     });
     return this;
   }

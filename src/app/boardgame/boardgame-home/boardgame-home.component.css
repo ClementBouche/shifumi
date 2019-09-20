@@ -3,9 +3,13 @@
   flex-wrap: wrap;
 }
 
-.options .extended, .options .library {
+.options .extended {
   padding-top: 15px;
   flex-grow: 1;
+}
+
+.options .library {
+  padding-right: 15px;
 }
 
 .custom-paginator.mat-paginator {
