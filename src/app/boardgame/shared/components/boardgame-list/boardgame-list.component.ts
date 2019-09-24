@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
+
 import { Boardgame } from '../../model/boardgame.model';
 import { User } from 'src/app/user/shared/model/user.model';
-import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 
 @Component({
   selector: 'app-boardgame-list',
@@ -14,7 +15,7 @@ export class BoardgameListComponent implements OnInit {
 
   @Input() boardgames: Boardgame[];
 
-  user: User;
+  @Input() user: User;
 
   constructor(
     private loginRegisterService: LoginRegisterService,
@@ -22,7 +23,9 @@ export class BoardgameListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.loginRegisterService.getUser();
+    if (!this.user) {
+      this.user = this.loginRegisterService.getUser();
+    }
   }
 
   select(boardgame: Boardgame) {

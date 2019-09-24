@@ -31,3 +31,19 @@
 .field {
   max-width: 100px;
 }
+
+.mat-card-header {
+  position: relative;
+}
+
+.note {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(15%, -15%);
+  opacity: 0.9;
+}
+
+.note button {
+  font-size: 1.5em;
+}

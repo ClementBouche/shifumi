@@ -1,10 +1,9 @@
 <div class="boardgames" *ngIf="boardgames && boardgames.length != 0 else noResult">
   <ng-container *ngFor="let boardgame of boardgames">
     <div class="boardgame">
-      <!-- <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info> -->
       <app-boardgame-card [boardgame]="boardgame">
         <ng-container *ngIf="user">
-          <app-library-tool [boardgame]="boardgame" [editable]="true" [rateOnly]="false"></app-library-tool>
+          <app-boardgame-rate [boardgame]="boardgame" [user]="user"></app-boardgame-rate>
         </ng-container>
       </app-boardgame-card>
     </div>

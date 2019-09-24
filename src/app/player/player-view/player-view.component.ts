@@ -35,10 +35,6 @@ export class PlayerViewComponent implements OnInit, Tagable {
 
   allPlays$: Observable<Play[]>;
 
-  library$: Observable<LibraryItem[]>;
-
-  libraryAll: boolean = false;
-
   user: User;
 
   constructor(
@@ -73,12 +69,6 @@ export class PlayerViewComponent implements OnInit, Tagable {
       this.cd.markForCheck();
     });
 
-    this.library$ = this.route.data.pipe(
-      map((data: {player: Player}) => data.player),
-      filter((player: Player) => player.userId && player.userId !== ''),
-      switchMap((player) => this.userService.getUserLibrary(player.userId))
-    );
-
     // all plays are retrieve for statistics
     this.allPlays$ = from(this.playService.allPlayerPlays(this.player)).pipe(
       map((page: PlaysPage) => page.result)
@@ -102,15 +92,6 @@ export class PlayerViewComponent implements OnInit, Tagable {
       // TODO
       this.userService.claimPlayer(this.player.id).subscribe();
     }
-  }
-
-  getLibrarySize() {
-    return this.libraryAll ? null : 6;
-  }
-
-  toggleLibraryAll() {
-    this.libraryAll = !this.libraryAll;
-    this.cd.markForCheck();
   }
 
   updateTags() {

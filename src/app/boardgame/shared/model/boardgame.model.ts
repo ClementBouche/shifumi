@@ -1,7 +1,9 @@
 import { Deserializable } from "src/app/core/model/deserializable.interface";
+
 import { Artist } from "./artist.model";
 import { Designer } from "./designer.model";
 import { Poll } from "./poll.model";
+import { BoardgameNote } from './boardgame-note.model';
 
 export class Boardgame implements Deserializable {
     id: string;
@@ -34,6 +36,13 @@ export class Boardgame implements Deserializable {
     // people information
     artists: [Artist];
     designers: [Designer];
+    // boardgamegeek statistic data
+    note: BoardgameNote;
+    subNotes: BoardgameNote[];
+    complexity: {
+      value: number;
+      votes: number;
+    };
     // global statistic data
     statitics: {
       playCount: number;
@@ -61,6 +70,10 @@ export class Boardgame implements Deserializable {
         playerCount: input.players_count,
         playTime: input.play_time
       } : null;
+
+      const subNotes = input.other_ranks ? input.other_ranks.map((item) => new BoardgameNote().deserialize(item)) : [];
+      const note = new BoardgameNote().deserialize(input);
+
       Object.assign(this, {
         id: input._id,
         xmlId: input.xmlapi_id,
@@ -86,6 +99,12 @@ export class Boardgame implements Deserializable {
         mechanics: input.mechanics,
         artists: artists,
         designers: designers,
+        note: note,
+        subNotes: subNotes,
+        complexity: {
+          value: input.complexity,
+          votes: input.votes_complexity
+        },
         statitics: statistic
       });
       return this;

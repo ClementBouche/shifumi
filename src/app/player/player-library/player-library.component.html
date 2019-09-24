@@ -1,20 +1,13 @@
-<div class="boardgames" *ngIf="boardgames$ | async as boardgames; else noResult">
-  <ng-container *ngFor="let boardgame of boardgames">
-    <div class="boardgame">
-      <!-- <app-boardgame-info [boardgame]="boardgame" listItem=true></app-boardgame-info> -->
-      <app-boardgame-card [boardgame]="boardgame">
-        <app-library-tool [boardgame]="boardgame"
-            [library]="library"
-            [editable]="editable"
-            [rateOnly]="rateOnly"
-            [showMyRate]="showMyRate">
-        </app-library-tool>
-      </app-boardgame-card>
-    </div>
-  </ng-container>
-  <div class="inline-object"></div>
-  <div class="inline-object"></div>
-</div>
+<ng-container *ngIf="boardgames$ | async as boardgames; else noResult">
+  <div class="title-n-btn">
+    <h3>Ludothèque - {{ count }} jeux annotés</h3>
+    <a mat-button color="primary" (click)="toggleAll()" >
+      <span *ngIf="!viewAll">voir plus...</span>
+      <span *ngIf="viewAll">voir moins</span>
+    </a>
+  </div>
+  <app-boardgame-list [boardgames]="boardgames" [user]="userInfo"></app-boardgame-list>
+</ng-container>
 
 <ng-template #noResult>
   <mat-grid-list cols="1" rowHeight="4:1">

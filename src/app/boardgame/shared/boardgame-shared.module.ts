@@ -5,13 +5,15 @@ import { BoardgameCardComponent } from './components/boardgame-card/boardgame-ca
 import { AppMaterialModule } from 'src/app/shared/app-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import { LibraryToolComponent } from './components/library-tool/library-tool.component';
+import { BoardgameNoteDirective } from './directives/boardgame-note.directive';
+import { BoardgameRateComponent } from './components/boardgame-rate/boardgame-rate.component';
 
 @NgModule({
   declarations: [
     BoardgameListComponent,
     BoardgameCardComponent,
-    LibraryToolComponent,
+    BoardgameNoteDirective,
+    BoardgameRateComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { LibraryToolComponent } from './components/library-tool/library-tool.com
   exports: [
     BoardgameListComponent,
     BoardgameCardComponent,
-    LibraryToolComponent,
+    BoardgameNoteDirective,
+    BoardgameRateComponent,
   ]
 })
 export class BoardgameSharedModule { }

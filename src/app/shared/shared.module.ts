@@ -26,6 +26,7 @@ import { SearchFilterComponent } from './components/search-filter/search-filter.
 import { InputScrollTopComponent } from './components/input-scroll-top/input-scroll-top.component';
 import { SharedLayoutModule } from '../shared-layout/shared-layout.module';
 import { SharedChartModule } from '../shared-chart/shared-chart.module';
+import { InputRateComponent } from './components/input-rate/input-rate.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SharedChartModule } from '../shared-chart/shared-chart.module';
     SafeHtmlDirective,
     PlayTimePipe,
     DatePipe,
+    InputRateComponent,
   ],
   imports: [
     CommonModule,
@@ -77,6 +79,7 @@ import { SharedChartModule } from '../shared-chart/shared-chart.module';
     SafeHtmlDirective,
     PlayTimePipe,
     DatePipe,
+    InputRateComponent,
   ]
 })
 export class SharedModule { }

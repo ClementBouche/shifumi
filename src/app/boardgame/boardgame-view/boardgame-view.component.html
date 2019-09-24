@@ -5,7 +5,7 @@
     <div class="content">
       <app-boardgame-card [boardgame]="boardgame">
         <ng-container *ngIf="user">
-          <app-library-tool [boardgame]="boardgame" [editable]="true" [rateOnly]="false"></app-library-tool>
+          <app-boardgame-rate [boardgame]="boardgame" [user]="user"></app-boardgame-rate>
         </ng-container>
       </app-boardgame-card>
       <ng-container *ngIf="boardgame.preview">

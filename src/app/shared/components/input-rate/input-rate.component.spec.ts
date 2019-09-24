@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LibraryToolComponent } from './library-tool.component';
+import { InputRateComponent } from './input-rate.component';
 
-describe('LibraryToolComponent', () => {
-  let component: LibraryToolComponent;
-  let fixture: ComponentFixture<LibraryToolComponent>;
+describe('InputRateComponent', () => {
+  let component: InputRateComponent;
+  let fixture: ComponentFixture<InputRateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LibraryToolComponent ]
+      declarations: [ InputRateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LibraryToolComponent);
+    fixture = TestBed.createComponent(InputRateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

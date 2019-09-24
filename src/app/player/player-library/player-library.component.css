@@ -1,16 +1,11 @@
-.boardgames {
+.title-n-btn {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
-.boardgame, .inline-object {
-  margin: 10px;
-  width: 340px;
+.title-n-btn h3 {
+  flex-grow: 1;
 }
 
-@media (max-width: 600px) {
-  .boardgame {
-    margin: 10px auto;
-  }
+.title-n-btn a {
+  padding-top: 0.9em;
 }

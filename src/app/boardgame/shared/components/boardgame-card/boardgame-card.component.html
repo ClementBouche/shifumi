@@ -16,6 +16,11 @@
         </li>
       </ul>
     </mat-card-subtitle>
+    <div class="note">
+      <button mat-button color="primary" [matTooltip]="boardgame.note.value" matTooltipPosition="above">
+        {{ boardgame.note.value.toFixed(1) }}
+      </button>
+    </div>
   </mat-card-header>
   <ng-content></ng-content>
 </mat-card>
