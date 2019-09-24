@@ -1,15 +1,25 @@
-<app-custom-layout *ngIf="user$ | async as user">
-  <div class="fit">
-      <h2>Bienvenue<span *ngIf="user.admin"> admin</span> {{ user.username }}</h2>
-      <app-user-card [user]="user" [actions]="actions" (actionTriggered)="goUpdate()"></app-user-card>
-  </div>
+<ng-container *ngIf="user$ | async as user">
 
-  <div class="admin" *ngIf="users$ | async as users">
-    <h2>Admin - Liste des utilisateurs</h2>
-    <app-user-list [users]="users"
-        (userDeleted)="delete($event)"
-        (userUpdated)="update($event)"
-        (userSynched)="sync($event)">
-    </app-user-list>
-  </div>
-</app-custom-layout>
+  <app-custom-layout padding="0">
+    <mat-tab-group>
+      <mat-tab label="Mon profil">
+        <app-custom-layout padding="10px 24px 0px">
+          <app-user-player></app-user-player>
+        </app-custom-layout>
+      </mat-tab>
+      <mat-tab label="Paramètres">
+        <app-custom-layout padding="10px 24px 0px">
+          <div class="fit">
+            <app-user-card [user]="user" [actions]="actions" (actionTriggered)="goUpdate()"></app-user-card>
+          </div>
+        </app-custom-layout>
+      </mat-tab>
+      <mat-tab *ngIf="user.admin" label="Administration">
+        <app-custom-layout padding="10px 24px 0px">
+          <app-user-admin></app-user-admin>
+        </app-custom-layout>
+      </mat-tab>
+    </mat-tab-group>
+  </app-custom-layout>
+
+</ng-container>

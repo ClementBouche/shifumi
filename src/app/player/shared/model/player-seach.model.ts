@@ -12,9 +12,10 @@ export class PlayerSearch implements Deserializable, Serializable {
   // exact name
   strict: boolean = false;
 
-  // search name
+  // search options
   name: string;
   minPlay: number;
+  userId: string;
 
   deserialize(input: any) {
     Object.assign(this, {
@@ -22,7 +23,8 @@ export class PlayerSearch implements Deserializable, Serializable {
       size: input.size || 20,
       order: input.order || 'play',
       name: input.name,
-      minPlay: input.minPlay
+      minPlay: input.minPlay,
+      userId: input.user_id
     });
     return this;
   }
@@ -33,7 +35,8 @@ export class PlayerSearch implements Deserializable, Serializable {
       size: this.size,
       order: this.order,
       name: this.name,
-      minPlay: this.minPlay
+      minPlay: this.minPlay,
+      user_id: this.userId
     };
   }
 

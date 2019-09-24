@@ -9,7 +9,6 @@ import { PlayerSharedModule } from './shared/player-shared.module';
 
 import { PlayerComponent } from './player.component';
 import { PlayerPaginatedComponent } from './player-paginated/player-paginated.component';
-import { PlayerInfoComponent } from './player-info/player-info.component';
 import { BoardgameSharedModule } from '../boardgame/shared/boardgame-shared.module';
 import { PlayerViewComponent } from './player-view/player-view.component';
 import { SharedModule } from '../shared/shared.module';
@@ -25,7 +24,6 @@ import { PlayerLibraryComponent } from './player-library/player-library.componen
   declarations: [
     PlayerComponent,
     PlayerPaginatedComponent,
-    PlayerInfoComponent,
     PlayerViewComponent,
     PlayerSearchComponent,
     PlayerHomeComponent,
