@@ -1,22 +1,20 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map, switchMap } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
 
 import { Tagable } from 'src/app/core/model/tagable.interface';
-
 import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
 import { PlayService } from 'src/app/play/shared/services/play.service';
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
+import { PlayerService } from '../shared/services/player.service';
+import { UserService } from 'src/app/user/shared/services/user.service';
 
 import { Player } from '../shared/model/player.model';
 import { Play } from 'src/app/play/shared/model/play.model';
 import { PlaySearch } from 'src/app/play/shared/model/play-search.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
-import { PlayerService } from '../shared/services/player.service';
-import { map, switchMap, filter } from 'rxjs/operators';
-import { from, Observable } from 'rxjs';
-import { UserService } from 'src/app/user/shared/services/user.service';
-import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 import { User } from 'src/app/user/shared/model/user.model';
-import { LibraryItem } from 'src/app/user/shared/model/library-item.model';
 
 @Component({
   selector: 'app-player-view',

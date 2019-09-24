@@ -4,6 +4,7 @@ import { User } from '../model/user.model';
 import { environment } from 'src/environments/environment';
 import { map, switchMap } from 'rxjs/operators';
 import { LibraryItem } from '../model/library-item.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class UserService {
     private http: HttpClient,
   ) { }
 
-  me() {
+  me(): Observable<User> {
     const url = `${environment.apiUrl}/me`;
     return this.http.get(url)
       .pipe(
@@ -22,7 +23,7 @@ export class UserService {
       );
   }
 
-  selfUpdate(user: User) {
+  selfUpdate(user: User): Observable<User> {
     const url = `${environment.apiUrl}/me`;
     return this.http.post(url, user.serialize())
       .pipe(
@@ -30,7 +31,7 @@ export class UserService {
       );
   }
 
-  getUsers() {
+  getUsers(): Observable<User[]> {
     const url = `${environment.apiUrl}/user`;
     return this.http.get(url)
       .pipe(

@@ -34,7 +34,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-
     this.metadataTagsService.updateTitle('Shifumi - Accueil');
 
     this.router.events.subscribe(
@@ -65,6 +64,8 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       });
 
+    console.log('coucou');
+
     this.logSubscription = this.loginRegisterService.logginEvent.subscribe((user) => {
       this.registered = user;
       if (this.registered) {
@@ -75,8 +76,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.cd.detectChanges();
     });
 
-    // TODO clean that up !
     this.loginRegisterService.registerFromLocalStorage();
+    console.log('fin coucou');
   }
 
   ngOnDestroy() {

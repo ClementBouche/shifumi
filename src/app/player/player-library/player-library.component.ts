@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { from, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 import { LibraryItem } from 'src/app/user/shared/model/library-item.model';
 import { BoardgameSearch } from 'src/app/boardgame/shared/model/boardgame-search.model';
 import { BoardgameService } from 'src/app/boardgame/shared/services/boardgame.service';
-import { from, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
-import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
 import { Player } from '../shared/model/player.model';
 import { UserService } from 'src/app/user/shared/services/user.service';
 import { User } from 'src/app/user/shared/model/user.model';
@@ -29,7 +28,6 @@ export class PlayerLibraryComponent implements OnInit {
   count: number;
 
   constructor(
-    private loginRegisterService: LoginRegisterService,
     private boardgameService: BoardgameService,
     private userService: UserService
   ) { }
@@ -50,7 +48,6 @@ export class PlayerLibraryComponent implements OnInit {
         this.userInfo.id = this.player.userId;
         this.userInfo.username = this.player.name;
         this.userInfo.library = library;
-        console.log(this.userInfo);
         // library search
         const ids = library.filter((item) => item.rating).map((item) => item.boardgame.id)
         this.count = ids.length;

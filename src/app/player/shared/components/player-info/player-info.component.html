@@ -18,15 +18,15 @@
 
   <div id="stats">
     <h3>Statistiques</h3>
-    <ng-container *ngIf="allPlays$ | async as allPlays; else loading">
-      <ng-container *ngIf="allPlays.length !== 0; else noPlays">
+    <ng-container *ngIf="plays$ | async as plays; else loading">
+      <ng-container *ngIf="plays.length !== 0; else noPlays">
         <div class="charts">
-          <app-player-chart [player]="player" [plays]="allPlays" type="player"></app-player-chart>
-          <app-player-chart [player]="player" [plays]="allPlays" type="playerCount"></app-player-chart>
-          <app-player-chart [player]="player" [plays]="allPlays" type="time"></app-player-chart>
+          <app-player-chart [player]="player" [plays]="plays" type="player"></app-player-chart>
+          <app-player-chart [player]="player" [plays]="plays" type="playerCount"></app-player-chart>
+          <app-player-chart [player]="player" [plays]="plays" type="time"></app-player-chart>
           <div class="inline"></div>
         </div>
-        <app-player-table [player]="player" [plays]="allPlays"></app-player-table>
+        <app-player-table [player]="player" [plays]="plays"></app-player-table>
       </ng-container>
     </ng-container>
   </div>
@@ -39,12 +39,12 @@
 
   <mat-divider></mat-divider>
 
-  <div id="plays" *ngIf="plays else loading">
+  <div id="plays" *ngIf="lastPlays$ | async as lastPlays; else loading">
     <div class="title-n-btn">
       <h3>Dernières Parties</h3>
       <a mat-button color="accent" (click)="goPlays()">Tout voir</a>
     </div>
-    <app-play-list [plays]="plays"></app-play-list>
+    <app-play-list [plays]="lastPlays"></app-play-list>
   </div>
 
   <app-layout-side>

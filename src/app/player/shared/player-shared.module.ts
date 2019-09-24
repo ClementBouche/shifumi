@@ -4,11 +4,13 @@ import { PlayerListComponent } from './components/player-list/player-list.compon
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AppMaterialModule } from 'src/app/shared/app-material.module';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
+import { PlayerInfoComponent } from './components/player-info/player-info.component';
 
 @NgModule({
   declarations: [
     PlayerListComponent,
     PlayerCardComponent,
+    PlayerInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,7 @@ import { PlayerCardComponent } from './components/player-card/player-card.compon
   exports: [
     PlayerListComponent,
     PlayerCardComponent,
+    PlayerInfoComponent,
   ]
 })
 export class PlayerSharedModule { }

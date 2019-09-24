@@ -31,12 +31,6 @@ export class LoginRegisterService {
     return localStorage.getItem('currentToken');
   }
 
-  private setUser(user: User) {
-    this.user = user;
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    this.logginEvent.emit(user);
-  }
-
   registerFromAuthentification(response: TokenReponse) {
     if (!response.success) {
       return false;
@@ -58,6 +52,7 @@ export class LoginRegisterService {
     } else {
       this.user = null;
     }
+    console.log('user', this.user);
   }
 
   logout() {
@@ -70,6 +65,12 @@ export class LoginRegisterService {
   authFailedRequest() {
     this.logout();
     this.router.navigate(['/login']);
+  }
+
+  private setUser(user: User) {
+    this.user = user;
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.logginEvent.emit(user);
   }
 
 }

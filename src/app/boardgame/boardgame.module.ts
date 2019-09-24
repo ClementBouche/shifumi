@@ -7,7 +7,6 @@ import { BoardgameRoutingModule } from './boardgame-routing.module';
 import { BoardgameComponent } from './boardgame.component';
 import { BoardgameViewComponent } from './boardgame-view/boardgame-view.component';
 import { BoardgameSearchComponent } from './boardgame-search/boardgame-search.component';
-import { BoardgameInfoComponent } from './boardgame-info/boardgame-info.component';
 import { BoardgameSharedModule } from './shared/boardgame-shared.module';
 import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { AppMaterialModule } from '../shared/app-material.module';
@@ -22,7 +21,6 @@ import { BoardgameTableComponent } from './boardgame-table/boardgame-table.compo
     BoardgameComponent,
     BoardgameViewComponent,
     BoardgameSearchComponent,
-    BoardgameInfoComponent,
     BoardgamePaginatedComponent,
     BoardgameHomeComponent,
     BoardgameFilterComponent,

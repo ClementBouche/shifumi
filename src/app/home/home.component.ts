@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit, Tagable {
   ) { }
 
   ngOnInit() {
+    console.log('home oucou');
     this.connected = this.loginRegisterService.isConnect();
 
     {

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './shared/model/user.model';
-import { LoginRegisterService } from '../home/shared/services/login-register.service';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { startWith, map, switchMap, filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
+
+import { LoginRegisterService } from '../home/shared/services/login-register.service';
 import { UserService } from './shared/services/user.service';
-import { AdminService } from './shared/services/admin.service';
+
+import { User } from './shared/model/user.model';
 
 @Component({
   selector: 'app-user',
@@ -14,45 +15,22 @@ import { AdminService } from './shared/services/admin.service';
 })
 export class UserComponent implements OnInit {
 
-  user$: Observable<User>;
-
-  users$: Observable<User[]>;
+  user: User;
 
   actions = [{name: 'update', title: 'Mettre à jour', color: 'accent'}];
 
   constructor(
     private loginRegisterService: LoginRegisterService,
-    private userService: UserService,
-    private adminService: AdminService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    // TODO utiliser le systeme de guard pour retourner au login
-    this.user$ = this.loginRegisterService.logginEvent.pipe(
-      startWith(this.loginRegisterService.getUser()),
-      switchMap(() => this.userService.me()),
-    );
-
-    this.users$ = this.user$.pipe(
-      filter((user) => user.admin),
-      switchMap(() => this.userService.getUsers())
-    );
+    console.log('home user');
+    this.user = this.loginRegisterService.getUser(); 
   }
 
   goUpdate() {
     this.router.navigate(['user', 'edit']);
-  }
-
-  update(user: User) {
-  }
-
-  delete(user: User) {
-    this.adminService.delete(user.id).subscribe();
-  }
-
-  sync(user: User) {
-    this.adminService.syncUser(user.id).subscribe();
   }
 
 }
