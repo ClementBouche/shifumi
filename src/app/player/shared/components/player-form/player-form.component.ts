@@ -29,4 +29,8 @@ export class PlayerFormComponent implements OnInit {
     });
   }
 
+  update() {
+
+  }
+
 }
