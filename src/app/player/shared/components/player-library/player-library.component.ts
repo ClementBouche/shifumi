@@ -7,7 +7,7 @@ import { from, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Boardgame } from 'src/app/boardgame/shared/model/boardgame.model';
 import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
-import { Player } from '../shared/model/player.model';
+import { Player } from '../../model/player.model';
 import { UserService } from 'src/app/user/shared/services/user.service';
 import { User } from 'src/app/user/shared/model/user.model';
 

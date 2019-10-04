@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
 import { Player } from '../model/player.model';
 import { PlayerService } from '../services/player.service';
 import { PlayerSearch } from '../model/player-seach.model';

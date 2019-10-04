@@ -35,6 +35,7 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.form = this.formBuilder.group({
       playerName: ['', Validators.required],
+      playerId: [''],
       new: [false],
       winner: [false],
       value: [null, NumericValidator],
@@ -66,14 +67,17 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
   }
 
   doSelection(player: Player) {
-    this.setPlayerName(player.name);
+    this.setPlayer(player);
   }
 
   doValueChanged(input: any) {
     if (input instanceof Player) {
-      this.setPlayerName(input.name);
+      // all user
+      this.setPlayer(input);
     } else {
-      this.setPlayerName(input);
+      // only name
+      const player = new Player().deserialize({name: input});
+      this.setPlayer(player);
     }
   }
 
@@ -85,14 +89,15 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result: Player) => {
       if (result) {
-        this.setPlayerName(result.name);
+        this.setPlayer(result);
       }
     });
   }
 
-  setPlayerName(playerName: string) {
+  setPlayer(player: Player) {
     this.form.patchValue({
-      playerName: playerName
+      playerName: player.name,
+      playerId: player.id
     });
     this.cd.markForCheck();
   }
@@ -103,7 +108,7 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
 
   private updateForm() {
     this.form.patchValue({
-      playerName: this.score.player.name,
+      playerName: this.score.player ? this.score.player.name : '',
       new: this.score.new,
       winner: this.score.winner,
       value: this.score.value
@@ -116,7 +121,10 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
       return false;
     }
     this.score.new = this.form.value.new;
-    this.score.player.name = this.form.value.playerName;
+    this.score.player = {
+      id: this.form.value.playerId,
+      name: this.form.value.playerName
+    };
     this.score.value = this.form.value.value;
     this.score.winner = this.form.value.winner;
     return true;

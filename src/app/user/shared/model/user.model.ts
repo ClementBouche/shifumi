@@ -23,9 +23,13 @@ export class User implements Deserializable, Serializable {
     // token
     token: string;
 
-    playerId: string;
-
-    playerIdsClaimed: string[];
+    player: {
+      id: string;
+      idsClaimed: string[];
+    } = {
+      id: null,
+      idsClaimed: []
+    };
 
     // library
     library: LibraryItem[];
@@ -39,8 +43,8 @@ export class User implements Deserializable, Serializable {
         lastname: this.lastname,
         admin: this.admin,
         activated: this.activated,
-        player_id: this.playerId,
-        player_ids_claimed: this.playerIdsClaimed,
+        player_id: this.player.id,
+        player_ids_claimed: this.player.idsClaimed,
         library: this.library.map((item) => item.serialize())
       };
     }
@@ -56,8 +60,10 @@ export class User implements Deserializable, Serializable {
         lastname: input.lastname,
         admin: input.admin,
         activated: input.activated,
-        playerId: input.player_id,
-        playerIdsClaimed: input.player_ids_claimed,
+        player: {
+          id: input.player_id,
+          idsClaimed: input.player_ids_claimed || [],
+        },
         library: library
       });
       return this;

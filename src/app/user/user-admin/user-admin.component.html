@@ -1,5 +1,5 @@
 <div class="admin" *ngIf="users$ | async as users">
-  <h4>Admin - Liste des utilisateurs</h4>
+  <h4>Liste des utilisateurs</h4>
   <app-user-list [users]="users"
       (userDeleted)="delete($event)"
       (userUpdated)="update($event)"

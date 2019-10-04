@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { PlayService } from 'src/app/play/shared/services/play.service';
 
 import { Play } from 'src/app/play/shared/model/play.model';
-import { Player } from '../shared/model/player.model';
+import { Player } from '../../model/player.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
 import { ChartData } from 'src/app/shared-chart/model/chart-data.model';
 import { ChartService } from 'src/app/shared-chart/services/chart.service';

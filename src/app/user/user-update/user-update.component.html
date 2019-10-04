@@ -1,8 +1,15 @@
 <app-custom-layout>
   <div *ngIf="user$ | async as user" class="form">
-    <h2>Modifier</h2>
-    <mat-card>
-      <app-user-form [user]="user" (userChanged)="update($event)"></app-user-form>
-    </mat-card>
+
+    <h4>Mise à jour du compte utilisateur</h4>
+    <app-user-form [user]="user" (userChanged)="updateUser($event)"></app-user-form>
+
+    <mat-divider></mat-divider>
+
+    <ng-container *ngIf="player">
+      <h4>Mise à jour de la fiche joueur</h4>
+      <app-player-form [player]="player" (playerChanged)="updatePlayer($event)"></app-player-form>
+    </ng-container>
+
   </div>
 </app-custom-layout>

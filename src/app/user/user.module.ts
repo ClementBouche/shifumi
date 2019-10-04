@@ -10,6 +10,8 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserSharedModule } from './shared/user-shared.module';
 import { UserAdminComponent } from './user-admin/user-admin.component';
 import { UserPlayerComponent } from './user-player/user-player.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { PlayerSharedModule } from '../player/shared/player-shared.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { UserPlayerComponent } from './user-player/user-player.component';
     UserUpdateComponent,
     UserAdminComponent,
     UserPlayerComponent,
+    UserInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +29,7 @@ import { UserPlayerComponent } from './user-player/user-player.component';
     SharedModule,
     UserRoutingModule,
     UserSharedModule,
+    PlayerSharedModule,
   ]
 })
 export class UserModule { }

@@ -1,0 +1,63 @@
+<app-custom-layout padding="0" *ngIf="player">
+
+  <div id="description" class="banner">
+    <app-player-card [player]="player" detail=true>
+      <div *ngIf="user && !player.userId">
+        <mat-divider></mat-divider>
+        <div>
+          <button mat-button color="accent" (click)="actionSynch()">
+            <mat-icon>sync</mat-icon> Récupérer les parties de ce joueur
+          </button>
+          <p class="help">L'action sera validé dans quelques temps.</p>
+        </div>
+      </div>
+    </app-player-card>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div id="stats">
+    <h3>Statistiques</h3>
+    <ng-container *ngIf="allPlays$ | async as allPlays; else loading">
+      <ng-container *ngIf="allPlays.length !== 0">
+        <div class="charts">
+          <app-player-chart [player]="player" [plays]="allPlays" type="player"></app-player-chart>
+          <app-player-chart [player]="player" [plays]="allPlays" type="playerCount"></app-player-chart>
+          <app-player-chart [player]="player" [plays]="allPlays" type="time"></app-player-chart>
+          <div class="inline"></div>
+        </div>
+        <app-player-table [player]="player" [plays]="allPlays"></app-player-table>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div id="library" *ngIf="player.userId">
+    <app-player-library [player]="player"></app-player-library>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div id="plays" *ngIf="plays else loading">
+    <div class="title-n-btn">
+      <h3>Dernières Parties</h3>
+      <a mat-button color="accent" (click)="goPlays()">Tout voir</a>
+    </div>
+    <app-play-list [plays]="plays"></app-play-list>
+  </div>
+
+  <app-layout-side>
+    <app-page-shortcut>
+      <a mat-button class="active" color="primary" appScrollTo="description">Description</a>
+      <a mat-button color="primary" appScrollTo="stats">Statistiques</a>
+      <a mat-button color="primary" appScrollTo="library">Ludothèque</a>
+      <a mat-button color="primary" appScrollTo="plays">Dernières Parties</a>
+    </app-page-shortcut>
+  </app-layout-side>
+
+</app-custom-layout>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

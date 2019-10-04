@@ -6,7 +6,6 @@
 
 .user, .inline-object {
   margin: 10px;
-  width: 340px;
 }
 
 .users app-user-card:hover {

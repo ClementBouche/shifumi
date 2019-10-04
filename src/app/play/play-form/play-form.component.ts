@@ -104,9 +104,14 @@ export class PlayFormComponent implements OnInit {
   }
 
   private addUser(user: User) {
+    if (!user.player.id) {
+      return;
+    }
     const score = new Score();
-    score.player.id = user.playerId;
-    score.player.name = user.username;
+    score.player = {
+      id: user.player.id,
+      name: user.username,
+    };
     this.form.patchValue({
       scores: [score]
     });

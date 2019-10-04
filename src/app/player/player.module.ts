@@ -15,10 +15,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { PlayerSearchComponent } from './player-search/player-search.component';
 import { PlayerHomeComponent } from './player-home/player-home.component';
-import { PlayerChartComponent } from './player-chart/player-chart.component';
-import { PlayerTableComponent } from './player-table/player-table.component';
 import { SharedChartModule } from '../shared-chart/shared-chart.module';
-import { PlayerLibraryComponent } from './player-library/player-library.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +24,6 @@ import { PlayerLibraryComponent } from './player-library/player-library.componen
     PlayerViewComponent,
     PlayerSearchComponent,
     PlayerHomeComponent,
-    PlayerChartComponent,
-    PlayerTableComponent,
-    PlayerLibraryComponent
   ],
   imports: [
     CommonModule,

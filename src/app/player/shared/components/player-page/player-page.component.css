@@ -1,0 +1,50 @@
+#description, #stats, #plays {
+  margin-bottom: 10px;
+}
+
+#stats {
+  min-height: 100px;
+}
+
+app-page-shortcut a {
+  padding-top: 1.0em;
+  text-align: left;
+}
+
+app-page-shortcut .active {
+  font-weight: bold;
+}
+
+.help {
+  display: inline;
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.title-n-btn {
+  display: flex;
+}
+
+.title-n-btn h3 {
+  flex-grow: 1;
+}
+
+.title-n-btn a {
+  padding-top: 0.9em;
+}
+
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.charts .inline {
+  width: 400px;
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 10px 0px;
+  }
+}

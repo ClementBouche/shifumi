@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { startWith, switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
+
 import { User } from '../shared/model/user.model';
 import { UserService } from '../shared/services/user.service';
 import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
-import { Router } from '@angular/router';
+import { Player } from 'src/app/player/shared/model/player.model';
 
 @Component({
   selector: 'app-user-update',
@@ -29,10 +31,13 @@ export class UserUpdateComponent implements OnInit {
     );
   }
 
-  update(user: User) {
+  updateUser(user: User) {
     this.userService.selfUpdate(user).subscribe(() => {
       this.router.navigate(['user']);
     });
+  }
+
+  updatePlayer(player: Player) {
   }
 
 }

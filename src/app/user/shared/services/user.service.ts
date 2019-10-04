@@ -49,8 +49,8 @@ export class UserService {
   claimPlayer(id: string) {
     return this.me().pipe(
       map((user) => {
-        if (user.playerIdsClaimed.indexOf(id) === -1) {
-          user.playerIdsClaimed.push(id);
+        if (user.player.idsClaimed.indexOf(id) === -1) {
+          user.player.idsClaimed.push(id);
         }
         return user;
       }),

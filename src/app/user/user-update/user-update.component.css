@@ -4,6 +4,10 @@
   padding: 10px;
 }
 
-.form h2 {
+.mat-divider {
+  margin-top: 20px;
+}
+
+h4 {
   text-align: center;
 }

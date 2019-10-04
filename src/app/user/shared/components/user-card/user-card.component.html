@@ -1,19 +1,18 @@
 <mat-card *ngIf="user" class="card">
   <mat-card-header>
-    <div mat-card-avatar class="header-image"></div>
     <mat-card-title>{{ user.username }}</mat-card-title>
     <mat-card-subtitle>{{ user.firstname }} {{ user.surname }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p>{{ user.email }}</p>
-    <p *ngIf="user.playerIdsClaimed && user.playerIdsClaimed.length > 0">
+    <p *ngIf="user.player.idsClaimed && user.player.idsClaimed.length > 0">
       Demande de récupèrer les comptes suivants:
     </p>
-    <ng-container *ngFor="let id of user.playerIdsClaimed">
+    <ng-container *ngFor="let id of user.player.idsClaimed">
       <a mat-button (click)="goPlayer(id)">{{ id }}</a>
     </ng-container>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions *ngIf="admin">
     <ng-container *ngFor="let action of actions">
       <button mat-button [color]="action.color" (click)="trigger(action.name)">{{ action.title }}</button>
     </ng-container>

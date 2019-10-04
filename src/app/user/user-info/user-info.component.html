@@ -1,0 +1,19 @@
+<app-custom-layout padding="10px 24px 0px">
+
+  <app-user-card [user]="user"></app-user-card>
+
+  <ng-container *ngIf="player else noPlayer">
+    <app-player-card [player]="player"></app-player-card>
+  </ng-container>
+
+  <ng-template #noPlayer>
+    <mat-card class="card">
+      <p>Le profil est associé aucun joueurs.</p>
+      <p>Si vous avez déjà renseigné des parties à votre nom, rechercher le dans la liste des joueurs.</p>
+      <a mat-button routerLink="/player" color="accent">Rechercher</a>
+    </mat-card>
+  </ng-template>
+
+  <button mat-button color="accent" (click)="goUpdate()">Modifier les informations</button>
+
+</app-custom-layout>

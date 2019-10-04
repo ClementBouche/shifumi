@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Player } from '../shared/model/player.model';
+import { Player } from '../../model/player.model';
 import { Play } from 'src/app/play/shared/model/play.model';
 import { TableService } from 'src/app/shared-chart/services/table.service';
 
