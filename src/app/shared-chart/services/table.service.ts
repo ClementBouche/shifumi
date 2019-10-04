@@ -14,7 +14,7 @@ export class TableService {
   createPlayerTable(player: Player, plays: Play[]) {
     const data = plays.reduce((previous, play) => {
       const boardgameId = play.boardgameId;
-      const win = play.scores.find((sc) => sc.playerName === player.name).winner;
+      const win = play.scores.find((sc) => sc.player.name === player.name).winner;
       const index = previous.findIndex((el) => el.boardgameId === boardgameId);
       if (index === -1) {
         previous.push({
@@ -47,7 +47,7 @@ export class TableService {
   createBgTable(boardgame: Boardgame, plays: Play[]) {
     const data = plays.reduce((previous, play) => {
       play.scores.forEach((sc) => {
-        const playerName = sc.playerName;
+        const playerName = sc.player.name;
         const win = sc.winner;
         // ajout des stats du joueurs
         const index = previous.findIndex((el) => el.player === playerName);

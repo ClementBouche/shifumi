@@ -2,22 +2,27 @@ import { Deserializable } from "src/app/core/model/deserializable.interface";
 import { Serializable } from "src/app/core/model/serializable.interface";
 
 export class Score implements Deserializable, Serializable {
+
   new: boolean = false;
   winner: boolean = false;
   value: number = 0;
 
-  playerId: string = '';
-  playerName: string = '';
-  playerThumbnail: string;
+  player: {
+    id: string;
+    name: string;
+    thumbnail: string;
+  }
+
+  role: string;
 
   serialize() {
     return {
       new: this.new,
       win: this.winner,
       score: this.value,
-      player_id: this.playerId,
-      player_name: this.playerName,
-      player_thumbnail: this.playerThumbnail,
+      player_id: this.player.id,
+      player_name: this.player.name,
+      player_thumbnail: this.player.thumbnail,
     };
   }
 
@@ -26,9 +31,11 @@ export class Score implements Deserializable, Serializable {
       new: input.new,
       winner: input.win,
       value: input.score,
-      playerId: input.player_id,
-      playerName: input.player_name,
-      playerThumbnail: input.player_thumbnail,
+      player: {
+        id: input.player_id,
+        name: input.player_name,
+        thumbnail: input.player_thumbnail,
+      }
     });
     return this;
   }

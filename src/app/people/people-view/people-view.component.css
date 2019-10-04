@@ -1,8 +1,6 @@
 .avatar {
-  /* background: linear-gradient(217deg,#ccc, #888); */
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
-  /* border: 1px solid black; */
   width: 80px;
   height: 80px;
 }

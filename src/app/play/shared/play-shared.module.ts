@@ -12,6 +12,7 @@ import { PlayInfoComponent } from './components/play-info/play-info.component';
 import { PlayScoreComponent } from './components/play-score/play-score.component';
 import { PlayStreamComponent } from './components/play-stream/play-stream.component';
 import { PlayCardComponent } from './components/play-card/play-card.component';
+import { PlayActionComponent } from './components/play-action/play-action.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PlayCardComponent } from './components/play-card/play-card.component';
     PlayScoreComponent,
     WinnerPipe,
     PlayStreamComponent,
-    PlayCardComponent
+    PlayCardComponent,
+    PlayActionComponent
   ],
   imports: [
     CommonModule,

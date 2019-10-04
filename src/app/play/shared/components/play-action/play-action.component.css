@@ -1,0 +1,7 @@
+.actions {
+  display: flex;
+  padding-top: 10px;
+}
+.flex-grow {
+  flex-grow: 1;
+}

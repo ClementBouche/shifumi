@@ -2,6 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Play } from '../../model/play.model';
 import { Score } from '../../model/score.model';
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
+import { User } from 'src/app/user/shared/model/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-play-info',
@@ -20,13 +23,23 @@ export class PlayInfoComponent implements OnInit {
 
   @Output() scoreClicked: EventEmitter<Score> = new EventEmitter<Score>();
 
-  constructor() { }
+  user: User;
+
+  constructor(
+    private loginRegisterService: LoginRegisterService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    this.user = this.loginRegisterService.getUser();
   }
 
   scoreAction(score: Score) {
     this.scoreClicked.emit(score);
+  }
+
+  goBoardgame() {
+    this.router.navigate(['/', 'boardgame', this.play.boardgameId]);
   }
 
 }

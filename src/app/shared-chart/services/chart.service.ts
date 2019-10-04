@@ -55,7 +55,7 @@ export class ChartService {
 
   createDonutChart(player: Player, plays: Play[]): ChartData {
     const players = plays.reduce((previous, play) => {
-      const names = play.scores.map((sc) => sc.playerName);
+      const names = play.scores.map((sc) => sc.player.name);
       names.forEach((name) => {
         if (name === player.name) { return; }
         const index = previous.findIndex((o) => o.name === name);

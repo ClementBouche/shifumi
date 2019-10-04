@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Play } from '../../model/play.model';
 
 @Component({
@@ -12,12 +12,18 @@ export class PlayCardComponent implements OnInit {
 
   @Input() fromDate: string = 'true';
 
+  @Output() headerClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   dateFormat: string;
 
   constructor() { }
 
   ngOnInit() {
     this.dateFormat = this.fromDate == 'true' ? 'from' : 'humanize';
+  }
+
+  headerClick() {
+    this.headerClicked.emit(true);
   }
 
 }

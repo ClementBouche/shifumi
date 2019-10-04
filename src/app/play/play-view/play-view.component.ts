@@ -6,6 +6,8 @@ import { Play } from '../shared/model/play.model';
 import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
 import { Tagable } from 'src/app/core/model/tagable.interface';
 import { Score } from '../shared/model/score.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-play-view',
@@ -16,13 +18,9 @@ export class PlayViewComponent implements OnInit, Tagable {
 
   play: Play;
 
-  actions = ['format_paint', 'edit', 'delete'];
-  // actions = ['format_paint', 'star', 'edit', 'delete'];
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private playService: PlayService,
     private cd: ChangeDetectorRef,
     private metadataTags: MetadataTagsService
   ) { }
@@ -36,24 +34,8 @@ export class PlayViewComponent implements OnInit, Tagable {
     this.updateTags();
   }
 
-  doAction(actionName: string) {
-    if (actionName === 'format_paint') {
-      this.router.navigate(['/', 'play', 'copy', this.play.id]);
-    }
-    if (actionName === 'star') {
-    }
-    if (actionName === 'edit') {
-      this.router.navigate(['/', 'play', 'update', this.play.id]);
-    }
-    if (actionName === 'delete') {
-      this.playService.delete(this.play).then(() => {
-        this.router.navigate(['/', 'play']);
-      });
-    }
-  }
-
   actionScore(score: Score) {
-    this.router.navigate(['/', 'player', score.playerName]);
+    this.router.navigate(['/', 'player', score.player.name]);
   }
 
   goBoardgame() {

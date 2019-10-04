@@ -1,5 +1,5 @@
 <mat-card *ngIf="play">
-  <mat-card-header>
+  <mat-card-header (click)="headerClick()">
     <div mat-card-avatar class="avatar" [appBackgroundImage]="play.thumbnail"></div>
     <!-- playername -->
     <mat-card-title>
@@ -15,7 +15,7 @@
     <p>
       <ng-container *ngFor="let score of play.scores; let i = index">
           <span [class.winner]="score.winner">
-            <span class="player-name">{{ score.playerName }}</span><ng-container *ngIf="i != play.scores.length - 1">, </ng-container> 
+            <span class="player-name">{{ score.player.name }}</span><ng-container *ngIf="i != play.scores.length - 1">, </ng-container> 
           </span>
       </ng-container>
     </p>
@@ -24,4 +24,5 @@
       <li *ngIf="play.playingTime != 0">{{ play.playingTime | playTime:"humanize" }}</li>
     </ul>
   </mat-card-content>
+  <ng-content></ng-content>
 </mat-card>

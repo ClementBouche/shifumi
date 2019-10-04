@@ -24,7 +24,7 @@ export class PlayScoreComponent implements OnInit {
 
   ngOnInit() {
     if (this.score) {
-      const search = new PlayerSearch().deserialize({name: this.score.playerName});
+      const search = new PlayerSearch().deserialize({name: this.score.player.name});
       this.playerService.search(search).then((playersPage: PlayersPage) => {
         this.player = playersPage.result[0];
         this.cd.markForCheck();

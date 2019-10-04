@@ -1,5 +1,4 @@
 .avatar {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
   width: 60px;
   height: 60px;
@@ -7,6 +6,7 @@
 
 .mat-card-header {
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .mat-card-content {

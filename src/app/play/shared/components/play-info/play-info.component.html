@@ -1,6 +1,10 @@
 <ng-container *ngIf="play">
   <div class="play">
-    <app-play-card [play]="play" fromDate=false></app-play-card>
+    <app-play-card [play]="play" fromDate=false (headerClicked)="goBoardgame()">
+      <ng-container *ngIf="user">
+        <app-play-action [play]="play"></app-play-action>
+      </ng-container>
+    </app-play-card>
     <ng-container *ngIf="!listItem; then detail"></ng-container>
   </div>
 </ng-container>

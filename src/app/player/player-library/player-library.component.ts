@@ -50,7 +50,6 @@ export class PlayerLibraryComponent implements OnInit {
         this.userInfo.id = this.player.userId;
         this.userInfo.username = this.player.name;
         this.userInfo.library = library;
-        console.log(this.userInfo);
         // library search
         const ids = library.filter((item) => item.rating).map((item) => item.boardgame.id)
         this.count = ids.length;

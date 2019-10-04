@@ -11,9 +11,9 @@ export class WinnerPipe implements PipeTransform {
     if (value instanceof Array) {
       const result = value.filter((sc: Score) => sc.winner).reduce((previousValue, score: Score) => {
         if (previousValue == '') {
-          previousValue = score.playerName;
+          previousValue = score.player.name;
         } else {
-          previousValue += ', ' + score.playerName;
+          previousValue += ', ' + score.player.name;
         }
         return previousValue;
       }, '');

@@ -1,14 +1,7 @@
 <div class="plays" *ngIf="plays && plays.length != 0; else noResult">
   <ng-container *ngFor="let play of plays; let i = index">
     <div class="play" (click)="view(play.id)">
-      <ng-container *ngIf="boardgame else noBoardgame">
-          <!-- <app-play-info [play]="play" listItem=true displayName=false [index]="i"></app-play-info> -->
-          <app-play-card [play]="play"></app-play-card>
-      </ng-container>
-      <ng-template #noBoardgame>
-          <!-- <app-play-info [play]="play" listItem=true></app-play-info> -->
-          <app-play-card [play]="play"></app-play-card>
-      </ng-template>
+      <app-play-card [play]="play"></app-play-card>
     </div>
   </ng-container>
   <div class="inline-object"></div>

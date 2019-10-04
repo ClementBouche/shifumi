@@ -103,7 +103,7 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
 
   private updateForm() {
     this.form.patchValue({
-      playerName: this.score.playerName,
+      playerName: this.score.player.name,
       new: this.score.new,
       winner: this.score.winner,
       value: this.score.value
@@ -116,7 +116,7 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
       return false;
     }
     this.score.new = this.form.value.new;
-    this.score.playerName = this.form.value.playerName;
+    this.score.player.name = this.form.value.playerName;
     this.score.value = this.form.value.value;
     this.score.winner = this.form.value.winner;
     return true;
