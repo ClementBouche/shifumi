@@ -17,13 +17,16 @@
       <mat-card-subtitle *ngIf="score.value != 0">Score : {{ score.value }} points</mat-card-subtitle>
       <mat-card-subtitle *ngIf="score.value == 0">Pas de score</mat-card-subtitle>
     </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-content>
-      <ul>
-        <li *ngIf="score.new"><span>Première partie !</span></li>
-        <li *ngIf="!score.new">A déjà joué plusieurs fois</li>
-      </ul>
-    </mat-card-content>
+    <ng-container *ngIf="score.new || score.role || score.team">
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <ul>
+          <li *ngIf="score.new"><span>Première partie !</span></li>
+          <li *ngIf="score.team">Equipe: <span>{{ score.team }}</span></li>
+          <li *ngIf="score.role">>Role: <span>{{ score.role }}</span></li>
+        </ul>
+      </mat-card-content>
+    </ng-container>
   </mat-card>
 </ng-container>
 

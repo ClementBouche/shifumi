@@ -41,7 +41,8 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
       new: [false],
       winner: [false],
       value: [null],
-      role: ['']
+      role: [''],
+      team: [''],
     });
 
     this.changeSubscription = this.form.valueChanges.pipe(debounceTime(500)).subscribe((val) => {
@@ -129,6 +130,8 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
     };
     this.score.value = this.form.value.value;
     this.score.winner = this.form.value.winner;
+    this.score.role = this.form.value.role;
+    this.score.team = this.form.value.team;
     return true;
   }
 
