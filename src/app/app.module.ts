@@ -44,7 +44,7 @@ const config: SocketIoConfig = {
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
     { provide: HTTP_INTERCEPTORS, useClass: AppTokenInterceptor, multi: true },
-    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlFr},
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlFr },
   ],
   entryComponents: [
     BoardgamePickDialogComponent,

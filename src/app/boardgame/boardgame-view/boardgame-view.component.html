@@ -1,13 +1,13 @@
 <app-custom-layout *ngIf="boardgame">
 
+  <app-boardgame-card [boardgame]="boardgame">
+    <ng-container *ngIf="user">
+      <app-boardgame-rate [boardgame]="boardgame" [user]="user"></app-boardgame-rate>
+    </ng-container>
+  </app-boardgame-card>
+
   <div class="banner">
-    <img [src]="boardgame.image">
     <div class="content">
-      <app-boardgame-card [boardgame]="boardgame">
-        <ng-container *ngIf="user">
-          <app-boardgame-rate [boardgame]="boardgame" [user]="user"></app-boardgame-rate>
-        </ng-container>
-      </app-boardgame-card>
       <ng-container *ngIf="boardgame.preview">
         <button mat-button color="accent" (click)="import()">Ajouter à la bibliothèque</button>
       </ng-container>

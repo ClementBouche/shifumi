@@ -125,7 +125,6 @@ export class PlayFormComponent implements OnInit {
       place: this.play.place,
       playingTime: this.play.playingTime,
       incomplete: this.play.incomplete,
-      //scores: this.play.scores.map(sc => Object.assign({}, sc))
       scores: this.play.scores
     });
     this.cd.markForCheck();
@@ -139,6 +138,9 @@ export class PlayFormComponent implements OnInit {
     this.play.playingTime = this.form.value.playingTime;
     this.play.incomplete = this.form.value.incomplete;
     this.play.scores = this.form.value.scores;
+    if (this.play.scores.find((sc) => !sc.player || sc.player.name === '')) {
+      return false;
+    }
     return true;
   }
 

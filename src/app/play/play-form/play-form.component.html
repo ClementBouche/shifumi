@@ -3,8 +3,12 @@
     <div class="fields">
       <!-- boardgame name -->
       <mat-form-field>
-        <input matInput placeholder="Rechercher..." type="string" name="boardgameName" formControlName="boardgameName" readonly />
-        <button mat-button matSuffix mat-icon-button (click)="openDialog()">
+        <input matInput
+              placeholder="Rechercher..." readonly
+              type="string" name="boardgameName"
+              formControlName="boardgameName"
+              (click)="openDialog()"/>
+        <button mat-button matSuffix mat-icon-button>
           <mat-icon>search</mat-icon>
         </button>
       </mat-form-field>
@@ -27,7 +31,7 @@
         <mat-hint>Temps de jeux</mat-hint>
         <span matSuffix>min</span>
       </mat-form-field>
-      
+
       <!-- extended seach input -->
       <mat-checkbox name="incomplete" formControlName="incomplete">Partie Incomplète</mat-checkbox>
     </div>
@@ -51,5 +55,6 @@
         (scoreDeleted)="deleteScore(i)">
     </app-score-form>
   </ng-container>
-  <button mat-raised-button type="button" color="accent"  (click)="addPlayer()"><mat-icon>add</mat-icon></button>
+  <app-score-form (click)="addPlayer()" editable="false"></app-score-form>
+  <!-- <button mat-raised-button type="button" color="accent" (click)="addPlayer()"><mat-icon>add</mat-icon></button> -->
 </div>

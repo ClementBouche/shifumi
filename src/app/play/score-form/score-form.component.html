@@ -1,23 +1,20 @@
 <mat-card class="card" *ngIf="form">
-  <!-- <app-avatar class="app-card-avatar" size=60 [name]="score.playerName"></app-avatar> -->
+  <div *ngIf="editable === 'false'" class="veil">
+    <mat-icon>add</mat-icon>
+  </div>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <mat-card-header>
       <!-- playername -->
-      <mat-card-title>
-        <mat-icon *ngIf="form.winner">star</mat-icon>
-        <app-player-search-input [namePart]="form.value.playerName"
-            (playerSelected)="doSelection($event)"
-            (valueChanged)="doValueChanged($event)">
-        </app-player-search-input>
-      </mat-card-title>
+      <app-player-search-input [namePart]="form.value.playerName"
+          (playerSelected)="doSelection($event)"
+          (valueChanged)="doValueChanged($event)">
+      </app-player-search-input>
       <!-- player score value -->
-      <mat-card-subtitle>
-        <mat-form-field>
-          <input matInput placeholder="Score" type="number" name="value" formControlName="value" >
-          <span matSuffix>pts</span>
-        </mat-form-field>
-      </mat-card-subtitle>
-      <div class="close noselect" (click)="deleteAction()">
+      <mat-form-field>
+        <input matInput placeholder="Score / Points" type="number" name="value" formControlName="value" [disabled]="editable === 'false'">
+        <span matSuffix>pts</span>
+      </mat-form-field>
+      <div class="close noselect" (click)="deleteAction()" [class.hide]="editable === 'false'">
         <mat-icon>clear</mat-icon>
       </div>
     </mat-card-header>

@@ -16,6 +16,8 @@ import { PlayerPickDialogComponent } from 'src/app/core/entry-components/player-
 })
 export class ScoreFormComponent implements OnInit, OnDestroy {
 
+  @Input() editable: boolean = true;
+
   @Input() score: Score;
 
   @Output() scoreChanged: EventEmitter<Score> = new EventEmitter<Score>();
@@ -38,7 +40,7 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
       playerId: [''],
       new: [false],
       winner: [false],
-      value: [null, NumericValidator],
+      value: [null],
       role: ['']
     });
 

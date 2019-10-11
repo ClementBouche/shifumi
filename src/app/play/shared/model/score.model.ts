@@ -8,7 +8,7 @@ export class Score implements Deserializable, Serializable {
     name: string;
   }
 
-  value: number = 0;
+  value: number;
   winner: boolean = false;
   new: boolean = false;
 
