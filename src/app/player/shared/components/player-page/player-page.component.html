@@ -1,4 +1,4 @@
-<app-custom-layout padding="0" *ngIf="player">
+<app-custom-layout padding="0" *ngIf="player; else loading">
 
   <div id="description" class="banner">
     <app-player-card [player]="player" detail=true>

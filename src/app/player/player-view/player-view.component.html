@@ -1,3 +1,7 @@
-<ng-container *ngIf="player">
+<ng-container *ngIf="player; else loading">
   <app-player-page [player]="player"></app-player-page>
 </ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>
