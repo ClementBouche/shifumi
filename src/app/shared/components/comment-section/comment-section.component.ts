@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef, Input } from '@angular
 import { Message } from 'src/app/shared/model/message.model';
 import { Subscription } from 'rxjs';
 import { MessageService } from '../../services/comment.service';
+import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
+import { User } from 'src/app/user/shared/model/user.model';
 
 @Component({
   selector: 'app-comment-section',
@@ -18,6 +20,8 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
 
   currentMessage: Message = new Message();
 
+  private user: User;
+
   private newSubscription: Subscription;
 
   private deletedSubscription: Subscription;
@@ -25,11 +29,16 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
   private updatedSubscription: Subscription;
 
   constructor(
+    private loginRegisterService: LoginRegisterService,
     private service: MessageService,
     private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
+    this.user = this.loginRegisterService.getUser();
+    if (this.user) {
+      this.currentMessage.sender = this.user.username;
+    }
 
     this.service.joinRoom(this.room);
 
@@ -67,6 +76,9 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
 
     // new
     this.currentMessage = new Message();
+    if (this.user) {
+      this.currentMessage.sender = this.user.username;
+    }
   }
 
   remove(message: Message) {
