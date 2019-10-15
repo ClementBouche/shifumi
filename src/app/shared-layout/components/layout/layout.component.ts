@@ -24,7 +24,7 @@ import { LayoutSideComponent } from '../layout-side/layout-side.component';
 })
 export class LayoutComponent implements OnInit, AfterContentInit {
 
-  @Input() padding: string = '30px 24px 0px 24px';
+  @Input() padding: string;
 
   // nav component
   @ContentChildren(LayoutNavComponent) navs: QueryList<LayoutNavComponent>;

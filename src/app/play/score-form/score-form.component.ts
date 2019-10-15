@@ -114,7 +114,9 @@ export class ScoreFormComponent implements OnInit, OnDestroy {
       playerName: this.score.player ? this.score.player.name : '',
       new: this.score.new,
       winner: this.score.winner,
-      value: this.score.value
+      value: this.score.value,
+      team: this.score.team,
+      role: this.score.role
     });
     this.cd.markForCheck();
   }

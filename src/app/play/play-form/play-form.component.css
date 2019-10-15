@@ -28,7 +28,7 @@ input.as-text {
 }
 
 .scores > * {
-  margin: 10px;
+  margin: 10px auto;
 }
 
 .scores button {

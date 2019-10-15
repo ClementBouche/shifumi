@@ -6,7 +6,7 @@
 
 .play, .inline-object, .time {
   margin: 10px;
-  width: 340px;
+  width: 350px;
 }
 
 .time {
@@ -30,9 +30,8 @@
   padding: 20px 0px;
 }
 
-.play:hover {
+.play app-play-card:hover {
   cursor: pointer;
-  /* box-shadow: 2px 2px 2px #aaa; */
 }
 
 @media (max-width: 600px) {

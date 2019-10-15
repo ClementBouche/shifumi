@@ -1,13 +1,20 @@
 .play h4 {
-    width: 100%;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.game-link {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  transform: translate(-50px, 100%);
+  z-index: 2;
 }
 
 .scores {
-  margin: 10px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .score app-play-score {
@@ -15,14 +22,10 @@
 }
 
 .score, .inline-object {
-  margin: 10px;
+  margin: 0px 10px 0px 10px;
   width: 340px;
 }
 
-.score:hover {
-  cursor: pointer;
-}
-
 .score app-play-score:hover {
-  box-shadow: 2px 2px 2px #aaa;
+  cursor: pointer;
 }

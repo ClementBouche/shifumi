@@ -1,19 +1,8 @@
 .avatar {
   background: linear-gradient(217deg,#ccc, #888);;
   background-size: cover;
-  /* border: 1px solid black; */
   width: 80px;
   height: 80px;
-}
-
-.mat-card-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mat-card-title.thumbnail {
-  white-space: nowrap;
-  max-width: 200px;
 }
 
 .mat-card-header {

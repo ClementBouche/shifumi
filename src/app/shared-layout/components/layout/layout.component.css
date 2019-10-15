@@ -2,10 +2,8 @@
   margin: 0 auto;
   position: relative;
   max-width: 90em;
-  padding-top: 30px;
-  padding-left: 24px;
-  padding-right: 24px;
   display: flex;
+  padding: 30px 24px 0px 24px;
 }
 
 .content {
@@ -17,8 +15,7 @@
 @media (max-width: 600px) {
 
   .layout {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding: 18px 10px 0px 10px;
   }
 
   .nav {

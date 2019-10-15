@@ -54,6 +54,14 @@ input[type="number"] {
   user-select: none;
 }
 
+
+@media (max-width: 600px) {
+  .hide-in-media {
+    display: none !important;
+  }
+}
+
+
 /*
 body {
   color: var(--first-text-color);

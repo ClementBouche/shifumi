@@ -6,15 +6,11 @@
 
 .player, .inline-object {
   margin: 10px;
-  width: 340px;
+  width: 350px;
 }
 
-.player:hover {
+.player app-player-card:hover {
   cursor: pointer;
-}
-
-.players app-boardgame-card:hover {
-  box-shadow: 2px 2px 2px #aaa;
 }
 
 @media (max-width: 600px) {

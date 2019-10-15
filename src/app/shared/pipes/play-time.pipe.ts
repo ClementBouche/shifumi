@@ -8,6 +8,9 @@ export class PlayTimePipe implements PipeTransform {
 
   transform(value: any, mode?: string): String {
     if (mode === 'humanize') {
+      if (value === 0) {
+        return 'moins d\'une heure';
+      }
       return moment.duration(value, 'minutes').locale('fr').humanize();
     }
 
