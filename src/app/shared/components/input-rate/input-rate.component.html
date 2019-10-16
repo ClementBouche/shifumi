@@ -1,17 +1,18 @@
 <div class="rate" [matTooltip]="getTooltip()">
-  <button mat-icon-button [color]="getRateColor(1)" (click)="setRate(2)" [disabled]="disabled">
-    <mat-icon>{{ getIcon(2) }}</mat-icon>
-  </button>
-  <button mat-icon-button [color]="getRateColor(3)" (click)="setRate(4)" [disabled]="disabled">
-    <mat-icon>{{ getIcon(4) }}</mat-icon>
-  </button>
-  <button mat-icon-button [color]="getRateColor(5)" (click)="setRate(6)" [disabled]="disabled">
-    <mat-icon>{{ getIcon(6) }}</mat-icon>
-  </button>
-  <button mat-icon-button [color]="getRateColor(7)" (click)="setRate(8)" [disabled]="disabled">
-    <mat-icon>{{ getIcon(8) }}</mat-icon>
-  </button>
-  <button mat-icon-button [color]="getRateColor(9)" (click)="setRate(10)" [disabled]="disabled">
-    <mat-icon>{{ getIcon(10) }}</mat-icon>
-  </button>
+  <div class="view" [class.hide]="mode !== 'view'" (click)="switchMode()">
+    <div class="text">
+      <span *ngIf="rate">{{ rate }} / 10</span>
+      <span *ngIf="!rate">Noter</span>
+      <ng-container *ngIf="!disabled">
+        <mat-icon>edit</mat-icon>
+      </ng-container>
+    </div>
+  </div>
+  <div class="edit" [class.hide]="mode !== 'edit'">
+    <ng-container *ngFor="let value of rates">
+      <button mat-icon-button [color]="getRateColor(value)" (click)="setRate(value)" [disabled]="disabled">
+        <mat-icon>{{ getIcon(value) }}</mat-icon>
+      </button>
+    </ng-container>
+  </div>
 </div>

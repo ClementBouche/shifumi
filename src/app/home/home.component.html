@@ -3,16 +3,14 @@
   <div class="contenu">
     <h1>Le projet</h1>
     <p>
-      Shifumi est un assistant ludique.
+      Shifumi accompagne vos journées et soirées jeux.
       Il vous permet de rechercher votre prochain jeux,
       du petits jeux d'ambiance réunissant de nombreux joueurs,
       au jeux pour les plus initiés souhaitant y passer la soirée.
     </p>
     <p>
-      Connectez-vous pour enregistrer vos parties, et planifier les prochaines séances.
-    </p>
-    <p>
-      Comparez vos résultats avec d'autres joueurs.
+      Connectez-vous pour enregistrer vos parties, planifier les prochaines séances
+      et comparer vos résultats avec d'autres joueurs.
     </p>
   </div>
 
@@ -21,10 +19,10 @@
     <app-play-list [plays]="plays"></app-play-list>
     <div class="actions">
       <a mat-button color="primary" routerLink="play" routerLinkActive="active">
-          <mat-icon>visibility</mat-icon> Voir toutes les parties
+        <mat-icon>visibility</mat-icon> Voir toutes les parties
       </a>
-      <a mat-button color="primary" routerLink="play" routerLinkActive="active">
-          <mat-icon>add</mat-icon> Ajouter une partie
+      <a mat-button color="primary" routerLink="play/add" routerLinkActive="active">
+        <mat-icon>add</mat-icon> Ajouter une partie
       </a>
     </div>
   </div>
@@ -32,17 +30,21 @@
   <div class="contenu" *ngIf="players$ | async as players">
     <h2>Les joueurs les plus actifs</h2>
     <app-player-list [players]="players"></app-player-list>
-    <a mat-button color="primary" routerLink="player" routerLinkActive="active">
-        <mat-icon>visibility</mat-icon> Voir tous les joueurs
-    </a>
+    <div class="actions">
+      <a mat-button color="primary" routerLink="player" routerLinkActive="active">
+          <mat-icon>visibility</mat-icon> Voir tous les joueurs
+      </a>
+    </div>
   </div>
 
   <div class="contenu" *ngIf="boardgames$ | async as boardgames">
     <h2>Les jeux les mieux notés</h2>
     <app-boardgame-list [boardgames]="boardgames"></app-boardgame-list>
-    <a mat-button color="primary" routerLink="boardgame" routerLinkActive="active">
-        <mat-icon>search</mat-icon> Rechercher un jeu
-    </a>
+    <div class="actions">
+      <a mat-button color="primary" routerLink="boardgame" routerLinkActive="active">
+          <mat-icon>search</mat-icon> Rechercher un jeu
+      </a>
+    </div>
   </div>
 
   <app-comment-section room="home" title="Commentaires libres">

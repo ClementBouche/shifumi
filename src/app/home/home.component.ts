@@ -75,19 +75,6 @@ export class HomeComponent implements OnInit, Tagable {
     this.updateTags();
   }
 
-  go(page: string) {
-    if (page === 'boardgame' ||
-        page === 'player' ||
-        page === 'place' ||
-        page === 'play'
-    ) {
-      this.router.navigate(['/', page]);
-    }
-    if (page === 'myPlay') {
-      this.router.navigate(['/', 'play', 'me']);
-    }
-  }
-
   updateTags() {
     this.metadataTags.updateTitle('Shifumi - Accueil');
   }

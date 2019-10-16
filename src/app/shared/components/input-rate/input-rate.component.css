@@ -1,3 +1,31 @@
 .rate {
   text-align: center;
 }
+
+.text {
+  position: relative;
+  margin: 0px auto;
+  height: 20px;
+  padding-top: 15px;
+  width: 6.0em;
+}
+
+.edit {
+  height: 35px;
+}
+
+.text .mat-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  transform: translateY(50%);
+}
+
+button {
+  width: 25px;
+}
+
+.hide {
+  display: none;
+}

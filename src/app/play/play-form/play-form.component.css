@@ -8,9 +8,9 @@ input.as-text {
 }
 
 .actions {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 .actions .filler {
@@ -18,7 +18,7 @@ input.as-text {
 }
 
 .actions > * {
-    padding-right: 60px;
+  padding-right: 60px;
 }
 
 .scores {
@@ -28,17 +28,10 @@ input.as-text {
 }
 
 .scores > * {
-  margin: 10px auto;
+  width: 300px;
+  margin: 10px 10px;
 }
 
-.scores button {
-  min-width: 250px;
-  min-height: 300px;
-  color: white;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
+.flex-grow {
+  flex-grow: 1;
 }

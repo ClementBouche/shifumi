@@ -1,5 +1,8 @@
-.contenu > p {
+.contenu {
   padding-bottom: 25px;
+}
+
+.contenu > p {
   text-align: justify;
 }
 

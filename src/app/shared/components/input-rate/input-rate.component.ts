@@ -13,20 +13,34 @@ export class InputRateComponent implements OnInit {
 
   @Output() rateChanged: EventEmitter<number> = new EventEmitter<number>();
 
+  mode: string = 'view';
+
+  rates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  switchMode() {
+    if (this.disabled) {
+      return;
+    }
+    if (this.mode === 'view') {
+      this.mode = 'edit';
+    } else {
+      this.mode = 'view';
+    }
+  }
+
   setRate(value: number) {
     if (value === this.rate) {
-      this.rate = value - 1;
-    } else if (this.rate === value - 1) {
       this.rate = null;
     } else {
       this.rate = value;
     }
     this.rateChanged.emit(this.rate);
+    this.switchMode();
   }
 
   getRateColor(seuil: number) {
@@ -39,7 +53,7 @@ export class InputRateComponent implements OnInit {
   }
 
   getIcon(seuil: number) {
-    return this.rate >= seuil ? 'star' : this.rate + 1 === seuil ? 'star_half' : 'star_border';
+    return this.rate >= seuil ? 'star' : 'star_border';
   }
 
 }
