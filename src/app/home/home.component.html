@@ -21,10 +21,10 @@
     <app-play-list [plays]="plays"></app-play-list>
     <div class="actions">
       <a mat-button color="primary" routerLink="play" routerLinkActive="active">
-        Voir toutes les parties <mat-icon>visibility</mat-icon>
+          <mat-icon>visibility</mat-icon> Voir toutes les parties
       </a>
       <a mat-button color="primary" routerLink="play" routerLinkActive="active">
-        Ajouter une partie <mat-icon>add</mat-icon>
+          <mat-icon>add</mat-icon> Ajouter une partie
       </a>
     </div>
   </div>
@@ -33,7 +33,7 @@
     <h2>Les joueurs les plus actifs</h2>
     <app-player-list [players]="players"></app-player-list>
     <a mat-button color="primary" routerLink="player" routerLinkActive="active">
-      Voir tous les joueurs <mat-icon>visibility</mat-icon>
+        <mat-icon>visibility</mat-icon> Voir tous les joueurs
     </a>
   </div>
 
@@ -41,7 +41,7 @@
     <h2>Les jeux les mieux notés</h2>
     <app-boardgame-list [boardgames]="boardgames"></app-boardgame-list>
     <a mat-button color="primary" routerLink="boardgame" routerLinkActive="active">
-      Rechercher un jeu <mat-icon>search</mat-icon>
+        <mat-icon>search</mat-icon> Rechercher un jeu
     </a>
   </div>
 

@@ -1,8 +1,7 @@
 <ng-container *ngIf="play">
   <div class="play">
     <button mat-flat-button color="primary" class="game-link hide-in-media" (click)="goBoardgame()">
-      Détails
-      <mat-icon>visibility</mat-icon>
+      <mat-icon>visibility</mat-icon> Détails
     </button>
     <app-play-card [play]="play" fromDate=false (headerClicked)="goBoardgame()">
       <ng-container *ngIf="user">

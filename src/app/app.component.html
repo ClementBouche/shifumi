@@ -9,8 +9,8 @@
     <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher un jeux..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
     <ng-container *ngIf="registered && registered.username != '' else login">
       <a mat-button class="profil-button" routerLink="user" routerLinkActive="active">
-        {{ registered.username }}
         <mat-icon>person</mat-icon>
+        {{ registered.username }}
       </a>
       <a mat-button (click)="loggout()">
         <mat-icon>exit_to_app</mat-icon>
