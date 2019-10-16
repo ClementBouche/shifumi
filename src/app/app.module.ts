@@ -17,6 +17,7 @@ import { BoardgamePickDialogComponent } from './core/entry-components/boardgame-
 import { PlayerPickDialogComponent } from './core/entry-components/player-pick-dialog/player-pick-dialog.component';
 import { AppTokenInterceptor } from './core/interceptors/app-token.interceptor';
 import { MatPaginatorIntlFr } from './core/intl/mat-paginator-intl.fr';
+import { HomeSharedModule } from './home/shared/home-shared.module';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -36,10 +37,11 @@ const config: SocketIoConfig = {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule,
     AppMaterialModule,
-    SocketIoModule.forRoot(config),
     SharedModule,
+    HomeSharedModule,
+    AppRoutingModule,
+    SocketIoModule.forRoot(config),
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },

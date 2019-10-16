@@ -11,14 +11,14 @@ import { RegisterComponent } from './register/register.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { PlayerSharedModule } from '../player/shared/player-shared.module';
-import { MenuComponent } from './menu/menu.component';
+import { HomeSharedModule } from './shared/home-shared.module';
+import { BoardgameSharedModule } from '../boardgame/shared/boardgame-shared.module';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    MenuComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +28,9 @@ import { MenuComponent } from './menu/menu.component';
     SharedModule,
     HomeRoutingModule,
     PlaySharedModule,
-    PlayerSharedModule
+    PlayerSharedModule,
+    BoardgameSharedModule,
+    HomeSharedModule
   ]
 })
 export class HomeModule { }

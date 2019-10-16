@@ -16,3 +16,10 @@
 .winner {
   color: var(--first-color);
 }
+
+.time {
+  margin-top: 11px;
+  text-align: right;
+  font-size: 0.9em;
+  font-style: italic;
+}

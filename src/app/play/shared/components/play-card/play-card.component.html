@@ -19,9 +19,8 @@
           </span>
       </ng-container>
     </p>
-    <ul>
-      <li></li>
-      <li *ngIf="play.playingTime != 0">{{ play.playingTime | playTime:"humanize" }}</li>
+    <ul *ngIf="play.playingTime != 0">
+      <li class="time">{{ play.playingTime | playTime:"humanize" }}</li>
     </ul>
   </mat-card-content>
   <ng-content></ng-content>

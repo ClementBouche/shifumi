@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-text-chip',
   template: `
     <mat-chip-list>
-      <mat-chip class="app-text-chip allow-overflow mat-elevation-z6" 
+      <mat-chip class="app-text-chip allow-overflow" [class.mat-elevation-z6]="!flat" 
           [color]="color"
           [style.backgroundColor]="color"
           [matBadge]="chipBadge"
@@ -14,19 +14,15 @@ import { Component, OnInit, Input } from '@angular/core';
     </mat-chip-list>
   `,
   styles: [`
-    .app-text-chip {
-      font-weight: bold;
-    }
-    .allow-overflow {
-      overflow: inherit;
-    }
   `]
 })
 export class TextChipComponent implements OnInit {
 
-  @Input() color: string = 'primary';
+  @Input() color: string;
 
   @Input() chipBadge: number;
+
+  @Input() flat: boolean = true;
 
   constructor() { }
 

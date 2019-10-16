@@ -1,0 +1,22 @@
+<div class="buttons">
+  <a mat-button routerLink="/home" routerLinkActive="active">
+      Accueil
+  </a>
+  <a mat-button routerLink="/boardgame" routerLinkActive="active">
+      Rechercher un jeu
+  </a>
+  <a mat-button routerLink="play" routerLinkActive="active">
+      Toutes les parties
+  </a>
+  <ng-container *ngIf="connected$ | async as connected">
+  <a mat-button routerLink="play/me" routerLinkActive="active">
+      Mes parties
+  </a>
+  </ng-container>
+  <a mat-button routerLink="player" routerLinkActive="active">
+      Les joueurs
+  </a>
+  <a mat-button routerLink="place" routerLinkActive="active">
+      Lieux
+  </a>
+</div>

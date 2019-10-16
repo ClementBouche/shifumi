@@ -27,32 +27,7 @@
   <mat-sidenav-container class="app-container">
     <!-- TODO mode over -->
     <mat-sidenav #sidenav mode="over" opened="false" class="mat-elevation-z6">
-      <mat-list role="list">
-        <mat-list-item role="listitem">
-            <a mat-button routerLink="/" routerLinkActive="active">
-              <mat-icon>link</mat-icon>
-              Home
-            </a>
-        </mat-list-item>
-        <mat-list-item role="listitem">
-            <a mat-button routerLink="boardgame" routerLinkActive="active">
-              <mat-icon>link</mat-icon>
-              Jeux
-            </a>
-        </mat-list-item>
-        <mat-list-item role="listitem">
-            <a mat-button routerLink="play" routerLinkActive="active">
-              <mat-icon>link</mat-icon>
-              Parties
-            </a>
-        </mat-list-item>
-        <mat-list-item role="listitem">
-            <a mat-button routerLink="player" routerLinkActive="active">
-              <mat-icon>link</mat-icon>
-              Joueurs
-            </a>
-        </mat-list-item>
-      </mat-list>
+      <app-menu></app-menu>
     </mat-sidenav>
     <mat-sidenav-content id="main-content">
       <div id="top-page"></div>

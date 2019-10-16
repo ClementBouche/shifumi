@@ -1,21 +1,10 @@
-.pages {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 300px;
+.contenu > p {
+  padding-bottom: 25px;
+  text-align: justify;
 }
 
-.pages > * {
-  margin: 10px;
-  width: 340px;
-}
-
-.pages > *:hover {
-  cursor: pointer;
-}
-
-.contenu {
-  margin: 20px;
+.actions {
+  text-align: right;
 }
 
 .credit {
@@ -25,8 +14,4 @@
 
 .divider {
   padding-bottom: 10px;
-}
-
-h4 {
-  text-align: center;
 }
