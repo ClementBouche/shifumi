@@ -2,7 +2,7 @@ import { Deserializable } from 'src/app/core/model/deserializable.interface';
 
 export class Message implements Deserializable {
   id: string;
-  content: string;
+  content: string = '';
   sender: string = 'Anonymous';
   room: string;
 

@@ -39,7 +39,6 @@ export class MessageService {
     if (this.room) {
       message.room = this.room;
     }
-    console.log('message', message);
     this.socket.emit('addMessage', message);
   }
 

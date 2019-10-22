@@ -4,5 +4,9 @@
 }
 
 .buttons > * {
-  margin: 10px;
+  padding: 10px 16px;
+}
+
+a {
+  text-align: left;
 }

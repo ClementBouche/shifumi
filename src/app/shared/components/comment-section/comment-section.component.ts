@@ -71,6 +71,9 @@ export class CommentSectionComponent implements OnInit, OnDestroy {
   }
 
   addMessage() {
+    if (this.currentMessage.content === '') {
+      return;
+    }
     // socket emit
     this.service.addMessage(this.currentMessage);
 
