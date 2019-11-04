@@ -9,9 +9,6 @@ export class BoardgameNote implements Deserializable {
   type: string = 'all';
 
   // bayes value
-  description: number;
-
-  // bayes value
   value: number;
 
   // average value
@@ -22,11 +19,10 @@ export class BoardgameNote implements Deserializable {
 
   deserialize(input: any) {
     Object.assign(this, {
-      rank: input.rank,
+      rank: Number.parseInt(input.rank),
       type: input.name,
-      description: input.description,
-      value: input.bayes_note,
-      average_note: input.average_note,
+      value: Number.parseFloat(input.bayes_note),
+      average_note: Number.parseFloat(input.average_note),
     });
     return this;
   }
