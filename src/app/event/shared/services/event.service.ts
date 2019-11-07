@@ -9,8 +9,9 @@ import { ShifumiEventSearch } from '../model/shifumi-event-search.model';
 import { ShifumiEventPage } from '../model/shifumi-event-page';
 
 const EVENTS: ShifumiEvent[] = [
-  new ShifumiEvent().deserialize({id: 1, name: 'Game party', description: 'Who wanna play?'}),
-  new ShifumiEvent().deserialize({id: 2, name: 'Team Building or Team Slacking ?', description: 'It\' about MidiGame'}),
+  new ShifumiEvent().deserialize({id: '1', name: 'Game party', description: 'Who wanna play?'}),
+  new ShifumiEvent().deserialize({id: '2', name: 'Midi Jeux', description: 'It\' about MidiGame'}),
+  new ShifumiEvent().deserialize({id: '3', name: 'Soirée au Nid', description: 'Soirée au Nid'}),
 ];
 
 @Injectable({
@@ -34,9 +35,8 @@ export class EventService {
 
   getEvent(id: string): Promise<ShifumiEvent> {
     const url = `${this.url}/id`;
-    return from([
-        EVENTS.find(event => event.id === id)
-      ]).toPromise();
+    const result = EVENTS.find(event => event.id === id);
+    return from([result]).toPromise();
   }
 
   search(search: ShifumiEventSearch): Promise<ShifumiEventPage> {

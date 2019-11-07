@@ -5,6 +5,7 @@ import { EventListComponent } from './components/event-list/event-list.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from 'src/app/shared/app-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     AppMaterialModule,
     SharedModule,
   ],

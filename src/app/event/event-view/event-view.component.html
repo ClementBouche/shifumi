@@ -1,0 +1,5 @@
+<a mat-button [routerLink]="['/', 'event']" routerLinkActive="router-link-active">Retour liste</a>
+
+<ng-container *ngIf="shifumiEvent$ | async as shifumiEvent">
+    <app-event-card [shifumiEvent]="shifumiEvent"></app-event-card>
+</ng-container>

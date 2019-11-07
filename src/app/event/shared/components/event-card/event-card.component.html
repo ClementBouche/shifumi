@@ -3,6 +3,12 @@
     <mat-card-header>
       <h4>{{ shifumiEvent.name }}</h4>
     </mat-card-header>
+    <mat-card-content>
+      {{ shifumiEvent.description }}
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button [routerLink]="['/', 'event', 'view', shifumiEvent.id]" routerLinkActive="router-link-active">Voir</a>
+      <a mat-button [routerLink]="['/', 'event', 'update', shifumiEvent.id]" routerLinkActive="router-link-active">Modifier</a>
+    </mat-card-actions>
   </mat-card>
 </ng-container>
-
