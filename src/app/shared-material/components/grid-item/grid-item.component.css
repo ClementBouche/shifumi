@@ -1,0 +1,15 @@
+.app-grid-item {
+  min-height: 60px;
+  background: rgba(100, 200, 50, 0.5);
+}
+
+.small .mat-grid-list {
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.medium .mat-grid-list,
+.large .mat-grid-list {
+  margin-right: 16px;
+  margin-bottom: 16px;
+}

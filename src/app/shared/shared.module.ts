@@ -27,6 +27,7 @@ import { InputScrollTopComponent } from './components/input-scroll-top/input-scr
 import { SharedLayoutModule } from '../shared-layout/shared-layout.module';
 import { SharedChartModule } from '../shared-chart/shared-chart.module';
 import { InputRateComponent } from './components/input-rate/input-rate.component';
+import { SharedMaterialModule } from '../shared-material/shared-material.module';
 
 @NgModule({
   declarations: [
@@ -57,10 +58,12 @@ import { InputRateComponent } from './components/input-rate/input-rate.component
     AppMaterialModule,
     SharedChartModule,
     SharedLayoutModule,
+    SharedMaterialModule,
   ],
   exports: [
     SharedChartModule,
     SharedLayoutModule,
+    SharedMaterialModule,
     AutocompleteChipsComponent,
     AutocompleteSearchInputComponent,
     AvatarComponent,

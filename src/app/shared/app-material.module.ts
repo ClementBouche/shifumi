@@ -29,7 +29,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
-import { MatTooltipModule } from '@angular/material/tooltip'; 
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   imports: [
@@ -64,6 +65,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSliderModule,
     MatSelectModule,
     MatTooltipModule,
+    LayoutModule,
   ],
   exports: [
     MatButtonModule,
@@ -97,6 +99,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSliderModule,
     MatSelectModule,
     MatTooltipModule,
+    LayoutModule,
   ]
 })
 export class AppMaterialModule { }

@@ -1,0 +1,100 @@
+.app-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.small {
+  margin: 8px;
+}
+
+.medium, .large {
+  margin: 12px;
+}
+
+
+
+/* small grid */
+
+.app-grid.small app-grid-item {
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.app-grid.small app-grid-item.small-1 {
+  width: calc((100% - 48px) / 4);
+}
+.app-grid.small app-grid-item.small-2 {
+  width: calc((100% - 16px) / 2);
+}
+.app-grid.small app-grid-item.small-4 {
+  width: calc((100% - 0px) / 1);
+}
+
+
+/* medium grid */
+
+.app-grid.medium app-grid-item {
+  margin-right: 24px;
+  margin-bottom: 24px;
+}
+
+.app-grid.medium app-grid-item.medium-1 {
+  width: calc((100% - 168px) / 8);
+}
+.app-grid.medium app-grid-item.medium-2 {
+  width: calc((100% - 72px) / 4);
+}
+.app-grid.medium app-grid-item.medium-4 {
+  width: calc((100% - 24px) / 2);
+}
+.app-grid.medium app-grid-item.medium-8 {
+  width: calc((100% - 0px) / 1);
+}
+
+/* large grid */
+
+.app-grid.large app-grid-item {
+  width: calc((100% - 264px) / 12);
+  margin-right: 24px;
+  margin-bottom: 24px;
+}
+
+/* last child */
+
+.app-grid.small app-grid-item[last="true"],
+.app-grid.medium app-grid-item[last="true"],
+.app-grid.large app-grid-item[last="true"] {
+  margin-right: 0;
+}
+
+
+/* pour le test */
+/* configuration ecran */
+.screen {
+  margin: auto;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.small-screen {
+  width: 360px;
+}
+.medium-screen {
+  width: 600px;
+}
+.large-screen {
+  width: 1280px;
+}
+/* configuration contenu */
+.column {
+  width: 70px;
+}
+.column-100 {
+  width: 100px;
+}
+.column-200 {
+  width: 200px;
+}
