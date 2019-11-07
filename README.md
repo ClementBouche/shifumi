@@ -22,3 +22,16 @@ Play
 Place
 - [ ] Build a map ?
 
+Event
+- create event
+  - invite players
+  - pick a game
+    - vote poll
+- see events
+    - only those you're invited
+
+Event Model 
+- public
+- players
+- date / date range
+- place

@@ -66,7 +66,7 @@ export class PlayerService {
   }
 
   getBoardgamePlayers(boardgame: Boardgame) {
-    let url = `${environment.apiUrl}/player/search`
+    const url = `${environment.apiUrl}/player/search`;
     return this.httpClient.post(url, {
         boardgame: boardgame.name
       })

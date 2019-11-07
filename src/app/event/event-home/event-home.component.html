@@ -1,0 +1,31 @@
+<app-custom-layout>
+    
+    <!-- search -->
+    <app-layout-nav>
+        event search
+    </app-layout-nav>
+
+    <h2>Evenements</h2>
+
+    <mat-paginator [length]="count"
+        [pageSize]="size"
+        [pageIndex]="index"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="changePage($event)">
+    </mat-paginator>
+
+    <ng-container *ngIf="shifumiEvents$ | async as shifumiEvents; else loading">
+        <app-event-list [shifumiEvents]="shifumiEvents"></app-event-list>
+    </ng-container>
+
+    <!-- liste des evenements triés par date -->
+    <!-- options de tri : nom, date / filtre : terminé | en cours, public | privé -->
+
+    <!-- ajouter un evenement -->
+    <a mat-button routerLink="add" routerLinkActive="router-link-active">Créer</a> 
+
+</app-custom-layout>
+
+<ng-template #loading>
+    chargement...
+</ng-template>

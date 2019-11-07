@@ -31,6 +31,10 @@ const routes: Routes = [
     loadChildren: () => import('./place/place.module').then(m => m.PlaceModule)
   },
   {
+    path: 'event',
+    loadChildren: () => import('./event/event.module').then(m => m.EventModule)
+  },
+  {
     path: '**',
     redirectTo: '/'
   }
