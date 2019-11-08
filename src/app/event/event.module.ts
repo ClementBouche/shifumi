@@ -9,6 +9,7 @@ import { EventHomeComponent } from './event-home/event-home.component';
 import { EventFormComponent } from './event-form/event-form.component';
 import { EventSharedModule } from './shared/event-shared.module';
 import { EventViewComponent } from './event-view/event-view.component';
+import { PlayerSharedModule } from '../player/shared/player-shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EventViewComponent } from './event-view/event-view.component';
     AppMaterialModule,
     SharedModule,
     EventRoutingModule,
-    EventSharedModule
+    EventSharedModule,
+    PlayerSharedModule,
   ]
 })
 export class EventModule { }

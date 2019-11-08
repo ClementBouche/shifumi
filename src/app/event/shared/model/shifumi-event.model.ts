@@ -35,7 +35,7 @@ export class ShifumiEvent implements Serializable, Deserializable {
             name: input.name,
             description: input.description,
             public: input.public || true,
-            date: input.date || '07-11-2019',
+            date: input.date || '2019-11-07',
             place: input.place || 'Midi Jeux',
             status: input.status || 'ouvert',
             players: input.players,

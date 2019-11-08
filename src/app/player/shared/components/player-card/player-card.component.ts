@@ -10,6 +10,9 @@ export class PlayerCardComponent implements OnInit {
 
   @Input() player: Player;
 
+  // TODO: define three sizes for all cards: small, medium, large
+  @Input() size: string;
+
   @Input() detail: boolean = false;
 
   constructor() { }

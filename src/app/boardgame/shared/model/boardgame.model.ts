@@ -1,8 +1,8 @@
-import { Deserializable } from "src/app/core/model/deserializable.interface";
+import { Deserializable } from 'src/app/core/model/deserializable.interface';
 
-import { Artist } from "./artist.model";
-import { Designer } from "./designer.model";
-import { Poll } from "./poll.model";
+import { Artist } from './artist.model';
+import { Designer } from './designer.model';
+import { Poll } from './poll.model';
 import { BoardgameNote } from './boardgame-note.model';
 
 export class Boardgame implements Deserializable {

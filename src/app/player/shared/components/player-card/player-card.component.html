@@ -1,9 +1,13 @@
 <mat-card *ngIf="player">
-  <app-avatar class="app-card-avatar" size=60 [name]="player.name"
+  <!-- <app-avatar class="app-card-avatar" size=60 [name]="player.name"
       [colors]="player.avatar.colors"
       [image]="player.avatar.image">
-  </app-avatar>
+  </app-avatar> -->
   <mat-card-header>
+    <app-avatar mat-card-avatar class="app-card-avatar" size=40 [name]="player.name"
+        [colors]="player.avatar.colors"
+        [image]="player.avatar.image">
+    </app-avatar>
     <!-- playername -->
     <mat-card-title>
       {{ player.name }}
@@ -12,17 +16,21 @@
         {{ player.counts.plays }} parties • {{ player.victoryRatio }}% de Victoires
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-divider></mat-divider>
-  <mat-card-content>
-    <ul>
-      <li>Temps de jeux cumulé : <span>{{ player.time | playTime:"humanize" }}</span></li>
-      <li><span>{{ player.counts.boardgames }} jeux</span> testés</li>
-      <ng-container *ngIf="detail">
-        <li>{{ player.counts.plays }} parties, {{ player.counts.wins }} victoires</li>
-        <li *ngIf="player.counts.places > 1">Dans {{ player.counts.places }} lieux différents</li>
-        <li>Avec ou contre {{ player.counts.players }} autres joueurs</li>
-      </ng-container>
-    </ul>
-  </mat-card-content>
-  <ng-content></ng-content>
+
+  <ng-container *ngIf="size !== 'small'">
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <ul>
+        <li>Temps de jeux cumulé : <span>{{ player.time | playTime:"humanize" }}</span></li>
+        <li><span>{{ player.counts.boardgames }} jeux</span> testés</li>
+        <ng-container *ngIf="detail">
+          <li>{{ player.counts.plays }} parties, {{ player.counts.wins }} victoires</li>
+          <li *ngIf="player.counts.places > 1">Dans {{ player.counts.places }} lieux différents</li>
+          <li>Avec ou contre {{ player.counts.players }} autres joueurs</li>
+        </ng-container>
+      </ul>
+    </mat-card-content>
+    <ng-content></ng-content>
+  </ng-container>
+  
 </mat-card>

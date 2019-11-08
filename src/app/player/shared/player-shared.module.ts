@@ -13,6 +13,7 @@ import { PlayerTableComponent } from './components/player-table/player-table.com
 import { PlayerLibraryComponent } from './components/player-library/player-library.component';
 import { BoardgameSharedModule } from 'src/app/boardgame/shared/boardgame-shared.module';
 import { PlaySharedModule } from 'src/app/play/shared/play-shared.module';
+import { PlayerSmallCardComponent } from './components/player-small-card/player-small-card.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PlaySharedModule } from 'src/app/play/shared/play-shared.module';
     PlayerPageComponent,
     PlayerTableComponent,
     PlayerLibraryComponent,
+    PlayerSmallCardComponent,
   ],
   imports: [
     CommonModule,

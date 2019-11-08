@@ -1,0 +1,8 @@
+.players {
+    display: flex;
+}
+
+.players > * {
+    width: 300px;
+    margin: 10px;
+}

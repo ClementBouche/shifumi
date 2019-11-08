@@ -1,5 +1,47 @@
 <a mat-button [routerLink]="['/', 'event']" routerLinkActive="router-link-active">Retour liste</a>
 
 <ng-container *ngIf="shifumiEvent$ | async as shifumiEvent">
-    <app-event-card [shifumiEvent]="shifumiEvent"></app-event-card>
+
+  <mat-card>
+    <mat-card-header>
+        <mat-card-title>
+          {{ shifumiEvent.name }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <span *ngIf="shifumiEvent.place">{{ shifumiEvent.place }}</span>
+          <span *ngIf="shifumiEvent.place && shifumiEvent.date"> • </span>
+          <span *ngIf="shifumiEvent.date">{{ shifumiEvent.date | appDate:'humanize' }}</span>
+        </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- TODO support html instead of text -->
+      <p>{{ shifumiEvent.description }}</p>
+
+      <div>
+        <h4>Invités</h4>
+        <div class="players">
+          <ng-container *ngFor="let player of shifumiEvent.players">
+            <app-player-card size="small" [player]="player"></app-player-card>
+          </ng-container>
+        </div>
+        <a mat-button [routerLink]="['/', 'event', 'view', shifumiEvent.id]" routerLinkActive="router-link-active">Inviter des joueurs</a>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div>
+        <h4>Sondage</h4>
+        <div class="poll">
+          <ng-container *ngFor="let player of shifumiEvent.players">
+            <app-player-card size="small" [player]="player"></app-player-card>
+          </ng-container>
+        </div>
+        <a mat-button [routerLink]="['/', 'event', 'update', shifumiEvent.id]" routerLinkActive="router-link-active">Voter</a>
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
 </ng-container>

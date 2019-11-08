@@ -6,11 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from 'src/app/shared/app-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { BoardgamePollComponent } from './components/boardgame-poll/boardgame-poll.component';
 
 @NgModule({
   declarations: [
     EventCardComponent,
     EventListComponent,
+    BoardgamePollComponent,
   ],
   imports: [
     CommonModule,
