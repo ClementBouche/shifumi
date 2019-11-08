@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { LoginRegisterService } from 'src/app/home/shared/services/login-register.service';
-
 import { Boardgame } from '../../model/boardgame.model';
 import { Router } from '@angular/router';
 
@@ -15,7 +13,6 @@ export class BoardgameCardComponent implements OnInit {
   @Input() boardgame: Boardgame;
 
   constructor(
-    private loginService: LoginRegisterService,
     private router: Router
   ) { }
 
@@ -23,7 +20,11 @@ export class BoardgameCardComponent implements OnInit {
   }
 
   goTo() {
-    this.router.navigate(['/', 'boardgame', this.boardgame.id]);
+    if (this.boardgame.id) {
+      this.router.navigate(['/', 'boardgame', this.boardgame.id]);
+    } else {
+      this.router.navigate(['/', 'boardgame', 'preview', this.boardgame.xmlId]);
+    }
   }
 
 }

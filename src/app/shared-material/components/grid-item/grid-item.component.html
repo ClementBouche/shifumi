@@ -1,0 +1,8 @@
+<mat-grid-tile class="app-grid-item"
+  [class.small]="isSmallScreen"
+  [class.medium]="isMediumScreen"
+  [class.large]="isLargeScreen"
+  [class.landscape]="landscape"
+  colspan="colspan" colrow="colrow">
+    <ng-content></ng-content>
+</mat-grid-tile>

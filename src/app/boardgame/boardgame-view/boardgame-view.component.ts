@@ -8,7 +8,6 @@ import { BoardgameService } from '../shared/services/boardgame.service';
 import { MetadataTagsService } from 'src/app/core/services/metadata-tags.service';
 import { Tagable } from 'src/app/core/model/tagable.interface';
 import { PlayService } from 'src/app/play/shared/services/play.service';
-import { PlaySearch } from 'src/app/play/shared/model/play-search.model';
 import { PlaysPage } from 'src/app/play/shared/model/plays-page.model';
 import { Play } from 'src/app/play/shared/model/play.model';
 import { User } from 'src/app/user/shared/model/user.model';

@@ -1,0 +1,13 @@
+<p>
+  Small : {{ isSmallScreen}}
+  Medium : {{ isMediumScreen }}
+  Large : {{ isLargeScreen }}
+</p>
+
+<div class="app-grid"
+  [class.small]="isSmallScreen"
+  [class.medium]="isMediumScreen"
+  [class.large]="isLargeScreen"
+  [class.landscape]="landscape">
+  <ng-content></ng-content>
+</div>

@@ -32,11 +32,7 @@ export class PlayerSearchComponent implements OnInit {
     this.route.queryParams.pipe(
       map((params) => {
         this.playerSearch = new PlayerSearch().deserialize(params);
-        this.form.patchValue({
-          name: this.playerSearch.name
-        }, {
-          emitEvent: false
-        });
+        this.patchForm(this.playerSearch);
       })
     ).subscribe();
 
@@ -55,13 +51,17 @@ export class PlayerSearchComponent implements OnInit {
 
   reset() {
     this.playerSearch = new PlayerSearch();
-    this.patchForm();
+    this.patchForm(this.playerSearch);
     this.search();
   }
 
-  private patchForm() {
+  private patchForm(search: PlayerSearch) {
     this.form.patchValue({
-      name: this.playerSearch.name
+      name: search.name,
+      orderBy: search.order,
+      plays: search.minPlay,
+    }, {
+      emitEvent: false
     });
   }
 

@@ -61,6 +61,19 @@ input[type="number"] {
   }
 }
 
+/* style */
+
+.mat-grid-list {
+  width: 100%;
+}
+
+.mat-grid-list.small {
+  margin: 8px;
+}
+.mat-grid-list.medium,
+.mat-grid-list.large {
+  margin: 12px;
+}
 
 /*
 body {
