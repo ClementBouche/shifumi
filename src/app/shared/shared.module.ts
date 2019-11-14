@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { AppMaterialModule } from './app-material.module';
-
 import { AutocompleteChipsComponent } from './components/autocomplete-chips/autocomplete-chips.component';
 import { AutocompleteSearchInputComponent } from './components/autocomplete-search-input/autocomplete-search-input.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
@@ -55,7 +53,6 @@ import { SharedMaterialModule } from '../shared-material/shared-material.module'
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppMaterialModule,
     SharedChartModule,
     SharedLayoutModule,
     SharedMaterialModule,

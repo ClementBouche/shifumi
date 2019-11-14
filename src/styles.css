@@ -61,19 +61,24 @@ input[type="number"] {
   }
 }
 
-/* style */
+/* grid list custom style with directives ReactiveGrid && CustomTile */
 
-.mat-grid-list {
-  width: 100%;
-}
-
-.mat-grid-list.small {
+.mat-grid-list.app-reactive-grid-small {
+  width: calc(100% - 16px);
   margin: 8px;
 }
-.mat-grid-list.medium,
-.mat-grid-list.large {
+.mat-grid-list.app-reactive-grid-medium,
+.mat-grid-list.app-reactive-grid-large {
+  width: calc(100% - 24px);
   margin: 12px;
 }
+.mat-grid-tile.app-custom-tile .mat-figure {
+  display: block;
+  justify-content: inherit;
+  align-items: inherit;
+  position: inherit;
+}
+
 
 /*
 body {

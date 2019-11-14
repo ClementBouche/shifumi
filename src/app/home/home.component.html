@@ -1,16 +1,3 @@
-<mat-grid-list appReactiveGrid cols="4" rowHeight="100px" style="width: 100%;" gutterSize="10px">
-  <mat-grid-tile colspan="1" rowspan="1"><div class="app-grid-item" style="background: rebeccapurple; width: 100%; min-height: 100px;">coucou</div></mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1"><div class="app-grid-item" style="background: yellowgreen; width: 100%; min-height: 100px;">coucou</div></mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1"><div class="app-grid-item" style="background: greenyellow; width: 100%; min-height: 100px;">coucou</div></mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1"><div class="app-grid-item" style="background: blueviolet; width: 100%; min-height: 100px;">coucou</div></mat-grid-tile>
-
-  <mat-grid-tile colspan="2" rowspan="1"><div class="app-grid-item" style="background: rebeccapurple; width: 100%; min-height: 100px;">coucou</div></mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="2"><div class="app-grid-item" style="background: yellowgreen; width: 100%; min-height: 100px;">coucou</div></mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="1"><div class="app-grid-item" style="background: greenyellow; width: 100%; min-height: 100px;">coucou</div></mat-grid-tile>
-
-  <mat-grid-tile colspan="4" rowspan="1"><div class="app-grid-item" style="background: greenyellow; width: 100%; min-height: 100px;">coucou</div></mat-grid-tile>
-</mat-grid-list>
-
 <app-custom-layout>
 
   <div class="contenu">
@@ -27,38 +14,54 @@
     </p>
   </div>
 
-  <div class="contenu" *ngIf="plays$ | async as plays">
-    <h2>Les dernières parties</h2>
-    <app-play-list [plays]="plays"></app-play-list>
-    <div class="actions">
-      <a mat-button color="primary" routerLink="play" routerLinkActive="active">
-        <mat-icon>visibility</mat-icon> Voir toutes les parties
-      </a>
-      <a mat-button color="primary" routerLink="play/add" routerLinkActive="active">
-        <mat-icon>add</mat-icon> Ajouter une partie
-      </a>
-    </div>
-  </div>
+  <mat-grid-list appReactiveGrid [(cols)]="cols" [(gutterSize)]="gutterSize" [rowHeight]="rowHeight">
 
-  <div class="contenu" *ngIf="players$ | async as players">
-    <h2>Les joueurs les plus actifs</h2>
-    <app-player-list [players]="players"></app-player-list>
-    <div class="actions">
-      <a mat-button color="primary" routerLink="player" routerLinkActive="active">
-          <mat-icon>visibility</mat-icon> Voir tous les joueurs
-      </a>
-    </div>
-  </div>
+    <ng-container *ngIf="plays$ | async as plays">
+      <mat-grid-tile appReactiveTile colspan="4" rowspan="7">
+        <div class="contenu">
+          <h2>Les dernières parties</h2>
+          <app-play-list [plays]="plays"></app-play-list>
+          <div class="actions">
+            <a mat-button color="primary" routerLink="play" routerLinkActive="active">
+              <mat-icon>visibility</mat-icon> Voir toutes les parties
+            </a>
+            <a mat-button color="primary" routerLink="play/add" routerLinkActive="active">
+              <mat-icon>add</mat-icon> Ajouter une partie
+            </a>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </ng-container>
 
-  <div class="contenu" *ngIf="boardgames$ | async as boardgames">
-    <h2>Les jeux les mieux notés</h2>
-    <app-boardgame-list [boardgames]="boardgames"></app-boardgame-list>
-    <div class="actions">
-      <a mat-button color="primary" routerLink="boardgame" routerLinkActive="active">
-          <mat-icon>search</mat-icon> Rechercher un jeu
-      </a>
-    </div>
-  </div>
+    <ng-container *ngIf="players$ | async as players">
+      <mat-grid-tile appReactiveTile colspan="4" rowspan="7">
+        <div class="contenu">
+          <h2>Les joueurs les plus actifs</h2>
+          <app-player-list [players]="players"></app-player-list>
+          <div class="actions">
+            <a mat-button color="primary" routerLink="player" routerLinkActive="active">
+                <mat-icon>visibility</mat-icon> Voir tous les joueurs
+            </a>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </ng-container>
+
+    <ng-container *ngIf="boardgames$ | async as boardgames">
+      <mat-grid-tile appReactiveTile colspan="4" rowspan="7">
+        <div class="contenu">
+          <h2>Les jeux les mieux notés</h2>
+          <app-boardgame-list [boardgames]="boardgames"></app-boardgame-list>
+          <div class="actions">
+            <a mat-button color="primary" routerLink="boardgame" routerLinkActive="active">
+                <mat-icon>search</mat-icon> Rechercher un jeu
+            </a>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </ng-container>
+
+  </mat-grid-list>
 
   <app-comment-section room="home" title="Commentaires libres">
     <p>Laissez-nous un message, vos impressions sur le site, partagez une image de jeux.</p>

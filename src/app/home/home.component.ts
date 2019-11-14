@@ -33,6 +33,11 @@ export class HomeComponent implements OnInit, Tagable {
 
   connected: boolean = false;
 
+  // grid parameters
+  cols: number = 4;
+  gutterSize: string = '8px';
+  rowHeight: string = '100px';
+
   constructor(
     private playService: PlayService,
     private playerService: PlayerService,

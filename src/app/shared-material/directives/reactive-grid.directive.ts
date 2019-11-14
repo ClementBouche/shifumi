@@ -1,51 +1,39 @@
-import { Directive, ElementRef, ChangeDetectorRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
+const GRID_LAYOUTS = [{
+    name: 'app-reactive-grid-small',
+    cols: 4,
+    gutterSize: '8px'
+  },{
+    name: 'app-reactive-grid-medium',
+    cols: 8,
+    gutterSize: '12px'
+  },{
+    name: 'app-reactive-grid-large',
+    cols: 12,
+    gutterSize: '12px'
+}];
 
 @Directive({
   selector: '[appReactiveGrid]'
 })
 export class ReactiveGridDirective {
 
-  media: string;
-
   @Input() cols: number;
-
   @Input() gutterSize: string;
+
+  @Output() colsChange: EventEmitter<number> = new EventEmitter<number>();
+  @Input() gutterSizeChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private el: ElementRef,
+    private renderer: Renderer2,
     private breakpointObserver: BreakpointObserver,
-    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
     this.defineBreakpoints();
-    console.log('on init', this.cols, this.gutterSize);
-  }
-
-  private updateCols() {
-    this.cols = this.media === 'large' ? 12 : this.media === 'medium' ? 8 : 4;
-  }
-
-  private updateGutterSize() {
-    this.gutterSize = this.media === 'large' ? '12px' : this.media === 'medium' ? '12px' : '8px';
-  }
-
-  private updateGrid(media: string) {
-    this.media = media;
-    ['small', 'medium', 'large'].forEach((value) => {
-      if (value === media) {
-        this.el.nativeElement.classList.add(value);
-      } else {
-        this.el.nativeElement.classList.remove(value);
-      }
-    })
-
-    this.updateCols();
-    this.updateGutterSize();
-    this.el.nativeElement.setAttribute('cols', this.cols);
-    console.log('updateGrid', this.media, this.cols, this.gutterSize);
-    this.cd.markForCheck();
   }
 
   private defineBreakpoints() {
@@ -54,7 +42,7 @@ export class ReactiveGridDirective {
       Breakpoints.XSmall
     ]).subscribe((result) => {
       if (result.matches) {
-        this.updateGrid('small');
+        this.updateGrid('app-reactive-grid-small');
       }
     });
 
@@ -64,7 +52,7 @@ export class ReactiveGridDirective {
       Breakpoints.Medium
     ]).subscribe((result) => {
       if (result.matches) {
-        this.updateGrid('medium');
+        this.updateGrid('app-reactive-grid-medium');
       }
     });
 
@@ -74,9 +62,27 @@ export class ReactiveGridDirective {
       Breakpoints.XLarge
     ]).subscribe((result) => {
       if (result.matches) {
-        this.updateGrid('large');
+        this.updateGrid('app-reactive-grid-large');
       }
     });
+  }
+
+  private updateGrid(layoutName: string) {
+    GRID_LAYOUTS.forEach((l) => {
+      this.renderer.removeClass(this.el.nativeElement, l.name);
+    });
+
+    // class name
+    const layout = GRID_LAYOUTS.find((layout) => layout.name === layoutName);
+    this.renderer.addClass(this.el.nativeElement, layout.name)
+
+    // cols
+    this.cols = layout.cols;
+    this.colsChange.emit(this.cols);
+
+    // gutter size
+    this.gutterSize = layout.gutterSize;
+    this.gutterSizeChange.emit(this.gutterSize);
   }
 
 }
