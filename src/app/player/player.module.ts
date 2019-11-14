@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { AppMaterialModule } from '../shared/app-material.module';
-
 import { PlayerRoutingModule } from './player-routing.module';
 import { PlayerSharedModule } from './shared/player-shared.module';
 
@@ -16,6 +14,7 @@ import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { PlayerSearchComponent } from './player-search/player-search.component';
 import { PlayerHomeComponent } from './player-home/player-home.component';
 import { SharedChartModule } from '../shared-chart/shared-chart.module';
+import { AppMaterialModule } from '../shared/app-material.module';
 
 @NgModule({
   declarations: [

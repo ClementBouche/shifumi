@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 
 import { PlayRoutingModule } from './play-routing.module';
 import { PlaySharedModule } from './shared/play-shared.module';
-import { AppMaterialModule } from '../shared/app-material.module';
 
 import { PlayComponent } from './play.component';
 import { PlayViewComponent } from './play-view/play-view.component';
@@ -14,6 +13,7 @@ import { PlayUpdateComponent } from './play-update/play-update.component';
 import { PlayPaginatedComponent } from './play-paginated/play-paginated.component';
 import { ScoreFormComponent } from './score-form/score-form.component';
 import { SharedModule } from '../shared/shared.module';
+import { AppMaterialModule } from '../shared/app-material.module';
 
 @NgModule({
   declarations: [

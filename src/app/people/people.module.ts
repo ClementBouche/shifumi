@@ -5,9 +5,9 @@ import { PeopleCardComponent } from './people-card/people-card.component';
 import { PeopleViewComponent } from './people-view/people-view.component';
 import { PeopleRoutingModule } from './people-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppMaterialModule } from '../shared/app-material.module';
 import { SharedModule } from '../shared/shared.module';
 import { BoardgameSharedModule } from '../boardgame/shared/boardgame-shared.module';
+import { AppMaterialModule } from '../shared/app-material.module';
 
 @NgModule({
   declarations: [

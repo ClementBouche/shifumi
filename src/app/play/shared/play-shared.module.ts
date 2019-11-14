@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { AppMaterialModule } from '../../shared/app-material.module';
-
+import { AppMaterialModule } from 'src/app/shared/app-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { WinnerPipe } from './pipes/winner.pipe';

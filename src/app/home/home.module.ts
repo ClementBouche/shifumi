@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
-import { AppMaterialModule } from '../shared/app-material.module';
 
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +12,7 @@ import { PlaySharedModule } from '../play/shared/play-shared.module';
 import { PlayerSharedModule } from '../player/shared/player-shared.module';
 import { HomeSharedModule } from './shared/home-shared.module';
 import { BoardgameSharedModule } from '../boardgame/shared/boardgame-shared.module';
+import { AppMaterialModule } from '../shared/app-material.module';
 
 @NgModule({
   declarations: [

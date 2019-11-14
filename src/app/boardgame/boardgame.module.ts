@@ -9,12 +9,12 @@ import { BoardgameViewComponent } from './boardgame-view/boardgame-view.componen
 import { BoardgameSearchComponent } from './boardgame-search/boardgame-search.component';
 import { BoardgameSharedModule } from './shared/boardgame-shared.module';
 import { PlaySharedModule } from '../play/shared/play-shared.module';
-import { AppMaterialModule } from '../shared/app-material.module';
 import { BoardgamePaginatedComponent } from './boardgame-paginated/boardgame-paginated.component';
 import { SharedModule } from '../shared/shared.module';
 import { BoardgameHomeComponent } from './boardgame-home/boardgame-home.component';
 import { BoardgameFilterComponent } from './boardgame-filter/boardgame-filter.component';
 import { BoardgameTableComponent } from './boardgame-table/boardgame-table.component';
+import { AppMaterialModule } from '../shared/app-material.module';
 
 @NgModule({
   declarations: [
