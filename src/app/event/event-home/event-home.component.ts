@@ -35,7 +35,6 @@ export class EventHomeComponent implements OnInit {
         this.index = page.index - 1;
         this.size = page.size;
         this.count = page.count;
-        console.log(page.result);
         return page.result;
       })
     );

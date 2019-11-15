@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, Tagable {
 
   connected: boolean = false;
 
-  // grid parameters
+  // mat-grid-list parameters
   cols: number = 4;
   gutterSize: string = '8px';
   rowHeight: string = '100px';

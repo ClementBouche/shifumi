@@ -6,7 +6,7 @@
       Shifumi accompagne vos journées et soirées jeux.
       Il vous permet de rechercher votre prochain jeux,
       un petit jeu d'ambiance réunissant de nombreux joueurs,
-      un jeu de carte, de dé, avec beaucoup de matériel ou facil à mettre en place.
+      un jeu de carte, de dé, avec beaucoup de matériel ou facile à mettre en place.
     </p>
     <p>
       Connectez-vous pour enregistrer vos parties, planifier les prochaines séances
@@ -16,10 +16,23 @@
 
   <mat-grid-list appReactiveGrid [(cols)]="cols" [(gutterSize)]="gutterSize" [rowHeight]="rowHeight">
 
+    <mat-grid-tile appReactiveTile colspan="4" rowspan="16">
+      <div class="contenu mat-elevation-z2">
+        <app-title-banner><h4>Commentaires libres</h4></app-title-banner>
+        <app-paginated-comment room="home">
+          <p>Laissez-nous un message, vos impressions sur le site, partagez une image de jeux.</p>
+          <p>Cet espace est libre, pas besoin de vous connecter.</p>
+          <p>Pour embellir votre message, utilisez <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">le format markdown</a>.</p>
+          <p>L'équipe Shi.Fu.Mi.</p>
+          <mat-divider></mat-divider>
+        </app-paginated-comment>
+      </div>
+    </mat-grid-tile>
+
     <ng-container *ngIf="plays$ | async as plays">
-      <mat-grid-tile appReactiveTile colspan="4" rowspan="7">
-        <div class="contenu">
-          <h2>Les dernières parties</h2>
+      <mat-grid-tile appReactiveTile colspan="4" rowspan="8">
+        <div class="contenu mat-elevation-z2">
+          <app-title-banner><h4>Les dernières parties</h4></app-title-banner>
           <app-play-list [plays]="plays"></app-play-list>
           <div class="actions">
             <a mat-button color="primary" routerLink="play" routerLinkActive="active">
@@ -34,9 +47,9 @@
     </ng-container>
 
     <ng-container *ngIf="players$ | async as players">
-      <mat-grid-tile appReactiveTile colspan="4" rowspan="7">
-        <div class="contenu">
-          <h2>Les joueurs les plus actifs</h2>
+      <mat-grid-tile appReactiveTile colspan="4" rowspan="8">
+        <div class="contenu mat-elevation-z2">
+          <app-title-banner><h4>Les joueurs les plus actifs</h4></app-title-banner>
           <app-player-list [players]="players"></app-player-list>
           <div class="actions">
             <a mat-button color="primary" routerLink="player" routerLinkActive="active">
@@ -48,9 +61,9 @@
     </ng-container>
 
     <ng-container *ngIf="boardgames$ | async as boardgames">
-      <mat-grid-tile appReactiveTile colspan="4" rowspan="7">
-        <div class="contenu">
-          <h2>Les jeux les mieux notés</h2>
+      <mat-grid-tile appReactiveTile colspan="4" rowspan="8">
+        <div class="contenu mat-elevation-z2">
+          <app-title-banner><h4>Les jeux les mieux notés</h4></app-title-banner>
           <app-boardgame-list [boardgames]="boardgames"></app-boardgame-list>
           <div class="actions">
             <a mat-button color="primary" routerLink="boardgame" routerLinkActive="active">
@@ -63,24 +76,16 @@
 
   </mat-grid-list>
 
-  <app-comment-section room="home" title="Commentaires libres">
-    <p>Laissez-nous un message, vos impressions sur le site, partagez une image de jeux.</p>
-    <p>Cet espace est libre, pas besoin de vous connecter.</p>
-    <p>Pour embellir votre message, utilisez <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">le format markdown</a>.</p>
-    <p>L'équipe Shi.Fu.Mi.</p>
-    <a mat-raised-button class="active" color="primary" appScrollTo="add-comment"><mat-icon>add</mat-icon> commentaire</a>
-  </app-comment-section>
-
   <div class="contenu">
     <h2>Crédits</h2>
     <p class="credit">
       Shi.Fu.Mi est développé par Clément Bouché. Consultez <a href="https://github.com/ClementBouche/shifumi" target="_blank">le dépot Github</a> pour plus d'information.
     </p>
     <p class="credit">
-      L'icone du site est réalisé par <a href="https://www.flaticon.com/authors/dinosoftlabs" target="_blank">dinosoftlabs</a> from Flaticon.
+      L'icône du site est réalisée par <a href="https://www.flaticon.com/authors/dinosoftlabs" target="_blank">dinosoftlabs</a> from Flaticon.
     </p>
     <p class="credit">
-      Toutes les données sur les jeux de société sont récupéré du merveilleux site anglophone <a href="https://www.boardgamegeek.com/" target="_blank">boardgamegeek</a>.
+      Toutes les données sur les jeux de société sont récupérées du merveilleux site anglophone <a href="https://www.boardgamegeek.com/" target="_blank">boardgamegeek</a>.
     </p>
   </div>
 

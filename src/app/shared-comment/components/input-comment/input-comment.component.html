@@ -1,0 +1,14 @@
+<ng-container *ngIf="comment">
+  <div class="app-card-comment">
+    <div class="avatar"></div>
+    <div class="content">
+      <h5>{{ comment.sender.username }}</h5>
+      <mat-form-field class="form-field">
+        <textarea matInput placeholder="Tapez votre commentaire..."
+            [(ngModel)]='comment.content'>
+        </textarea>
+      </mat-form-field>
+      <button mat-button color="accent" (click)='send()'>Envoyer</button>
+    </div>
+  </div>
+</ng-container>

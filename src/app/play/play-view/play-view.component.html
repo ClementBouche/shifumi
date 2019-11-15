@@ -1,5 +1,5 @@
 <app-custom-layout *ngIf="play">
   <app-play-info [play]="play" (scoreClicked)="actionScore($event)"></app-play-info>
 
-  <app-comment-section [room]="play.id"></app-comment-section>
+  <app-paginated-comment [room]="play.id"></app-paginated-comment>
 </app-custom-layout>

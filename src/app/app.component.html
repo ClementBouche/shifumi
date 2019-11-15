@@ -6,7 +6,7 @@
       <h1 class="title">Shi.Fu.Mi</h1>
     </a>
     <span class="separator"></span>
-    <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher un jeux..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
+    <app-autocomplete-search-input class="grow text-size" placeholder="Rechercher un jeu..." (boardgameSelected)="select($event)"></app-autocomplete-search-input>
     <ng-container *ngIf="registered && registered.username != '' else login">
       <a mat-button class="profil-button" routerLink="user" routerLinkActive="active">
         <mat-icon>person</mat-icon>

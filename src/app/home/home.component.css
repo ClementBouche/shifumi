@@ -1,4 +1,10 @@
-.contenu h2 {
+.contenu {
+  margin: 5px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.contenu h4 {
+  margin: 0.7em;
   text-align: center;
 }
 

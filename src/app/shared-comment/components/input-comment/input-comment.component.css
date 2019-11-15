@@ -1,0 +1,37 @@
+.app-card-comment {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.avatar {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(214, 158, 106, 0.801);
+  width: 40px;
+  height: 40px;
+}
+
+.content {
+  margin-left: 48px;
+  width: calc(100% - 60px);
+}
+
+.content .date {
+  color: grey;
+  font-style: italic;
+}
+
+.content h5 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+
+.form-field {
+  width: calc(100% - 10px);
+}
+
+.add-comment {
+  margin-bottom: 15px;
+}

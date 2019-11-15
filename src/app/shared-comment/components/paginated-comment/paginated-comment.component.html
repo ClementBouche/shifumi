@@ -1,0 +1,19 @@
+<div class="app-paginated-comment">
+  <ng-content></ng-content>
+
+  <app-input-comment [comment]="currentMessage" (commentSubmited)="addMessage($event)"></app-input-comment>
+  <mat-divider></mat-divider>
+  
+  <ng-container *ngFor='let message of messages'>
+    <app-card-comment [comment]="message" (removeTrigger)="removeMessage($event)"></app-card-comment>
+    <mat-divider></mat-divider>
+  </ng-container>
+
+  <mat-paginator [length]="page.count"
+                [pageSize]="page.size"
+                [pageIndex]="page.index"
+                [pageSizeOptions]="[2, 3, 5]"
+                (page)="changePage($event)">
+  </mat-paginator>
+
+</div>
