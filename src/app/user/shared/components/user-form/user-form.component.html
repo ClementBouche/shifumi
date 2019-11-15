@@ -11,6 +11,13 @@
   <mat-form-field class="full-width">
     <input matInput type="string" placeholder="email" formControlName="email">
   </mat-form-field>
-
+  <mat-divider></mat-divider>
+  <h2>Avatar</h2>
+  <div class="flex">
+    <img [src]="form.value.image">
+    <mat-form-field class="full-width">
+      <input matInput type="string" placeholder="Lien vers une image" formControlName="image">
+    </mat-form-field>
+  </div>
   <button mat-raised-button type="submit" color="accent">Modifier</button>
 </form>

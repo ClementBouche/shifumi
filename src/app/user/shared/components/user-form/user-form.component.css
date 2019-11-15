@@ -5,3 +5,12 @@
 p {
   text-align: center;
 }
+
+.flex {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.flex > * {
+  padding-right: 10px;
+}

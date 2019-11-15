@@ -12,6 +12,8 @@ export class User implements Deserializable, Serializable {
 
     email: String;
 
+    image: String;
+
     surname: String;
 
     lastname: String;
@@ -39,7 +41,7 @@ export class User implements Deserializable, Serializable {
         username: this.username,
         password: this.password,
         email: this.email,
-        surname: this.surname,
+        image: this.image,
         lastname: this.lastname,
         admin: this.admin,
         activated: this.activated,
@@ -56,6 +58,7 @@ export class User implements Deserializable, Serializable {
         username: input.username,
         // password: input.password,
         email: input.email,
+        image: input.image,
         surname: input.surname,
         lastname: input.lastname,
         admin: input.admin,

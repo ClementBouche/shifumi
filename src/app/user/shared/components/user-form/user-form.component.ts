@@ -26,9 +26,10 @@ export class UserFormComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       username: [this.user.username, Validators.required],
-      password: [this.user.password, Validators.required],
-      passwordConfirmed: [this.user.password, Validators.required],
-      email: [this.user.email]
+      password: [this.user.password],
+      passwordConfirmed: [this.user.password],
+      email: [this.user.email],
+      image: [this.user.image],
     });
 
     this.form.valueChanges.pipe(
@@ -39,23 +40,22 @@ export class UserFormComponent implements OnInit {
   }
 
   update() {
-    if (!this.form.valid || this.form.value.password !== this.form.value.passwordConfirmed) {
+    if (!this.form.valid) {
       this.formError = true;
       this.cd.markForCheck();
       return;
-    } 
+    }
     this.formError = false;
     this.cd.markForCheck();
 
     if (this.form.get('username').dirty) {
       this.user.username = this.form.value.username;
     }
-    if (this.form.get('password').dirty) {
+    if (this.form.get('password').dirty && this.form.value.password !== this.form.value.passwordConfirmed) {
       this.user.password = this.form.value.password;
     }
-    if (this.form.get('email').dirty) {
-      this.user.email = this.form.value.email;
-    }
+    this.user.email = this.form.value.email;
+    this.user.image = this.form.value.image;
 
     this.userChanged.emit(this.user);
   }

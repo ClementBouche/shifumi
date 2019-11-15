@@ -4,15 +4,10 @@
     <div class="content">
       <h5>{{ comment.sender.username }}<span class="date"> • il y a trois jours</span></h5>
       <div class="app-markdown" [appSafeHtml]="comment.content"></div>
-      <a mat-button color="primary" disabled>Répondre</a>
-    </div>
-    <div class="buttons">
-      <mat-chip-list>
-        <mat-chip color="primary" selected (click)='remove()'>
-          <mat-icon>delete</mat-icon>
-          Supprimer
-        </mat-chip>
-      </mat-chip-list>
+      <div class="actions">
+        <a mat-button color="primary" disabled>Répondre</a>
+        <a *ngIf="editable" mat-button color="error">Supprimer</a>
+      </div>
     </div>
   </div>
 </ng-container>
