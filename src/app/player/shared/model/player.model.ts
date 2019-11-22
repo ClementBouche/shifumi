@@ -1,4 +1,5 @@
 import { Deserializable } from 'src/app/core/model/deserializable.interface';
+import { User } from 'src/app/user/shared/model/user.model';
 
 export class Player implements Deserializable {
   id: string;
@@ -27,6 +28,7 @@ export class Player implements Deserializable {
 
   // user
   userId: string;
+  user: User;
 
   serialize() {
     return {
@@ -41,6 +43,7 @@ export class Player implements Deserializable {
   }
 
   deserialize(input: any) {
+    const user = input.user ? new User().deserialize(input.user) : null;
     Object.assign(this, {
       id: input._id,
       name: input.name,
@@ -60,6 +63,7 @@ export class Player implements Deserializable {
       time: input.play_time,
       victoryRatio: input.win_ratio,
       userId: input.user_id,
+      user: user
     });
     return this;
   }

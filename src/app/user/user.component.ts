@@ -3,9 +3,8 @@ import { User } from './shared/model/user.model';
 import { LoginRegisterService } from '../home/shared/services/login-register.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { startWith, map, switchMap, filter } from 'rxjs/operators';
+import { startWith, switchMap } from 'rxjs/operators';
 import { UserService } from './shared/services/user.service';
-import { AdminService } from './shared/services/admin.service';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +13,8 @@ import { AdminService } from './shared/services/admin.service';
 })
 export class UserComponent implements OnInit {
 
-  user$: Observable<User>;
+  // user$: Observable<User>;
+  user: User;
 
   actions = [{name: 'update', title: 'Mettre à jour', color: 'accent'}];
 
@@ -25,11 +25,12 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.user = this.loginRegisterService.getUser();
     // TODO utiliser le systeme de guard pour retourner au login
-    this.user$ = this.loginRegisterService.logginEvent.pipe(
-      startWith(this.loginRegisterService.getUser()),
-      switchMap(() => this.userService.me()),
-    );
+    // this.user$ = this.loginRegisterService.logginEvent.pipe(
+    //   startWith(this.loginRegisterService.getUser()),
+    //   switchMap(() => this.userService.me()),
+    // );
   }
 
   goUpdate() {

@@ -51,6 +51,7 @@ export class LoginRegisterService {
     if (user) {
       this.userService.me().subscribe((me) => {
         // final user
+        console.log('premier');
         this.setUser(me);
       });
       // tmp user

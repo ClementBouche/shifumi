@@ -1,6 +1,6 @@
-<ng-container *ngIf="player else noPlayer">
+<ng-container *ngIf="user.player else noPlayer">
   <app-custom-layout padding="10px 10xp">
-    <app-player-page [player]="player"></app-player-page>
+    <app-player-page [player]="user.player"></app-player-page>
   </app-custom-layout>
 </ng-container>
 

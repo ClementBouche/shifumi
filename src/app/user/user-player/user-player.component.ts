@@ -13,16 +13,10 @@ export class UserPlayerComponent implements OnInit {
 
   @Input() user: User;
 
-  player: Player;
-
   constructor(
-    private playerService: PlayerService,
   ) { }
 
   ngOnInit() {
-    this.playerService.getPlayer(this.user.player.id).then((player) => {
-      this.player = player;
-    });
   }
 
 }

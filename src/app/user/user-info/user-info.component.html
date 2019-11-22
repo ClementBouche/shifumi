@@ -2,8 +2,8 @@
 
   <app-user-card [user]="user"></app-user-card>
 
-  <ng-container *ngIf="player else noPlayer">
-    <app-player-card [player]="player"></app-player-card>
+  <ng-container *ngIf="user.player else noPlayer">
+    <app-player-card [player]="user.player"></app-player-card>
   </ng-container>
 
   <ng-template #noPlayer>

@@ -15,7 +15,8 @@ import { Player } from 'src/app/player/shared/model/player.model';
 })
 export class UserUpdateComponent implements OnInit {
 
-  user$: Observable<User>;
+  // user$: Observable<User>;
+  user: User;
 
   constructor(
     private loginRegisterService: LoginRegisterService,
@@ -24,11 +25,7 @@ export class UserUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // TODO utiliser le systeme de guard pour retourner au login
-    this.user$ = this.loginRegisterService.logginEvent.pipe(
-      startWith(this.loginRegisterService.getUser()),
-      switchMap(() => this.userService.me()),
-    );
+    this.user = this.loginRegisterService.getUser();
   }
 
   updateUser(user: User) {

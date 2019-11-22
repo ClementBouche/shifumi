@@ -14,17 +14,11 @@ export class UserInfoComponent implements OnInit {
 
   @Input() user: User;
 
-  player: Player;
-
   constructor(
-    private playerService: PlayerService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.playerService.getPlayer(this.user.player.id).then((player) => {
-      this.player = player;
-    });
   }
 
   goUpdate() {
